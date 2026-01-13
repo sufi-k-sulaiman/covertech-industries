@@ -50,21 +50,21 @@ export default function ChatWidget() {
   };
 
   const handleSend = async () => {
-    if (!input.trim() || !conversation || isLoading) return;
-    
-    const userMessage = input.trim();
-    setInput('');
-    setIsLoading(true);
+   if (!input.trim() || !conversation?.id || isLoading) return;
 
-    try {
-      await base44.agents.addMessage(conversation, {
-        role: 'user',
-        content: userMessage
-      });
-    } catch (error) {
-      console.error('Failed to send message:', error);
-      setIsLoading(false);
-    }
+   const userMessage = input.trim();
+   setInput('');
+   setIsLoading(true);
+
+   try {
+     await base44.agents.addMessage(conversation, {
+       role: 'user',
+       content: userMessage
+     });
+   } catch (error) {
+     console.error('Failed to send message:', error);
+     setIsLoading(false);
+   }
   };
 
   return (
