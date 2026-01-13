@@ -62,9 +62,10 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     const poolWidth = parseFloat(dimensions.width) || 4;
     const shallowDepth = parseFloat(dimensions.shallowDepth) || 1;
     const deepDepth = parseFloat(dimensions.deepDepth) || 2;
+    const waterLevel = parseFloat(dimensions.waterLevel) || 90;
 
     // Create pool based on shape
-    createPoolShape(scene, shape || 'rectangle', poolLength, poolWidth, shallowDepth, deepDepth);
+    createPoolShape(scene, shape || 'rectangle', poolLength, poolWidth, shallowDepth, deepDepth, waterLevel);
 
     // Grid helper (ground)
     const gridHelper = new THREE.GridHelper(30, 30, 0x333344, 0x222233);
@@ -103,7 +104,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
   return <div ref={containerRef} className="w-full h-full rounded-xl overflow-hidden" />;
 }
 
-function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth) {
+function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90) {
   // Create pool walls and floor
   const wallMaterial = new THREE.MeshStandardMaterial({
     color: 0xf8f9fa,
@@ -160,7 +161,8 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth) {
   pool.receiveShadow = true;
   scene.add(pool);
 
-  // Create water surface
+  // Create water surface at specified level
+  const waterHeight = avgDepth * (waterLevel / 100);
   const waterGeometry = new THREE.ShapeGeometry(poolShape);
   const waterMaterial = new THREE.MeshPhysicalMaterial({
     color: 0x0891b2,
@@ -177,7 +179,7 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth) {
   
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
   water.rotation.x = -Math.PI / 2;
-  water.position.y = avgDepth * 0.05;
+  water.position.y = waterHeight * 0.95;
   water.receiveShadow = true;
   scene.add(water);
 
