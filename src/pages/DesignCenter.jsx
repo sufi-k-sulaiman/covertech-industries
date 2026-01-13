@@ -60,7 +60,7 @@ export default function DesignCenter() {
   const [dimensions, setDimensions] = useState({});
   const [selectedFeatures, setSelectedFeatures] = useState([]);
   const [patternSelection, setPatternSelection] = useState({
-    collection: 'platinum-plus',
+    collection: 'platinum-plus-2026',
     pattern: null,
     bead: 'blue'
   });
