@@ -219,7 +219,6 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
 
   // Create water volume based on water level percentage
   const waterLevelPercent = waterLevel / 100;
-  const avgDepth = (shallowDepth + deepDepth) / 2;
   const waterDepth = avgDepth * waterLevelPercent;
   
   // Create flat water geometry
