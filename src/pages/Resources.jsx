@@ -1,39 +1,145 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { FileText, BookOpen, Download, ArrowRight } from 'lucide-react';
+import { FileText, BookOpen, Download, ArrowRight, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
 const downloads = [
   {
-    title: "Safety Cover Measuring Form",
-    description: "Comprehensive guide for accurately measuring your pool for safety cover installation",
-    icon: FileText,
-    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/fb7af55c8_CVT-Safey-Cover-Form.pdf",
-    color: "from-cyan-500 to-blue-500"
+    category: "Warranty Documents",
+    items: [
+      {
+        title: "25-Season In-Ground Liner Warranty",
+        description: "Premium warranty for in-ground vinyl pool liners",
+        icon: Shield,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/940bf589f_25SeasonIn-GroundLinerWarranty.pdf",
+        color: "from-cyan-500 to-blue-500"
+      },
+      {
+        title: "20-Season On-Ground Liner Warranty",
+        description: "Extended warranty coverage for on-ground pool liners",
+        icon: Shield,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e5f9b4602_20SeasonOn-GroundLinerWarranty.pdf",
+        color: "from-blue-500 to-indigo-500"
+      },
+      {
+        title: "10-Season Above-Ground Liner Warranty",
+        description: "Comprehensive warranty for above-ground pool liners",
+        icon: Shield,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/94ddb6eba_10SeasonAbove-GroundLinerWarranty.pdf",
+        color: "from-indigo-500 to-purple-500"
+      },
+      {
+        title: "Safety Cover Warranty 2025",
+        description: "Up to 30-year warranty for premium safety covers",
+        icon: Shield,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9876ef1df_CVT-SafetyCoverWarranty-2025.pdf",
+        color: "from-purple-500 to-pink-500"
+      },
+      {
+        title: "Solar Blanket Warranty",
+        description: "3 to 7-year warranty coverage for solar covers",
+        icon: Shield,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/042934906_SolarWarranty-CVT-English.pdf",
+        color: "from-yellow-500 to-orange-500"
+      },
+      {
+        title: "Winter Cover Warranty",
+        description: "8 to 10-year warranty for winter pool covers",
+        icon: Shield,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2064be08f_WinterCoverWarranty-CVT-English.pdf",
+        color: "from-blue-600 to-cyan-600"
+      },
+      {
+        title: "Beaded Winter Cover Warranty",
+        description: "Warranty details for beaded lock-in winter covers",
+        icon: Shield,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ea750810d_BeadedWinterCoverWarranty-CVT-English.pdf",
+        color: "from-slate-600 to-slate-800"
+      }
+    ]
   },
   {
-    title: "Inground Liner Measuring Form",
-    description: "Step-by-step form to ensure precise measurements for your inground pool liner",
-    icon: FileText,
-    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/1148bf00b_IngroundLinerMeasuringForm-32615.pdf",
-    color: "from-blue-500 to-indigo-500"
+    category: "Installation & Care Guides",
+    items: [
+      {
+        title: "In-Ground Liner Installation",
+        description: "Professional installation instructions for vinyl pool liners",
+        icon: BookOpen,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ce2f38147_CVT-IngroundLinerMaintenanceandInstallation.pdf",
+        color: "from-cyan-500 to-blue-500"
+      },
+      {
+        title: "Liner Care & Maintenance Guide",
+        description: "Essential tips for maintaining your pool liner",
+        icon: BookOpen,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fcfa016dc_CVT-LinerCareMaintenance.pdf",
+        color: "from-blue-500 to-indigo-500"
+      },
+      {
+        title: "Safety Cover Care Guide",
+        description: "Maintenance instructions for optimal safety cover performance",
+        icon: BookOpen,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/37f0becda_CVT-SafetyCoverCareGuide.pdf",
+        color: "from-indigo-500 to-purple-500"
+      },
+      {
+        title: "Safety Cover Installation Instructions",
+        description: "Step-by-step installation guide for safety covers",
+        icon: BookOpen,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f1acc1b5e_CVT-SafetyCoverInstructions.pdf",
+        color: "from-purple-500 to-pink-500"
+      },
+      {
+        title: "Solar Cover - What to Know",
+        description: "Complete guide to solar blanket care and usage",
+        icon: BookOpen,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6c47e8eb2_CVTSolarCover-WhattoKnow.pdf",
+        color: "from-yellow-500 to-orange-500"
+      }
+    ]
   },
   {
-    title: "Inground Liner Instructions",
-    description: "Detailed installation and maintenance instructions for inground pool liners",
-    icon: BookOpen,
-    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/304529576_CVT-Inground-Liner-Maintenance-and-Installation.pdf",
-    color: "from-indigo-500 to-purple-500"
-  },
-  {
-    title: "Safety Cover Instructions",
-    description: "Complete guide for proper installation and maintenance of safety covers",
-    icon: BookOpen,
-    url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/4bf1e67df_CVT-Safety-Cover-Instructions.pdf",
-    color: "from-purple-500 to-pink-500"
+    category: "Measuring Forms & Brochures",
+    items: [
+      {
+        title: "Safety Cover Measuring Form",
+        description: "Comprehensive form for accurate safety cover measurements",
+        icon: FileText,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a24979399_CVTSafey-Cover-Form.pdf",
+        color: "from-cyan-500 to-blue-500"
+      },
+      {
+        title: "2026 Liner Pattern Catalogue",
+        description: "Complete collection of vinyl liner patterns and designs",
+        icon: FileText,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/af5daff1a_2026LinerCatalogue-Web-R0.pdf",
+        color: "from-blue-500 to-indigo-500"
+      },
+      {
+        title: "Safety Covers Brochure 2024",
+        description: "Comprehensive brochure showcasing safety cover options",
+        icon: FileText,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/59cb887bb_2024SafetyCoversBrochure.pdf",
+        color: "from-indigo-500 to-purple-500"
+      },
+      {
+        title: "Curing Blanket Brochure 2024",
+        description: "Information on concrete curing blankets",
+        icon: FileText,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4aacddc1a_2024CuringBlanketBrochure.pdf",
+        color: "from-purple-500 to-pink-500"
+      },
+      {
+        title: "Golf Greens Sell Sheet",
+        description: "Golf green winter protection solutions",
+        icon: FileText,
+        url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cc9aa98a1_GOLFGREENSELLSHEET.pdf",
+        color: "from-green-500 to-emerald-500"
+      }
+    ]
   }
 ];
 
@@ -88,33 +194,47 @@ export default function Resources() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {downloads.map((item, index) => (
-              <motion.a
-                key={item.title}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 30 }}
+          {downloads.map((category, catIndex) => (
+            <div key={category.category} className="mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-lg hover:border-cyan-100 transition-all flex gap-6"
+                className="mb-8"
               >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0`}>
-                  <item.icon className="w-7 h-7 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">{item.title}</h3>
-                  <p className="text-slate-600 text-sm mb-4">{item.description}</p>
-                  <span className="inline-flex items-center gap-2 text-cyan-600 font-medium text-sm">
-                    <Download className="w-4 h-4" />
-                    Download PDF
-                  </span>
-                </div>
-              </motion.a>
-            ))}
-          </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">{category.category}</h3>
+                <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {category.items.map((item, index) => (
+                  <motion.a
+                    key={item.title}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-cyan-200 transition-all flex gap-6"
+                  >
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                      <item.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">{item.title}</h3>
+                      <p className="text-slate-600 text-sm mb-4">{item.description}</p>
+                      <span className="inline-flex items-center gap-2 text-cyan-600 font-semibold text-sm">
+                        <Download className="w-4 h-4" />
+                        Download PDF
+                      </span>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
