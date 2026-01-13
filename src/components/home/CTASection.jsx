@@ -42,7 +42,7 @@ export default function CTASection() {
                 </Button>
               </Link>
               <Link to={createPageUrl('Contact')}>
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl">
+                <Button size="lg" variant="outline" className="border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 px-8 py-6 text-lg rounded-xl">
                   Contact Us
                 </Button>
               </Link>
