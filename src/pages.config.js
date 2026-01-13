@@ -8,6 +8,8 @@ import ProductDetails from './pages/ProductDetails';
 import Products from './pages/Products';
 import Resources from './pages/Resources';
 import Warranties from './pages/Warranties';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 import __Layout from './Layout.jsx';
 
 
@@ -22,6 +24,8 @@ export const PAGES = {
     "Products": Products,
     "Resources": Resources,
     "Warranties": Warranties,
+    "PrivacyPolicy": PrivacyPolicy,
+    "TermsOfService": TermsOfService,
 }
 
 export const pagesConfig = {

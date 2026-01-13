@@ -224,13 +224,17 @@ export default function Layout({ children, currentPageName }) {
             {/* Products */}
             <div>
               <h3 className="font-semibold text-lg mb-6">Products</h3>
-              <ul className="space-y-3">
-                <li><Link to={createPageUrl('ProductDetails?slug=in-ground-liners')} className="text-slate-400 hover:text-cyan-400 transition-colors">Pool Liners</Link></li>
-                <li><Link to={createPageUrl('ProductDetails?slug=safety-covers')} className="text-slate-400 hover:text-cyan-400 transition-colors">Safety Covers</Link></li>
-                <li><Link to={createPageUrl('ProductDetails?slug=solar-covers')} className="text-slate-400 hover:text-cyan-400 transition-colors">Solar Covers</Link></li>
-                <li><Link to={createPageUrl('ProductDetails?slug=winter-covers')} className="text-slate-400 hover:text-cyan-400 transition-colors">Winter Covers</Link></li>
-                <li><Link to={createPageUrl('ProductDetails?slug=steel-kits')} className="text-slate-400 hover:text-cyan-400 transition-colors">Steel Kits</Link></li>
-              </ul>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+                <Link to={createPageUrl('ProductDetails?slug=in-ground-liners')} className="text-slate-400 hover:text-cyan-400 transition-colors">In-Ground Liners</Link>
+                <Link to={createPageUrl('ProductDetails?slug=above-ground-liners')} className="text-slate-400 hover:text-cyan-400 transition-colors">Above Ground Liners</Link>
+                <Link to={createPageUrl('ProductDetails?slug=safety-covers')} className="text-slate-400 hover:text-cyan-400 transition-colors">Safety Covers</Link>
+                <Link to={createPageUrl('ProductDetails?slug=solar-covers')} className="text-slate-400 hover:text-cyan-400 transition-colors">Solar Covers</Link>
+                <Link to={createPageUrl('ProductDetails?slug=winter-covers')} className="text-slate-400 hover:text-cyan-400 transition-colors">Winter Covers</Link>
+                <Link to={createPageUrl('ProductDetails?slug=steel-kits')} className="text-slate-400 hover:text-cyan-400 transition-colors">Steel Kits</Link>
+                <Link to={createPageUrl('ProductDetails?slug=golf-covers')} className="text-slate-400 hover:text-cyan-400 transition-colors">Golf Green Covers</Link>
+                <Link to={createPageUrl('ProductDetails?slug=pool-insulation')} className="text-slate-400 hover:text-cyan-400 transition-colors">Pool Insulation</Link>
+                <Link to={createPageUrl('ProductDetails?slug=curing-blankets')} className="text-slate-400 hover:text-cyan-400 transition-colors">Curing Blankets</Link>
+              </div>
             </div>
 
             {/* Company */}
@@ -275,9 +279,9 @@ export default function Layout({ children, currentPageName }) {
               © {new Date().getFullYear()} Covertech Industries. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-slate-500">
-              <a href="#" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">Warranty</a>
+              <Link to={createPageUrl('PrivacyPolicy')} className="hover:text-cyan-400 transition-colors">Privacy Policy</Link>
+              <Link to={createPageUrl('TermsOfService')} className="hover:text-cyan-400 transition-colors">Terms of Service</Link>
+              <Link to={createPageUrl('Warranties')} className="hover:text-cyan-400 transition-colors">Warranty</Link>
             </div>
           </div>
         </div>
