@@ -10,8 +10,13 @@ Deno.serve(async (req) => {
       metadata: { source: 'website_chat', timestamp: new Date().toISOString() }
     });
 
+    if (!conversation || !conversation.id) {
+      throw new Error('Failed to create conversation - no ID returned');
+    }
+
     return Response.json(conversation);
   } catch (error) {
+    console.error('Error creating conversation:', error);
     return Response.json({ error: error.message }, { status: 500 });
   }
 });
