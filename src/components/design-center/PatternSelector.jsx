@@ -121,15 +121,23 @@ export default function PatternSelector({ selectedCollection, selectedPattern, s
 
       {/* Collection Info */}
       <div className="bg-cyan-50 rounded-xl p-6 mb-8">
-        <h4 className="font-semibold text-cyan-900 mb-2">
-          {selectedCollection === 'platinum-plus-2026' ? '2026 Platinum Plus Collection' : selectedCollection === 'premium-2026' ? '2026 Premium Collection' : '2026 Essentials Collection'}
-        </h4>
+        <div className="flex items-center justify-between mb-2">
+          <h4 className="font-semibold text-cyan-900">2026 {currentCollection?.name}</h4>
+          <span className="inline-block px-3 py-1 bg-cyan-600 text-white text-xs font-semibold rounded-full">{currentCollection?.badge}</span>
+        </div>
         <p className="text-sm text-cyan-800 mb-3">
-          {selectedCollection === 'platinum-plus-2026' ? 'Premium patterns featuring AquaShimmer technology for enhanced depth and shimmer effects' : selectedCollection === 'premium-2026' ? 'Curated designs with HD printing for superior clarity and durability' : 'Essential collection with timeless, elegant patterns'}
+          {selectedCollection === 'platinum-plus-2026' 
+            ? 'Premium patterns featuring AquaShimmer technology for enhanced depth and shimmer effects. Perfect for luxury pools.'
+            : selectedCollection === 'standard-2026'
+            ? 'Curated designs with HD printing and various finishes for superior clarity and durability.'
+            : 'Classic solid color options for timeless elegance and simplicity.'}
         </p>
         <ul className="space-y-1 text-sm text-cyan-700">
-          <li>• Liners are custom designed and fabricated incorporating proprietary sealing technology</li>
-          <li>• Manufactured with attached vinyl over steps, benches, and sundecks</li>
+          <li>• 25-Season Warranty on all patterns</li>
+          <li>• 30mil Cold Crack-resistant Film</li>
+          <li>• 100% Anti-bacterial Virgin Resin</li>
+          <li>• UV and Chemical-resistant Aqua Finish topcoat</li>
+          <li>• Non-slip textured vinyl available for Steps, Benches & Sundecks</li>
         </ul>
       </div>
 
