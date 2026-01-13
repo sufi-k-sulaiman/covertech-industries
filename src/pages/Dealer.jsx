@@ -103,6 +103,81 @@ export default function Dealer() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="text-cyan-600 font-semibold text-sm tracking-wider uppercase">Success Stories</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4">
+              What Our <span className="text-cyan-600">Dealers Say</span>
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Join a network of successful dealers who trust Covertech
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Jasmine Rocheleau",
+                company: "Pool Services Company",
+                quote: "I work for a pool company and always choose to give our business to Covertech when it comes to their product. All staff are great to deal with, and they stand by their products."
+              },
+              {
+                name: "Tina Booth",
+                company: "Pool Dealer",
+                quote: "We are a swimming pool dealer that uses Covertech's products for the last 6 years. It's been a pleasure dealing with them and their premium products."
+              },
+              {
+                name: "Chris Mckechnie",
+                company: "Installation Professional",
+                quote: "Covertech has always done right by me and my customers. I have been installing covers for 16 years. Quality tough made products with knowledgeable staff and quick turnaround."
+              },
+              {
+                name: "Alex",
+                company: "Pool Retailer",
+                quote: "Covertech has been a great supplier to us for many years. The covers are made well and our clients are very happy with their products."
+              },
+              {
+                name: "Cathy Cully",
+                company: "Pool Homeowner",
+                quote: "On my second Covertech pool cover. The first lasted 15 years. Returned the old cover and the new one was ready within weeks. Very responsive and easy to work with."
+              },
+              {
+                name: "Mike Collins",
+                company: "Pool Contractor",
+                quote: "Fast, efficient warranty replacement on solar blanket, very friendly contact with the crew. Great experience working with Covertech."
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-cyan-200 hover:shadow-lg transition-all"
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-amber-400">★</span>
+                  ))}
+                </div>
+                <p className="text-slate-700 leading-relaxed mb-6">"{testimonial.quote}"</p>
+                <div>
+                  <p className="font-semibold text-slate-900">{testimonial.name}</p>
+                  <p className="text-sm text-slate-500">{testimonial.company}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Requirements & Application */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
