@@ -128,11 +128,18 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
 }
 
 function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90) {
-  // Create pool walls and floor
+  // Create pool walls
   const wallMaterial = new THREE.MeshStandardMaterial({
-    color: 0xf8f9fa,
-    roughness: 0.3,
+    color: 0xe2e8f0,
+    roughness: 0.4,
     metalness: 0.1,
+  });
+
+  // Pool floor material with gradient
+  const floorMaterial = new THREE.MeshStandardMaterial({
+    color: 0x94a3b8,
+    roughness: 0.6,
+    metalness: 0,
   });
 
   let poolShape;
@@ -169,45 +176,65 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
       poolShape = createRectanglePool(length, width);
   }
 
-  // Extrude pool shape to create walls
-  const avgDepth = (shallowDepth + deepDepth) / 2;
-  const extrudeSettings = {
-    depth: avgDepth,
+  // Create walls at shallow end
+  const shallowWallSettings = {
+    depth: shallowDepth,
     bevelEnabled: false,
   };
+  const shallowWalls = new THREE.ExtrudeGeometry(poolShape, shallowWallSettings);
+  const shallowMesh = new THREE.Mesh(shallowWalls, wallMaterial);
+  shallowMesh.rotation.x = -Math.PI / 2;
+  shallowMesh.position.y = 0;
+  shallowMesh.castShadow = true;
+  shallowMesh.receiveShadow = true;
+  scene.add(shallowMesh);
 
-  const geometry = new THREE.ExtrudeGeometry(poolShape, extrudeSettings);
-  const pool = new THREE.Mesh(geometry, wallMaterial);
-  pool.rotation.x = -Math.PI / 2;
-  pool.position.y = 0;
-  pool.castShadow = true;
-  pool.receiveShadow = true;
-  scene.add(pool);
+  // Create sloped floor
+  const floorGeometry = new THREE.PlaneGeometry(length, width, 20, 20);
+  const positions = floorGeometry.attributes.position;
+  
+  // Create slope from shallow to deep
+  for (let i = 0; i < positions.count; i++) {
+    const y = positions.getY(i);
+    const normalized = (y + width / 2) / width;
+    const depth = shallowDepth + (deepDepth - shallowDepth) * normalized;
+    positions.setZ(i, -depth);
+  }
+  positions.needsUpdate = true;
+  floorGeometry.computeVertexNormals();
+  
+  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  floor.receiveShadow = true;
+  scene.add(floor);
 
   // Create water surface at specified level
-  const waterHeight = avgDepth * (waterLevel / 100);
+  const maxDepth = Math.max(shallowDepth, deepDepth);
+  const waterHeight = maxDepth * (waterLevel / 100);
   const waterGeometry = new THREE.ShapeGeometry(poolShape);
   const waterMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x0891b2,
+    color: 0x06b6d4,
     transparent: true,
-    opacity: 0.85,
+    opacity: 0.7,
     metalness: 0.1,
-    roughness: 0.1,
-    transmission: 0.5,
+    roughness: 0.05,
+    transmission: 0.6,
     thickness: 0.5,
-    envMapIntensity: 1,
+    envMapIntensity: 1.5,
     clearcoat: 1,
     clearcoatRoughness: 0.1,
   });
   
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
   water.rotation.x = -Math.PI / 2;
-  water.position.y = waterHeight * 0.95;
+  water.position.y = waterHeight;
   water.receiveShadow = true;
   scene.add(water);
 
+  // Add depth labels
+  addDepthLabels(scene, length, width, shallowDepth, deepDepth, waterHeight);
+
   // Add dimension lines
-  addDimensionLines(scene, shape, length, width, avgDepth);
+  addDimensionLines(scene, shape, length, width, Math.max(shallowDepth, deepDepth));
 }
 
 function createRectanglePool(length, width) {
@@ -331,6 +358,55 @@ function createFreeformPool(length, width) {
   shape.bezierCurveTo(l, -w * 0.3, l * 0.8, -w * 0.8, l * 0.3, -w);
   shape.bezierCurveTo(0, -w * 0.9, -l * 0.3, -w * 0.9, -l * 0.6, -w * 0.8);
   return shape;
+}
+
+function addDepthLabels(scene, length, width, shallowDepth, deepDepth, waterHeight) {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  canvas.width = 256;
+  canvas.height = 128;
+  
+  // Shallow end label
+  context.fillStyle = '#ffffff';
+  context.fillRect(0, 0, 256, 64);
+  context.fillStyle = '#0f172a';
+  context.font = 'bold 24px Arial';
+  context.textAlign = 'center';
+  context.fillText(`Shallow: ${shallowDepth}ft`, 128, 40);
+  
+  const shallowTexture = new THREE.CanvasTexture(canvas);
+  const shallowMaterial = new THREE.MeshBasicMaterial({ 
+    map: shallowTexture, 
+    transparent: true,
+    side: THREE.DoubleSide 
+  });
+  const shallowLabel = new THREE.Mesh(
+    new THREE.PlaneGeometry(2, 1),
+    shallowMaterial
+  );
+  shallowLabel.position.set(0, waterHeight + 0.5, -width / 2 - 0.5);
+  shallowLabel.rotation.x = -Math.PI / 6;
+  scene.add(shallowLabel);
+  
+  // Deep end label
+  context.fillStyle = '#ffffff';
+  context.fillRect(0, 64, 256, 64);
+  context.fillStyle = '#0f172a';
+  context.fillText(`Deep: ${deepDepth}ft`, 128, 104);
+  
+  const deepTexture = new THREE.CanvasTexture(canvas);
+  const deepMaterial = new THREE.MeshBasicMaterial({ 
+    map: deepTexture, 
+    transparent: true,
+    side: THREE.DoubleSide 
+  });
+  const deepLabel = new THREE.Mesh(
+    new THREE.PlaneGeometry(2, 1),
+    deepMaterial
+  );
+  deepLabel.position.set(0, waterHeight + 0.5, width / 2 + 0.5);
+  deepLabel.rotation.x = -Math.PI / 6;
+  scene.add(deepLabel);
 }
 
 function addDimensionLines(scene, shape, length, width, depth) {
