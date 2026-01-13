@@ -247,16 +247,7 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
     ior: 1.33,
   });
   
-  // Create water as extruded shape that matches the pool shape - scaled to fit inside walls
-  const waterShape = poolShape.clone();
-  waterShape.curves.forEach(curve => {
-    // Scale down slightly to fit inside the pool walls
-    if (curve.v1) { curve.v1.multiplyScalar(0.96); }
-    if (curve.v2) { curve.v2.multiplyScalar(0.96); }
-    if (curve.v0) { curve.v0.multiplyScalar(0.96); }
-    if (curve.v3) { curve.v3.multiplyScalar(0.96); }
-  });
-  
+  // Create water as extruded shape that fills inside the pool
   const waterExtrudeSettings = {
     depth: waterDepth,
     bevelEnabled: false,
@@ -265,7 +256,8 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   const waterGeometry = new THREE.ExtrudeGeometry(poolShape, waterExtrudeSettings);
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
   water.rotation.x = -Math.PI / 2;
-  water.position.y = -0.05; // Start just below the rim
+  // Position so water fills from bottom up to waterDepth level
+  water.position.y = -avgDepth + waterDepth;
   water.receiveShadow = true;
   water.castShadow = true;
   
@@ -419,9 +411,10 @@ function addDimensionLines(scene, length, width, poolDepth, waterDepth, shallowD
   scene.add(depthLine);
   
   // Water level indicator line
+  const actualWaterLevel = -poolDepth + waterDepth;
   const waterLevelPoints = [
-    new THREE.Vector3(length / 2 + 0.8, -waterDepth - 0.02, -width / 2 * 0.3),
-    new THREE.Vector3(length / 2 + 0.8, -waterDepth - 0.02, width / 2 * 0.3),
+    new THREE.Vector3(length / 2 + 0.8, actualWaterLevel, -width / 2 * 0.3),
+    new THREE.Vector3(length / 2 + 0.8, actualWaterLevel, width / 2 * 0.3),
   ];
   const waterLevelGeometry = new THREE.BufferGeometry().setFromPoints(waterLevelPoints);
   const waterLevelLine = new THREE.Line(waterLevelGeometry, dashedMaterial);
@@ -431,13 +424,13 @@ function addDimensionLines(scene, length, width, poolDepth, waterDepth, shallowD
   // Small ticks for depth markers
   const topTick = createTick(length / 2 + 0.7, 0, 0);
   const bottomTick = createTick(length / 2 + 0.7, -poolDepth, 0);
-  const waterTick = createTick(length / 2 + 0.7, -waterDepth - 0.02, 0);
+  const waterTick = createTick(length / 2 + 0.7, actualWaterLevel, 0);
   scene.add(topTick, bottomTick, waterTick);
   
   // Add text labels for dimensions
   addTextLabel(scene, `${shallowDepth.toFixed(1)}ft`, length / 2 + 1.5, -shallowDepth / 2, 0);
   addTextLabel(scene, `${deepDepth.toFixed(1)}ft`, length / 2 + 1.5, -deepDepth, 0);
-  addTextLabel(scene, 'Water Level', length / 2 + 1.5, -waterDepth - 0.02, 0.5);
+  addTextLabel(scene, 'Water Level', length / 2 + 1.5, actualWaterLevel, 0.5);
   
   // Length and width labels
   addTextLabel(scene, `${length.toFixed(1)}ft`, 0, 0.5, -width / 2 - 1);
