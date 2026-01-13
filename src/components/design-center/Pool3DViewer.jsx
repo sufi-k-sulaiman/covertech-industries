@@ -501,7 +501,7 @@ function addDimensionLines(scene, length, width, poolDepth, waterDepth, shallowD
   // Add text labels for dimensions
   addTextLabel(scene, `${shallowDepth.toFixed(1)}ft`, length / 2 + 1.5, -shallowDepth / 2, 0);
   addTextLabel(scene, `${deepDepth.toFixed(1)}ft`, length / 2 + 1.5, -deepDepth, 0);
-  addTextLabel(scene, 'Water Level', length / 2 + 1.5, actualWaterLevel, 0.5);
+  addTextLabel(scene, 'Water Level', 0, actualWaterLevel + 0.3, 0);
   
   // Length and width labels
   addTextLabel(scene, `${length.toFixed(1)}ft`, 0, 0.5, -width / 2 - 1);
