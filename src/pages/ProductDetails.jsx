@@ -215,6 +215,18 @@ const productsData = {
       { name: "Solar Blanket Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/042934906_SolarWarranty-CVT-English.pdf" },
       { name: "Solar Cover - What to Know", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6c47e8eb2_CVTSolarCover-WhattoKnow.pdf" }
     ],
+    installationGuide: {
+      title: "Solar Blanket Installation & Use",
+      installation: "Your solar blanket must be installed on the pool with the bubble side down. If trimming is necessary, allow the blanket to rest on the pool until the packing folds have straightened. The initial cut should be slightly larger due to sun exposure. Precision trimming may be necessary to ensure a perfect fit. Be very careful not to cut the liner if you have a vinyl-lined pool. The blanket should not overlap the pool sidewall to prevent wind infiltration under the blanket.",
+      removal: "To remove the blanket, two people can pull 3 to 4 feet at a time and fan-fold the blanket in an accordion fashion outside of the pool. To avoid handling damage, do not drag across coping or rough deck. Once off the pool, the blanket must be kept in the shade or covered with a protective cover sheet. An uncovered solar blanket (when not in use) exposed to the sun will result in extensive damage to the blanket.",
+      maintenance: [
+        "Monitor the level of chlorine below 3 parts per million (PPM). When shocking the pool, keep the blanket off for at least 24 hours.",
+        "Damage caused by excessive chlorine exposure (patches of brittle, flaked bubbles) is excluded from this warranty.",
+        "You can clean your cover using a mild detergent, water, and a soft brush. A clean cover will perform much better.",
+        "Store your cover away from rodents and avoid areas where the temperature can reach 120°F."
+      ],
+      performance: "When used properly, your solar blanket will provide maximum heat by day and insulate by night. The temperature will rise by 10°F or more. The blanket will keep the pool clean, reduce chemical usage and result in water conservation."
+    },
     variants: [
       { 
         name: "Solar-Extreme™", 
