@@ -134,12 +134,76 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     };
   }, [shape, dimensions, unit]);
 
+  const handleZoomIn = () => {
+    if (cameraRef.current && controlsRef.current) {
+      const distance = cameraRef.current.position.length();
+      const newDistance = Math.max(distance - 2, controlsRef.current.minDistance);
+      const direction = cameraRef.current.position.clone().normalize();
+      cameraRef.current.position.copy(direction.multiplyScalar(newDistance));
+      controlsRef.current.target.copy(new THREE.Vector3(0, 0, 0));
+      setRender(r => r + 1);
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (cameraRef.current && controlsRef.current) {
+      const distance = cameraRef.current.position.length();
+      const newDistance = Math.min(distance + 2, controlsRef.current.maxDistance);
+      const direction = cameraRef.current.position.clone().normalize();
+      cameraRef.current.position.copy(direction.multiplyScalar(newDistance));
+      controlsRef.current.target.copy(new THREE.Vector3(0, 0, 0));
+      setRender(r => r + 1);
+    }
+  };
+
+  const handleDefaultView = () => {
+    if (cameraRef.current && controlsRef.current) {
+      cameraRef.current.position.set(8, 10, 8);
+      cameraRef.current.lookAt(0, 0, 0);
+      controlsRef.current.target.copy(new THREE.Vector3(0, 0, 0));
+      setRender(r => r + 1);
+    }
+  };
+
   return (
-    <div 
-      ref={containerRef} 
-      className="w-full h-full rounded-xl overflow-hidden"
-      style={{ minHeight: '600px' }}
-    />
+    <div className="relative w-full h-full">
+      <div 
+        ref={containerRef} 
+        className="w-full h-full rounded-xl overflow-hidden"
+        style={{ minHeight: '600px' }}
+      />
+      
+      {/* Zoom Controls */}
+      <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
+        <Button
+          onClick={handleZoomIn}
+          size="icon"
+          variant="outline"
+          className="bg-white hover:bg-slate-50 shadow-lg"
+          title="Zoom In"
+        >
+          <ZoomIn className="w-4 h-4" />
+        </Button>
+        <Button
+          onClick={handleDefaultView}
+          size="icon"
+          variant="outline"
+          className="bg-white hover:bg-slate-50 shadow-lg"
+          title="Default View"
+        >
+          <Home className="w-4 h-4" />
+        </Button>
+        <Button
+          onClick={handleZoomOut}
+          size="icon"
+          variant="outline"
+          className="bg-white hover:bg-slate-50 shadow-lg"
+          title="Zoom Out"
+        >
+          <ZoomOut className="w-4 h-4" />
+        </Button>
+      </div>
+    </div>
   );
 }
 
