@@ -3,6 +3,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Dealer from './pages/Dealer';
 import Resources from './pages/Resources';
+import Learn from './pages/Learn';
+import DesignCenter from './pages/DesignCenter';
 import __Layout from './Layout.jsx';
 
 
@@ -12,6 +14,8 @@ export const PAGES = {
     "Contact": Contact,
     "Dealer": Dealer,
     "Resources": Resources,
+    "Learn": Learn,
+    "DesignCenter": DesignCenter,
 }
 
 export const pagesConfig = {
