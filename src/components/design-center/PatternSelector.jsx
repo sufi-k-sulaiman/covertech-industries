@@ -107,10 +107,10 @@ export default function PatternSelector({ selectedCollection, selectedPattern, s
       {/* Collection Info */}
       <div className="bg-cyan-50 rounded-xl p-6 mb-8">
         <h4 className="font-semibold text-cyan-900 mb-2">
-          {selectedCollection === 'platinum-plus' ? '2025 Platinum Plus Collection' : '2025 Platinum Collection'}
+          {selectedCollection === 'platinum-plus-2026' ? '2026 Platinum Plus Collection' : selectedCollection === 'premium-2026' ? '2026 Premium Collection' : '2026 Essentials Collection'}
         </h4>
         <p className="text-sm text-cyan-800 mb-3">
-          Premium patterns featuring AquaShimmer technology for enhanced depth and shimmer effects
+          {selectedCollection === 'platinum-plus-2026' ? 'Premium patterns featuring AquaShimmer technology for enhanced depth and shimmer effects' : selectedCollection === 'premium-2026' ? 'Curated designs with HD printing for superior clarity and durability' : 'Essential collection with timeless, elegant patterns'}
         </p>
         <ul className="space-y-1 text-sm text-cyan-700">
           <li>• Liners are custom designed and fabricated incorporating proprietary sealing technology</li>
