@@ -15,49 +15,49 @@ const downloads = [
         description: "Premium warranty for in-ground vinyl pool liners",
         icon: Shield,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/940bf589f_25SeasonIn-GroundLinerWarranty.pdf",
-        color: "from-cyan-500 to-blue-500"
+        color: "cyan-500"
       },
       {
         title: "20-Season On-Ground Liner Warranty",
         description: "Extended warranty coverage for on-ground pool liners",
         icon: Shield,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e5f9b4602_20SeasonOn-GroundLinerWarranty.pdf",
-        color: "from-blue-500 to-indigo-500"
+        color: "blue-500"
       },
       {
         title: "10-Season Above-Ground Liner Warranty",
         description: "Comprehensive warranty for above-ground pool liners",
         icon: Shield,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/94ddb6eba_10SeasonAbove-GroundLinerWarranty.pdf",
-        color: "from-indigo-500 to-purple-500"
+        color: "blue-600"
       },
       {
         title: "Safety Cover Warranty 2025",
         description: "Up to 30-year warranty for premium safety covers",
         icon: Shield,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9876ef1df_CVT-SafetyCoverWarranty-2025.pdf",
-        color: "from-purple-500 to-pink-500"
+        color: "blue-700"
       },
       {
         title: "Solar Blanket Warranty",
         description: "3 to 7-year warranty coverage for solar covers",
         icon: Shield,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/042934906_SolarWarranty-CVT-English.pdf",
-        color: "from-yellow-500 to-orange-500"
+        color: "blue-800"
       },
       {
         title: "Winter Cover Warranty",
         description: "8 to 10-year warranty for winter pool covers",
         icon: Shield,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2064be08f_WinterCoverWarranty-CVT-English.pdf",
-        color: "from-blue-600 to-cyan-600"
+        color: "blue-600"
       },
       {
         title: "Beaded Winter Cover Warranty",
         description: "Warranty details for beaded lock-in winter covers",
         icon: Shield,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ea750810d_BeadedWinterCoverWarranty-CVT-English.pdf",
-        color: "from-slate-600 to-slate-800"
+        color: "blue-900"
       }
     ]
   },
@@ -69,35 +69,35 @@ const downloads = [
         description: "Professional installation instructions for vinyl pool liners",
         icon: BookOpen,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ce2f38147_CVT-IngroundLinerMaintenanceandInstallation.pdf",
-        color: "from-cyan-500 to-blue-500"
+        color: "cyan-500"
       },
       {
         title: "Liner Care & Maintenance Guide",
         description: "Essential tips for maintaining your pool liner",
         icon: BookOpen,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fcfa016dc_CVT-LinerCareMaintenance.pdf",
-        color: "from-blue-500 to-indigo-500"
+        color: "blue-500"
       },
       {
         title: "Safety Cover Care Guide",
         description: "Maintenance instructions for optimal safety cover performance",
         icon: BookOpen,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/37f0becda_CVT-SafetyCoverCareGuide.pdf",
-        color: "from-indigo-500 to-purple-500"
+        color: "blue-600"
       },
       {
         title: "Safety Cover Installation Instructions",
         description: "Step-by-step installation guide for safety covers",
         icon: BookOpen,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f1acc1b5e_CVT-SafetyCoverInstructions.pdf",
-        color: "from-purple-500 to-pink-500"
+        color: "blue-700"
       },
       {
         title: "Solar Cover - What to Know",
         description: "Complete guide to solar blanket care and usage",
         icon: BookOpen,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6c47e8eb2_CVTSolarCover-WhattoKnow.pdf",
-        color: "from-yellow-500 to-orange-500"
+        color: "blue-800"
       }
     ]
   },
@@ -109,35 +109,35 @@ const downloads = [
         description: "Comprehensive form for accurate safety cover measurements",
         icon: FileText,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a24979399_CVTSafey-Cover-Form.pdf",
-        color: "from-cyan-500 to-blue-500"
+        color: "cyan-500"
       },
       {
         title: "2026 Liner Pattern Catalogue",
         description: "Complete collection of vinyl liner patterns and designs",
         icon: FileText,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/af5daff1a_2026LinerCatalogue-Web-R0.pdf",
-        color: "from-blue-500 to-indigo-500"
+        color: "blue-500"
       },
       {
         title: "Safety Covers Brochure 2024",
         description: "Comprehensive brochure showcasing safety cover options",
         icon: FileText,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/59cb887bb_2024SafetyCoversBrochure.pdf",
-        color: "from-indigo-500 to-purple-500"
+        color: "blue-600"
       },
       {
         title: "Curing Blanket Brochure 2024",
         description: "Information on concrete curing blankets",
         icon: FileText,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4aacddc1a_2024CuringBlanketBrochure.pdf",
-        color: "from-purple-500 to-pink-500"
+        color: "blue-700"
       },
       {
         title: "Golf Greens Sell Sheet",
         description: "Golf green winter protection solutions",
         icon: FileText,
         url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cc9aa98a1_GOLFGREENSELLSHEET.pdf",
-        color: "from-green-500 to-emerald-500"
+        color: "blue-800"
       }
     ]
   }
