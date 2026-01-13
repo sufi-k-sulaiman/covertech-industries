@@ -231,7 +231,7 @@ export default function Resources() {
                     <div className="flex-shrink-0">
                       <item.icon 
                         className="w-7 h-7 group-hover:scale-110 transition-transform" 
-                        style={{ color: `rgb(var(--color-${item.color}))` }}
+                        style={{ color: colorMap[item.color] }}
                       />
                     </div>
                     <div className="flex-1">
