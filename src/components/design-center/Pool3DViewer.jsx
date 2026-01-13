@@ -256,14 +256,14 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   const waterGeometry = new THREE.ExtrudeGeometry(poolShape, waterExtrudeSettings);
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
   water.rotation.x = -Math.PI / 2;
-  water.position.y = -waterDepth;
+  water.position.y = -waterDepth - 0.02;
   water.receiveShadow = true;
   water.castShadow = true;
   
   scene.add(water);
   
-  // Add dimension lines/labels
-  addDimensionLines(scene, length, width, avgDepth, waterDepth);
+  // Add dimension lines/labels with actual values
+  addDimensionLines(scene, length, width, avgDepth, waterDepth, shallowDepth, deepDepth);
   
   return water;
 }
@@ -391,7 +391,7 @@ function createFreeformPool(length, width) {
   return shape;
 }
 
-function addDimensionLines(scene, length, width, poolDepth, waterDepth) {
+function addDimensionLines(scene, length, width, poolDepth, waterDepth, shallowDepth, deepDepth) {
   const lineMaterial = new THREE.LineBasicMaterial({ color: 0x64748b, linewidth: 2 });
   const dashedMaterial = new THREE.LineDashedMaterial({ 
     color: 0x0ea5e9, 
@@ -411,8 +411,8 @@ function addDimensionLines(scene, length, width, poolDepth, waterDepth) {
   
   // Water level indicator line
   const waterLevelPoints = [
-    new THREE.Vector3(length / 2 + 0.8, -waterDepth, -width / 2 * 0.3),
-    new THREE.Vector3(length / 2 + 0.8, -waterDepth, width / 2 * 0.3),
+    new THREE.Vector3(length / 2 + 0.8, -waterDepth - 0.02, -width / 2 * 0.3),
+    new THREE.Vector3(length / 2 + 0.8, -waterDepth - 0.02, width / 2 * 0.3),
   ];
   const waterLevelGeometry = new THREE.BufferGeometry().setFromPoints(waterLevelPoints);
   const waterLevelLine = new THREE.Line(waterLevelGeometry, dashedMaterial);
@@ -422,8 +422,37 @@ function addDimensionLines(scene, length, width, poolDepth, waterDepth) {
   // Small ticks for depth markers
   const topTick = createTick(length / 2 + 0.7, 0, 0);
   const bottomTick = createTick(length / 2 + 0.7, -poolDepth, 0);
-  const waterTick = createTick(length / 2 + 0.7, -waterDepth, 0);
+  const waterTick = createTick(length / 2 + 0.7, -waterDepth - 0.02, 0);
   scene.add(topTick, bottomTick, waterTick);
+  
+  // Add text labels for dimensions
+  addTextLabel(scene, `${shallowDepth.toFixed(1)}ft`, length / 2 + 1.5, -shallowDepth / 2, 0);
+  addTextLabel(scene, `${deepDepth.toFixed(1)}ft`, length / 2 + 1.5, -deepDepth, 0);
+  addTextLabel(scene, 'Water Level', length / 2 + 1.5, -waterDepth - 0.02, 0.5);
+  
+  // Length and width labels
+  addTextLabel(scene, `${length.toFixed(1)}ft`, 0, 0.5, -width / 2 - 1);
+  addTextLabel(scene, `${width.toFixed(1)}ft`, length / 2 + 1, 0.5, 0);
+}
+
+function addTextLabel(scene, text, x, y, z) {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  canvas.width = 256;
+  canvas.height = 64;
+  
+  context.fillStyle = '#ffffff';
+  context.font = 'bold 32px Arial';
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+  context.fillText(text, 128, 32);
+  
+  const texture = new THREE.CanvasTexture(canvas);
+  const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+  const sprite = new THREE.Sprite(spriteMaterial);
+  sprite.position.set(x, y, z);
+  sprite.scale.set(1, 0.25, 1);
+  scene.add(sprite);
 }
 
 function createTick(x, y, z) {
