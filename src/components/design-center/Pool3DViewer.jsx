@@ -1,16 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export default function Pool3DViewer({ shape, dimensions, unit }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
+  const rendererRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const width = containerRef.current.clientWidth;
-    const height = containerRef.current.clientHeight;
+    const container = containerRef.current;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    if (width === 0 || height === 0) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -27,8 +31,13 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     renderer.setSize(width, height);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    containerRef.current.innerHTML = '';
-    containerRef.current.appendChild(renderer.domElement);
+    rendererRef.current = renderer;
+    
+    // Clear and append
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+    container.appendChild(renderer.domElement);
 
     // Controls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -83,9 +92,10 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
 
     // Handle resize
     const handleResize = () => {
-      if (!containerRef.current) return;
-      const newWidth = containerRef.current.clientWidth;
-      const newHeight = containerRef.current.clientHeight;
+      if (!container) return;
+      const newWidth = container.clientWidth;
+      const newHeight = container.clientHeight;
+      if (newWidth === 0 || newHeight === 0) return;
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(newWidth, newHeight);
@@ -96,12 +106,26 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     return () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationId);
-      renderer.dispose();
-      controls.dispose();
+      if (renderer) {
+        renderer.dispose();
+      }
+      if (controls) {
+        controls.dispose();
+      }
+      if (container && renderer && renderer.domElement && container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
     };
   }, [shape, dimensions, unit]);
 
-  return <div ref={containerRef} className="w-full h-full rounded-xl overflow-hidden" />;
+  return (
+    <div 
+      ref={containerRef} 
+      className="w-full h-full rounded-xl overflow-hidden"
+      style={{ minHeight: '400px' }}
+    />
+  );
+}
 }
 
 function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90) {
