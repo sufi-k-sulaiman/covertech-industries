@@ -157,11 +157,45 @@ const productsData = {
       { name: "Care & Maintenance Guide", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/37f0becda_CVT-SafetyCoverCareGuide.pdf" },
       { name: "Safety Covers Brochure 2024", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/59cb887bb_2024SafetyCoversBrochure.pdf" }
     ],
+    galleryImages: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/b0536b340_image.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/906a926d6_BlackMesh.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/5beb04d59_BlueMesh.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f28c1a388_GreenMesh.png"
+    ],
     variants: [
-      { name: "Premier Mesh Safety Cover", warranty: "18 Years", features: ["500 psi Burst Strength", "95%+ Sun Block", "Water Seepage Design"] },
-      { name: "Deluxe Mesh Safety Cover", warranty: "20 Years", features: ["670 psi Burst Strength", "99% Sun Block", "Tighter Weave"] },
-      { name: "Solid Safety Cover", warranty: "15 Years", features: ["100% Sun Block", "12oz PVC Coated", "Optional Drain Panel"] }
-    ]
+      { 
+        name: "Premier Mesh Safety Cover", 
+        warranty: "18 Years (2 Years Full)", 
+        features: ["500 psi Burst Strength", "95%+ Sun Block", "Water Seepage Design", "Inhibits Algae Growth", "ASTM F1346-91 Certified"],
+        description: "Allows water to seep through, preventing danger from standing water. Premium mesh construction."
+      },
+      { 
+        name: "Deluxe Mesh Safety Cover", 
+        warranty: "20 Years (3 Years Full)", 
+        features: ["670 psi Burst Strength", "99% Sun Block", "Tighter Weave", "Less Debris", "Superior Abrasion Resistance"],
+        description: "Superior strength with cleaner water and enhanced durability. Best for heavy debris areas."
+      },
+      { 
+        name: "Commercial Mesh Cover", 
+        warranty: "30 Years (4 Years Full)", 
+        features: ["760 psi Burst Strength", "93%+ Sun Block", "Basket Weave", "Highest Break Strength", "Commercial Grade"],
+        description: "The highest break strength mesh available. Perfect for commercial pools and heavy-use applications."
+      },
+      { 
+        name: "LW Solid Safety Cover", 
+        warranty: "15 Years (3 Years Full)", 
+        features: ["100% Sun Block", "7.5oz Copolymer", "Stress Crack Resistant", "Optional Mesh Drain Panel"],
+        description: "100% barrier against sunlight and debris. High-tech copolymer material eliminates stress cracks."
+      },
+      { 
+        name: "Solid Safety Cover", 
+        warranty: "15 Years (2 Years Full)", 
+        features: ["100% Sun Block", "12oz PVC Coated", "Cold Crack -22°F", "Optional Mesh Drain Panel", "Premium Materials"],
+        description: "Heavy-duty 12oz PVC coated material. Available with optional mesh drain panel for water management."
+      }
+    ],
+    safetyColors: ["Green", "Grey", "Blue", "Taupe", "Black"]
   },
   "solar-covers": {
     name: "Solar Pool Covers",
@@ -653,36 +687,62 @@ export default function ProductDetails() {
 
       {/* Variants Section (if available) */}
       {product.variants && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Options</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {product.variants.map((variant, index) => (
-                <motion.div
-                  key={variant.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow"
-                >
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{variant.name}</h3>
-                  {variant.warranty && (
-                    <Badge className="bg-cyan-100 text-cyan-700 mb-4">{variant.warranty} Warranty</Badge>
-                  )}
-                  <ul className="space-y-2">
-                    {variant.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-sm text-slate-600">
-                        <Check className="w-4 h-4 text-cyan-500" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+      <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Options</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {product.variants.map((variant, index) => (
+            <motion.div
+              key={variant.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow border border-slate-100"
+            >
+              <h3 className="text-lg font-bold text-slate-900 mb-2">{variant.name}</h3>
+              {variant.warranty && (
+                <Badge className="bg-cyan-100 text-cyan-700 mb-3 text-xs">{variant.warranty}</Badge>
+              )}
+              {variant.description && (
+                <p className="text-sm text-slate-600 mb-4 leading-relaxed">{variant.description}</p>
+              )}
+              <ul className="space-y-2">
+                {variant.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-xs text-slate-700">
+                    <Check className="w-3 h-3 text-cyan-500 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+      </section>
+      )}
+
+      {/* Safety Cover Colors (if available) */}
+      {product.safetyColors && (
+      <section className="py-16 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Colors</h2>
+        <div className="flex flex-wrap justify-center gap-6">
+          {product.safetyColors.map((color) => (
+            <div key={color} className="flex flex-col items-center gap-3">
+              <div className={`w-24 h-24 rounded-xl shadow-md border-4 ${{
+                'Green': 'bg-green-700',
+                'Grey': 'bg-slate-500',
+                'Blue': 'bg-blue-900',
+                'Taupe': 'bg-yellow-900',
+                'Black': 'bg-black'
+              }[color]}`} />
+              <span className="font-medium text-slate-900">{color}</span>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+      </section>
       )}
 
       {/* Specifications */}
