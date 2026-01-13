@@ -19,7 +19,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x1e293b);
+    scene.background = new THREE.Color(0xe2e8f0);
     sceneRef.current = scene;
 
     // Camera
@@ -79,7 +79,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     waterRef.current = water;
 
     // Grid helper (ground)
-    const gridHelper = new THREE.GridHelper(30, 30, 0x333344, 0x222233);
+    const gridHelper = new THREE.GridHelper(30, 30, 0x94a3b8, 0xcbd5e1);
     gridHelper.position.y = 0.01;
     scene.add(gridHelper);
 
@@ -139,9 +139,9 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
 function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90) {
   // Pool liner material (like tile/vinyl liner)
   const linerMaterial = new THREE.MeshStandardMaterial({
-    color: 0xd1d5db,
-    roughness: 0.3,
-    metalness: 0.1,
+    color: 0x9ca3af,
+    roughness: 0.4,
+    metalness: 0.2,
   });
 
   let poolShape;
@@ -233,17 +233,17 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   const waterDepth = avgDepth * waterLevelPercent;
   
   const waterMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x0d7c8f,
+    color: 0x0891b2,
     transparent: true,
-    opacity: 0.85,
+    opacity: 0.7,
     metalness: 0.1,
-    roughness: 0.1,
-    transmission: 0.3,
+    roughness: 0.2,
+    transmission: 0.2,
     thickness: 0.5,
-    clearcoat: 0.5,
-    clearcoatRoughness: 0.1,
-    envMapIntensity: 1,
-    reflectivity: 0.8,
+    clearcoat: 0.3,
+    clearcoatRoughness: 0.2,
+    envMapIntensity: 0.8,
+    reflectivity: 0.6,
     ior: 1.33,
   });
   
@@ -440,20 +440,20 @@ function addDimensionLines(scene, length, width, poolDepth, waterDepth, shallowD
 function addTextLabel(scene, text, x, y, z) {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
-  canvas.width = 256;
-  canvas.height = 64;
+  canvas.width = 512;
+  canvas.height = 128;
   
-  context.fillStyle = '#ffffff';
-  context.font = 'bold 32px Arial';
+  context.fillStyle = '#1e293b';
+  context.font = 'bold 64px Arial';
   context.textAlign = 'center';
   context.textBaseline = 'middle';
-  context.fillText(text, 128, 32);
+  context.fillText(text, 256, 64);
   
   const texture = new THREE.CanvasTexture(canvas);
   const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
   const sprite = new THREE.Sprite(spriteMaterial);
   sprite.position.set(x, y, z);
-  sprite.scale.set(1, 0.25, 1);
+  sprite.scale.set(2, 0.5, 1);
   scene.add(sprite);
 }
 
