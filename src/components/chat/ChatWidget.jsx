@@ -24,15 +24,7 @@ export default function ChatWidget() {
 
   useEffect(() => {
     if (isOpen && !conversation) {
-      const checkAuthAndInit = async () => {
-        const isAuth = await base44.auth.isAuthenticated();
-        if (isAuth) {
-          initConversation();
-        } else {
-          base44.auth.redirectToLogin();
-        }
-      };
-      checkAuthAndInit();
+      initConversation();
     }
   }, [isOpen]);
 
