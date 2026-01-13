@@ -958,31 +958,74 @@ export default function ProductDetails() {
         <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Options</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {product.variants.map((variant, index) => (
-            <motion.div
-              key={variant.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow border border-slate-100"
-            >
-              <h3 className="text-lg font-bold text-slate-900 mb-2">{variant.name}</h3>
-              {variant.warranty && (
-                <Badge className="bg-cyan-100 text-cyan-700 mb-3 text-xs">{variant.warranty}</Badge>
-              )}
-              {variant.description && (
-                <p className="text-sm text-slate-600 mb-4 leading-relaxed">{variant.description}</p>
-              )}
-              <ul className="space-y-2">
-                {variant.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-xs text-slate-700">
-                    <Check className="w-3 h-3 text-cyan-500 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+                <motion.div
+                  key={variant.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow border border-slate-100"
+                >
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{variant.name}</h3>
+                  {variant.warranty && (
+                    <Badge className="bg-cyan-100 text-cyan-700 mb-3 text-xs">{variant.warranty}</Badge>
+                  )}
+                  {variant.description && (
+                    <p className="text-sm text-slate-600 mb-4 leading-relaxed">{variant.description}</p>
+                  )}
+                  <ul className="space-y-2 mb-4">
+                    {variant.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-xs text-slate-700">
+                        <Check className="w-3 h-3 text-cyan-500 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Additional details for Insul-Floor */}
+                  {variant.advantages && (
+                    <div className="border-t border-slate-200 pt-4">
+                      <h4 className="font-semibold text-slate-900 text-sm mb-3">Advantages</h4>
+                      <ul className="space-y-2">
+                        {variant.advantages.map((adv) => (
+                          <li key={adv} className="flex items-center gap-2 text-xs text-slate-700">
+                            <Check className="w-3 h-3 text-cyan-500 flex-shrink-0" />
+                            {adv}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {variant.specifications && (
+                    <div className="border-t border-slate-200 pt-4 mt-4">
+                      <h4 className="font-semibold text-slate-900 text-sm mb-3">Specifications</h4>
+                      <div className="space-y-2 text-xs">
+                        {Object.entries(variant.specifications).map(([key, value]) => (
+                          <div key={key} className="flex justify-between">
+                            <span className="text-slate-600">{key}:</span>
+                            <span className="text-slate-900 font-medium">{value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {variant.installation && (
+                    <div className="border-t border-slate-200 pt-4 mt-4">
+                      <h4 className="font-semibold text-slate-900 text-sm mb-3">Installation Steps</h4>
+                      <ol className="space-y-2">
+                        {variant.installation.map((step, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                            <span className="font-semibold text-cyan-500 flex-shrink-0">{idx + 1}.</span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
         </div>
       </div>
       </section>
