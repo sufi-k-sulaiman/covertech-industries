@@ -57,13 +57,13 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const result = await base44.agents.addMessage(conversation, {
-        role: 'user',
-        content: userMessage
+      const response = await base44.functions.invoke('sendChatMessage', {
+        conversationId: conversation.id,
+        message: userMessage
       });
 
-      if (!result) {
-        throw new Error('No response from agent');
+      if (response.data && response.data.conversation) {
+        // Messages will be updated via subscription
       }
     } catch (error) {
       console.error('Failed to send message:', error);
