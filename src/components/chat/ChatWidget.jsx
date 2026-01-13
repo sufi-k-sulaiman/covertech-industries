@@ -50,21 +50,29 @@ export default function ChatWidget() {
   };
 
   const handleSend = async () => {
-   if (!input.trim() || !conversation?.id || isLoading) return;
+    if (!input.trim() || !conversation?.id || isLoading) return;
 
-   const userMessage = input.trim();
-   setInput('');
-   setIsLoading(true);
+    const userMessage = input.trim();
+    setInput('');
+    setIsLoading(true);
 
-   try {
-     await base44.agents.addMessage(conversation, {
-       role: 'user',
-       content: userMessage
-     });
-   } catch (error) {
-     console.error('Failed to send message:', error);
-     setIsLoading(false);
-   }
+    try {
+      const result = await base44.agents.addMessage(conversation, {
+        role: 'user',
+        content: userMessage
+      });
+
+      if (!result) {
+        throw new Error('No response from agent');
+      }
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: 'Sorry, I encountered an error. Please try again or contact us at info@covertechind.com for support.'
+      }]);
+      setIsLoading(false);
+    }
   };
 
   return (
