@@ -71,7 +71,7 @@ export default function Layout({ children, currentPageName }) {
             <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png"
               alt="Covertech Industries"
-              className="h-8 md:h-10"
+              className="h-6 md:h-8"
             />
           </Link>
 
@@ -196,7 +196,7 @@ export default function Layout({ children, currentPageName }) {
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png"
                 alt="Covertech Industries"
-                className="h-10 mb-6 brightness-0 invert"
+                className="h-8 mb-6 brightness-0 invert"
               />
               <p className="text-slate-400 mb-6 leading-relaxed">
                 Premium pool liners, safety covers, and custom solutions since 1987. 
