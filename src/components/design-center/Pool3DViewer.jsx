@@ -58,13 +58,13 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     scene.add(fillLight);
 
     // Get dimensions with defaults
-    const length = parseFloat(dimensions.length) || 8;
-    const width = parseFloat(dimensions.width) || 4;
+    const poolLength = parseFloat(dimensions.length) || 8;
+    const poolWidth = parseFloat(dimensions.width) || 4;
     const shallowDepth = parseFloat(dimensions.shallowDepth) || 1;
     const deepDepth = parseFloat(dimensions.deepDepth) || 2;
 
     // Create pool based on shape
-    createPoolShape(scene, shape || 'rectangle', length, width, shallowDepth, deepDepth);
+    createPoolShape(scene, shape || 'rectangle', poolLength, poolWidth, shallowDepth, deepDepth);
 
     // Grid helper (ground)
     const gridHelper = new THREE.GridHelper(30, 30, 0x333344, 0x222233);
