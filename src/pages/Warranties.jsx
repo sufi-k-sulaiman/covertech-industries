@@ -323,6 +323,36 @@ export default function Warranties() {
                     <p className="text-slate-600">Complete all required information for your {productTypes.find(p => p.id === formData.product_type)?.name}</p>
                   </div>
 
+                  {/* Warranty Documents */}
+                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-6 mb-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center">
+                        <Download className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-slate-900">Warranty Documents</h3>
+                        <p className="text-sm text-slate-600">Review your {productTypes.find(p => p.id === formData.product_type)?.name} warranty details</p>
+                      </div>
+                    </div>
+                    <div className="grid gap-3">
+                      {productTypes.find(p => p.id === formData.product_type)?.warrantyPdfs.map((pdf, idx) => (
+                        <a
+                          key={idx}
+                          href={pdf.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-between p-4 bg-white hover:bg-cyan-50 border border-cyan-200 hover:border-cyan-300 rounded-xl transition-all group"
+                        >
+                          <div className="flex items-center gap-3">
+                            <FileText className="w-5 h-5 text-cyan-600" />
+                            <span className="font-medium text-slate-900">{pdf.name}</span>
+                          </div>
+                          <Download className="w-5 h-5 text-cyan-600 group-hover:translate-y-0.5 transition-transform" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
                   <div className="space-y-6">
                     {/* Contact Information Section */}
                     <div className="border-b border-slate-200 pb-6">
