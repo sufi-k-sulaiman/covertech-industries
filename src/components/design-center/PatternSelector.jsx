@@ -56,6 +56,7 @@ const beadColors = [
 
 export default function PatternSelector({ selectedCollection, selectedPattern, selectedBead, onSelectionChange }) {
   const currentPatterns = patterns[selectedCollection] || patterns['platinum-plus-2026'];
+  const currentCollection = collections.find(c => c.id === selectedCollection);
 
   return (
     <div>
