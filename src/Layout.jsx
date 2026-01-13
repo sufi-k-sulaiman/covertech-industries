@@ -13,11 +13,14 @@ const navigation = [
     name: 'Products', 
     href: 'Products',
     submenu: [
-      { name: 'Pool Liners', href: 'ProductDetails?slug=in-ground-liners' },
+      { name: 'In-Ground Liners', href: 'ProductDetails?slug=in-ground-liners' },
       { name: 'Safety Covers', href: 'ProductDetails?slug=safety-covers' },
       { name: 'Solar Covers', href: 'ProductDetails?slug=solar-covers' },
       { name: 'Winter Covers', href: 'ProductDetails?slug=winter-covers' },
       { name: 'Steel Kits', href: 'ProductDetails?slug=steel-kits' },
+      { name: 'Golf Green Covers', href: 'ProductDetails?slug=golf-covers' },
+      { name: 'Pool Insulation', href: 'ProductDetails?slug=pool-insulation' },
+      { name: 'Curing Blankets', href: 'ProductDetails?slug=curing-blankets' },
       { name: 'View All Products', href: 'Products' },
     ]
   },

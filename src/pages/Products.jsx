@@ -16,7 +16,8 @@ const categories = [
   { id: "winter-covers", name: "Winter Covers" },
   { id: "steel-kits", name: "Steel Kits" },
   { id: "golf-sports", name: "Golf & Sports" },
-  { id: "insulation", name: "Insulation" },
+  { id: "pool-accessories", name: "Pool Accessories" },
+  { id: "construction", name: "Construction" },
 ];
 
 const products = [
@@ -85,11 +86,20 @@ const products = [
   },
   {
     slug: "pool-insulation",
-    name: "Pool Insulation",
-    category: "insulation",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    name: "Pool Insulation Systems",
+    category: "pool-accessories",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b4c94711_Insu-floor.jpg",
     description: "Insul-Floor and Thermo-Wall solutions for maximum energy efficiency",
-    warranty: "15 Years",
+    warranty: "5 Years",
+    bestseller: false
+  },
+  {
+    slug: "curing-blankets",
+    name: "Concrete Curing Blankets",
+    category: "construction",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0429f79f7_Tarp.jpg",
+    description: "Heavy-duty insulated curing blankets for cold weather concrete protection",
+    warranty: "2 Years",
     bestseller: false
   },
 ];
