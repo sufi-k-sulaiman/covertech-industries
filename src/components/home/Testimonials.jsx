@@ -97,6 +97,21 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+  
+  const startIndex = currentPage * itemsPerPage;
+  const currentTestimonials = testimonials.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePrevious = () => {
+    setCurrentPage(prev => (prev === 0 ? totalPages - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage(prev => (prev === totalPages - 1 ? 0 : prev + 1));
+  };
+
   return (
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       {/* Background decoration */}
@@ -121,14 +136,14 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          {currentTestimonials.map((testimonial, index) => (
             <motion.div
-              key={testimonial.name}
+              key={`${testimonial.name}-${currentPage}`}
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ delay: index * 0.1 }}
               className="relative bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-lg transition-shadow"
             >
               {/* Quote icon */}
@@ -144,7 +159,7 @@ export default function Testimonials() {
               </div>
               
               {/* Quote */}
-              <p className="text-slate-700 leading-relaxed mb-6">
+              <p className="text-slate-700 leading-relaxed mb-6 min-h-[80px]">
                 "{testimonial.quote}"
               </p>
               
@@ -157,12 +172,50 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <p className="font-semibold text-slate-900">{testimonial.name}</p>
-                  <p className="text-sm text-slate-500">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Pagination Controls */}
+        <div className="flex items-center justify-center gap-6">
+          <Button
+            onClick={handlePrevious}
+            variant="outline"
+            size="icon"
+            className="rounded-full"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+          
+          <div className="flex items-center gap-2">
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  index === currentPage
+                    ? 'bg-cyan-500 w-8'
+                    : 'bg-slate-300 hover:bg-slate-400'
+                }`}
+              />
+            ))}
+          </div>
+
+          <Button
+            onClick={handleNext}
+            variant="outline"
+            size="icon"
+            className="rounded-full"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
+        </div>
+        
+        <p className="text-center text-slate-500 text-sm mt-6">
+          Page {currentPage + 1} of {totalPages}
+        </p>
       </div>
     </section>
   );
