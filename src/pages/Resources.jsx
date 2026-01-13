@@ -219,8 +219,8 @@ export default function Resources() {
                     transition={{ delay: index * 0.05 }}
                     className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-cyan-200 transition-all flex gap-6"
                   >
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
-                      <item.icon className="w-7 h-7 text-white" />
+                    <div className="flex-shrink-0">
+                      <item.icon style={{ color: `var(--tw-${item.color.split('-')[0]}-${item.color.split('-')[1]})` }} className={`w-7 h-7 text-${item.color} group-hover:scale-110 transition-transform`} />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">{item.title}</h3>
