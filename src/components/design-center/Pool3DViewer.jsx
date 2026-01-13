@@ -89,21 +89,10 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
       animationId = requestAnimationFrame(animate);
       controls.update();
       
-      // Animate water ripples
+      // Subtle water animation
       if (waterRef.current) {
-        const time = Date.now() * 0.001;
-        const positions = waterRef.current.geometry.attributes.position;
-        const originalPositions = waterRef.current.userData.originalPositions;
-        
-        if (originalPositions) {
-          for (let i = 0; i < positions.count; i++) {
-            const x = positions.getX(i);
-            const y = positions.getY(i);
-            const wave = Math.sin(x * 0.5 + time) * 0.02 + Math.cos(y * 0.5 + time * 0.7) * 0.02;
-            positions.setZ(i, originalPositions[i] + wave);
-          }
-          positions.needsUpdate = true;
-        }
+        const time = Date.now() * 0.0005;
+        waterRef.current.rotation.y = Math.sin(time) * 0.002;
       }
       
       renderer.render(scene, camera);
@@ -189,11 +178,11 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
       poolShape = createRectanglePool(length, width);
   }
 
-  // Create pool shell with sloped floor
+  // Create pool shell
   const group = new THREE.Group();
-  
-  // Create flat floor at average depth
   const avgDepth = (shallowDepth + deepDepth) / 2;
+  
+  // Create floor
   const floorGeometry = new THREE.PlaneGeometry(length, width);
   const floor = new THREE.Mesh(floorGeometry, linerMaterial);
   floor.rotation.x = -Math.PI / 2;
@@ -202,18 +191,40 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   group.add(floor);
 
   // Create walls using extrusion
-  const maxDepth = Math.max(shallowDepth, deepDepth);
   const wallExtrudeSettings = {
-    depth: maxDepth,
+    depth: avgDepth * 0.98, // Slightly shorter to show rim
     bevelEnabled: false,
   };
   
   const wallsGeometry = new THREE.ExtrudeGeometry(poolShape, wallExtrudeSettings);
   const walls = new THREE.Mesh(wallsGeometry, linerMaterial);
   walls.rotation.x = -Math.PI / 2;
+  walls.position.y = -0.02; // Slight offset to show rim
   walls.castShadow = true;
   walls.receiveShadow = true;
   group.add(walls);
+  
+  // Create pool rim/edge
+  const rimMaterial = new THREE.MeshStandardMaterial({
+    color: 0x94a3b8,
+    roughness: 0.6,
+    metalness: 0.2,
+  });
+  
+  const rimExtrudeSettings = {
+    depth: 0.15,
+    bevelEnabled: true,
+    bevelThickness: 0.05,
+    bevelSize: 0.05,
+    bevelSegments: 2,
+  };
+  
+  const rimGeometry = new THREE.ExtrudeGeometry(poolShape, rimExtrudeSettings);
+  const rim = new THREE.Mesh(rimGeometry, rimMaterial);
+  rim.rotation.x = -Math.PI / 2;
+  rim.position.y = 0.1;
+  rim.castShadow = true;
+  group.add(rim);
   
   scene.add(group);
 
@@ -226,38 +237,34 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   const waterPositions = waterGeometry.attributes.position;
   
   const waterMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x0ea5e9,
+    color: 0x0d7c8f,
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.85,
     metalness: 0.1,
-    roughness: 0.05,
-    transmission: 0.6,
-    thickness: 1,
-    clearcoat: 1,
-    clearcoatRoughness: 0.03,
-    envMapIntensity: 1.5,
-    reflectivity: 1,
+    roughness: 0.1,
+    transmission: 0.3,
+    thickness: 0.5,
+    clearcoat: 0.5,
+    clearcoatRoughness: 0.1,
+    envMapIntensity: 1,
+    reflectivity: 0.8,
     ior: 1.33,
   });
   
-  const water = new THREE.Mesh(waterGeometry, waterMaterial);
-  water.rotation.x = -Math.PI / 2;
-  water.position.y = -waterDepth;
+  // Create water as a box volume instead of just a plane
+  const waterHeight = waterDepth;
+  const waterBoxGeometry = new THREE.BoxGeometry(length * 0.98, waterHeight, width * 0.98);
+  const water = new THREE.Mesh(waterBoxGeometry, waterMaterial);
+  water.position.y = -waterDepth / 2 - 0.05;
   water.receiveShadow = true;
   water.castShadow = true;
   
-  // Store original positions for animation
-  water.userData.originalPositions = [];
-  for (let i = 0; i < waterPositions.count; i++) {
-    water.userData.originalPositions.push(waterPositions.getZ(i));
-  }
-  
   scene.add(water);
   
+  // Add dimension lines/labels
+  addDimensionLines(scene, length, width, avgDepth, waterDepth);
+  
   return water;
-
-  // Add dimension lines
-  addDimensionLines(scene, shape, length, width, maxDepth);
 }
 
 function createRectanglePool(length, width) {
@@ -383,24 +390,45 @@ function createFreeformPool(length, width) {
   return shape;
 }
 
-function addDimensionLines(scene, shape, length, width, depth) {
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x94a3b8 });
+function addDimensionLines(scene, length, width, poolDepth, waterDepth) {
+  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x64748b, linewidth: 2 });
+  const dashedMaterial = new THREE.LineDashedMaterial({ 
+    color: 0x0ea5e9, 
+    linewidth: 2,
+    dashSize: 0.2,
+    gapSize: 0.1,
+  });
   
-  // Length line
-  const lengthPoints = [
-    new THREE.Vector3(-length / 2, depth + 0.5, -width / 2 - 1),
-    new THREE.Vector3(length / 2, depth + 0.5, -width / 2 - 1),
+  // Depth indicator line (right side)
+  const depthPoints = [
+    new THREE.Vector3(length / 2 + 0.8, 0, 0),
+    new THREE.Vector3(length / 2 + 0.8, -poolDepth, 0),
   ];
-  const lengthGeometry = new THREE.BufferGeometry().setFromPoints(lengthPoints);
-  const lengthLine = new THREE.Line(lengthGeometry, lineMaterial);
-  scene.add(lengthLine);
+  const depthGeometry = new THREE.BufferGeometry().setFromPoints(depthPoints);
+  const depthLine = new THREE.Line(depthGeometry, lineMaterial);
+  scene.add(depthLine);
   
-  // Width line
-  const widthPoints = [
-    new THREE.Vector3(length / 2 + 1, depth + 0.5, -width / 2),
-    new THREE.Vector3(length / 2 + 1, depth + 0.5, width / 2),
+  // Water level indicator line
+  const waterLevelPoints = [
+    new THREE.Vector3(length / 2 + 0.8, -waterDepth, -width / 2 * 0.3),
+    new THREE.Vector3(length / 2 + 0.8, -waterDepth, width / 2 * 0.3),
   ];
-  const widthGeometry = new THREE.BufferGeometry().setFromPoints(widthPoints);
-  const widthLine = new THREE.Line(widthGeometry, lineMaterial);
-  scene.add(widthLine);
+  const waterLevelGeometry = new THREE.BufferGeometry().setFromPoints(waterLevelPoints);
+  const waterLevelLine = new THREE.Line(waterLevelGeometry, dashedMaterial);
+  waterLevelLine.computeLineDistances();
+  scene.add(waterLevelLine);
+  
+  // Small ticks for depth markers
+  const topTick = createTick(length / 2 + 0.7, 0, 0);
+  const bottomTick = createTick(length / 2 + 0.7, -poolDepth, 0);
+  const waterTick = createTick(length / 2 + 0.7, -waterDepth, 0);
+  scene.add(topTick, bottomTick, waterTick);
+}
+
+function createTick(x, y, z) {
+  const tickGeometry = new THREE.BoxGeometry(0.15, 0.05, 0.05);
+  const tickMaterial = new THREE.MeshBasicMaterial({ color: 0x64748b });
+  const tick = new THREE.Mesh(tickGeometry, tickMaterial);
+  tick.position.set(x, y, z);
+  return tick;
 }
