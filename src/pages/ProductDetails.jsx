@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { 
   Shield, Award, MapPin, Check, Star, ArrowRight, 
   MessageSquare, Palette, ChevronLeft, ChevronRight,
-  Droplets, Thermometer, Snowflake, Wrench, AlertTriangle, Download, FileText
+  Droplets, Thermometer, Snowflake, Wrench, AlertTriangle, Download, FileText, Image
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SEOHead, { createProductSchema, createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import GalleryModal from '@/components/products/GalleryModal';
 
 const productsData = {
   "in-ground-liners": {
@@ -35,6 +36,30 @@ const productsData = {
       { name: "Installation Instructions", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ce2f38147_CVT-IngroundLinerMaintenanceandInstallation.pdf" },
       { name: "Care & Maintenance Guide", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fcfa016dc_CVT-LinerCareMaintenance.pdf" },
       { name: "2026 Pattern Catalogue", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/af5daff1a_2026LinerCatalogue-Web-R0.pdf" }
+    ],
+    galleryImages: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ccd48b9fb_00.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/02075d1eb_01.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0b2438721_02.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5854fda40_011.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/296ba181e_405BRASSARD-01.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/787e6c6ad_David-01.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/98785298c_David-02.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ce624c6b3_David-03Keeway.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/756455007_David-04Keeway.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/96eda3ac8_David-05PeterGlass.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/080a0c615_David-07Cruzet.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e981b0fae_David-08JackNewmarket.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/812f990b1_David-09Thornridge.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/895fbff98_David-Sandstone.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3850f7bde_David-Step.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bef7c8198_IMG-0217.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f1b47a623_IMG-20250611-WA0013.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/322728de2_IMG-20250826-WA0008.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c073056f1_Infinity-01.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/900f943c3_Lineronly-Edit.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4f2e7dc36_Linerwithwater-Edit.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/462837cb5_Wedingcakestair.jpg"
     ],
     patterns: [
       { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/c4f5ad9e3_Carnival.jpg", collection: "Platinum Plus" },
@@ -161,10 +186,17 @@ export default function ProductDetails() {
   const product = productsData[slug] || productsData['in-ground-liners'];
   
   const [activeImage, setActiveImage] = useState(0);
+  const [galleryModalOpen, setGalleryModalOpen] = useState(false);
+  const [galleryModalIndex, setGalleryModalIndex] = useState(0);
 
   useEffect(() => {
     setActiveImage(0);
   }, [slug]);
+
+  const openGalleryModal = (index) => {
+    setGalleryModalIndex(index);
+    setGalleryModalOpen(true);
+  };
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
@@ -420,6 +452,49 @@ export default function ProductDetails() {
         </div>
       </section>
 
+      {/* Installation Gallery */}
+      {product.galleryImages && product.galleryImages.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-cyan-50 rounded-full mb-4">
+                <Image className="w-5 h-5 text-cyan-600" />
+                <span className="text-cyan-700 font-semibold">Installation Gallery</span>
+              </div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">See Our Work</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                Browse through our collection of professionally installed {product.name.toLowerCase()} showcasing quality craftsmanship and stunning results.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {product.galleryImages.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all"
+                  onClick={() => openGalleryModal(index)}
+                >
+                  <img
+                    src={image}
+                    alt={`Installation ${index + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-4 left-4 text-white font-medium">
+                      View Full Image
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CTA */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -439,6 +514,17 @@ export default function ProductDetails() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Modal */}
+      <AnimatePresence>
+        {galleryModalOpen && product.galleryImages && (
+          <GalleryModal
+            images={product.galleryImages}
+            initialIndex={galleryModalIndex}
+            onClose={() => setGalleryModalOpen(false)}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }
