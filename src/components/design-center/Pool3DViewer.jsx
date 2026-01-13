@@ -53,6 +53,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     controls.maxPolarAngle = Math.PI / 2.1;
     controls.minDistance = 5;
     controls.maxDistance = 30;
+    controlsRef.current = controls;
 
     // Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
