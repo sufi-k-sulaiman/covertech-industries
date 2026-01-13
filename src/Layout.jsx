@@ -7,6 +7,7 @@ import {
   Facebook, Linkedin, Instagram, ArrowUp 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ChatWidget from '@/components/chat/ChatWidget';
 
 const navigation = [
   { 
@@ -287,20 +288,8 @@ export default function Layout({ children, currentPageName }) {
         </div>
       </footer>
 
-      {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow z-50"
-          >
-            <ArrowUp className="w-5 h-5 text-white" />
-          </motion.button>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+      {/* AI Chat Widget */}
+      <ChatWidget />
+      </div>
+      );
+      }
