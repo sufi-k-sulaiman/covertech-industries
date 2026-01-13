@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Ruler, Info } from 'lucide-react';
+import Pool3DViewer from './Pool3DViewer';
 
 export default function PoolDimensions({ dimensions, onDimensionsChange, selectedShape }) {
   const [unit, setUnit] = useState('feet');
@@ -21,66 +22,39 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* 3D Preview */}
-        <div className="bg-slate-900 rounded-2xl p-8 flex items-center justify-center">
-          <div className="text-center">
-            <div className="mb-4">
-              <div className="text-slate-400 text-sm mb-2">{shapeDisplay} Pool</div>
-              <div className="text-white text-lg">3D preview with dimensions</div>
-            </div>
-            
-            {/* Simple 3D representation */}
-            <div className="relative w-64 h-64 mx-auto">
-              <svg viewBox="0 0 200 200" className="w-full h-full">
-                {/* Shadow */}
-                <ellipse cx="100" cy="180" rx="70" ry="15" fill="#1e293b" opacity="0.3"/>
-                
-                {/* Pool body */}
-                <defs>
-                  <linearGradient id="poolGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style={{stopColor: '#06b6d4', stopOpacity: 1}} />
-                    <stop offset="100%" style={{stopColor: '#0891b2', stopOpacity: 1}} />
-                  </linearGradient>
-                </defs>
-                
-                {/* 3D Pool */}
-                <path d="M 40,80 L 160,80 L 160,95 L 155,145 L 45,145 L 40,95 Z" fill="url(#poolGrad)"/>
-                <ellipse cx="100" cy="80" rx="60" ry="20" fill="#22d3ee"/>
-                
-                {/* Water layers */}
-                <ellipse cx="100" cy="95" rx="58" ry="18" fill="#0891b2" opacity="0.3"/>
-                <ellipse cx="100" cy="110" rx="56" ry="16" fill="#0891b2" opacity="0.3"/>
-                <ellipse cx="100" cy="125" rx="54" ry="14" fill="#0891b2" opacity="0.3"/>
-                
-                {/* Dimension lines */}
-                <line x1="25" y1="70" x2="175" y2="70" stroke="#94a3b8" strokeWidth="1" strokeDasharray="3,3"/>
-                <line x1="25" y1="70" x2="25" y2="75" stroke="#94a3b8" strokeWidth="1"/>
-                <line x1="175" y1="70" x2="175" y2="75" stroke="#94a3b8" strokeWidth="1"/>
-                
-                <line x1="185" y1="75" x2="185" y2="150" stroke="#94a3b8" strokeWidth="1" strokeDasharray="3,3"/>
-                <line x1="185" y1="75" x2="180" y1="75" stroke="#94a3b8" strokeWidth="1"/>
-                <line x1="185" y1="150" x2="180" y2="150" stroke="#94a3b8" strokeWidth="1"/>
-              </svg>
-            </div>
+        <div className="bg-slate-900 rounded-2xl p-6 flex flex-col">
+          <div className="mb-4">
+            <div className="text-slate-400 text-sm mb-1">{shapeDisplay} Pool</div>
+            <div className="text-white text-base font-medium">3D Interactive Preview</div>
+          </div>
+          
+          {/* Three.js 3D Viewer */}
+          <div className="flex-1 min-h-[400px] relative">
+            <Pool3DViewer 
+              shape={selectedShape} 
+              dimensions={dimensions}
+              unit={unit}
+            />
+          </div>
 
-            {/* Unit Toggle */}
-            <div className="flex gap-2 justify-center mt-6">
-              <button
-                onClick={() => setUnit('feet')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  unit === 'feet' ? 'bg-cyan-500 text-white' : 'bg-slate-800 text-slate-400'
-                }`}
-              >
-                Feet
-              </button>
-              <button
-                onClick={() => setUnit('meters')}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  unit === 'meters' ? 'bg-cyan-500 text-white' : 'bg-slate-800 text-slate-400'
-                }`}
-              >
-                Meters
-              </button>
-            </div>
+          {/* Unit Toggle */}
+          <div className="flex gap-2 justify-center mt-4">
+            <button
+              onClick={() => setUnit('feet')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                unit === 'feet' ? 'bg-cyan-500 text-white' : 'bg-slate-800 text-slate-400'
+              }`}
+            >
+              Feet
+            </button>
+            <button
+              onClick={() => setUnit('meters')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                unit === 'meters' ? 'bg-cyan-500 text-white' : 'bg-slate-800 text-slate-400'
+              }`}
+            >
+              Meters
+            </button>
           </div>
         </div>
 
