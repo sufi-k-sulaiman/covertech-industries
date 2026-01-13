@@ -6,37 +6,37 @@ const features = [
     id: 'steps',
     name: 'Steps',
     description: 'Built-in pool steps',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b5f0bfbe7_image.png'
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/92cdccdf2_image.png'
   },
   {
     id: 'ladder',
     name: 'Ladder',
     description: 'Pool ladder',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/90729263a_image.png'
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/46a42dea8_image.png'
   },
   {
     id: 'diving-board',
     name: 'Diving Board',
     description: 'Diving board or base',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e2474ea05_image.png'
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b6a69f080_image.png'
   },
   {
     id: 'slide',
     name: 'Slide',
     description: 'Pool slide',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/24dbe9057_image.png'
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8e3965f5c_image.png'
   },
   {
     id: 'spa',
     name: 'Attached Spa',
     description: 'Spa or hot tub',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7a56d6534_image.png'
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f577619fe_image.png'
   },
   {
     id: 'waterfall',
     name: 'Waterfall',
     description: 'Water feature or waterfall',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6ebab1118_image.png'
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4bc1328de_image.png'
   }
 ];
 
