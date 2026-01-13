@@ -4,26 +4,31 @@ import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const collections = [
-  { id: 'platinum-plus', name: 'Platinum Plus Collection' },
-  { id: 'platinum', name: 'Platinum Collection' }
+  { id: 'platinum-plus-2026', name: 'Platinum Plus Collection 2026' },
+  { id: 'premium-2026', name: 'Premium Collection 2026' },
+  { id: 'essentials-2026', name: 'Essentials Collection 2026' }
 ];
 
 const patterns = {
-  'platinum-plus': [
-    { id: 'harmony', name: 'Harmony Gold HDE', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
-    { id: 'carnival', name: 'Carnival', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
-    { id: 'esagono', name: 'Esagono', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
-    { id: 'butterfly', name: 'Butterfly', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' }
+  'platinum-plus-2026': [
+    { id: 'aurora-shimmer', name: 'Aurora Shimmer', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'crystal-waves', name: 'Crystal Waves', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'ocean-mosaic', name: 'Ocean Mosaic', type: 'Premium Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'tropical-horizon', name: 'Tropical Horizon', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'midnight-pearl', name: 'Midnight Pearl', type: 'Premium Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' }
   ],
-  'platinum': [
-    { id: 'canterbury', name: 'Canterbury', type: 'HD Antigua', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
-    { id: 'hd-antigua', name: 'HD Antigua', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
-    { id: 'gladstone', name: 'Gladstone', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
-    { id: 'bayview', name: 'Bayview', type: 'White Diffusion', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
-    { id: 'grey-maul', name: 'Grey Maul', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
-    { id: 'sunburst', name: 'Sunburst', type: 'Oyster Bay', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
-    { id: 'white-diffusion', name: 'White Diffusion', type: 'Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
-    { id: 'blue-maul', name: 'Blue Maul', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' }
+  'premium-2026': [
+    { id: 'azure-dream', name: 'Azure Dream', type: 'HD Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'sand-stone', name: 'Sand Stone', type: 'Textured Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'neptune-blue', name: 'Neptune Blue', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'coastal-charm', name: 'Coastal Charm', type: 'HD Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'river-rock', name: 'River Rock', type: 'Textured Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' }
+  ],
+  'essentials-2026': [
+    { id: 'classic-blue', name: 'Classic Blue', type: 'Standard Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'white-marble', name: 'White Marble', type: 'Standard Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'grey-granite', name: 'Grey Granite', type: 'Standard Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'sky-light', name: 'Sky Light', type: 'Standard Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' }
   ]
 };
 
