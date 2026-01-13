@@ -112,7 +112,7 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/788c18317_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/e499b3e0a_SolarCover.jpg"
     ],
-    features: ["Up to 70% Heating Cost Reduction", "Reduces Evaporation", "Extends Swimming Season", "Multiple Options Available"],
+    features: ["Up to 70% Heating Cost Reduction", "Prevents Night Heat Loss", "Reduces Evaporation & Chemicals", "Keeps Pool Clean", "Raises Water Temperature", "Multiple Options Available"],
     specifications: { Category: "Solar Covers", "Heat Reduction": "Up to 70%", Types: "Solar-Extreme™, Thermo Shield™", "Custom Sizes": "Available" },
     bestseller: true,
     downloads: [
@@ -120,28 +120,71 @@ const productsData = {
       { name: "Solar Cover - What to Know", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6c47e8eb2_CVTSolarCover-WhattoKnow.pdf" }
     ],
     variants: [
-      { name: "Solar-Extreme™", features: ["Up to 70% Cost Reduction", "Prevents Night Heat Loss", "Superior Durability"] },
-      { name: "Thermo Shield™", features: ["25% Higher Temperature", "Blue/Black Design", "Maximum Heat Transfer"] },
-      { name: "ClearDeck System", features: ["Below-Deck System", "One-Person Operation", "Patented Design"] }
+      { 
+        name: "Solar-Extreme™", 
+        description: "Made from tough resins for superior strength and durability",
+        features: ["Up to 70% Heating Bill Reduction", "Prevents Night Time Heat Loss", "Reduces Evaporation of Chemicals", "Keeps Pool Clean", "Raises Water Temperature", "Superior Durability"] 
+      },
+      { 
+        name: "Thermo Shield™", 
+        description: "Designed for maximum heat transfer with blue/black solar blanket",
+        features: ["25% Higher Water Temperature", "Blue/Black Design", "Maximum Heat Transfer", "Outperforms Conventional Blankets"] 
+      },
+      { 
+        name: "ClearDeck System", 
+        features: ["Below-Deck System", "One-Person Operation", "Patented Design"] 
+      }
     ]
   },
   "winter-covers": {
-    name: "Winter Pool Covers",
+    name: "Superior Winter Pool Cover",
     category: "Winter Covers",
     tagline: "Heavy-duty winter protection",
-    description: "Protect your pool during the off-season with our durable winter covers. Designed to withstand harsh weather conditions, heavy snow loads, and keep debris out all winter long.",
-    fullDescription: "Engineered with precision and crafted from premium materials, this product delivers exceptional performance and durability that pool owners have trusted for over 35 years.",
+    description: "Durable and reliable, Covertech's Superior Winter cover sets the standard for the industry. You'll get years of winter protection for your pool.",
+    fullDescription: "Protect your pool during the off-season with our durable winter covers. Designed to withstand harsh weather conditions, heavy snow loads, and keep debris out all winter long. Made of super strong rip-stop fabric that saves maintenance and Spring clean-up costs.",
     warranty: 15,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f0ddd1c7e_WinterCover-WinterCover.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/1de8c9711_WinterCover-Beaded-02.jpg"
     ],
-    features: ["Weather Resistant", "Heavy Duty Material", "UV Protected", "Multiple Sizes", "Easy Installation", "Wind Resistant"],
-    specifications: { Category: "Winter Covers", Material: "Heavy Duty", "UV Protection": "Yes", "Custom Sizes": "Available" },
+    features: ["Saves Maintenance Costs", "Super Strong Rip-Stop Fabric", "Spring Clean-up Savings", "Weather Resistant", "Heavy Duty Material", "UV Protected"],
+    specifications: { Category: "Winter Covers", Material: "Rip-Stop Fabric", "UV Protection": "Yes", "Custom Sizes": "Available" },
     bestseller: false,
     downloads: [
       { name: "Winter Cover Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2064be08f_WinterCoverWarranty-CVT-English.pdf" },
       { name: "Beaded Winter Cover Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ea750810d_BeadedWinterCoverWarranty-CVT-English.pdf" }
+    ]
+  },
+  "above-ground-liners": {
+    name: "Above-Ground Vinyl Pool Liners",
+    category: "Pool Liners",
+    tagline: "Premium patterns with industry-leading warranty",
+    description: "Classic full-print patterns with UV and chemical resistant materials. Available in Lancashire Wall with Blue Beach Floor pattern, designed specifically for above-ground pools.",
+    fullDescription: "Our above-ground liners feature heat-sealed floors and Unibead design for easy installation. Made with 18 mil thickness (±10%) for durability and long-lasting performance. Available in round sizes from 12' to 27' and oval configurations, with custom sizes available upon request.",
+    warranty: 15,
+    images: [
+      "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80",
+      "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80"
+    ],
+    features: ["15-Year Warranty (3-Year Full)", "Heat Sealed Floors", "Unibead Design", "18 Mil Thickness", "UV & Chemical Resistant", "Custom Sizes Available"],
+    specifications: { 
+      Category: "Pool Liners", 
+      Thickness: "18 Mil (±10%)", 
+      "Bead Type": "Unibead (Other Beads Available)", 
+      "Wall Heights": "48″ – 52″",
+      Pattern: "Lancashire Wall, Blue Beach Floor",
+      "Round Sizes": "12′, 15′, 18′, 21′, 24′, 27′",
+      "Oval Sizes": "12'x24′, 15'x30′, 16'x32′, 18'x33′"
+    },
+    bestseller: true,
+    downloads: [
+      { name: "10-Season Above-Ground Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/94ddb6eba_10SeasonAbove-GroundLinerWarranty.pdf" },
+      { name: "Installation Instructions", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ce2f38147_CVT-IngroundLinerMaintenanceandInstallation.pdf" },
+      { name: "Care & Maintenance Guide", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fcfa016dc_CVT-LinerCareMaintenance.pdf" }
+    ],
+    variants: [
+      { name: "48″ Unibead", features: ["Requires 4″ cove", "Easy installation", "Standard wall height"] },
+      { name: "52″ Unibead", features: ["Requires 6″ cove", "Extended wall height", "Enhanced durability"] }
     ]
   },
   "steel-kits": {
