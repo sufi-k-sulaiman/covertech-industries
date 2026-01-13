@@ -1,12 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { ZoomIn, ZoomOut, Home } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Pool3DViewer({ shape, dimensions, unit }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const rendererRef = useRef(null);
   const waterRef = useRef(null);
+  const cameraRef = useRef(null);
+  const controlsRef = useRef(null);
+  const [, setRender] = useState(0);
 
   useEffect(() => {
     if (!containerRef.current) return;
