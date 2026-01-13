@@ -11,44 +11,41 @@ const collections = [
 
 const patterns = {
   'platinum-plus-2026': [
-    { id: 'twilight', name: 'Twilight', type: 'AquaShimmer Full Print', image: '' },
-    { id: 'harmony-gold', name: 'Harmony Gold HDE', type: 'AquaShimmer Full Print', image: '' },
-    { id: 'butterfly', name: 'Butterfly', type: 'AquaShimmer Full Print', image: '' },
-    { id: 'esagono', name: 'Esagono', type: 'AquaShimmer Full Print', image: '' },
-    { id: 'carnival', name: 'Carnival', type: 'Full Print', image: '' },
-    { id: 'canterbury', name: 'Canterbury', type: 'HD Antigua', image: '' },
-    { id: 'hd-antigua', name: 'HD Antigua', type: 'Full Print', image: '' },
-    { id: 'gladstone', name: 'Gladstone', type: 'Full Print', image: '' }
+    { id: 'twilight', name: 'Twilight', type: 'AquaShimmer Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52842ae7b_Twilight.jpg' },
+    { id: 'harmony-gold', name: 'Harmony Gold HDE', type: 'AquaShimmer Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/17e43f373_HarmonyGold-HDE.jpg' },
+    { id: 'butterfly', name: 'Butterfly', type: 'AquaShimmer Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/87c77b05c_Butterfly.jpg' },
+    { id: 'esagono', name: 'Esagono', type: 'AquaShimmer Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ee71f898c_Esagono.jpg' },
+    { id: 'carnival', name: 'Carnival', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/70a73121b_Carnival.jpg' },
+    { id: 'canterbury', name: 'Canterbury', type: 'HD Antigua', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2a6e31a2f_Canterbury.jpg' },
+    { id: 'hd-antigua', name: 'HD Antigua', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9f5ffd872_HDAntigua.jpg' },
+    { id: 'gladstone', name: 'Gladstone', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/372ff9641_Gladstone.jpg' }
   ],
   'standard-2026': [
-    { id: 'bayview', name: 'Bayview', type: 'White Diffusion', image: '' },
-    { id: 'blue-beach-pebble', name: 'Blue Beach Pebble', type: 'Full Print', image: '' },
-    { id: 'blue-maui', name: 'Blue Maui', type: 'Full Print', image: '' },
-    { id: 'blue-full', name: 'Blue', type: 'Solid Color', image: '' },
-    { id: 'carrara-marble', name: 'Carrara Marble', type: 'Full Print', image: '' },
-    { id: 'canterbury-std', name: 'Canterbury', type: 'HD Antigua', image: '' },
-    { id: 'carnival-std', name: 'Carnival', type: 'Full Print', image: '' },
-    { id: 'celest', name: 'Celest', type: 'Full Print', image: '' },
-    { id: 'esagono-std', name: 'Esagono', type: 'AquaShimmer Full Print', image: '' },
-    { id: 'garden', name: 'Garden', type: 'HD Electric Full Print', image: '' },
-    { id: 'gladstone-std', name: 'Gladstone', type: 'Full Print', image: '' },
-    { id: 'grey-maui', name: 'Grey Maui', type: 'Full Print', image: '' },
-    { id: 'greystone-river-white', name: 'Greystone River White', type: 'River White', image: '' },
-    { id: 'hd-antigua-std', name: 'HD Antigua', type: 'Full Print', image: '' },
-    { id: 'ocean-midnight', name: 'Ocean Midnight', type: 'Full Print', image: '' },
-    { id: 'oxford', name: 'Oxford', type: 'HD Electric', image: '' },
-    { id: 'oyster-bay', name: 'Oyster Bay', type: 'Full Print', image: '' },
-    { id: 'raleigh', name: 'Raleigh', type: 'Beach Pebble', image: '' },
-    { id: 'river-white', name: 'River White', type: 'Full Print', image: '' },
-    { id: 'sandstone', name: 'Sandstone', type: 'Full Print', image: '' },
-    { id: 'sapphire', name: 'Sapphire', type: 'Full Print', image: '' },
-    { id: 'sunburst', name: 'Sunburst', type: 'Oyster Bay', image: '' },
-    { id: 'tahoe', name: 'Tahoe', type: 'Full Print', image: '' },
-    { id: 'white-beach-pebble', name: 'White Beach Pebble', type: 'Full Print', image: '' },
-    { id: 'white-diffusion', name: 'White Diffusion', type: 'Full Print', image: '' }
+    { id: 'bayview', name: 'Bayview', type: 'White Diffusion', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6ac94022c_BayviewWhiteDiffusion.jpg' },
+    { id: 'blue-beach-pebble', name: 'Blue Beach Pebble', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/614046bbe_BlueBeachPebble.jpg' },
+    { id: 'blue-maui', name: 'Blue Maui', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/eec197b55_BlueMaui.jpg' },
+    { id: 'blue-full', name: 'Blue', type: 'Solid Color', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6400ce633_Blue.jpg' },
+    { id: 'carrara-marble', name: 'Carrara Marble', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d58df1741_CarraraMarble.jpg' },
+    { id: 'celest', name: 'Celest', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/88e3a1acd_Celest.jpg' },
+    { id: 'garden', name: 'Garden', type: 'HD Electric Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e436a66a_Garden.jpg' },
+    { id: 'grey-maui', name: 'Grey Maui', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/64299e12d_GreyMaui.jpg' },
+    { id: 'greystone-river-white', name: 'Greystone River White', type: 'River White', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/adc395d2c_GreystoneRiverWhite.jpg' },
+    { id: 'ocean-midnight', name: 'Ocean Midnight', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/85b38b0e6_OceanMidnight.jpg' },
+    { id: 'oxford', name: 'Oxford', type: 'HD Electric', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2673c6e74_OXFORDHDELECTRIC.jpg' },
+    { id: 'oyster-bay', name: 'Oyster Bay', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8c6d4504c_OysterBay.jpg' },
+    { id: 'raleigh-blue', name: 'Raleigh Blue Beach Pebble', type: 'Beach Pebble', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/905903d39_RaleighBlueBeachPebble.jpg' },
+    { id: 'raleigh-white', name: 'Raleigh White Beach Pebble', type: 'Beach Pebble', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1d01d84df_RaleighWhiteBeachPebble.jpg' },
+    { id: 'river-white', name: 'River White', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d074ffe20_RiverWhite.jpg' },
+    { id: 'sandstone', name: 'Sandstone', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/79b09c738_Sandstone.jpg' },
+    { id: 'sapphire', name: 'Sapphire', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ced10acfa_Sapphire.jpg' },
+    { id: 'summer-river-white', name: 'Summer River White', type: 'River White', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/944f12e89_SummerRiverWhite.jpg' },
+    { id: 'sunburst', name: 'Sunburst', type: 'Oyster Bay', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e701e698_SunburstOysterBay.jpg' },
+    { id: 'tahoe', name: 'Tahoe', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1bfb6474e_Tahoe.jpg' },
+    { id: 'white-beach-pebble', name: 'White Beach Pebble', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52269d28b_WhiteBeachPebble.jpg' },
+    { id: 'white-diffusion', name: 'White Diffusion', type: 'Full Print', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4d88ef239_WhiteDiffusion.jpg' }
   ],
   'solids-2026': [
-    { id: 'white-full', name: 'White', type: 'Solid Color', image: '' }
+    { id: 'white-full', name: 'White', type: 'Solid Color', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1db999e1b_White.jpg' }
   ]
 };
 
