@@ -1,9 +1,10 @@
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { 
-  Shield, Award, MapPin, Check, Star, ArrowRight, 
+import {
+  Shield, Award, MapPin, Check, Star, ArrowRight,
   MessageSquare, Palette, ChevronLeft, ChevronRight,
   Droplets, Thermometer, Snowflake, Wrench, AlertTriangle, Download, FileText, Image
 } from 'lucide-react';
@@ -135,38 +136,38 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/457b00097_WhiteBeachPebble_Composite.jpg"
     ],
     patterns: [
-      { name: "Bayview White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/caa4a59bc_BayviewWhiteDiffusion.jpg", collection: "2026 Collection" },
-      { name: "Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4730d69c8_BlueBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "Blue Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/20af73914_BlueMaui.jpg", collection: "2026 Collection" },
-      { name: "Blue", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/024303a01_Blue.jpg", collection: "2026 Collection" },
-      { name: "Butterfly", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/07718c8ec_Butterfly.jpg", collection: "2026 Collection" },
-      { name: "Canterbury", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bd726f597_Canterbury.jpg", collection: "2026 Collection" },
-      { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ec85c1657_Carnival.jpg", collection: "2026 Collection" },
-      { name: "Carrara Marble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/186fde704_CarraraMarble.jpg", collection: "2026 Collection" },
-      { name: "Celest", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/84374246f_Celest.jpg", collection: "2026 Collection" },
-      { name: "Esagono", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7a9c4d636_Esagono.jpg", collection: "2026 Collection" },
-      { name: "Garden", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8d68f3d2b_Garden.jpg", collection: "2026 Collection" },
-      { name: "Gladstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/757dd4b22_Gladstone.jpg", collection: "2026 Collection" },
-      { name: "Grey Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f2e4073b1_GreyMaui.jpg", collection: "2026 Collection" },
-      { name: "Greystone River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/befa41533_GreystoneRiverWhite.jpg", collection: "2026 Collection" },
-      { name: "Harmony Gold HDE", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b2b1f3de9_HarmonyGold-HDE.jpg", collection: "2026 Collection" },
-      { name: "HD Antigua", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/376be40b5_HDAntigua.jpg", collection: "2026 Collection" },
-      { name: "HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8cdb00ebd_HDELECTRIC.jpg", collection: "2026 Collection" },
-      { name: "Ocean Midnight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/39d68164c_OceanMidnight.jpg", collection: "2026 Collection" },
-      { name: "Oxford HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/64332b43c_OXFORDHDELECTRIC.jpg", collection: "2026 Collection" },
-      { name: "Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f07033fce_OysterBay.jpg", collection: "2026 Collection" },
-      { name: "Raleigh Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6192e3a6c_RaleighBlueBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "Raleigh White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4d2710534_RaleighWhiteBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7597cbdf6_RiverWhite.jpg", collection: "2026 Collection" },
-      { name: "Sandstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/333c089c5_Sandstone.jpg", collection: "2026 Collection" },
-      { name: "Sapphire", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/570a56573_Sapphire.jpg", collection: "2026 Collection" },
-      { name: "Summer River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ebf5926e0_SummerRiverWhite.jpg", collection: "2026 Collection" },
-      { name: "Sunburst Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1e2928ab8_SunburstOysterBay.jpg", collection: "2026 Collection" },
-      { name: "Tahoe", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0f421287a_Tahoe.jpg", collection: "2026 Collection" },
-      { name: "Twilight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/489c13f3a_Twilight.jpg", collection: "2026 Collection" },
-      { name: "White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8de28e009_WhiteBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0fbda0493_WhiteDiffusion.jpg", collection: "2026 Collection" },
-      { name: "White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/92aa99282_White.jpg", collection: "2026 Collection" },
+      { name: "Bayview White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6ac94022c_BayviewWhiteDiffusion.jpg", collection: "2026 Collection" },
+      { name: "Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/614046bbe_BlueBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "Blue Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/eec197b55_BlueMaui.jpg", collection: "2026 Collection" },
+      { name: "Blue", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6400ce633_Blue.jpg", collection: "2026 Collection" },
+      { name: "Butterfly", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/87c77b05c_Butterfly.jpg", collection: "2026 Collection" },
+      { name: "Canterbury", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2a6e31a2f_Canterbury.jpg", collection: "2026 Collection" },
+      { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/70a73121b_Carnival.jpg", collection: "2026 Collection" },
+      { name: "Carrara Marble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d58df1741_CarraraMarble.jpg", collection: "2026 Collection" },
+      { name: "Celest", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/88e3a1acd_Celest.jpg", collection: "2026 Collection" },
+      { name: "Esagono", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ee71f898c_Esagono.jpg", collection: "2026 Collection" },
+      { name: "Garden", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e436a66a_Garden.jpg", collection: "2026 Collection" },
+      { name: "Gladstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/372ff9641_Gladstone.jpg", collection: "2026 Collection" },
+      { name: "Grey Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/64299e12d_GreyMaui.jpg", collection: "2026 Collection" },
+      { name: "Greystone River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/adc395d2c_GreystoneRiverWhite.jpg", collection: "2026 Collection" },
+      { name: "Harmony Gold HDE", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/17e43f373_HarmonyGold-HDE.jpg", collection: "2026 Collection" },
+      { name: "HD Antigua", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9f5ffd872_HDAntigua.jpg", collection: "2026 Collection" },
+      { name: "HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e40187f21_HDELECTRIC.jpg", collection: "2026 Collection" },
+      { name: "Ocean Midnight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/85b38b0e6_OceanMidnight.jpg", collection: "2026 Collection" },
+      { name: "Oxford HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2673c6e74_OXFORDHDELECTRIC.jpg", collection: "2026 Collection" },
+      { name: "Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8c6d4504c_OysterBay.jpg", collection: "2026 Collection" },
+      { name: "Raleigh Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/905903d39_RaleighBlueBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "Raleigh White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1d01d84df_RaleighWhiteBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d074ffe20_RiverWhite.jpg", collection: "2026 Collection" },
+      { name: "Sandstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/79b09c738_Sandstone.jpg", collection: "2026 Collection" },
+      { name: "Sapphire", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ced10acfa_Sapphire.jpg", collection: "2026 Collection" },
+      { name: "Summer River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/944f12e89_SummerRiverWhite.jpg", collection: "2026 Collection" },
+      { name: "Sunburst Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e701e698_SunburstOysterBay.jpg", collection: "2026 Collection" },
+      { name: "Tahoe", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1bfb6474e_Tahoe.jpg", collection: "2026 Collection" },
+      { name: "Twilight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52842ae7b_Twilight.jpg", collection: "2026 Collection" },
+      { name: "White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52269d28b_WhiteBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4d88ef239_WhiteDiffusion.jpg", collection: "2026 Collection" },
+      { name: "White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1db999e1b_White.jpg", collection: "2026 Collection" },
     ]
   },
   "safety-covers": {
@@ -199,33 +200,33 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f28c1a388_GreenMesh.png"
     ],
     variants: [
-      { 
-        name: "Premier Mesh Safety Cover", 
-        warranty: "18 Years (2 Years Full)", 
+      {
+        name: "Premier Mesh Safety Cover",
+        warranty: "18 Years (2 Years Full)",
         features: ["500 psi Burst Strength", "95%+ Sun Block", "Water Seepage Design", "Inhibits Algae Growth", "ASTM F1346-91 Certified"],
         description: "Allows water to seep through, preventing danger from standing water. Premium mesh construction."
       },
-      { 
-        name: "Deluxe Mesh Safety Cover", 
-        warranty: "20 Years (3 Years Full)", 
+      {
+        name: "Deluxe Mesh Safety Cover",
+        warranty: "20 Years (3 Years Full)",
         features: ["670 psi Burst Strength", "99% Sun Block", "Tighter Weave", "Less Debris", "Superior Abrasion Resistance"],
         description: "Superior strength with cleaner water and enhanced durability. Best for heavy debris areas."
       },
-      { 
-        name: "Commercial Mesh Cover", 
-        warranty: "30 Years (4 Years Full)", 
+      {
+        name: "Commercial Mesh Cover",
+        warranty: "30 Years (4 Years Full)",
         features: ["760 psi Burst Strength", "93%+ Sun Block", "Basket Weave", "Highest Break Strength", "Commercial Grade"],
         description: "The highest break strength mesh available. Perfect for commercial pools and heavy-use applications."
       },
-      { 
-        name: "LW Solid Safety Cover", 
-        warranty: "15 Years (3 Years Full)", 
+      {
+        name: "LW Solid Safety Cover",
+        warranty: "15 Years (3 Years Full)",
         features: ["100% Sun Block", "7.5oz Copolymer", "Stress Crack Resistant", "Optional Mesh Drain Panel"],
         description: "100% barrier against sunlight and debris. High-tech copolymer material eliminates stress cracks."
       },
-      { 
-        name: "Solid Safety Cover", 
-        warranty: "15 Years (2 Years Full)", 
+      {
+        name: "Solid Safety Cover",
+        warranty: "15 Years (2 Years Full)",
         features: ["100% Sun Block", "12oz PVC Coated", "Cold Crack -22°F", "Optional Mesh Drain Panel", "Premium Materials"],
         description: "Heavy-duty 12oz PVC coated material. Available with optional mesh drain panel for water management."
       }
@@ -263,19 +264,19 @@ const productsData = {
       performance: "When used properly, your solar blanket will provide maximum heat by day and insulate by night. The temperature will rise by 10°F or more. The blanket will keep the pool clean, reduce chemical usage and result in water conservation."
     },
     variants: [
-      { 
-        name: "Solar-Extreme™", 
+      {
+        name: "Solar-Extreme™",
         description: "Made from tough resins for superior strength and durability",
-        features: ["Up to 70% Heating Bill Reduction", "Prevents Night Time Heat Loss", "Reduces Evaporation of Chemicals", "Keeps Pool Clean", "Raises Water Temperature", "Superior Durability"] 
+        features: ["Up to 70% Heating Bill Reduction", "Prevents Night Time Heat Loss", "Reduces Evaporation of Chemicals", "Keeps Pool Clean", "Raises Water Temperature", "Superior Durability"]
       },
-      { 
-        name: "Thermo Shield™", 
+      {
+        name: "Thermo Shield™",
         description: "Designed for maximum heat transfer with blue/black solar blanket",
-        features: ["25% Higher Water Temperature", "Blue/Black Design", "Maximum Heat Transfer", "Outperforms Conventional Blankets"] 
+        features: ["25% Higher Water Temperature", "Blue/Black Design", "Maximum Heat Transfer", "Outperforms Conventional Blankets"]
       },
-      { 
-        name: "ClearDeck System", 
-        features: ["Below-Deck System", "One-Person Operation", "Patented Design"] 
+      {
+        name: "ClearDeck System",
+        features: ["Below-Deck System", "One-Person Operation", "Patented Design"]
       }
     ]
   },
@@ -334,10 +335,10 @@ const productsData = {
       "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80"
     ],
     features: ["15-Year Warranty (3-Year Full)", "Heat Sealed Floors", "Unibead Design", "18 Mil Thickness", "UV & Chemical Resistant", "Custom Sizes Available"],
-    specifications: { 
-      Category: "Pool Liners", 
-      Thickness: "18 Mil (±10%)", 
-      "Bead Type": "Unibead (Other Beads Available)", 
+    specifications: {
+      Category: "Pool Liners",
+      Thickness: "18 Mil (±10%)",
+      "Bead Type": "Unibead (Other Beads Available)",
       "Wall Heights": "48″ – 52″",
       Pattern: "Lancashire Wall, Blue Beach Floor",
       "Round Sizes": "12′, 15′, 18′, 21′, 24′, 27′",
@@ -416,40 +417,40 @@ const productsData = {
       { name: "52″ Unibead", features: ["Requires 6″ cove", "Extended wall height", "Enhanced durability"] }
     ],
     patterns: [
-      { name: "Bayview White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/caa4a59bc_BayviewWhiteDiffusion.jpg", collection: "2026 Collection" },
-      { name: "Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4730d69c8_BlueBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "Blue Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/20af73914_BlueMaui.jpg", collection: "2026 Collection" },
-      { name: "Blue", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/024303a01_Blue.jpg", collection: "2026 Collection" },
-      { name: "Butterfly", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/07718c8ec_Butterfly.jpg", collection: "2026 Collection" },
-      { name: "Canterbury", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bd726f597_Canterbury.jpg", collection: "2026 Collection" },
-      { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ec85c1657_Carnival.jpg", collection: "2026 Collection" },
-      { name: "Carrara Marble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/186fde704_CarraraMarble.jpg", collection: "2026 Collection" },
-      { name: "Celest", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/84374246f_Celest.jpg", collection: "2026 Collection" },
-      { name: "Esagono", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7a9c4d636_Esagono.jpg", collection: "2026 Collection" },
-      { name: "Garden", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8d68f3d2b_Garden.jpg", collection: "2026 Collection" },
-      { name: "Gladstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/757dd4b22_Gladstone.jpg", collection: "2026 Collection" },
-      { name: "Grey Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f2e4073b1_GreyMaui.jpg", collection: "2026 Collection" },
-      { name: "Greystone River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/befa41533_GreystoneRiverWhite.jpg", collection: "2026 Collection" },
-      { name: "Harmony Gold HDE", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b2b1f3de9_HarmonyGold-HDE.jpg", collection: "2026 Collection" },
-      { name: "HD Antigua", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/376be40b5_HDAntigua.jpg", collection: "2026 Collection" },
-      { name: "HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8cdb00ebd_HDELECTRIC.jpg", collection: "2026 Collection" },
-      { name: "Ocean Midnight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/39d68164c_OceanMidnight.jpg", collection: "2026 Collection" },
-      { name: "Oxford HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/64332b43c_OXFORDHDELECTRIC.jpg", collection: "2026 Collection" },
-      { name: "Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f07033fce_OysterBay.jpg", collection: "2026 Collection" },
-      { name: "Raleigh Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6192e3a6c_RaleighBlueBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "Raleigh White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4d2710534_RaleighWhiteBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7597cbdf6_RiverWhite.jpg", collection: "2026 Collection" },
-      { name: "Sandstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/333c089c5_Sandstone.jpg", collection: "2026 Collection" },
-      { name: "Sapphire", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/570a56573_Sapphire.jpg", collection: "2026 Collection" },
-      { name: "Summer River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ebf5926e0_SummerRiverWhite.jpg", collection: "2026 Collection" },
-      { name: "Sunburst Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1e2928ab8_SunburstOysterBay.jpg", collection: "2026 Collection" },
-      { name: "Tahoe", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0f421287a_Tahoe.jpg", collection: "2026 Collection" },
-      { name: "Twilight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/489c13f3a_Twilight.jpg", collection: "2026 Collection" },
-      { name: "White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8de28e009_WhiteBeachPebble.jpg", collection: "2026 Collection" },
-      { name: "White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0fbda0493_WhiteDiffusion.jpg", collection: "2026 Collection" },
-      { name: "White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/92aa99282_White.jpg", collection: "2026 Collection" },
+      { name: "Bayview White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6ac94022c_BayviewWhiteDiffusion.jpg", collection: "2026 Collection" },
+      { name: "Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/614046bbe_BlueBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "Blue Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/eec197b55_BlueMaui.jpg", collection: "2026 Collection" },
+      { name: "Blue", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6400ce633_Blue.jpg", collection: "2026 Collection" },
+      { name: "Butterfly", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/87c77b05c_Butterfly.jpg", collection: "2026 Collection" },
+      { name: "Canterbury", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2a6e31a2f_Canterbury.jpg", collection: "2026 Collection" },
+      { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/70a73121b_Carnival.jpg", collection: "2026 Collection" },
+      { name: "Carrara Marble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d58df1741_CarraraMarble.jpg", collection: "2026 Collection" },
+      { name: "Celest", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/88e3a1acd_Celest.jpg", collection: "2026 Collection" },
+      { name: "Esagono", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ee71f898c_Esagono.jpg", collection: "2026 Collection" },
+      { name: "Garden", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e436a66a_Garden.jpg", collection: "2026 Collection" },
+      { name: "Gladstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/372ff9641_Gladstone.jpg", collection: "2026 Collection" },
+      { name: "Grey Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/64299e12d_GreyMaui.jpg", collection: "2026 Collection" },
+      { name: "Greystone River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/adc395d2c_GreystoneRiverWhite.jpg", collection: "2026 Collection" },
+      { name: "Harmony Gold HDE", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/17e43f373_HarmonyGold-HDE.jpg", collection: "2026 Collection" },
+      { name: "HD Antigua", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9f5ffd872_HDAntigua.jpg", collection: "2026 Collection" },
+      { name: "HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e40187f21_HDELECTRIC.jpg", collection: "2026 Collection" },
+      { name: "Ocean Midnight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/85b38b0e6_OceanMidnight.jpg", collection: "2026 Collection" },
+      { name: "Oxford HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2673c6e74_OXFORDHDELECTRIC.jpg", collection: "2026 Collection" },
+      { name: "Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8c6d4504c_OysterBay.jpg", collection: "2026 Collection" },
+      { name: "Raleigh Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/905903d39_RaleighBlueBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "Raleigh White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1d01d84df_RaleighWhiteBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d074ffe20_RiverWhite.jpg", collection: "2026 Collection" },
+      { name: "Sandstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/79b09c738_Sandstone.jpg", collection: "2026 Collection" },
+      { name: "Sapphire", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ced10acfa_Sapphire.jpg", collection: "2026 Collection" },
+      { name: "Summer River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/944f12e89_SummerRiverWhite.jpg", collection: "2026 Collection" },
+      { name: "Sunburst Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e701e698_SunburstOysterBay.jpg", collection: "2026 Collection" },
+      { name: "Tahoe", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1bfb6474e_Tahoe.jpg", collection: "2026 Collection" },
+      { name: "Twilight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52842ae7b_Twilight.jpg", collection: "2026 Collection" },
+      { name: "White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52269d28b_WhiteBeachPebble.jpg", collection: "2026 Collection" },
+      { name: "White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4d88ef239_WhiteDiffusion.jpg", collection: "2026 Collection" },
+      { name: "White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1db999e1b_White.jpg", collection: "2026 Collection" },
     ]
-    },
+  },
   "steel-kits": {
     name: "Steel Pool Kits",
     category: "Accessories",
@@ -526,10 +527,10 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/432f4831c_GreenMesh.png"
     ],
     features: ["Cold Weather Protection", "Heat Retention", "Heavy-Duty Construction", "Multiple Sizes Available", "Reusable", "UV Resistant"],
-    specifications: { 
-      Category: "Construction & Industrial", 
-      Application: "Concrete Curing", 
-      "Temperature Range": "Down to -20°F", 
+    specifications: {
+      Category: "Construction & Industrial",
+      Application: "Concrete Curing",
+      "Temperature Range": "Down to -20°F",
       Material: "Insulated Multi-Layer",
       "Custom Sizes": "Available",
       Colors: "Black, Blue, Green, Grey, Taupe"
@@ -556,9 +557,9 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3289fdcbe_Thero-wall.png"
     ],
     features: ["Reduces Heat Loss", "Energy Cost Savings", "Easy Installation", "Compatible with All Pool Types", "Reflective Technology", "Extends Swimming Season"],
-    specifications: { 
-      Category: "Pool Accessories", 
-      Application: "Pool Floor & Walls", 
+    specifications: {
+      Category: "Pool Accessories",
+      Application: "Pool Floor & Walls",
       "Heat Retention": "Up to 50%",
       Material: "Reflective Foam",
       Installation: "DIY Friendly",
@@ -569,9 +570,9 @@ const productsData = {
       { name: "Thermo-Floor Literature", url: "https://covertechind.com/wp-content/uploads/2019/12/Thermo-Floor.pdf" }
     ],
     variants: [
-      { 
-        name: "Insul-Floor", 
-        description: "Floor insulation system", 
+      {
+        name: "Insul-Floor",
+        description: "Floor insulation system",
         features: ["Installs under liner", "Reduces ground heat loss", "Smooth surface protection", "Prevents liner wear"],
         advantages: ["Maintains solar energy in water", "Breaks thermal bridge between liner and ground", "Excellent vapor barrier", "Reduces heat loss up to 80%", "Quick and easy to install"],
         specifications: {
@@ -600,7 +601,7 @@ export default function ProductDetails() {
   const urlParams = new URLSearchParams(location.search);
   const slug = urlParams.get('slug') || 'in-ground-liners';
   const product = productsData[slug] || productsData['in-ground-liners'];
-  
+
   const [activeImage, setActiveImage] = useState(0);
   const [galleryModalOpen, setGalleryModalOpen] = useState(false);
   const [galleryModalIndex, setGalleryModalIndex] = useState(0);
@@ -660,13 +661,13 @@ export default function ProductDetails() {
                     Bestseller
                   </div>
                 )}
-                <img 
+                <img
                   src={product.images[activeImage]}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Thumbnails */}
               {product.images.length > 1 && (
                 <div className="flex gap-3">
@@ -692,7 +693,7 @@ export default function ProductDetails() {
             >
               <Badge className="bg-cyan-100 text-cyan-700 mb-4">{product.category}</Badge>
               <h1 className="text-4xl font-bold text-slate-900 mb-4">{product.name}</h1>
-              
+
               {/* Feature badges */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {product.features.slice(0, 6).map((feature) => (
@@ -773,7 +774,7 @@ export default function ProductDetails() {
               {product.installationGuide && (
                 <div className="mt-8 border-t border-slate-200 pt-8">
                   <h3 className="text-2xl font-bold text-slate-900 mb-6">{product.installationGuide.title}</h3>
-                  
+
                   {/* Winter Cover Guide */}
                   {slug === 'winter-covers' && (
                     <div className="space-y-8">
@@ -788,7 +789,7 @@ export default function ProductDetails() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-lg font-semibold text-slate-900 mb-4">Above-Ground Pool Installation</h4>
                         <ol className="space-y-2">
@@ -933,7 +934,7 @@ export default function ProductDetails() {
                   className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
                 >
                   <div className="aspect-square overflow-hidden relative">
-                    <img 
+                    <img
                       src={pattern.image}
                       alt={pattern.name}
                       className="w-full h-full object-cover group-hover:scale-[4] transition-transform duration-700 cursor-zoom-in"
@@ -953,11 +954,11 @@ export default function ProductDetails() {
 
       {/* Variants Section (if available) */}
       {product.variants && (
-      <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Options</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {product.variants.map((variant, index) => (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Options</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {product.variants.map((variant, index) => (
                 <motion.div
                   key={variant.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -1026,32 +1027,32 @@ export default function ProductDetails() {
                   )}
                 </motion.div>
               ))}
-        </div>
-      </div>
-      </section>
+            </div>
+          </div>
+        </section>
       )}
 
       {/* Safety Cover Colors (if available) */}
       {product.safetyColors && (
-      <section className="py-16 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Colors</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {product.safetyColors.map((color) => (
-            <div key={color} className="flex flex-col items-center gap-3">
-              <div className={`w-24 h-24 rounded-xl shadow-md border-4 ${{
-                'Green': 'bg-green-700',
-                'Grey': 'bg-slate-500',
-                'Blue': 'bg-blue-900',
-                'Taupe': 'bg-yellow-900',
-                'Black': 'bg-black'
-              }[color]}`} />
-              <span className="font-medium text-slate-900">{color}</span>
+        <section className="py-16 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-6">
+            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Colors</h2>
+            <div className="flex flex-wrap justify-center gap-6">
+              {product.safetyColors.map((color) => (
+                <div key={color} className="flex flex-col items-center gap-3">
+                  <div className={`w-24 h-24 rounded-xl shadow-md border-4 ${{
+                    'Green': 'bg-green-700',
+                    'Grey': 'bg-slate-500',
+                    'Blue': 'bg-blue-900',
+                    'Taupe': 'bg-yellow-900',
+                    'Black': 'bg-black'
+                  }[color]}`} />
+                  <span className="font-medium text-slate-900">{color}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-      </section>
+          </div>
+        </section>
       )}
 
       {/* Specifications */}
@@ -1060,7 +1061,7 @@ export default function ProductDetails() {
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Specifications</h2>
           <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
             {Object.entries(product.specifications).map(([key, value], index) => (
-              <div 
+              <div
                 key={key}
                 className={`flex justify-between py-4 px-6 ${index !== Object.entries(product.specifications).length - 1 ? 'border-b border-slate-100' : ''}`}
               >
@@ -1069,104 +1070,104 @@ export default function ProductDetails() {
               </div>
             ))}
           </div>
-          
+
           {/* Warranty Card */}
-              <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
-                <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
-                <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
-                <div className="flex justify-center gap-8 text-sm">
-                  <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Material defects covered</div>
-                  <div className="flex items-center gap-2"><Check className="w-4 h-4" /> UV degradation protected</div>
-                  <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Seam integrity guaranteed</div>
+          <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
+            <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
+            <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
+            <div className="flex justify-center gap-8 text-sm">
+              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Material defects covered</div>
+              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> UV degradation protected</div>
+              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Seam integrity guaranteed</div>
+            </div>
+          </div>
+
+          {/* Detailed Warranty Information */}
+          {product.warrantyDetails && (
+            <div className="mt-8 border-t border-slate-200 pt-8">
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">{product.warrantyDetails.title}</h2>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-3">Warranty Type</h3>
+                  <p className="text-slate-700">{product.warrantyDetails.type}</p>
                 </div>
-              </div>
 
-              {/* Detailed Warranty Information */}
-              {product.warrantyDetails && (
-                <div className="mt-8 border-t border-slate-200 pt-8">
-                  <h2 className="text-3xl font-bold text-slate-900 mb-6">{product.warrantyDetails.title}</h2>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-3">Coverage</h3>
+                  <p className="text-slate-700 leading-relaxed">{product.warrantyDetails.coverage}</p>
+                </div>
 
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-3">Warranty Type</h3>
-                      <p className="text-slate-700">{product.warrantyDetails.type}</p>
-                    </div>
+                <div className="bg-amber-50 rounded-xl p-6 border border-amber-200">
+                  <h3 className="text-lg font-semibold text-amber-900 mb-3">What's Not Covered</h3>
+                  <p className="text-amber-800 mb-4">{product.warrantyDetails.notCovered}</p>
+                </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-3">Coverage</h3>
-                      <p className="text-slate-700 leading-relaxed">{product.warrantyDetails.coverage}</p>
-                    </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Exclusions</h3>
+                  <ul className="space-y-2">
+                    {product.warrantyDetails.exclusions.map((exclusion, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-slate-700">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                        <span>{exclusion}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                    <div className="bg-amber-50 rounded-xl p-6 border border-amber-200">
-                      <h3 className="text-lg font-semibold text-amber-900 mb-3">What's Not Covered</h3>
-                      <p className="text-amber-800 mb-4">{product.warrantyDetails.notCovered}</p>
-                    </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Warranty Conditions</h3>
+                  <ol className="space-y-3">
+                    {product.warrantyDetails.conditions.map((condition, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-slate-700">
+                        <span className="w-6 h-6 rounded-full bg-cyan-500 text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">{idx + 1}</span>
+                        <span>{condition}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-4">Exclusions</h3>
-                      <ul className="space-y-2">
-                        {product.warrantyDetails.exclusions.map((exclusion, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-slate-700">
-                            <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                            <span>{exclusion}</span>
-                          </li>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Pro-Rated Warranty Schedule</h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left">
+                      <thead>
+                        <tr className="border-b-2 border-slate-300">
+                          <th className="px-4 py-3 font-semibold text-slate-900">Period</th>
+                          <th className="px-4 py-3 font-semibold text-slate-900">Warranty Coverage</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {product.warrantyDetails.proratedSchedule.map((row, idx) => (
+                          <tr key={idx} className="border-b border-slate-200 hover:bg-slate-50">
+                            <td className="px-4 py-3 text-slate-700">{row.years}</td>
+                            <td className="px-4 py-3 text-slate-700 font-medium">{row.reduction}</td>
+                          </tr>
                         ))}
-                      </ul>
-                    </div>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-4">Warranty Conditions</h3>
-                      <ol className="space-y-3">
-                        {product.warrantyDetails.conditions.map((condition, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-slate-700">
-                            <span className="w-6 h-6 rounded-full bg-cyan-500 text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">{idx + 1}</span>
-                            <span>{condition}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
+                <div className="bg-slate-50 rounded-xl p-6">
+                  <h3 className="text-lg font-semibold text-slate-900 mb-3">Non-Transferable Warranty</h3>
+                  <p className="text-slate-700 mb-4">{product.warrantyDetails.nonTransferable}</p>
 
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-4">Pro-Rated Warranty Schedule</h3>
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-left">
-                          <thead>
-                            <tr className="border-b-2 border-slate-300">
-                              <th className="px-4 py-3 font-semibold text-slate-900">Period</th>
-                              <th className="px-4 py-3 font-semibold text-slate-900">Warranty Coverage</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {product.warrantyDetails.proratedSchedule.map((row, idx) => (
-                              <tr key={idx} className="border-b border-slate-200 hover:bg-slate-50">
-                                <td className="px-4 py-3 text-slate-700">{row.years}</td>
-                                <td className="px-4 py-3 text-slate-700 font-medium">{row.reduction}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-
-                    <div className="bg-slate-50 rounded-xl p-6">
-                      <h3 className="text-lg font-semibold text-slate-900 mb-3">Non-Transferable Warranty</h3>
-                      <p className="text-slate-700 mb-4">{product.warrantyDetails.nonTransferable}</p>
-
-                      <div className="border-t border-slate-200 pt-4 mt-4">
-                        <h4 className="font-semibold text-slate-900 mb-3">Contact Information</h4>
-                        <div className="space-y-2 text-slate-700">
-                          <p><span className="font-medium">Address:</span> {product.warrantyDetails.contact.address}</p>
-                          <p><span className="font-medium">Phone:</span> {product.warrantyDetails.contact.phone}</p>
-                          <p><span className="font-medium">Fax:</span> {product.warrantyDetails.contact.fax}</p>
-                          <p><span className="font-medium">Email:</span> <a href={`mailto:${product.warrantyDetails.contact.email}`} className="text-cyan-600 hover:underline">{product.warrantyDetails.contact.email}</a></p>
-                        </div>
-                      </div>
+                  <div className="border-t border-slate-200 pt-4 mt-4">
+                    <h4 className="font-semibold text-slate-900 mb-3">Contact Information</h4>
+                    <div className="space-y-2 text-slate-700">
+                      <p><span className="font-medium">Address:</span> {product.warrantyDetails.contact.address}</p>
+                      <p><span className="font-medium">Phone:</span> {product.warrantyDetails.contact.phone}</p>
+                      <p><span className="font-medium">Fax:</span> {product.warrantyDetails.contact.fax}</p>
+                      <p><span className="font-medium">Email:</span> <a href={`mailto:${product.warrantyDetails.contact.email}`} className="text-cyan-600 hover:underline">{product.warrantyDetails.contact.email}</a></p>
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
-          </section>
+          )}
+        </div>
+      </section>
 
       {/* Installation Gallery */}
       {product.galleryImages && product.galleryImages.length > 0 && (
