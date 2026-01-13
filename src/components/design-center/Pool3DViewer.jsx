@@ -205,14 +205,10 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   
   scene.add(group);
 
-  // Create water volume based on water level
+  // Create water volume based on water level percentage
   const waterLevelPercent = waterLevel / 100;
   
-  // Calculate the actual water depth at shallow and deep ends
-  const shallowWaterDepth = Math.min(shallowDepth * waterLevelPercent, shallowDepth);
-  const deepWaterDepth = Math.min(deepDepth * waterLevelPercent, deepDepth);
-  
-  // Create water with sloped surface matching pool bottom
+  // Create water geometry with slope
   const waterGeometry = new THREE.PlaneGeometry(length, width, 50, 50);
   const waterPositions = waterGeometry.attributes.position;
   
@@ -220,9 +216,11 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
     const y = waterPositions.getY(i);
     const normalized = (y + width / 2) / width;
     
-    // Calculate depth at this point
+    // Calculate floor depth at this point
     const floorDepth = shallowDepth + (deepDepth - shallowDepth) * normalized;
-    const waterDepth = Math.min(floorDepth * waterLevelPercent, floorDepth);
+    
+    // Water fills from bottom up based on percentage
+    const waterDepth = floorDepth * waterLevelPercent;
     
     waterPositions.setZ(i, -waterDepth);
   }
@@ -230,16 +228,16 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   waterGeometry.computeVertexNormals();
   
   const waterMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x1e9ec7,
+    color: 0x2563eb,
     transparent: true,
-    opacity: 0.85,
-    metalness: 0.1,
-    roughness: 0.05,
-    transmission: 0.4,
-    thickness: 1,
+    opacity: 0.8,
+    metalness: 0.2,
+    roughness: 0.1,
+    transmission: 0.5,
+    thickness: 0.8,
     clearcoat: 1,
-    clearcoatRoughness: 0.1,
-    envMapIntensity: 1,
+    clearcoatRoughness: 0.05,
+    envMapIntensity: 1.2,
   });
   
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
