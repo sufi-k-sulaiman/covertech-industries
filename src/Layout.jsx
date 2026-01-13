@@ -49,6 +49,7 @@ export default function Layout({ children, currentPageName }) {
   useEffect(() => {
     setMobileMenuOpen(false);
     setActiveDropdown(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
   const scrollToTop = () => {
