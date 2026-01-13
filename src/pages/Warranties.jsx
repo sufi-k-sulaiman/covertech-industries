@@ -115,13 +115,13 @@ export default function Warranties() {
           title="Warranty Registration - Success"
           description="Your warranty has been successfully registered with Covertech Industries."
           schema={breadcrumbSchema}
-        />
-        <PageHero
-          badge="Warranty Registration"
-          title="Registration"
-          titleAccent="Complete"
-          description="Your product warranty has been successfully registered"
-          backgroundImage="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
+          />
+          <PageHero
+            badge="Warranty Registration"
+            title="Registration"
+            titleAccent="Complete"
+            description="Your product warranty has been successfully registered"
+            backgroundImage="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?w=1920&q=80"
           minHeight="min-h-[50vh]"
         />
         <section className="py-24">
