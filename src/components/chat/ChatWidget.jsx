@@ -6,12 +6,17 @@ import { Input } from '@/components/ui/input';
 import { base44 } from '@/api/base44Client';
 import ReactMarkdown from 'react-markdown';
 
+const generateSessionId = () => {
+  return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+};
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [conversation, setConversation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId] = useState(() => generateSessionId());
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
