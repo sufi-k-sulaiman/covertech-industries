@@ -67,15 +67,12 @@ export default function Layout({ children, currentPageName }) {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
         <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link to={createPageUrl('Home')} className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
-              <div className="flex flex-col gap-0.5">
-                <div className={`w-6 h-1 ${scrolled || !isHomePage ? 'bg-cyan-500' : 'bg-cyan-400'} rounded`} />
-                <div className={`w-6 h-1 ${scrolled || !isHomePage ? 'bg-cyan-500' : 'bg-cyan-400'} rounded`} />
-                <div className={`w-6 h-1 ${scrolled || !isHomePage ? 'bg-cyan-500' : 'bg-cyan-400'} rounded`} />
-              </div>
-              <span className={`text-2xl font-bold ${logoColor} ml-1`}>Covertech</span>
-            </div>
+          <Link to={createPageUrl('Home')} className="flex items-center">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png"
+              alt="Covertech Industries"
+              className="h-8 md:h-10"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -196,14 +193,11 @@ export default function Layout({ children, currentPageName }) {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="flex flex-col gap-0.5">
-                  <div className="w-6 h-1 bg-cyan-400 rounded" />
-                  <div className="w-6 h-1 bg-cyan-400 rounded" />
-                  <div className="w-6 h-1 bg-cyan-400 rounded" />
-                </div>
-                <span className="text-2xl font-bold text-white ml-1">Covertech</span>
-              </div>
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png"
+                alt="Covertech Industries"
+                className="h-10 mb-6 brightness-0 invert"
+              />
               <p className="text-slate-400 mb-6 leading-relaxed">
                 Premium pool liners, safety covers, and custom solutions since 1987. 
                 Made in North America with industry-leading warranties.
