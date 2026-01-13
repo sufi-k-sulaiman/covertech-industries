@@ -712,6 +712,151 @@ export default function ProductDetails() {
                   </div>
                 </div>
               )}
+
+              {/* Installation Guide Section */}
+              {product.installationGuide && (
+                <div className="mt-8 border-t border-slate-200 pt-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{product.installationGuide.title}</h3>
+                  
+                  {/* Winter Cover Guide */}
+                  {slug === 'winter-covers' && (
+                    <div className="space-y-8">
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900 mb-4">General Preparations</h4>
+                        <ul className="space-y-2">
+                          {product.installationGuide.generalPrep.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900 mb-4">Above-Ground Pool Installation</h4>
+                        <ol className="space-y-2">
+                          {product.installationGuide.aboveGround.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <span className="w-6 h-6 rounded-full bg-cyan-500 text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">{idx + 1}</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900 mb-4">In-Ground Pool Installation</h4>
+                        <ul className="space-y-2">
+                          {product.installationGuide.inGround.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Solar Cover Guide */}
+                  {slug === 'solar-covers' && (
+                    <div className="space-y-8">
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900 mb-4">Installation</h4>
+                        <p className="text-slate-700 leading-relaxed">{product.installationGuide.installation}</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900 mb-4">Removal</h4>
+                        <p className="text-slate-700 leading-relaxed">{product.installationGuide.removal}</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900 mb-4">Important Maintenance Tips</h4>
+                        <ul className="space-y-2">
+                          {product.installationGuide.maintenance.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="bg-cyan-50 rounded-xl p-6">
+                        <h4 className="font-semibold text-cyan-900 mb-2">Performance</h4>
+                        <p className="text-cyan-800">{product.installationGuide.performance}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Golf Cover Guide */}
+                  {slug === 'golf-covers' && (
+                    <div className="space-y-8">
+                      <div className="bg-slate-50 rounded-xl p-6">
+                        <h4 className="text-lg font-semibold text-slate-900 mb-3">{product.installationGuide.fullWinter.title}</h4>
+                        <ul className="space-y-2">
+                          {product.installationGuide.fullWinter.instructions.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <Check className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-1" />
+                              <span className="text-sm">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="bg-slate-50 rounded-xl p-6">
+                        <h4 className="text-lg font-semibold text-slate-900 mb-3">{product.installationGuide.moderateWinter.title}</h4>
+                        <ul className="space-y-2">
+                          {product.installationGuide.moderateWinter.instructions.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <Check className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-1" />
+                              <span className="text-sm">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="bg-slate-50 rounded-xl p-6">
+                        <h4 className="text-lg font-semibold text-slate-900 mb-3">{product.installationGuide.seeding.title}</h4>
+                        <ul className="space-y-2">
+                          {product.installationGuide.seeding.instructions.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <Check className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-1" />
+                              <span className="text-sm">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="bg-slate-50 rounded-xl p-6">
+                        <h4 className="text-lg font-semibold text-slate-900 mb-3">{product.installationGuide.extending.title}</h4>
+                        <ul className="space-y-2">
+                          {product.installationGuide.extending.instructions.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <Check className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-1" />
+                              <span className="text-sm">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 className="text-lg font-semibold text-slate-900 mb-4">{product.installationGuide.installation.title}</h4>
+                        <ol className="space-y-2">
+                          {product.installationGuide.installation.steps.map((step, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-slate-700">
+                              <span className="w-6 h-6 rounded-full bg-cyan-500 text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">{idx + 1}</span>
+                              <span>{step}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
