@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Droplets, Shield, Sun, Snowflake, Check, Lightbulb, Wrench, ArrowRight } from 'lucide-react';
+import { Droplets, Shield, Sun, Snowflake, Check, Lightbulb, Wrench, ArrowRight, Image } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import GalleryModal from '@/components/products/GalleryModal';
 
 const productGuides = [
   {
@@ -53,6 +54,16 @@ const productGuides = [
       "Avoid sharp objects that could puncture the liner",
       "Use liner-safe cleaning products only",
       "Address wrinkles promptly before they become permanent"
+    ],
+    galleryImages: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/410142be5_20240518_125429.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7e1fba1d5_20240518_151820.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/35289ddf1_20240518_151835.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5f74d47fc_AllBlue-01.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2c68702dd_BayviewWD-02.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b9f5b29a8_BayviewWD-03.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a765f5e4e_BayviewWD-04.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c513c236e_OceanMidnight-01.jpg"
     ],
     warranty: 25
   },
@@ -101,6 +112,12 @@ const productGuides = [
       "Flush anchor casings 2-3 times per year",
       "Store cover in provided bag when not in use"
     ],
+    galleryImages: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/b0536b340_image.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/906a926d6_BlackMesh.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/5beb04d59_BlueMesh.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f28c1a388_GreenMesh.png"
+    ],
     warranty: 30
   },
   {
@@ -146,6 +163,10 @@ const productGuides = [
       "Check for holes and patch as needed",
       "Replace when bubbles begin to deteriorate",
       "Avoid folding cover when wet for extended periods"
+    ],
+    galleryImages: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/788c18317_image.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/e499b3e0a_SolarCover.jpg"
     ],
     warranty: 10
   },
@@ -193,13 +214,24 @@ const productGuides = [
       "Repair small tears immediately",
       "Store clean and dry in off-season"
     ],
+    galleryImages: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f0ddd1c7e_WinterCover-WinterCover.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/1de8c9711_WinterCover-Beaded-02.jpg"
+    ],
     warranty: 15
   }
 ];
 
 export default function Learn() {
   const [activeTab, setActiveTab] = useState("vinyl-liners");
+  const [galleryModalOpen, setGalleryModalOpen] = useState(false);
+  const [galleryModalIndex, setGalleryModalIndex] = useState(0);
   const activeGuide = productGuides.find(g => g.id === activeTab);
+
+  const openGalleryModal = (index) => {
+    setGalleryModalIndex(index);
+    setGalleryModalOpen(true);
+  };
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
@@ -360,6 +392,47 @@ export default function Learn() {
                   </div>
                 </div>
 
+                {/* Installation Gallery */}
+                {activeGuide.galleryImages && activeGuide.galleryImages.length > 0 && (
+                  <div className="mb-16">
+                    <div className="text-center mb-12">
+                      <div className="inline-flex items-center gap-3 px-4 py-2 bg-cyan-50 rounded-full mb-4">
+                        <Image className="w-5 h-5 text-cyan-600" />
+                        <span className="text-cyan-700 font-semibold">Installation Gallery</span>
+                      </div>
+                      <h2 className="text-3xl font-bold text-slate-900 mb-4">See Our Work</h2>
+                      <p className="text-slate-600 max-w-2xl mx-auto">
+                        Browse through our collection of professional installations showcasing quality craftsmanship and results.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {activeGuide.galleryImages.map((image, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.05 }}
+                          className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all"
+                          onClick={() => openGalleryModal(index)}
+                        >
+                          <img
+                            src={image}
+                            alt={`Installation ${index + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="absolute bottom-4 left-4 text-white font-medium">
+                              View Full Image
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Warranty */}
                 <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
                   <div>
@@ -386,6 +459,17 @@ export default function Learn() {
           </AnimatePresence>
         </div>
       </section>
+
+      {/* Gallery Modal */}
+      <AnimatePresence>
+        {galleryModalOpen && activeGuide?.galleryImages && (
+          <GalleryModal
+            images={activeGuide.galleryImages}
+            initialIndex={galleryModalIndex}
+            onClose={() => setGalleryModalOpen(false)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* CTA */}
       <section className="py-20 bg-slate-50">
