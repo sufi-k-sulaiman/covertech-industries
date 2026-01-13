@@ -247,7 +247,16 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
     ior: 1.33,
   });
   
-  // Create water as extruded shape that matches the pool shape
+  // Create water as extruded shape that matches the pool shape - scaled to fit inside walls
+  const waterShape = poolShape.clone();
+  waterShape.curves.forEach(curve => {
+    // Scale down slightly to fit inside the pool walls
+    if (curve.v1) { curve.v1.multiplyScalar(0.96); }
+    if (curve.v2) { curve.v2.multiplyScalar(0.96); }
+    if (curve.v0) { curve.v0.multiplyScalar(0.96); }
+    if (curve.v3) { curve.v3.multiplyScalar(0.96); }
+  });
+  
   const waterExtrudeSettings = {
     depth: waterDepth,
     bevelEnabled: false,
@@ -256,7 +265,7 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   const waterGeometry = new THREE.ExtrudeGeometry(poolShape, waterExtrudeSettings);
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
   water.rotation.x = -Math.PI / 2;
-  water.position.y = -waterDepth - 0.02;
+  water.position.y = -0.05; // Start just below the rim
   water.receiveShadow = true;
   water.castShadow = true;
   
