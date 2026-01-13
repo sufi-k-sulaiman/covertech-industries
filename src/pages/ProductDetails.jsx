@@ -1007,17 +1007,102 @@ export default function ProductDetails() {
           </div>
           
           {/* Warranty Card */}
-          <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
-            <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
-            <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
-            <div className="flex justify-center gap-8 text-sm">
-              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Material defects covered</div>
-              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> UV degradation protected</div>
-              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Seam integrity guaranteed</div>
+              <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
+                <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
+                <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
+                <div className="flex justify-center gap-8 text-sm">
+                  <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Material defects covered</div>
+                  <div className="flex items-center gap-2"><Check className="w-4 h-4" /> UV degradation protected</div>
+                  <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Seam integrity guaranteed</div>
+                </div>
+              </div>
+
+              {/* Detailed Warranty Information */}
+              {product.warrantyDetails && (
+                <div className="mt-8 border-t border-slate-200 pt-8">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-6">{product.warrantyDetails.title}</h2>
+
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900 mb-3">Warranty Type</h3>
+                      <p className="text-slate-700">{product.warrantyDetails.type}</p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900 mb-3">Coverage</h3>
+                      <p className="text-slate-700 leading-relaxed">{product.warrantyDetails.coverage}</p>
+                    </div>
+
+                    <div className="bg-amber-50 rounded-xl p-6 border border-amber-200">
+                      <h3 className="text-lg font-semibold text-amber-900 mb-3">What's Not Covered</h3>
+                      <p className="text-amber-800 mb-4">{product.warrantyDetails.notCovered}</p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900 mb-4">Exclusions</h3>
+                      <ul className="space-y-2">
+                        {product.warrantyDetails.exclusions.map((exclusion, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-slate-700">
+                            <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                            <span>{exclusion}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900 mb-4">Warranty Conditions</h3>
+                      <ol className="space-y-3">
+                        {product.warrantyDetails.conditions.map((condition, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-slate-700">
+                            <span className="w-6 h-6 rounded-full bg-cyan-500 text-white text-sm flex items-center justify-center flex-shrink-0 mt-0.5">{idx + 1}</span>
+                            <span>{condition}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900 mb-4">Pro-Rated Warranty Schedule</h3>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left">
+                          <thead>
+                            <tr className="border-b-2 border-slate-300">
+                              <th className="px-4 py-3 font-semibold text-slate-900">Period</th>
+                              <th className="px-4 py-3 font-semibold text-slate-900">Warranty Coverage</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {product.warrantyDetails.proratedSchedule.map((row, idx) => (
+                              <tr key={idx} className="border-b border-slate-200 hover:bg-slate-50">
+                                <td className="px-4 py-3 text-slate-700">{row.years}</td>
+                                <td className="px-4 py-3 text-slate-700 font-medium">{row.reduction}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div className="bg-slate-50 rounded-xl p-6">
+                      <h3 className="text-lg font-semibold text-slate-900 mb-3">Non-Transferable Warranty</h3>
+                      <p className="text-slate-700 mb-4">{product.warrantyDetails.nonTransferable}</p>
+
+                      <div className="border-t border-slate-200 pt-4 mt-4">
+                        <h4 className="font-semibold text-slate-900 mb-3">Contact Information</h4>
+                        <div className="space-y-2 text-slate-700">
+                          <p><span className="font-medium">Address:</span> {product.warrantyDetails.contact.address}</p>
+                          <p><span className="font-medium">Phone:</span> {product.warrantyDetails.contact.phone}</p>
+                          <p><span className="font-medium">Fax:</span> {product.warrantyDetails.contact.fax}</p>
+                          <p><span className="font-medium">Email:</span> <a href={`mailto:${product.warrantyDetails.contact.email}`} className="text-cyan-600 hover:underline">{product.warrantyDetails.contact.email}</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
       {/* Installation Gallery */}
       {product.galleryImages && product.galleryImages.length > 0 && (
