@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { 
   Shield, Award, MapPin, Check, Star, ArrowRight, 
@@ -155,11 +155,16 @@ const productsData = {
 };
 
 export default function ProductDetails() {
-  const urlParams = new URLSearchParams(window.location.search);
+  const location = useLocation();
+  const urlParams = new URLSearchParams(location.search);
   const slug = urlParams.get('slug') || 'in-ground-liners';
   const product = productsData[slug] || productsData['in-ground-liners'];
   
   const [activeImage, setActiveImage] = useState(0);
+
+  useEffect(() => {
+    setActiveImage(0);
+  }, [slug]);
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
