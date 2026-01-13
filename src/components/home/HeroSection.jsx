@@ -75,7 +75,7 @@ export default function HeroSection() {
               </Button>
             </Link>
             <Link to={createPageUrl('Products')}>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white px-8 py-6 text-lg rounded-xl backdrop-blur-sm">
                 Explore Products
               </Button>
             </Link>
