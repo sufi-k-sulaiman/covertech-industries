@@ -16,15 +16,21 @@ const productTypes = [
     description: '25-Year Limited Warranty for In-Ground Vinyl Pool Liners',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/d2bbfec37_image.png',
     warranty: '25 Years',
-    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/25-Liner-warranty.pdf'
+    warrantyPdfs: [
+      { name: '25-Season In-Ground Warranty', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/940bf589f_25SeasonIn-GroundLinerWarranty.pdf' },
+      { name: '20-Season On-Ground Warranty', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e5f9b4602_20SeasonOn-GroundLinerWarranty.pdf' },
+      { name: '10-Season Above-Ground Warranty', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/94ddb6eba_10SeasonAbove-GroundLinerWarranty.pdf' }
+    ]
   },
   {
     id: 'safety-cover',
     name: 'Safety Cover',
     description: 'Premium Safety Cover Warranty Registration',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/3bbe8095b_image.png',
-    warranty: 'Up to 20 Years',
-    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/Safety-Warranty.pdf'
+    warranty: 'Up to 30 Years',
+    warrantyPdfs: [
+      { name: 'Safety Cover Warranty 2025', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9876ef1df_CVT-SafetyCoverWarranty-2025.pdf' }
+    ]
   },
   {
     id: 'solar-blanket',
@@ -32,7 +38,9 @@ const productTypes = [
     description: 'Solar Cover Warranty - 3 to 7 Years',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/08f9cb0ee_image.png',
     warranty: '3-7 Years',
-    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/Solar-Warranty-2019.pdf'
+    warrantyPdfs: [
+      { name: 'Solar Blanket Warranty', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/042934906_SolarWarranty-CVT-English.pdf' }
+    ]
   },
   {
     id: 'winter-cover',
@@ -40,7 +48,10 @@ const productTypes = [
     description: 'Winter Cover Warranty - 8 to 10 Years',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/442b73ecc_image.png',
     warranty: '8-10 Years',
-    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/Winter-Cover-Warranty-Covertech.pdf'
+    warrantyPdfs: [
+      { name: 'Winter Cover Warranty', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2064be08f_WinterCoverWarranty-CVT-English.pdf' },
+      { name: 'Beaded Winter Cover Warranty', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ea750810d_BeadedWinterCoverWarranty-CVT-English.pdf' }
+    ]
   }
 ];
 
@@ -218,7 +229,44 @@ export default function Warranties() {
                 >
                   <div className="text-center mb-10">
                     <h2 className="text-3xl font-bold text-slate-900 mb-3">Select Your Product</h2>
-                    <p className="text-slate-600">Choose the product you want to register and download warranty details</p>
+                    <p className="text-slate-600">Choose the product you want to register</p>
+                  </div>
+
+                  {/* Warranty Downloads Section */}
+                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-6 mb-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-cyan-500 flex items-center justify-center">
+                        <Download className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-slate-900 text-lg">Download Warranty Documents</h3>
+                        <p className="text-sm text-slate-600">Review warranty details before registering</p>
+                      </div>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                      {productTypes.map((product) => (
+                        <div key={product.id} className="bg-white rounded-xl p-4 border border-slate-200">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Shield className="w-4 h-4 text-cyan-600" />
+                            <span className="font-semibold text-sm text-slate-900">{product.name}</span>
+                          </div>
+                          <div className="space-y-2">
+                            {product.warrantyPdfs.map((pdf, idx) => (
+                              <a
+                                key={idx}
+                                href={pdf.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-xs text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50 p-2 rounded-lg transition-colors"
+                              >
+                                <FileText className="w-4 h-4 flex-shrink-0" />
+                                <span className="line-clamp-2">{pdf.name}</span>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
@@ -254,17 +302,7 @@ export default function Warranties() {
                             <span className="text-xs text-cyan-300 font-semibold">{product.warranty}</span>
                           </div>
                           <h3 className="text-xl font-bold text-white mb-1">{product.name}</h3>
-                          <p className="text-slate-300 text-sm line-clamp-2 mb-4">{product.description}</p>
-                          <a 
-                            href={product.pdfUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 border border-white/40 rounded-lg text-sm font-medium text-white transition-all"
-                          >
-                            <Download className="w-4 h-4" />
-                            Download Warranty PDF
-                          </a>
+                          <p className="text-slate-300 text-sm line-clamp-2">{product.description}</p>
                         </div>
                       </motion.button>
                     ))}
