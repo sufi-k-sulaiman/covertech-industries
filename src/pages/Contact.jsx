@@ -17,10 +17,18 @@ const contactInfo = [
 ];
 
 const faqs = [
-  { q: "What is your warranty coverage?", a: "We offer industry-leading warranties up to 25 years depending on the product line." },
-  { q: "Do you ship internationally?", a: "We primarily serve USA and Canada. Contact us for international inquiries." },
-  { q: "How do I become a dealer?", a: "Visit our Dealer page to learn about requirements and submit an application." },
-  { q: "Can I get custom sizes?", a: "Yes! Our Acu-Fit liners and covers are custom-made to your specifications." },
+  { q: "What is your warranty coverage?", a: "We offer industry-leading warranties up to 25 years depending on the product line. In-ground liners come with up to 25-year warranties, safety covers up to 30 years, and solar covers up to 10 years." },
+  { q: "How long do pool liners typically last?", a: "Our vinyl liners are engineered for durability. With proper care and maintenance, in-ground liners can last 15-25 years depending on usage and environmental factors." },
+  { q: "What makes your safety covers ASTM certified?", a: "Our safety covers exceed ASTM F1346-91 standards for pool safety, providing maximum protection. Available in mesh and solid configurations with professional installation options." },
+  { q: "Can solar covers really save money on heating?", a: "Yes! Our solar covers can reduce heating costs by up to 70%, minimize evaporation, and extend your swimming season. They also reduce chemical costs by preventing water loss." },
+  { q: "How do I care for my pool cover?", a: "Proper maintenance extends your cover's lifespan. We provide detailed care guides with all products. Generally, keep it clean, store properly in winter, and balance your water chemistry." },
+  { q: "Do you offer installation services?", a: "We manufacture and supply products. Installation is typically handled by dealers and contractors. Visit our Dealer page to find dealers in your area who can install our products." },
+  { q: "Can I get custom sizes?", a: "Yes! Our Acu-Fit liners and covers are custom-made to your exact specifications. Contact us with your measurements for a personalized quote." },
+  { q: "What materials do you use?", a: "We use premium virgin resin vinyl for liners with anti-bacterial properties, reinforced mesh for safety covers, and high-grade copolymer for durability. All materials are UV and chemical-resistant." },
+  { q: "Do you ship internationally?", a: "We primarily serve USA and Canada. Contact us for international inquiries and shipping options." },
+  { q: "How do I become a dealer?", a: "Visit our Dealer page to learn about requirements and submit an application. Our dealer relations team will guide you through the process." },
+  { q: "What's the difference between mesh and solid safety covers?", a: "Mesh covers allow water seepage and 95-99% sun block, preventing standing water danger. Solid covers provide 100% sun and debris block. Both are ASTM certified." },
+  { q: "Are your products made in North America?", a: "Yes! All our pool liners and covers are manufactured in Canada since 1987, using quality materials and rigorous quality control." },
 ];
 
 export default function Contact() {
