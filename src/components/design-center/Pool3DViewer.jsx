@@ -126,7 +126,6 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     />
   );
 }
-}
 
 function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90) {
   // Create pool walls and floor
