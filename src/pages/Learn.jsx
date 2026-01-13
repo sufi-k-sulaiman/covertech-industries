@@ -17,6 +17,28 @@ const productGuides = [
     description: "Custom Acu-Fit vinyl liners with wrinkle-free design and stunning patterns for in-ground and above-ground pools.",
     features: ["Custom patterns and colors", "UV-resistant materials", "Wrinkle-free Acu-Fit design", "Salt-compatible options"],
     products: ["In-Ground Liners", "Above-Ground Liners", "Overlap Liners", "Beaded Liners", "Unibead Liners"],
+    articles: [
+      {
+        title: "How to Choose the Perfect Pool Liner Pattern",
+        excerpt: "Discover how different liner patterns and colors affect your pool's appearance, water temperature, and overall aesthetic appeal.",
+        content: "Selecting the right pool liner pattern is more than just choosing a color you like. The pattern you choose affects how your pool looks, how the water appears, and even the temperature. Darker patterns like Ocean Midnight or HD Electric create deeper blue water tones and can help retain heat, while lighter patterns like White Diffusion or Canterbury reflect more sunlight and keep water cooler in hot climates. Consider your pool surroundings, landscaping, and personal style. Our AquaShimmer collection features 30+ patterns from classic solids to intricate mosaics like Butterfly and Esagono. Visit our showroom or request samples to see patterns in different lighting conditions before making your final decision."
+      },
+      {
+        title: "Understanding Vinyl Liner Thickness and Durability",
+        excerpt: "Learn why liner thickness matters and how Covertech's 30mil liners provide superior protection and longevity.",
+        content: "Vinyl liner thickness is measured in mils (thousandths of an inch), and it directly impacts durability and lifespan. Our in-ground liners feature 30mil thickness with cold-crack resistance, while above-ground liners use 18mil material optimized for their specific applications. Thicker liners resist punctures, tears, and UV degradation better than thinner alternatives. However, thickness alone doesn't determine quality – our liners are made from 100% anti-bacterial virgin resin, never recycled materials, ensuring consistent quality throughout. The combination of premium materials, proper thickness, and our proprietary AquaShimmer technology delivers liners that maintain their beauty and integrity for decades. Our 25-year warranty on in-ground liners reflects our confidence in this superior construction."
+      },
+      {
+        title: "Proper Liner Installation: DIY vs Professional",
+        excerpt: "Weighing the pros and cons of DIY installation versus hiring professionals for your vinyl pool liner.",
+        content: "While experienced pool owners can install vinyl liners themselves, professional installation offers significant advantages. Proper installation requires precise measurements, correct water chemistry preparation, wrinkle-free fitting, and proper sealing at all penetrations (lights, drains, skimmers). DIY mistakes can void warranties and lead to premature failure. Professional installers have specialized tools, experience with different pool shapes, and know how to handle tricky situations like uneven bottoms or challenging weather conditions. If you choose DIY, carefully review our installation guides, work on a warm day (vinyl is more pliable), and recruit experienced helpers. For custom shapes, freeform pools, or liners with attached features (steps, benches, sundecks), professional installation is strongly recommended."
+      },
+      {
+        title: "Extending Your Liner Lifespan: Best Practices",
+        excerpt: "Essential maintenance tips to maximize your vinyl liner investment and keep it looking new for years.",
+        content: "A quality vinyl liner can last 15-25+ years with proper care. Start with balanced water chemistry – pH between 7.2-7.6, alkalinity 80-120 ppm, and appropriate chlorine levels. Prevent sun damage by using a solar cover when the pool is not in use. Remove debris promptly – leaves and organic matter can stain if left too long. During winter closing, lower water level below skimmers but keep enough water to support the liner. Avoid sharp objects and train pets to use steps, not jump in. Address small tears immediately with vinyl patch kits to prevent expansion. Brush the liner weekly with soft brushes, never abrasive tools. With these practices, your liner will maintain its beauty and structural integrity well beyond the warranty period."
+      }
+    ],
     tips: [
       "Measure your pool accurately before ordering - our Acu-Fit system ensures a perfect custom fit",
       "Choose UV-resistant patterns for pools with high sun exposure",
@@ -42,6 +64,28 @@ const productGuides = [
     description: "ASTM F1346-91 certified mesh and solid covers providing maximum protection and peace of mind for your pool.",
     features: ["ASTM F1346-91 certified", "Up to 30-year warranty", "Custom-fit design", "Multiple anchoring systems"],
     products: ["Premier Mesh Safety Cover", "Deluxe Mesh Safety Cover", "Commercial Mesh Cover", "Solid Safety Cover"],
+    articles: [
+      {
+        title: "Understanding ASTM F1346-91 Safety Standards",
+        excerpt: "What ASTM certification means for your pool safety cover and why it matters for your family's protection.",
+        content: "ASTM F1346-91 is the safety performance specification for covers for swimming pools, spas, and hot tubs. This rigorous standard ensures covers can support the weight of two adults and one child (485 pounds) to prevent accidental drowning. All Covertech safety covers meet or exceed this standard, tested for tensile strength, tear resistance, and anchor pull-out force. The certification requires covers to prevent gaps larger than 4 inches that could trap a child, and they must be removable by one adult without tools. Our covers undergo third-party testing to verify compliance. When you see ASTM certification, you know your cover provides genuine safety protection, not just aesthetic pool covering. This certification, combined with proper installation and maintenance, makes your pool significantly safer during off-season months and when unsupervised."
+      },
+      {
+        title: "Mesh vs Solid Safety Covers: Which is Right for You?",
+        excerpt: "Compare the benefits of mesh and solid safety covers to make the best choice for your climate and needs.",
+        content: "Mesh and solid safety covers each offer distinct advantages. Mesh covers allow rain and snow melt to drain through while blocking 95-99% of sunlight, preventing algae growth without water accumulation. They're lighter, easier to handle, and ideal for areas with heavy precipitation. Our Premier Mesh (18-year warranty) and Deluxe Mesh (20-year warranty) options provide 500-670 psi burst strength. Solid covers block 100% of light and all debris, keeping pool water cleaner through winter, but require a drain panel or cover pump to manage water accumulation. They come with a 15-year warranty and are excellent for areas with lots of leaves and debris. Consider your climate: snowy regions benefit from mesh drainage, while areas with less precipitation and heavy foliage may prefer solid covers. Both provide equal safety protection and ASTM certification."
+      },
+      {
+        title: "Proper Safety Cover Installation and Anchoring",
+        excerpt: "Learn the critical steps for correctly installing safety cover anchors to ensure maximum protection.",
+        content: "Safety cover effectiveness depends entirely on proper installation. Anchor placement must follow manufacturer specifications, typically every 4-6 feet around the pool perimeter. For concrete decks, use hammer drills with masonry bits to create anchor holes at precise depths – usually 3-4 inches. Install brass anchors flush with deck surface to prevent tripping hazards. For pavers or natural stone, additional anchoring techniques may be required. Mark anchor locations clearly for easy spring removal and fall installation. Covers should be taut when installed, with minimal sagging – this prevents water accumulation and maintains safety ratings. Our covers come with detailed measuring guides and installation instructions, but professional installation is recommended for complex pool shapes or if you're uncertain. Properly installed anchors should remain in place for years, making seasonal cover installation quick and easy."
+      },
+      {
+        title: "Year-Round Pool Safety Beyond Winter Coverage",
+        excerpt: "Comprehensive strategies for maintaining pool safety throughout all seasons, not just winter.",
+        content: "While safety covers are essential for winter protection, year-round safety requires multiple strategies. Install proper fencing – at least 4 feet high with self-closing, self-latching gates – around your pool area. Use pool alarms that detect water disturbance or gate openings. During swimming season, establish clear pool rules: no diving in shallow areas, no running on deck, no swimming alone. Keep rescue equipment accessible: reaching poles, life rings, and flotation devices. Learn CPR and keep emergency numbers posted. For families with young children, use removable mesh fencing as secondary barriers during summer. Consider transparent safety covers that can remain on during warm months while allowing supervision. Maintain clear sightlines to the pool from inside your home. Combine your winter safety cover with these year-round practices for comprehensive pool safety that protects your family every day."
+      }
+    ],
     tips: [
       "Professional installation is strongly recommended",
       "Ensure proper water level (12-18 inches below coping) before installation",
@@ -67,6 +111,28 @@ const productGuides = [
     description: "Energy-efficient solar blankets that reduce heating costs by up to 70% and extend your swimming season.",
     features: ["Up to 70% heating cost reduction", "Reduces evaporation", "Extends swimming season", "UV resistant"],
     products: ["Solar-Extreme™ Solar Cover", "Thermo Shield™ Solar Blanket", "ClearDeck Solar Cover System"],
+    articles: [
+      {
+        title: "The Science Behind Solar Pool Heating",
+        excerpt: "Understand how solar covers harness the sun's energy to naturally heat your pool water.",
+        content: "Solar covers work through a simple but effective principle: they trap solar radiation and transfer it to your pool water while preventing heat loss. The bubble design on the underside acts like thousands of tiny magnifying glasses, concentrating sunlight and maximizing heat transfer. Air trapped in bubbles provides insulation, preventing heat from escaping back into the atmosphere. Dark-colored covers like our Thermo Shield™ blue/black design absorb more heat than clear covers, potentially raising water temperature by 25% more than conventional blankets. During the day, covers can increase pool temperature by 8-15°F depending on climate and sun exposure. At night, covers act as insulation barriers, preventing the 5-10°F temperature drop that typically occurs overnight. This dual action – capturing heat during the day and preventing loss at night – makes solar covers one of the most cost-effective pool heating solutions available, with zero operating costs."
+      },
+      {
+        title: "Maximizing Energy Savings with Solar Covers",
+        excerpt: "Practical strategies to achieve up to 70% reduction in pool heating costs using solar covers.",
+        content: "To maximize energy savings, use your solar cover consistently – every night and during the day when the pool is not in use. Even a few hours without cover can result in significant heat and water loss. For pools with gas or electric heaters, solar covers can reduce heating costs by 50-70% by maintaining temperature and reducing heater run time. Cut your cover to fit precisely, leaving minimal gaps where heat can escape. In cooler climates, combine solar covers with pool insulation systems like Insul-Floor and Thermo-Wall for even greater efficiency. Use a reel system to make daily cover use convenient – studies show pool owners with reels use covers more consistently. During summer's hottest months, remove covers during peak sun hours if water becomes too warm. Track your utility bills before and after implementing solar cover use to quantify savings. Most pool owners recoup their solar cover investment within one season through reduced heating and chemical costs."
+      },
+      {
+        title: "Reducing Water Evaporation and Chemical Loss",
+        excerpt: "How solar covers prevent up to 95% of water evaporation, saving thousands of gallons annually.",
+        content: "Pool water evaporation is a hidden expense that solar covers dramatically reduce. An uncovered pool can lose 1-2 inches of water weekly during summer – that's 7,000-15,000 gallons annually for an average pool. Solar covers prevent 95% of this evaporation, conserving water and reducing refill costs. Beyond water savings, evaporation carries away pool chemicals, particularly chlorine. By minimizing evaporation, covers reduce chemical consumption by 35-60%, lowering your maintenance budget significantly. Less evaporation also means more stable water chemistry, reducing the need for frequent testing and adjustments. In drought-prone areas, this water conservation is environmentally responsible and may help comply with water restrictions. Covers also prevent debris accumulation, reducing filter strain and cleaning time. The combined savings from reduced water replacement, chemical use, and heating costs often exceed $500-1,000 annually, making solar covers one of the smartest pool investments."
+      },
+      {
+        title: "Solar Cover Care and Storage Best Practices",
+        excerpt: "Extend your solar cover lifespan to 5-7 years with proper handling, storage, and maintenance.",
+        content: "Proper care extends solar cover life significantly. Always handle covers gently – dragging across rough deck surfaces causes premature wear. Use a reel system for easy on/off operation that prevents damage. When removing the cover, hose off debris before rolling to prevent grinding dirt into the material. Store covers away from direct sunlight when not in use for extended periods – UV exposure degrades plastic over time. For winter storage, clean thoroughly, dry completely, and fold loosely in a dry location – never store wet covers as they can develop mildew. Avoid storing in airtight containers; allow air circulation. Keep covers away from pool chemicals; never place chlorine tablets on the cover. Trim covers carefully if adjusting fit, using scissors rather than tearing. Check regularly for small holes or tears and repair immediately with patch kits to prevent expansion. Clean covers monthly with mild soap and water, rinse thoroughly. With proper care, Solar-Extreme™ and Thermo Shield™ covers easily reach their 10-year warranty period and beyond."
+      }
+    ],
     tips: [
       "Remove cover during pool treatments and chemical additions",
       "Use a solar reel for easier handling",
@@ -91,6 +157,28 @@ const productGuides = [
     description: "Heavy-duty protection to keep your pool pristine through winter. Designed for harsh weather conditions.",
     features: ["Weather resistant", "Heavy duty material", "UV protected", "Easy installation"],
     products: ["Lock-in Beaded Cover", "Superior Winter Pool Cover"],
+    articles: [
+      {
+        title: "Proper Pool Winterization Steps Before Covering",
+        excerpt: "Essential preparation procedures to protect your pool before installing a winter cover.",
+        content: "Successful winter pool protection starts before the cover goes on. Begin by thoroughly cleaning the pool – vacuum, brush walls, and empty skimmer baskets. Balance water chemistry: pH 7.2-7.6, alkalinity 80-120 ppm, calcium hardness 180-220 ppm. Shock the pool with 2-3 times normal chlorine dose to eliminate contaminants. Add winter algaecide following manufacturer instructions. Lower water level below skimmers (about 4-6 inches) for in-ground pools to prevent freeze damage, but maintain enough water to support the cover. For above-ground pools, lower to just below the return line. Drain and blow out plumbing lines, adding pool antifreeze to prevent freeze damage. Remove and clean pump, filter, and heater; store indoors if possible. Install winterizing plugs in all return and skimmer openings. Remove ladders, diving boards, and accessories. Only after completing these steps should you install your winter cover, ensuring a clean, protected pool ready for spring opening."
+      },
+      {
+        title: "Understanding Winter Cover Materials and Construction",
+        excerpt: "Learn why rip-stop fabric and reinforced webbing make Covertech winter covers superior.",
+        content: "Not all winter covers are created equal. Covertech's Superior Winter Cover uses rip-stop fabric technology – a weaving technique that prevents tears from spreading, similar to parachute material. This construction features reinforced threads at regular intervals that stop rips in their tracks. Our covers include UV-protected coating that prevents degradation from winter sun exposure, extending lifespan significantly. Heavy-duty webbing around the perimeter distributes stress evenly, preventing stretching and sagging that can collect water and debris. Reinforced grommets with rust-proof coatings ensure cables and winches don't tear through. The multi-layer construction balances water resistance (keeping debris out) with some water penetration (preventing dangerous water accumulation on top). This engineering results in covers that withstand heavy snow loads, ice formation, and winter storms year after year. Our 15-year warranty reflects confidence in these superior materials and construction techniques."
+      },
+      {
+        title: "Managing Snow and Water Accumulation on Winter Covers",
+        excerpt: "Safe methods for removing excess snow and water to prevent cover damage and safety hazards.",
+        content: "Proper winter cover maintenance includes managing snow and water accumulation. Light snow (under 4 inches) can usually remain on covers, but heavy accumulation should be removed to prevent stress and potential collapse into the pool. Use a soft push broom or pool cover rake – never sharp shovels that can tear fabric. Work from edges toward center, pushing snow off rather than pulling. For icy surfaces, wait for slight melting before removal. Water accumulation is managed differently depending on cover type. For solid covers with grommets allowing some water passage, monitor the center for excessive pooling. Use a cover pump when water depth exceeds 2 inches – submersible pumps designed for pool covers prevent draining the pool itself. Never drain all water from the cover top; some weight is beneficial for keeping the cover in place during wind. For covers over above-ground pools, be especially vigilant as excessive weight can damage pool walls. Check covers after storms and heavy snow events."
+      },
+      {
+        title: "Spring Pool Opening: Cover Removal Best Practices",
+        excerpt: "Step-by-step guide to properly removing and storing your winter cover for summer season.",
+        content: "Spring opening requires careful cover removal to prevent dumping debris into clean pool water. Start by removing any standing water with a cover pump – get surface as dry as possible. Carefully sweep remaining debris toward pool edges using a soft broom. Recruit helpers; never attempt to remove large covers alone. Fold cover accordion-style from one end, keeping the dirty surface inward to contain debris. Once removed, clean thoroughly with cover cleaner or mild soap, rinse with hose, and allow to dry completely before storage – storing wet covers causes mildew and degradation. Inspect for tears, loose grommets, or weak areas; repair or note for replacement next season. Fold or roll loosely and store in a cool, dry location away from rodents and chemicals. Never store in airtight bags; allow air circulation to prevent moisture buildup. Before storing, apply cover protectant spray if available. Label storage container with contents and inspection notes. With proper storage, your winter cover will be ready for many more seasons of reliable protection."
+      }
+    ],
     tips: [
       "Lower water level 12-18 inches below coping before covering",
       "Remove all accessories from pool before covering",
@@ -166,6 +254,28 @@ export default function Learn() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
+                {/* Articles */}
+                {activeGuide.articles && activeGuide.articles.length > 0 && (
+                  <div className="mb-16">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Essential Articles</h2>
+                    <div className="grid gap-6">
+                      {activeGuide.articles.map((article, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-lg transition-shadow"
+                        >
+                          <h3 className="text-2xl font-bold text-slate-900 mb-3">{article.title}</h3>
+                          <p className="text-cyan-600 font-medium mb-4">{article.excerpt}</p>
+                          <p className="text-slate-700 leading-relaxed">{article.content}</p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Product Overview */}
                 <div className="grid lg:grid-cols-2 gap-12 mb-16">
                   <div className="relative">
