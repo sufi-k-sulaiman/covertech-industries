@@ -254,13 +254,13 @@ export default function Warranties() {
                             <span className="text-xs text-cyan-300 font-semibold">{product.warranty}</span>
                           </div>
                           <h3 className="text-xl font-bold text-white mb-1">{product.name}</h3>
-                          <p className="text-slate-300 text-sm line-clamp-2 mb-3">{product.description}</p>
+                          <p className="text-slate-300 text-sm line-clamp-2 mb-4">{product.description}</p>
                           <a 
                             href={product.pdfUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 text-xs text-cyan-300 hover:text-cyan-200 transition-colors"
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 border border-white/40 rounded-lg text-sm font-medium text-white transition-all"
                           >
                             <Download className="w-4 h-4" />
                             Download Warranty PDF
