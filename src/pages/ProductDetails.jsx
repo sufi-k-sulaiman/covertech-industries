@@ -176,6 +176,66 @@ const productsData = {
     downloads: [
       { name: "Golf Green Covers Brochure", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cc9aa98a1_GOLFGREENSELLSHEET.pdf" }
     ]
+  },
+  "curing-blankets": {
+    name: "Concrete Curing Blankets",
+    category: "Construction & Industrial",
+    tagline: "Professional-grade concrete protection",
+    description: "Heavy-duty insulated curing blankets designed to maintain optimal concrete curing temperatures in cold weather conditions. Ideal for construction sites, concrete pours, and winter projects.",
+    fullDescription: "Our curing blankets provide superior insulation to protect concrete during the critical curing phase. The reflective surface retains heat while the durable construction withstands harsh job site conditions. Perfect for ensuring proper concrete strength development in temperatures as low as -20°F.",
+    warranty: 2,
+    images: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0429f79f7_Tarp.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cc48f869a_BlackMesh.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6fea5fec5_BlueMesh.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/432f4831c_GreenMesh.png"
+    ],
+    features: ["Cold Weather Protection", "Heat Retention", "Heavy-Duty Construction", "Multiple Sizes Available", "Reusable", "UV Resistant"],
+    specifications: { 
+      Category: "Construction & Industrial", 
+      Application: "Concrete Curing", 
+      "Temperature Range": "Down to -20°F", 
+      Material: "Insulated Multi-Layer",
+      "Custom Sizes": "Available",
+      Colors: "Black, Blue, Green, Grey, Taupe"
+    },
+    bestseller: false,
+    downloads: [],
+    variants: [
+      { name: "Standard Curing Blanket", features: ["6x6 to 12x50 sizes", "Single-sided insulation", "Grommeted edges"] },
+      { name: "Premium Insulated Blanket", features: ["Double-layer insulation", "Enhanced heat retention", "Reinforced corners"] },
+      { name: "Heavy-Duty Industrial", features: ["Extra thick padding", "Extreme weather rated", "Commercial grade"] }
+    ]
+  },
+  "pool-insulation": {
+    name: "Pool Insulation Systems",
+    category: "Pool Accessories",
+    tagline: "Maximum energy efficiency for your pool",
+    description: "Advanced thermal insulation systems for above-ground and in-ground pools. Insul-Floor and Thermo-Wall products provide superior heat retention, reduce energy costs, and extend your swimming season.",
+    fullDescription: "Our pool insulation technology creates a thermal barrier between your pool and the ground or walls, dramatically reducing heat loss. The reflective surface reflects heat back into the pool while the bubble design provides excellent insulation properties. Easy to install and compatible with all pool types.",
+    warranty: 5,
+    images: [
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b4c94711_Insu-floor.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/204ca0231_Insul.JPG",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f3acaf446_InsulationRoll.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3289fdcbe_Thero-wall.png"
+    ],
+    features: ["Reduces Heat Loss", "Energy Cost Savings", "Easy Installation", "Compatible with All Pool Types", "Reflective Technology", "Extends Swimming Season"],
+    specifications: { 
+      Category: "Pool Accessories", 
+      Application: "Pool Floor & Walls", 
+      "Heat Retention": "Up to 50%",
+      Material: "Reflective Foam",
+      Installation: "DIY Friendly",
+      "Custom Sizes": "Available"
+    },
+    bestseller: false,
+    downloads: [],
+    variants: [
+      { name: "Insul-Floor", description: "Floor insulation system", features: ["Installs under liner", "Reduces ground heat loss", "Smooth surface protection", "Prevents liner wear"] },
+      { name: "Thermo-Wall", description: "Wall insulation system", features: ["Installs between wall & liner", "Reflects heat back to pool", "Easy to cut and fit", "Moisture resistant"] },
+      { name: "Complete System", description: "Floor and wall combo", features: ["Maximum insulation", "Best energy savings", "Year-round efficiency", "Professional grade"] }
+    ]
   }
 };
 
