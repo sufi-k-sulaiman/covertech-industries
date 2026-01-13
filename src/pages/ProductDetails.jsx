@@ -446,7 +446,36 @@ const productsData = {
     bestseller: false,
     downloads: [
       { name: "Golf Green Covers Brochure", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cc9aa98a1_GOLFGREENSELLSHEET.pdf" }
-    ]
+    ],
+    installationGuide: {
+      title: "Supreme Green Turf Cover - When to Use & Remove",
+      fullWinter: {
+        title: "Full Winter Conditions (consistent subfreezing temperatures over 4-6 months)",
+        instructions: ["The turf cover should be installed before the ground freezes, and after the turf is dormant.", "The cover can be removed when temperatures are consistently above freezing and there is no longer a risk of frost."]
+      },
+      moderateWinter: {
+        title: "Moderate Winter Conditions (temperature drops below freezing for short periods over the winter months)",
+        instructions: ["Install the Supreme Green Turf Cover just before the onset of severe conditions.", "Remove the cover when there is no longer a risk of frost or wind desiccation."]
+      },
+      seeding: {
+        title: "Seeding and Germination",
+        instructions: ["Use the Supreme Green Turf Cover immediately following seeding to enhance root development and germination.", "Remove the cover when there is enough uniform growth to require a first mowing."]
+      },
+      extending: {
+        title: "Extending Your Season",
+        instructions: ["Get an early start on your season by using our Supreme Green Turf Cover to accelerate green-up. Install the cover upon the onset of spring weather.", "Remove the cover as for seeding and germination."]
+      },
+      installation: {
+        title: "Installation Instructions",
+        steps: [
+          "Installation: Lay the turf cover over the green. Secure with supplied pegs every three feet around the perimeter (insert the pegs through the hem).",
+          "For windy conditions: Secure with additional lines of pegs down the middle seams.",
+          "For extremely windy conditions: Run a rope line (or lines) on top of the turf cover, over the middle area.",
+          "Removal: Timing of removal depends on application and weather conditions.",
+          "Storage: To prolong the life of your turf cover, store it away from the sun in the storage bag provided."
+        ]
+      }
+    }
   },
   "curing-blankets": {
     name: "Concrete Curing Blankets",
