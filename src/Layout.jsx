@@ -63,27 +63,8 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Top Bar */}
-      <div className="bg-slate-900 text-slate-300 text-sm py-2 hidden lg:block">
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <a href="tel:+14166405590" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
-              <Phone className="w-3.5 h-3.5" />
-              +1 (416) 640-5590
-            </a>
-            <a href="mailto:info@covertechind.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
-              <Mail className="w-3.5 h-3.5" />
-              info@covertechind.com
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span>Mon - Sat: 8:30 AM - 5:30 PM EST</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Header */}
-      <header className={`fixed top-0 lg:top-8 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
         <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link to={createPageUrl('Home')} className="flex items-center gap-2">
