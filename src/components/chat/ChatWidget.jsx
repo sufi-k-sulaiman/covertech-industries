@@ -40,16 +40,13 @@ export default function ChatWidget() {
   }, [conversation?.id]);
 
   const initConversation = async () => {
-    try {
-      const conv = await base44.agents.createConversation({
-        agent_name: 'covertech_assistant',
-        metadata: { source: 'website_chat' }
-      });
-      setConversation(conv);
-      setMessages(conv.messages || []);
-    } catch (error) {
-      console.error('Failed to create conversation:', error);
-    }
+   try {
+     const response = await base44.functions.invoke('createPublicConversation');
+     setConversation(response.data);
+     setMessages(response.data.messages || []);
+   } catch (error) {
+     console.error('Failed to create conversation:', error);
+   }
   };
 
   const handleSend = async () => {
