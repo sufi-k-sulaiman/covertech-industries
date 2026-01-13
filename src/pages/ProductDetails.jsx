@@ -5,7 +5,7 @@ import { createPageUrl } from '@/utils';
 import { 
   Shield, Award, MapPin, Check, Star, ArrowRight, 
   MessageSquare, Palette, ChevronLeft, ChevronRight,
-  Droplets, Thermometer, Snowflake, Wrench, AlertTriangle
+  Droplets, Thermometer, Snowflake, Wrench, AlertTriangle, Download, FileText
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -28,6 +28,14 @@ const productsData = {
     features: ["25-Season Warranty", "AquaShimmer Technology", "30mil Cold Crack-resistant", "100% Anti-bacterial Virgin Resin", "UV & Chemical-resistant", "Made in Canada since 1987"],
     specifications: { Category: "Pool Liners", Thickness: "30mil", Material: "Anti-bacterial Virgin Resin", Texture: "Non-slip Available", "Custom Sizes": "Available", Origin: "Canada (since 1987)" },
     bestseller: true,
+    downloads: [
+      { name: "25-Season In-Ground Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/940bf589f_25SeasonIn-GroundLinerWarranty.pdf" },
+      { name: "20-Season On-Ground Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e5f9b4602_20SeasonOn-GroundLinerWarranty.pdf" },
+      { name: "10-Season Above-Ground Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/94ddb6eba_10SeasonAbove-GroundLinerWarranty.pdf" },
+      { name: "Installation Instructions", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ce2f38147_CVT-IngroundLinerMaintenanceandInstallation.pdf" },
+      { name: "Care & Maintenance Guide", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fcfa016dc_CVT-LinerCareMaintenance.pdf" },
+      { name: "2026 Pattern Catalogue", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/af5daff1a_2026LinerCatalogue-Web-R0.pdf" }
+    ],
     patterns: [
       { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/c4f5ad9e3_Carnival.jpg", collection: "Platinum Plus" },
       { name: "Butterfly", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/76470d0e3_Butterfly.jpg", collection: "Platinum Plus" },
@@ -55,6 +63,13 @@ const productsData = {
     features: ["ASTM F1346-91 Certified", "Up to 30-Year Warranty", "Professional Installation Available", "Custom-Fit Design", "Multiple Anchoring Systems", "Winter-Ready Protection"],
     specifications: { Category: "Safety Covers", Certification: "ASTM F1346-91", Types: "Mesh & Solid", Warranty: "Up to 30 Years", Installation: "Professional Recommended", Origin: "North America" },
     bestseller: true,
+    downloads: [
+      { name: "Safety Cover Warranty 2025", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9876ef1df_CVT-SafetyCoverWarranty-2025.pdf" },
+      { name: "Measuring Form", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a24979399_CVTSafey-Cover-Form.pdf" },
+      { name: "Installation Instructions", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f1acc1b5e_CVT-SafetyCoverInstructions.pdf" },
+      { name: "Care & Maintenance Guide", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/37f0becda_CVT-SafetyCoverCareGuide.pdf" },
+      { name: "Safety Covers Brochure 2024", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/59cb887bb_2024SafetyCoversBrochure.pdf" }
+    ],
     variants: [
       { name: "Premier Mesh Safety Cover", warranty: "18 Years", features: ["500 psi Burst Strength", "95%+ Sun Block", "Water Seepage Design"] },
       { name: "Deluxe Mesh Safety Cover", warranty: "20 Years", features: ["670 psi Burst Strength", "99% Sun Block", "Tighter Weave"] },
@@ -75,6 +90,10 @@ const productsData = {
     features: ["Up to 70% Heating Cost Reduction", "Reduces Evaporation", "Extends Swimming Season", "Multiple Options Available"],
     specifications: { Category: "Solar Covers", "Heat Reduction": "Up to 70%", Types: "Solar-Extreme™, Thermo Shield™", "Custom Sizes": "Available" },
     bestseller: true,
+    downloads: [
+      { name: "Solar Blanket Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/042934906_SolarWarranty-CVT-English.pdf" },
+      { name: "Solar Cover - What to Know", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6c47e8eb2_CVTSolarCover-WhattoKnow.pdf" }
+    ],
     variants: [
       { name: "Solar-Extreme™", features: ["Up to 70% Cost Reduction", "Prevents Night Heat Loss", "Superior Durability"] },
       { name: "Thermo Shield™", features: ["25% Higher Temperature", "Blue/Black Design", "Maximum Heat Transfer"] },
@@ -94,7 +113,11 @@ const productsData = {
     ],
     features: ["Weather Resistant", "Heavy Duty Material", "UV Protected", "Multiple Sizes", "Easy Installation", "Wind Resistant"],
     specifications: { Category: "Winter Covers", Material: "Heavy Duty", "UV Protection": "Yes", "Custom Sizes": "Available" },
-    bestseller: false
+    bestseller: false,
+    downloads: [
+      { name: "Winter Cover Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2064be08f_WinterCoverWarranty-CVT-English.pdf" },
+      { name: "Beaded Winter Cover Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ea750810d_BeadedWinterCoverWarranty-CVT-English.pdf" }
+    ]
   },
   "steel-kits": {
     name: "Steel Pool Kits",
@@ -109,7 +132,8 @@ const productsData = {
     ],
     features: ["Heavy Duty Construction", "Corrosion Resistant", "Easy Installation", "Professional Grade", "Complete Kit", "Made in North America"],
     specifications: { Category: "Accessories", Material: "Galvanized Steel", Coating: "Corrosion Resistant", Origin: "North America" },
-    bestseller: false
+    bestseller: false,
+    downloads: []
   },
   "golf-covers": {
     name: "Golf Green Covers",
@@ -123,7 +147,10 @@ const productsData = {
     ],
     features: ["Ice protection", "Winter durability", "Easy removal", "Reusable", "Breathable fabric", "UV stabilized"],
     specifications: { Category: "Golf & Sports", Application: "Golf Greens, Sports Fields", Season: "Winter", "Custom Sizes": "Available" },
-    bestseller: false
+    bestseller: false,
+    downloads: [
+      { name: "Golf Green Covers Brochure", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cc9aa98a1_GOLFGREENSELLSHEET.pdf" }
+    ]
   }
 };
 
@@ -256,6 +283,38 @@ export default function ProductDetails() {
                   <p className="text-sm font-medium text-slate-900">Made in NA</p>
                 </div>
               </div>
+
+              {/* Downloads Section */}
+              {product.downloads && product.downloads.length > 0 && (
+                <div className="mt-8 border-t border-slate-200 pt-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                      <Download className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900">Product Documentation</h3>
+                      <p className="text-sm text-slate-600">Download warranty & installation guides</p>
+                    </div>
+                  </div>
+                  <div className="grid gap-3">
+                    {product.downloads.map((doc, idx) => (
+                      <a
+                        key={idx}
+                        href={doc.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50 to-cyan-50 hover:from-cyan-50 hover:to-blue-50 border border-slate-200 hover:border-cyan-300 rounded-xl transition-all group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <FileText className="w-5 h-5 text-cyan-600" />
+                          <span className="font-medium text-slate-900">{doc.name}</span>
+                        </div>
+                        <Download className="w-5 h-5 text-cyan-600 group-hover:translate-y-0.5 transition-transform" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
