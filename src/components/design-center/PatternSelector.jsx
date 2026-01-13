@@ -4,31 +4,45 @@ import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const collections = [
-  { id: 'platinum-plus-2026', name: 'Platinum Plus Collection 2026' },
-  { id: 'premium-2026', name: 'Premium Collection 2026' },
-  { id: 'essentials-2026', name: 'Essentials Collection 2026' }
+  { id: 'platinum-plus-2026', name: 'Platinum Plus Collection', badge: 'Premium' },
+  { id: 'standard-2026', name: 'Standard Collection', badge: 'Popular' },
+  { id: 'solids-2026', name: 'Solid Colors', badge: 'Classic' }
 ];
 
 const patterns = {
   'platinum-plus-2026': [
-    { id: 'bayview-white', name: 'Bayview White Diffusion', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-1.jpg' },
-    { id: 'blue-beach', name: 'Blue Beach Pebble', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-2.jpg' },
-    { id: 'blue-maul', name: 'Blue Maul', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-3.jpg' },
-    { id: 'solid-blue', name: 'Blue', type: 'Solid Color', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-4.jpg' },
-    { id: 'butterfly', name: 'Butterfly', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-5.jpg' }
+    { id: 'twilight', name: 'Twilight', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'harmony-gold', name: 'Harmony Gold HDE', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'butterfly', name: 'Butterfly', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'esagono', name: 'Esagono', type: 'AquaShimmer Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'carnival', name: 'Carnival', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'canterbury', name: 'Canterbury', type: 'HD Antigua', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'hd-antigua', name: 'HD Antigua', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'gladstone', name: 'Gladstone', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' }
   ],
-  'premium-2026': [
-    { id: 'canterbury', name: 'Canterbury', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-6.jpg' },
-    { id: 'carnival', name: 'Carnival', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-7.jpg' },
-    { id: 'carrara-marble', name: 'Carrara Marble', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-8.jpg' },
-    { id: 'celest', name: 'Celest', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-9.jpg' },
-    { id: 'esagono', name: 'Esagono', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-10.jpg' }
+  'standard-2026': [
+    { id: 'sapphire', name: 'Sapphire', type: 'Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'celest', name: 'Celest', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'garden', name: 'Garden', type: 'HD Electric Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'oxford', name: 'Oxford', type: 'HD Electric', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'tahoe', name: 'Tahoe', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'oyster-bay', name: 'Oyster Bay', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'sunburst', name: 'Sunburst', type: 'Oyster Bay', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'white-diffusion', name: 'White Diffusion', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'bayview', name: 'Bayview', type: 'White Diffusion', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'grey-maui', name: 'Grey Maui', type: 'Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'blue-maui', name: 'Blue Maui', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'ocean-midnight', name: 'Ocean Midnight', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'river-white', name: 'River White', type: 'Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'carrara-marble', name: 'Carrara Marble', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'blue-beach-pebble', name: 'Blue Beach Pebble', type: 'Full Print', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' },
+    { id: 'white-beach-pebble', name: 'White Beach Pebble', type: 'Full Print', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'sandstone', name: 'Sandstone', type: 'Full Print', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+    { id: 'raleigh', name: 'Raleigh', type: 'Beach Pebble', image: 'https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=400&q=80' }
   ],
-  'essentials-2026': [
-    { id: 'harmony-gold', name: 'Harmony Gold HDE', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-11.jpg' },
-    { id: 'ocean-wave', name: 'Ocean Wave', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-12.jpg' },
-    { id: 'sunburst', name: 'Sunburst', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-13.jpg' },
-    { id: 'white-diffusion', name: 'White Diffusion', type: '2026 Collection', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/pool-pattern-14.jpg' }
+  'solids-2026': [
+    { id: 'blue-full', name: 'Blue', type: 'Solid Color', image: 'https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80' },
+    { id: 'white-full', name: 'White', type: 'Solid Color', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' }
   ]
 };
 
