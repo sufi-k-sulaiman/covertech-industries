@@ -2,10 +2,15 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Palette, ArrowRight, ArrowLeft, Check, Info } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Check, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import PoolShapeSelector from '@/components/design-center/PoolShapeSelector';
+import PoolDimensions from '@/components/design-center/PoolDimensions';
+import PoolFeatures from '@/components/design-center/PoolFeatures';
+import PatternSelector from '@/components/design-center/PatternSelector';
+import ContactForm from '@/components/design-center/ContactForm';
 
 const productTypes = [
   {
@@ -51,6 +56,37 @@ const steps = [
 export default function DesignCenter() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedShape, setSelectedShape] = useState(null);
+  const [dimensions, setDimensions] = useState({});
+  const [selectedFeatures, setSelectedFeatures] = useState([]);
+  const [patternSelection, setPatternSelection] = useState({
+    collection: 'platinum-plus',
+    pattern: null,
+    bead: 'blue'
+  });
+  const [contactInfo, setContactInfo] = useState({});
+
+  const handleToggleFeature = (featureId) => {
+    setSelectedFeatures(prev =>
+      prev.includes(featureId)
+        ? prev.filter(id => id !== featureId)
+        : [...prev, featureId]
+    );
+  };
+
+  const handlePatternChange = (type, value) => {
+    setPatternSelection(prev => ({ ...prev, [type]: value }));
+  };
+
+  const canProceed = () => {
+    switch (currentStep) {
+      case 1: return selectedProduct !== null;
+      case 2: return selectedShape !== null;
+      case 3: return dimensions.length && dimensions.width;
+      case 6: return contactInfo.fullName && contactInfo.email;
+      default: return true;
+    }
+  };
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
@@ -135,14 +171,14 @@ export default function DesignCenter() {
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent" />
-                          
+
                           {selectedProduct === product.id && (
                             <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center">
                               <Check className="w-5 h-5 text-white" />
                             </div>
                           )}
                         </div>
-                        
+
                         <div className="absolute bottom-0 left-0 right-0 p-6">
                           <h3 className="text-xl font-bold text-white mb-1">{product.name}</h3>
                           <p className="text-slate-300 text-sm mb-3 line-clamp-2">{product.description}</p>
@@ -160,25 +196,76 @@ export default function DesignCenter() {
                 </motion.div>
               )}
 
-              {currentStep > 1 && currentStep < 7 && (
+              {currentStep === 2 && (
                 <motion.div
-                  key={`step${currentStep}`}
+                  key="step2"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="text-center py-12"
                 >
-                  <div className="w-20 h-20 rounded-full bg-cyan-50 flex items-center justify-center mx-auto mb-6">
-                    <Palette className="w-10 h-10 text-cyan-500" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-3">Step {currentStep}: {steps[currentStep - 1].label}</h2>
-                  <p className="text-slate-600 mb-8">This design tool is coming soon. For now, please contact us for a personalized quote.</p>
-                  
-                  <Link to={createPageUrl('Contact')}>
-                    <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8">
-                      Request a Quote Instead
-                    </Button>
-                  </Link>
+                  <PoolShapeSelector 
+                    selectedShape={selectedShape}
+                    onSelectShape={setSelectedShape}
+                  />
+                </motion.div>
+              )}
+
+              {currentStep === 3 && (
+                <motion.div
+                  key="step3"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                >
+                  <PoolDimensions
+                    dimensions={dimensions}
+                    onDimensionsChange={setDimensions}
+                    selectedShape={selectedShape}
+                  />
+                </motion.div>
+              )}
+
+              {currentStep === 4 && (
+                <motion.div
+                  key="step4"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                >
+                  <PoolFeatures
+                    selectedFeatures={selectedFeatures}
+                    onToggleFeature={handleToggleFeature}
+                  />
+                </motion.div>
+              )}
+
+              {currentStep === 5 && (
+                <motion.div
+                  key="step5"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                >
+                  <PatternSelector
+                    selectedCollection={patternSelection.collection}
+                    selectedPattern={patternSelection.pattern}
+                    selectedBead={patternSelection.bead}
+                    onSelectionChange={handlePatternChange}
+                  />
+                </motion.div>
+              )}
+
+              {currentStep === 6 && (
+                <motion.div
+                  key="step6"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                >
+                  <ContactForm
+                    formData={contactInfo}
+                    onFormChange={setContactInfo}
+                  />
                 </motion.div>
               )}
 
@@ -188,13 +275,69 @@ export default function DesignCenter() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="text-center py-12"
                 >
-                  <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-6">
-                    <Check className="w-10 h-10 text-green-500" />
+                  <div className="text-center mb-10">
+                    <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="w-10 h-10 text-green-500" />
+                    </div>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-3">Review Your Design</h2>
+                    <p className="text-slate-600 mb-8">Here's a summary of your custom pool product design.</p>
                   </div>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-3">Review Your Design</h2>
-                  <p className="text-slate-600 mb-8">Ready to submit your custom design for a quote.</p>
+
+                  <div className="max-w-3xl mx-auto space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="bg-slate-50 rounded-xl p-6">
+                        <h3 className="font-semibold text-slate-900 mb-4">Product Selection</h3>
+                        <div className="space-y-2 text-sm">
+                          <div><span className="text-slate-600">Product:</span> <span className="font-medium">{selectedProduct}</span></div>
+                          <div><span className="text-slate-600">Shape:</span> <span className="font-medium">{selectedShape}</span></div>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-50 rounded-xl p-6">
+                        <h3 className="font-semibold text-slate-900 mb-4">Dimensions</h3>
+                        <div className="space-y-2 text-sm">
+                          <div><span className="text-slate-600">Length:</span> <span className="font-medium">{dimensions.length} ft</span></div>
+                          <div><span className="text-slate-600">Width:</span> <span className="font-medium">{dimensions.width} ft</span></div>
+                          {dimensions.shallowDepth && <div><span className="text-slate-600">Shallow:</span> <span className="font-medium">{dimensions.shallowDepth} ft</span></div>}
+                          {dimensions.deepDepth && <div><span className="text-slate-600">Deep:</span> <span className="font-medium">{dimensions.deepDepth} ft</span></div>}
+                        </div>
+                      </div>
+
+                      {selectedFeatures.length > 0 && (
+                        <div className="bg-slate-50 rounded-xl p-6">
+                          <h3 className="font-semibold text-slate-900 mb-4">Features</h3>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedFeatures.map(f => (
+                              <span key={f} className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs">{f}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="bg-slate-50 rounded-xl p-6">
+                        <h3 className="font-semibold text-slate-900 mb-4">Customization</h3>
+                        <div className="space-y-2 text-sm">
+                          <div><span className="text-slate-600">Collection:</span> <span className="font-medium">{patternSelection.collection}</span></div>
+                          {patternSelection.pattern && <div><span className="text-slate-600">Pattern:</span> <span className="font-medium">{patternSelection.pattern}</span></div>}
+                          <div><span className="text-slate-600">Bead:</span> <span className="font-medium">{patternSelection.bead}</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-cyan-50 border-2 border-cyan-200 rounded-xl p-6">
+                      <h3 className="font-semibold text-cyan-900 mb-2">Contact Information</h3>
+                      <div className="text-sm text-cyan-800">
+                        <div className="font-medium">{contactInfo.fullName}</div>
+                        <div>{contactInfo.email}</div>
+                        {contactInfo.phone && <div>{contactInfo.phone}</div>}
+                      </div>
+                    </div>
+
+                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white py-6 text-lg">
+                      Submit for Quote
+                    </Button>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -213,23 +356,14 @@ export default function DesignCenter() {
 
               <Button
                 onClick={() => setCurrentStep(Math.min(7, currentStep + 1))}
-                disabled={currentStep === 1 && !selectedProduct}
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white gap-2"
+                disabled={!canProceed()}
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {currentStep === 7 ? 'Submit' : 'Continue'}
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
-          </div>
-
-          {/* Info Note */}
-          <div className="mt-8 flex items-start gap-3 bg-cyan-50 rounded-xl p-4">
-            <Info className="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-cyan-800">
-              <strong>Need help?</strong> Our design specialists are available to assist you with measurements, pattern selection, and custom specifications. 
-              <Link to={createPageUrl('Contact')} className="text-cyan-600 underline ml-1">Contact us</Link> or call 416.640.5590
             </div>
-          </div>
         </div>
       </section>
     </>
