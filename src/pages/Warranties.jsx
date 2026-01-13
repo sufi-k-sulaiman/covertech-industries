@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowRight, ArrowLeft, CheckCircle, Shield, FileText } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle, Shield, FileText, Download } from 'lucide-react';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
@@ -15,37 +15,39 @@ const productTypes = [
     name: 'Vinyl Liner',
     description: '25-Year Limited Warranty for In-Ground Vinyl Pool Liners',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/d2bbfec37_image.png',
-    warranty: '25 Years'
+    warranty: '25 Years',
+    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/25-Liner-warranty.pdf'
   },
   {
     id: 'safety-cover',
     name: 'Safety Cover',
     description: 'Premium Safety Cover Warranty Registration',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/3bbe8095b_image.png',
-    warranty: 'Up to 20 Years'
+    warranty: 'Up to 20 Years',
+    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/Safety-Warranty.pdf'
   },
   {
     id: 'solar-blanket',
     name: 'Solar Blanket',
     description: 'Solar Cover Warranty - 3 to 7 Years',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/08f9cb0ee_image.png',
-    warranty: '3-7 Years'
+    warranty: '3-7 Years',
+    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/Solar-Warranty-2019.pdf'
   },
   {
     id: 'winter-cover',
     name: 'Winter Cover',
     description: 'Winter Cover Warranty - 8 to 10 Years',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/442b73ecc_image.png',
-    warranty: '8-10 Years'
+    warranty: '8-10 Years',
+    pdfUrl: 'https://covertechind.com/wp-content/uploads/2019/12/Winter-Cover-Warranty-Covertech.pdf'
   }
 ];
 
 const steps = [
   { num: 1, label: 'Product Type' },
-  { num: 2, label: 'Contact Info' },
-  { num: 3, label: 'Product Details' },
-  { num: 4, label: 'Purchase Info' },
-  { num: 5, label: 'Review' }
+  { num: 2, label: 'Registration Details' },
+  { num: 3, label: 'Review & Submit' }
 ];
 
 export default function Warranties() {
@@ -83,9 +85,7 @@ export default function Warranties() {
   const canProceed = () => {
     switch (currentStep) {
       case 1: return formData.product_type !== '';
-      case 2: return formData.full_name && formData.email && formData.phone;
-      case 3: return true;
-      case 4: return formData.dealer_purchased_from && formData.purchase_date;
+      case 2: return formData.full_name && formData.email && formData.phone && formData.dealer_purchased_from && formData.purchase_date;
       default: return true;
     }
   };
@@ -176,7 +176,7 @@ export default function Warranties() {
         title="Register Your"
         titleAccent="Warranty"
         description="Protect your investment by registering your Covertech product warranty online"
-        backgroundImage="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?w=1920&q=80"
         minHeight="min-h-[50vh]"
       />
 
@@ -218,7 +218,7 @@ export default function Warranties() {
                 >
                   <div className="text-center mb-10">
                     <h2 className="text-3xl font-bold text-slate-900 mb-3">Select Your Product</h2>
-                    <p className="text-slate-600">Choose the product you want to register</p>
+                    <p className="text-slate-600">Choose the product you want to register and download warranty details</p>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
@@ -254,7 +254,17 @@ export default function Warranties() {
                             <span className="text-xs text-cyan-300 font-semibold">{product.warranty}</span>
                           </div>
                           <h3 className="text-xl font-bold text-white mb-1">{product.name}</h3>
-                          <p className="text-slate-300 text-sm line-clamp-2">{product.description}</p>
+                          <p className="text-slate-300 text-sm line-clamp-2 mb-3">{product.description}</p>
+                          <a 
+                            href={product.pdfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-2 text-xs text-cyan-300 hover:text-cyan-200 transition-colors"
+                          >
+                            <Download className="w-4 h-4" />
+                            Download Warranty PDF
+                          </a>
                         </div>
                       </motion.button>
                     ))}
@@ -262,7 +272,7 @@ export default function Warranties() {
                 </motion.div>
               )}
 
-              {/* Step 2: Contact Information */}
+              {/* Step 2: Registration Details */}
               {currentStep === 2 && (
                 <motion.div
                   key="step2"
@@ -271,384 +281,368 @@ export default function Warranties() {
                   exit={{ opacity: 0, x: -20 }}
                 >
                   <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-3">Contact Information</h2>
-                    <p className="text-slate-600">Enter your contact details</p>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-3">Registration Details</h2>
+                    <p className="text-slate-600">Complete all required information for your {productTypes.find(p => p.id === formData.product_type)?.name}</p>
                   </div>
 
                   <div className="space-y-6">
-                    <div>
-                      <Label htmlFor="full_name">Full Name *</Label>
-                      <Input
-                        id="full_name"
-                        value={formData.full_name}
-                        onChange={(e) => handleChange('full_name', e.target.value)}
-                        placeholder="John Doe"
-                        className="mt-1"
-                      />
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="email">Email *</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => handleChange('email', e.target.value)}
-                          placeholder="john@example.com"
-                          className="mt-1"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone">Phone *</Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => handleChange('phone', e.target.value)}
-                          placeholder="+1 (416) 555-0123"
-                          className="mt-1"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="country">Country</Label>
-                      <Select value={formData.country} onValueChange={(value) => handleChange('country', value)}>
-                        <SelectTrigger className="mt-1">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Canada">Canada</SelectItem>
-                          <SelectItem value="US">United States</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="street_address">Street Address</Label>
-                      <Input
-                        id="street_address"
-                        value={formData.street_address}
-                        onChange={(e) => handleChange('street_address', e.target.value)}
-                        placeholder="123 Main St"
-                        className="mt-1"
-                      />
-                    </div>
-
-                    <div className="grid sm:grid-cols-3 gap-4">
-                      <div>
-                        <Label htmlFor="city">City</Label>
-                        <Input
-                          id="city"
-                          value={formData.city}
-                          onChange={(e) => handleChange('city', e.target.value)}
-                          placeholder="Toronto"
-                          className="mt-1"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="state_province">State/Province</Label>
-                        <Input
-                          id="state_province"
-                          value={formData.state_province}
-                          onChange={(e) => handleChange('state_province', e.target.value)}
-                          placeholder="ON"
-                          className="mt-1"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="postal_code">Postal Code</Label>
-                        <Input
-                          id="postal_code"
-                          value={formData.postal_code}
-                          onChange={(e) => handleChange('postal_code', e.target.value)}
-                          placeholder="M9W 5V8"
-                          className="mt-1"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Step 3: Product Details */}
-              {currentStep === 3 && (
-                <motion.div
-                  key="step3"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-3">Product Details</h2>
-                    <p className="text-slate-600">Provide information about your {productTypes.find(p => p.id === formData.product_type)?.name}</p>
-                  </div>
-
-                  <div className="space-y-6">
-                    {formData.product_type === 'vinyl-liner' && (
-                      <>
+                    {/* Contact Information Section */}
+                    <div className="border-b border-slate-200 pb-6">
+                      <h3 className="font-semibold text-slate-900 mb-4">Contact Information</h3>
+                      <div className="space-y-4">
                         <div>
-                          <Label htmlFor="serial_number">Serial Number *</Label>
+                          <Label htmlFor="full_name">Full Name *</Label>
                           <Input
-                            id="serial_number"
-                            value={formData.serial_number}
-                            onChange={(e) => handleChange('serial_number', e.target.value)}
-                            placeholder="Starts with SO"
+                            id="full_name"
+                            value={formData.full_name}
+                            onChange={(e) => handleChange('full_name', e.target.value)}
+                            placeholder="John Doe"
                             className="mt-1"
                           />
-                          <p className="text-xs text-slate-500 mt-1">Found on the drawing, packing list, or outside box</p>
                         </div>
+
                         <div className="grid sm:grid-cols-2 gap-4">
                           <div>
-                            <Label htmlFor="pool_size">Pool Size</Label>
+                            <Label htmlFor="email">Email *</Label>
                             <Input
-                              id="pool_size"
-                              value={formData.pool_size}
-                              onChange={(e) => handleChange('pool_size', e.target.value)}
-                              placeholder="e.g., 20 x 40"
+                              id="email"
+                              type="email"
+                              value={formData.email}
+                              onChange={(e) => handleChange('email', e.target.value)}
+                              placeholder="john@example.com"
                               className="mt-1"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="pool_shape">Pool Shape</Label>
+                            <Label htmlFor="phone">Phone *</Label>
                             <Input
-                              id="pool_shape"
-                              value={formData.pool_shape}
-                              onChange={(e) => handleChange('pool_shape', e.target.value)}
-                              placeholder="Rectangle, Oval, etc."
+                              id="phone"
+                              type="tel"
+                              value={formData.phone}
+                              onChange={(e) => handleChange('phone', e.target.value)}
+                              placeholder="+1 (416) 555-0123"
                               className="mt-1"
                             />
                           </div>
                         </div>
+
                         <div>
-                          <Label htmlFor="installer_type">Installer Type</Label>
-                          <Select value={formData.installer_type} onValueChange={(value) => handleChange('installer_type', value)}>
+                          <Label htmlFor="country">Country</Label>
+                          <Select value={formData.country} onValueChange={(value) => handleChange('country', value)}>
                             <SelectTrigger className="mt-1">
-                              <SelectValue placeholder="Select installer type" />
+                              <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="consumer-install">Consumer Install</SelectItem>
-                              <SelectItem value="dealer-install">Dealer Install</SelectItem>
-                              <SelectItem value="other-party-install">Other Party Install</SelectItem>
+                              <SelectItem value="Canada">Canada</SelectItem>
+                              <SelectItem value="US">United States</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
+
                         <div>
-                          <Label htmlFor="installer_name">Installer Name</Label>
+                          <Label htmlFor="street_address">Street Address</Label>
                           <Input
-                            id="installer_name"
-                            value={formData.installer_name}
-                            onChange={(e) => handleChange('installer_name', e.target.value)}
+                            id="street_address"
+                            value={formData.street_address}
+                            onChange={(e) => handleChange('street_address', e.target.value)}
+                            placeholder="123 Main St"
                             className="mt-1"
                           />
                         </div>
-                      </>
-                    )}
 
-                    {formData.product_type === 'safety-cover' && (
-                      <>
-                        <div>
-                          <Label htmlFor="serial_number">Serial Number *</Label>
-                          <Input
-                            id="serial_number"
-                            value={formData.serial_number}
-                            onChange={(e) => handleChange('serial_number', e.target.value)}
-                            placeholder="Starts with SO"
-                            className="mt-1"
-                          />
-                        </div>
-                        <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="grid sm:grid-cols-3 gap-4">
                           <div>
-                            <Label htmlFor="cover_shape">Cover Shape</Label>
-                            <Select value={formData.cover_shape} onValueChange={(value) => handleChange('cover_shape', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select shape" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="rectangular">Rectangular</SelectItem>
-                                <SelectItem value="form-fit">Form Fit</SelectItem>
-                              </SelectContent>
-                            </Select>
+                            <Label htmlFor="city">City</Label>
+                            <Input
+                              id="city"
+                              value={formData.city}
+                              onChange={(e) => handleChange('city', e.target.value)}
+                              placeholder="Toronto"
+                              className="mt-1"
+                            />
                           </div>
                           <div>
-                            <Label htmlFor="cover_type">Cover Type</Label>
-                            <Select value={formData.cover_type} onValueChange={(value) => handleChange('cover_type', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select type" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="standard-mesh">Standard Mesh</SelectItem>
-                                <SelectItem value="deluxe-mesh">Deluxe Mesh</SelectItem>
-                                <SelectItem value="commercial-mesh">Commercial Mesh</SelectItem>
-                                <SelectItem value="supreme-solid">Supreme Solid</SelectItem>
-                                <SelectItem value="lightweight-solid">Lightweight Solid</SelectItem>
-                              </SelectContent>
-                            </Select>
+                            <Label htmlFor="state_province">State/Province</Label>
+                            <Input
+                              id="state_province"
+                              value={formData.state_province}
+                              onChange={(e) => handleChange('state_province', e.target.value)}
+                              placeholder="ON"
+                              className="mt-1"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="postal_code">Postal Code</Label>
+                            <Input
+                              id="postal_code"
+                              value={formData.postal_code}
+                              onChange={(e) => handleChange('postal_code', e.target.value)}
+                              placeholder="M9W 5V8"
+                              className="mt-1"
+                            />
                           </div>
                         </div>
-                      </>
-                    )}
+                      </div>
+                    </div>
 
-                    {formData.product_type === 'solar-blanket' && (
-                      <>
-                        <div className="grid sm:grid-cols-2 gap-4">
-                          <div>
-                            <Label htmlFor="pool_type">Pool Type</Label>
-                            <Select value={formData.pool_type} onValueChange={(value) => handleChange('pool_type', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select pool type" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="above-ground">Above-Ground</SelectItem>
-                                <SelectItem value="in-ground">In-Ground</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div>
-                            <Label htmlFor="cover_shape">Cover Shape</Label>
-                            <Select value={formData.cover_shape} onValueChange={(value) => handleChange('cover_shape', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select shape" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="round">Round</SelectItem>
-                                <SelectItem value="oval">Oval</SelectItem>
-                                <SelectItem value="rectangular">Rectangle</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                        </div>
-                        <div className="grid sm:grid-cols-2 gap-4">
-                          <div>
-                            <Label htmlFor="warranty_years">Warranty</Label>
-                            <Select value={formData.warranty_years} onValueChange={(value) => handleChange('warranty_years', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select warranty" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="3">3 Years</SelectItem>
-                                <SelectItem value="4">4 Years</SelectItem>
-                                <SelectItem value="5">5 Years</SelectItem>
-                                <SelectItem value="6">6 Years</SelectItem>
-                                <SelectItem value="7">7 Years</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div>
-                            <Label htmlFor="cover_type">Cover Type</Label>
-                            <Select value={formData.cover_type} onValueChange={(value) => handleChange('cover_type', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select type" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="blue">Blue</SelectItem>
-                                <SelectItem value="blue-black">Blue/Black</SelectItem>
-                                <SelectItem value="clear">Clear</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                        </div>
-                      </>
-                    )}
+                    {/* Product Details Section */}
+                    <div className="border-b border-slate-200 pb-6">
+                      <h3 className="font-semibold text-slate-900 mb-4">Product Details</h3>
+                      <div className="space-y-4">
+                        {formData.product_type === 'vinyl-liner' && (
+                          <>
+                            <div>
+                              <Label htmlFor="serial_number">Serial Number *</Label>
+                              <Input
+                                id="serial_number"
+                                value={formData.serial_number}
+                                onChange={(e) => handleChange('serial_number', e.target.value)}
+                                placeholder="Starts with SO"
+                                className="mt-1"
+                              />
+                              <p className="text-xs text-slate-500 mt-1">Found on the drawing, packing list, or outside box</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              <div>
+                                <Label htmlFor="pool_size">Pool Size</Label>
+                                <Input
+                                  id="pool_size"
+                                  value={formData.pool_size}
+                                  onChange={(e) => handleChange('pool_size', e.target.value)}
+                                  placeholder="e.g., 20 x 40"
+                                  className="mt-1"
+                                />
+                              </div>
+                              <div>
+                                <Label htmlFor="pool_shape">Pool Shape</Label>
+                                <Input
+                                  id="pool_shape"
+                                  value={formData.pool_shape}
+                                  onChange={(e) => handleChange('pool_shape', e.target.value)}
+                                  placeholder="Rectangle, Oval, etc."
+                                  className="mt-1"
+                                />
+                              </div>
+                            </div>
+                            <div>
+                              <Label htmlFor="installer_type">Installer Type</Label>
+                              <Select value={formData.installer_type} onValueChange={(value) => handleChange('installer_type', value)}>
+                                <SelectTrigger className="mt-1">
+                                  <SelectValue placeholder="Select installer type" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="consumer-install">Consumer Install</SelectItem>
+                                  <SelectItem value="dealer-install">Dealer Install</SelectItem>
+                                  <SelectItem value="other-party-install">Other Party Install</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div>
+                              <Label htmlFor="installer_name">Installer Name</Label>
+                              <Input
+                                id="installer_name"
+                                value={formData.installer_name}
+                                onChange={(e) => handleChange('installer_name', e.target.value)}
+                                className="mt-1"
+                              />
+                            </div>
+                          </>
+                        )}
 
-                    {formData.product_type === 'winter-cover' && (
-                      <>
-                        <div className="grid sm:grid-cols-2 gap-4">
-                          <div>
-                            <Label htmlFor="cover_shape">Cover Shape</Label>
-                            <Select value={formData.cover_shape} onValueChange={(value) => handleChange('cover_shape', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select shape" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="round">Round</SelectItem>
-                                <SelectItem value="oval">Oval</SelectItem>
-                                <SelectItem value="rectangular">Rectangle</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div>
-                            <Label htmlFor="warranty_years">Warranty</Label>
-                            <Select value={formData.warranty_years} onValueChange={(value) => handleChange('warranty_years', value)}>
-                              <SelectTrigger className="mt-1">
-                                <SelectValue placeholder="Select warranty" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="8">8 Years</SelectItem>
-                                <SelectItem value="10">10 Years</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </motion.div>
-              )}
+                        {formData.product_type === 'safety-cover' && (
+                          <>
+                            <div>
+                              <Label htmlFor="serial_number">Serial Number *</Label>
+                              <Input
+                                id="serial_number"
+                                value={formData.serial_number}
+                                onChange={(e) => handleChange('serial_number', e.target.value)}
+                                placeholder="Starts with SO"
+                                className="mt-1"
+                              />
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              <div>
+                                <Label htmlFor="cover_shape">Cover Shape</Label>
+                                <Select value={formData.cover_shape} onValueChange={(value) => handleChange('cover_shape', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select shape" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="rectangular">Rectangular</SelectItem>
+                                    <SelectItem value="form-fit">Form Fit</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                              <div>
+                                <Label htmlFor="cover_type">Cover Type</Label>
+                                <Select value={formData.cover_type} onValueChange={(value) => handleChange('cover_type', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select type" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="standard-mesh">Standard Mesh</SelectItem>
+                                    <SelectItem value="deluxe-mesh">Deluxe Mesh</SelectItem>
+                                    <SelectItem value="commercial-mesh">Commercial Mesh</SelectItem>
+                                    <SelectItem value="supreme-solid">Supreme Solid</SelectItem>
+                                    <SelectItem value="lightweight-solid">Lightweight Solid</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                          </>
+                        )}
 
-              {/* Step 4: Purchase Information */}
-              {currentStep === 4 && (
-                <motion.div
-                  key="step4"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-3">Purchase Information</h2>
-                    <p className="text-slate-600">Provide details about your purchase</p>
-                  </div>
+                        {formData.product_type === 'solar-blanket' && (
+                          <>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              <div>
+                                <Label htmlFor="pool_type">Pool Type</Label>
+                                <Select value={formData.pool_type} onValueChange={(value) => handleChange('pool_type', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select pool type" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="above-ground">Above-Ground</SelectItem>
+                                    <SelectItem value="in-ground">In-Ground</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                              <div>
+                                <Label htmlFor="cover_shape">Cover Shape</Label>
+                                <Select value={formData.cover_shape} onValueChange={(value) => handleChange('cover_shape', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select shape" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="round">Round</SelectItem>
+                                    <SelectItem value="oval">Oval</SelectItem>
+                                    <SelectItem value="rectangular">Rectangle</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              <div>
+                                <Label htmlFor="warranty_years">Warranty</Label>
+                                <Select value={formData.warranty_years} onValueChange={(value) => handleChange('warranty_years', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select warranty" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="3">3 Years</SelectItem>
+                                    <SelectItem value="4">4 Years</SelectItem>
+                                    <SelectItem value="5">5 Years</SelectItem>
+                                    <SelectItem value="6">6 Years</SelectItem>
+                                    <SelectItem value="7">7 Years</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                              <div>
+                                <Label htmlFor="cover_type">Cover Type</Label>
+                                <Select value={formData.cover_type} onValueChange={(value) => handleChange('cover_type', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select type" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="blue">Blue</SelectItem>
+                                    <SelectItem value="blue-black">Blue/Black</SelectItem>
+                                    <SelectItem value="clear">Clear</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                          </>
+                        )}
 
-                  <div className="space-y-6">
+                        {formData.product_type === 'winter-cover' && (
+                          <>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              <div>
+                                <Label htmlFor="cover_shape">Cover Shape</Label>
+                                <Select value={formData.cover_shape} onValueChange={(value) => handleChange('cover_shape', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select shape" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="round">Round</SelectItem>
+                                    <SelectItem value="oval">Oval</SelectItem>
+                                    <SelectItem value="rectangular">Rectangle</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                              <div>
+                                <Label htmlFor="warranty_years">Warranty</Label>
+                                <Select value={formData.warranty_years} onValueChange={(value) => handleChange('warranty_years', value)}>
+                                  <SelectTrigger className="mt-1">
+                                    <SelectValue placeholder="Select warranty" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="8">8 Years</SelectItem>
+                                    <SelectItem value="10">10 Years</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Purchase Information Section */}
                     <div>
-                      <Label htmlFor="dealer_purchased_from">Dealer Purchased From *</Label>
-                      <Input
-                        id="dealer_purchased_from"
-                        value={formData.dealer_purchased_from}
-                        onChange={(e) => handleChange('dealer_purchased_from', e.target.value)}
-                        placeholder="Dealer name or location"
-                        className="mt-1"
-                      />
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="purchase_date">Purchase Date *</Label>
-                        <Input
-                          id="purchase_date"
-                          type="date"
-                          value={formData.purchase_date}
-                          onChange={(e) => handleChange('purchase_date', e.target.value)}
-                          className="mt-1"
-                        />
-                      </div>
-                      {(formData.product_type === 'vinyl-liner' || formData.product_type === 'safety-cover') && (
+                      <h3 className="font-semibold text-slate-900 mb-4">Purchase Information</h3>
+                      <div className="space-y-4">
                         <div>
-                          <Label htmlFor="installation_date">Installation Date</Label>
+                          <Label htmlFor="dealer_purchased_from">Dealer Purchased From *</Label>
                           <Input
-                            id="installation_date"
-                            type="date"
-                            value={formData.installation_date}
-                            onChange={(e) => handleChange('installation_date', e.target.value)}
+                            id="dealer_purchased_from"
+                            value={formData.dealer_purchased_from}
+                            onChange={(e) => handleChange('dealer_purchased_from', e.target.value)}
+                            placeholder="Dealer name or location"
                             className="mt-1"
                           />
                         </div>
-                      )}
-                    </div>
 
-                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                      <div className="text-sm text-amber-800">
-                        <strong>Important:</strong> Warranty registration must be completed within 30 days of installation to be valid. 
-                        Keep your proof of purchase and serial number for your records.
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="purchase_date">Purchase Date *</Label>
+                            <Input
+                              id="purchase_date"
+                              type="date"
+                              value={formData.purchase_date}
+                              onChange={(e) => handleChange('purchase_date', e.target.value)}
+                              className="mt-1"
+                            />
+                          </div>
+                          {(formData.product_type === 'vinyl-liner' || formData.product_type === 'safety-cover') && (
+                            <div>
+                              <Label htmlFor="installation_date">Installation Date</Label>
+                              <Input
+                                id="installation_date"
+                                type="date"
+                                value={formData.installation_date}
+                                onChange={(e) => handleChange('installation_date', e.target.value)}
+                                className="mt-1"
+                              />
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                          <div className="text-sm text-amber-800">
+                            <strong>Important:</strong> Warranty registration must be completed within 30 days of installation to be valid. 
+                            Keep your proof of purchase and serial number for your records.
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </motion.div>
               )}
 
-              {/* Step 5: Review */}
-              {currentStep === 5 && (
+              {/* Step 3: Review */}
+              {currentStep === 3 && (
                 <motion.div
                   key="step5"
                   initial={{ opacity: 0, x: 20 }}
@@ -711,7 +705,7 @@ export default function Warranties() {
                 Back
               </Button>
 
-              {currentStep < 5 ? (
+              {currentStep < 3 ? (
                 <Button
                   onClick={() => setCurrentStep(currentStep + 1)}
                   disabled={!canProceed()}
