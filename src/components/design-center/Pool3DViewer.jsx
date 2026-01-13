@@ -192,20 +192,12 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   // Create pool shell with sloped floor
   const group = new THREE.Group();
   
-  // Create sloped floor
-  const floorGeometry = new THREE.PlaneGeometry(length, width, 50, 50);
-  const positions = floorGeometry.attributes.position;
-  
-  for (let i = 0; i < positions.count; i++) {
-    const y = positions.getY(i);
-    const normalized = (y + width / 2) / width;
-    const depth = shallowDepth + (deepDepth - shallowDepth) * normalized;
-    positions.setZ(i, -depth);
-  }
-  positions.needsUpdate = true;
-  floorGeometry.computeVertexNormals();
-  
+  // Create flat floor at average depth
+  const avgDepth = (shallowDepth + deepDepth) / 2;
+  const floorGeometry = new THREE.PlaneGeometry(length, width);
   const floor = new THREE.Mesh(floorGeometry, linerMaterial);
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.y = -avgDepth;
   floor.receiveShadow = true;
   group.add(floor);
 
@@ -227,25 +219,12 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
 
   // Create water volume based on water level percentage
   const waterLevelPercent = waterLevel / 100;
+  const avgDepth = (shallowDepth + deepDepth) / 2;
+  const waterDepth = avgDepth * waterLevelPercent;
   
-  // Create water geometry with slope
+  // Create flat water geometry
   const waterGeometry = new THREE.PlaneGeometry(length, width, 50, 50);
   const waterPositions = waterGeometry.attributes.position;
-  
-  for (let i = 0; i < waterPositions.count; i++) {
-    const y = waterPositions.getY(i);
-    const normalized = (y + width / 2) / width;
-    
-    // Calculate floor depth at this point
-    const floorDepth = shallowDepth + (deepDepth - shallowDepth) * normalized;
-    
-    // Water fills from bottom up based on percentage
-    const waterDepth = floorDepth * waterLevelPercent;
-    
-    waterPositions.setZ(i, -waterDepth);
-  }
-  waterPositions.needsUpdate = true;
-  waterGeometry.computeVertexNormals();
   
   const waterMaterial = new THREE.MeshPhysicalMaterial({
     color: 0x0ea5e9,
@@ -263,6 +242,8 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   });
   
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
+  water.rotation.x = -Math.PI / 2;
+  water.position.y = -waterDepth;
   water.receiveShadow = true;
   water.castShadow = true;
   
