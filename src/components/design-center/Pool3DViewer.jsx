@@ -31,6 +31,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
     camera.position.set(8, 10, 8);
     camera.lookAt(0, 0, 0);
+    cameraRef.current = camera;
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true });
