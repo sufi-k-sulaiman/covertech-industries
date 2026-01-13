@@ -101,7 +101,7 @@ export default function Layout({ children, currentPageName }) {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl py-2 mt-2 border border-slate-100"
+                      className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl py-2 mt-1 border border-slate-100"
                     >
                       {item.submenu.map((subItem) => (
                         <Link
