@@ -7,6 +7,7 @@ import {
   MessageSquare, Palette, ChevronLeft, ChevronRight,
   Droplets, Thermometer, Snowflake, Wrench, AlertTriangle, Download, FileText, Image
 } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SEOHead, { createProductSchema, createBreadcrumbSchema } from '@/components/seo/SEOHead';
