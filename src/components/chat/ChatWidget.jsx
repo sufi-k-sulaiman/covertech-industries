@@ -46,7 +46,7 @@ export default function ChatWidget() {
 
   const initConversation = async () => {
    try {
-     const response = await base44.functions.invoke('createPublicConversation');
+     const response = await base44.functions.invoke('createPublicConversation', { sessionId });
      setConversation(response.data);
      setMessages(response.data.messages || []);
    } catch (error) {
