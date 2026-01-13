@@ -6,6 +6,15 @@ import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
+const colorMap = {
+  'cyan-500': '#06b6d4',
+  'blue-500': '#3b82f6',
+  'blue-600': '#2563eb',
+  'blue-700': '#1d4ed8',
+  'blue-800': '#1e40af',
+  'blue-900': '#1e3a8a'
+};
+
 const downloads = [
   {
     category: "Warranty Documents",
