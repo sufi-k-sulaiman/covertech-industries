@@ -20,6 +20,41 @@ const productsData = {
     description: "Premium AquaShimmer collection featuring Harmony Gold HDE, Carnival, Esagono & Butterfly patterns. Custom designed and fabricated incorporating proprietary sealing technology. Manufactured with attached vinyl over steps, benches, and sundecks.",
     fullDescription: "Experience unmatched quality with our In-Ground Liners. Engineered with precision and crafted from premium materials, this product delivers exceptional performance and durability that pool owners have trusted for over 35 years. Our commitment to excellence means every liner undergoes rigorous quality testing and meets the highest industry standards.",
     warranty: 25,
+    warrantyDetails: {
+      title: "25 Year Limited Warranty - Acu-Fit™ In-Ground Vinyl Swimming Pool Liner",
+      type: "Non-transferable Limited Warranty for Diving and Non-Diving Pools",
+      coverage: "Subject to the disclaimers, limitations and conditions below, COVERTECH INDUSTRIES LIMITED warrants that its Acu-Fit pool liner will not leak due to workmanship that causes seam seal de-lamination for up to 25 years from the date of original purchase. COVERTECH'S obligation is limited to replace or repair (at our option) any liner found defective in workmanship within the warranty period.",
+      notCovered: "This Limited Warranty does not include or cover, and specifically excludes, any costs, damages or expenses associated with the repair or replacement of the defective product, or damage to or loss of use of any water, chemicals, products, pool, building component or other property.",
+      exclusions: [
+        "If the product has not been installed, used or maintained in accordance with COVERTECH'S written instructions and limitations, including any damage caused by improper winterizing procedures.",
+        "Use of the liner in any condition other than a residential inground, outdoor swimming pool",
+        "Fire, insects, floods, animals, mishandling, chemicals, poor water chemistry, chemical damage due to concentrations under an automatic cover, chemical damage due to salt water systems, chemical stains, shrinkage due to removal of pool water, abrasion due to automatic or manual pool cleaning, ice damage, and microbiological staining",
+        "Natural disasters, including floods, lightning, hail, earthquakes, gales, hurricanes, or excessive high winds",
+        "Structural movement, settlement, deflection, failure or movement of any pool or supporting material",
+        "Tears, punctures, scuff-off prints, discoloration, ground water damage, shipping damage, improper handling, improper installation, or any acts of negligence, abuse, misuse or vandalism",
+        "Lack of proper or adequate design, engineering or construction of the pool, building or pool system"
+      ],
+      conditions: [
+        "Register online at www.covertechind.com or fill in the liner Warranty Registration Card completely, sign and mail within thirty (30) days of installation.",
+        "Apply the Danger No Diving Decals per the instructions provided.",
+        "Ensure the liner is not exposed to extreme heat or cold, chemical abuse or improper chemical maintenance. The installed temperature should be a minimum of 16°C or 60°F.",
+        "Do NOT use floating chemical dispensers and do NOT allow un-dissolved chemicals to settle on the liner. Ensure the pool is circulating during chemical dissolution. Have water tested by a professional on regular intervals."
+      ],
+      proratedSchedule: [
+        { years: "Up to 5 years", reduction: "No Charge or Reduction" },
+        { years: "6th through 7th", reduction: "33% of Retail List Price" },
+        { years: "8th through 12th", reduction: "70% of Retail List Price" },
+        { years: "13th through 19th", reduction: "80% of Retail List Price" },
+        { years: "20th through 25th", reduction: "90% of Retail List Price" }
+      ],
+      nonTransferable: "The warranty is issued to the original consumer only and no other person or party may make a claim against this warranty. All warranty claims must be made directly with the manufacturer.",
+      contact: {
+        address: "26 Dansk Court, Toronto, Ontario M9W 5V8",
+        phone: "(416) 640-5590",
+        fax: "(416) 642-0686",
+        email: "info@covertechind.com"
+      }
+    },
     images: [
       "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?w=800&q=80",
       "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80",
