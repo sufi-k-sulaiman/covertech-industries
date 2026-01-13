@@ -131,7 +131,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     <div 
       ref={containerRef} 
       className="w-full h-full rounded-xl overflow-hidden"
-      style={{ minHeight: '400px' }}
+      style={{ minHeight: '600px' }}
     />
   );
 }
@@ -232,10 +232,6 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   const waterLevelPercent = waterLevel / 100;
   const waterDepth = avgDepth * waterLevelPercent;
   
-  // Create flat water geometry
-  const waterGeometry = new THREE.PlaneGeometry(length, width, 50, 50);
-  const waterPositions = waterGeometry.attributes.position;
-  
   const waterMaterial = new THREE.MeshPhysicalMaterial({
     color: 0x0d7c8f,
     transparent: true,
@@ -251,11 +247,16 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
     ior: 1.33,
   });
   
-  // Create water as a box volume instead of just a plane
-  const waterHeight = waterDepth;
-  const waterBoxGeometry = new THREE.BoxGeometry(length * 0.98, waterHeight, width * 0.98);
-  const water = new THREE.Mesh(waterBoxGeometry, waterMaterial);
-  water.position.y = -waterDepth / 2 - 0.05;
+  // Create water as extruded shape that matches the pool shape
+  const waterExtrudeSettings = {
+    depth: waterDepth,
+    bevelEnabled: false,
+  };
+  
+  const waterGeometry = new THREE.ExtrudeGeometry(poolShape, waterExtrudeSettings);
+  const water = new THREE.Mesh(waterGeometry, waterMaterial);
+  water.rotation.x = -Math.PI / 2;
+  water.position.y = -waterDepth;
   water.receiveShadow = true;
   water.castShadow = true;
   
