@@ -1,23 +1,97 @@
 import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 const testimonials = [
   {
     name: "Stan Abramowitz",
-    role: "Homeowner",
-    quote: "We recently purchased a new pool liner manufactured by Covertech Industries Limited. The entire installation experience from beginning to end was flawless. The quality exceeded our expectations.",
+    quote: "We recently purchased a new pool liner manufactured by Covertech Industries Limited. The entire installation experience from beginning to end was flawless.",
     rating: 5
   },
   {
-    name: "Michael Chen",
-    role: "Pool Contractor",
-    quote: "As a pool contractor for 15 years, I've worked with many manufacturers. Covertech's consistency in quality and their dealer support is unmatched in the industry.",
+    name: "Andrew Giveandgo",
+    quote: "I purchased a solar blanket with a 6-year warranty from the pool company. Great overall experience with Covertech.",
+    rating: 4
+  },
+  {
+    name: "Ned Mandaric",
+    quote: "Had Covertech make a new cover for my pool. I brought in my old cover and they used it as a template. Cover fits perfectly and saved me about $1000.",
     rating: 5
   },
   {
-    name: "Sarah Williams",
-    role: "Golf Course Superintendent",
-    quote: "The Green Shield covers have saved our greens countless times. Investment paid for itself in the first winter. Outstanding product and customer service.",
+    name: "Andrew Spinner",
+    quote: "We purchased our pool safety cover through Covertech and it's been a great upgrade! Product and service are both A+",
+    rating: 5
+  },
+  {
+    name: "Tom Esser",
+    quote: "I use Covertech because I want to sell a quality liner not made out of Chinese material. They only source from the largest vinyl factory.",
+    rating: 5
+  },
+  {
+    name: "Jasmine Rocheleau",
+    quote: "I work for a pool company and always choose to give our business to Covertech. All staff are great to deal with, and they stand by their products.",
+    rating: 5
+  },
+  {
+    name: "Tina Booth",
+    quote: "We are a swimming pool dealer that uses Covertech's products for the last 6 years. It's been a pleasure dealing with them over these years.",
+    rating: 5
+  },
+  {
+    name: "Cathy Cully",
+    quote: "On my second Covertech pool cover. The first lasted 15 years. The new one was ready within weeks. Covertech is easy to work with and very responsive.",
+    rating: 5
+  },
+  {
+    name: "Massimo Testani",
+    quote: "Very quality product with excellent durability. The attention to detail is evident in every aspect of the cover.",
+    rating: 5
+  },
+  {
+    name: "M Marsala",
+    quote: "Covertech came through for us in the best way possible! Staff was extremely helpful. Amazing products, service and staff.",
+    rating: 5
+  },
+  {
+    name: "Andrew Schneider",
+    quote: "My last 6 year cover lasted exactly that. 6 years. Like any piece of equipment you need to treat it properly. Great price and excellent quality.",
+    rating: 5
+  },
+  {
+    name: "Noel Manlapaz",
+    quote: "Excellent company and dealing with all the employees makes things very easy!!!",
+    rating: 5
+  },
+  {
+    name: "Chris Mckechnie",
+    quote: "Covertech has always done right by me and my customers. I have been installing covers and liners for 16 years. Quality tough made products.",
+    rating: 5
+  },
+  {
+    name: "Alex",
+    quote: "Covertech has been a great supplier to us for many years. The covers are made well and our clients are very happy with their products.",
+    rating: 5
+  },
+  {
+    name: "Mike Collins",
+    quote: "Fast, efficient warranty replacement on solar blanket. Very friendly contact with the crew. Great experience.",
+    rating: 5
+  },
+  {
+    name: "Teresa LaFave",
+    quote: "Great service from this company. Very quick responses both on the phone and via email. Product delivered as requested in good order.",
+    rating: 5
+  },
+  {
+    name: "Wayne McDonell",
+    quote: "Good service and the custom ordered cover fit the existing anchors in the coping very well.",
+    rating: 5
+  },
+  {
+    name: "Margie Zimmo",
+    quote: "Very knowledgeable, great experience!!!",
     rating: 5
   }
 ];
