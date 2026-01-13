@@ -6,6 +6,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const rendererRef = useRef(null);
+  const waterRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -74,7 +75,8 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     const waterLevel = parseFloat(dimensions.waterLevel) || 90;
 
     // Create pool based on shape
-    createPoolShape(scene, shape || 'rectangle', poolLength, poolWidth, shallowDepth, deepDepth, waterLevel);
+    const water = createPoolShape(scene, shape || 'rectangle', poolLength, poolWidth, shallowDepth, deepDepth, waterLevel);
+    waterRef.current = water;
 
     // Grid helper (ground)
     const gridHelper = new THREE.GridHelper(30, 30, 0x333344, 0x222233);
@@ -86,6 +88,24 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     const animate = () => {
       animationId = requestAnimationFrame(animate);
       controls.update();
+      
+      // Animate water ripples
+      if (waterRef.current) {
+        const time = Date.now() * 0.001;
+        const positions = waterRef.current.geometry.attributes.position;
+        const originalPositions = waterRef.current.userData.originalPositions;
+        
+        if (originalPositions) {
+          for (let i = 0; i < positions.count; i++) {
+            const x = positions.getX(i);
+            const y = positions.getY(i);
+            const wave = Math.sin(x * 0.5 + time) * 0.02 + Math.cos(y * 0.5 + time * 0.7) * 0.02;
+            positions.setZ(i, originalPositions[i] + wave);
+          }
+          positions.needsUpdate = true;
+        }
+      }
+      
       renderer.render(scene, camera);
     };
     animate();
@@ -228,21 +248,33 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   waterGeometry.computeVertexNormals();
   
   const waterMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x2563eb,
+    color: 0x0ea5e9,
     transparent: true,
-    opacity: 0.8,
-    metalness: 0.2,
-    roughness: 0.1,
-    transmission: 0.5,
-    thickness: 0.8,
+    opacity: 0.7,
+    metalness: 0.1,
+    roughness: 0.05,
+    transmission: 0.6,
+    thickness: 1,
     clearcoat: 1,
-    clearcoatRoughness: 0.05,
-    envMapIntensity: 1.2,
+    clearcoatRoughness: 0.03,
+    envMapIntensity: 1.5,
+    reflectivity: 1,
+    ior: 1.33,
   });
   
   const water = new THREE.Mesh(waterGeometry, waterMaterial);
   water.receiveShadow = true;
+  water.castShadow = true;
+  
+  // Store original positions for animation
+  water.userData.originalPositions = [];
+  for (let i = 0; i < waterPositions.count; i++) {
+    water.userData.originalPositions.push(waterPositions.getZ(i));
+  }
+  
   scene.add(water);
+  
+  return water;
 
   // Add dimension lines
   addDimensionLines(scene, shape, length, width, maxDepth);
