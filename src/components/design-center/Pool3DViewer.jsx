@@ -464,48 +464,69 @@ function createFreeformPool(length, width) {
 }
 
 function addDimensionLines(scene, length, width, poolDepth, waterDepth, shallowDepth, deepDepth) {
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x64748b, linewidth: 2 });
-  const dashedMaterial = new THREE.LineDashedMaterial({ 
-    color: 0x0ea5e9, 
-    linewidth: 2,
-    dashSize: 0.2,
-    gapSize: 0.1,
-  });
+  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x94a3b8, linewidth: 2 });
+  const highlightMaterial = new THREE.LineBasicMaterial({ color: 0x0ea5e9, linewidth: 3 });
   
-  // Depth indicator line (right side)
-  const depthPoints = [
-    new THREE.Vector3(length / 2 + 0.8, 0, 0),
-    new THREE.Vector3(length / 2 + 0.8, -poolDepth, 0),
+  // Vertical depth line on the right side
+  const depthLineOffset = length / 2 + 1.5;
+  const verticalPoints = [
+    new THREE.Vector3(depthLineOffset, 0, 0),
+    new THREE.Vector3(depthLineOffset, -poolDepth, 0),
   ];
-  const depthGeometry = new THREE.BufferGeometry().setFromPoints(depthPoints);
-  const depthLine = new THREE.Line(depthGeometry, lineMaterial);
-  scene.add(depthLine);
+  const verticalGeometry = new THREE.BufferGeometry().setFromPoints(verticalPoints);
+  const verticalLine = new THREE.Line(verticalGeometry, highlightMaterial);
+  scene.add(verticalLine);
   
-  // Water level indicator line
+  // Top and bottom ticks
+  const tickLength = 0.3;
+  addHorizontalTick(scene, depthLineOffset, 0, 0, tickLength, highlightMaterial);
+  addHorizontalTick(scene, depthLineOffset, -poolDepth, 0, tickLength, highlightMaterial);
+  
+  // Water level indicator
   const actualWaterLevel = -poolDepth + waterDepth;
-  const waterLevelPoints = [
-    new THREE.Vector3(length / 2 + 0.8, actualWaterLevel, -width / 2 * 0.3),
-    new THREE.Vector3(length / 2 + 0.8, actualWaterLevel, width / 2 * 0.3),
+  addHorizontalTick(scene, depthLineOffset, actualWaterLevel, 0, tickLength, lineMaterial);
+  
+  // Dimension labels positioned on the pool
+  // Depth label (shallow end)
+  addTextLabel(scene, `${shallowDepth.toFixed(1)}ft`, depthLineOffset + 0.8, -shallowDepth / 2, 0, 0x475569);
+  
+  // Total depth label
+  addTextLabel(scene, `${deepDepth.toFixed(1)}ft`, depthLineOffset + 0.8, -deepDepth + 0.5, 0, 0x475569);
+  
+  // Water level label
+  if (waterDepth < poolDepth) {
+    addTextLabel(scene, `${waterDepth.toFixed(1)}ft`, depthLineOffset + 0.8, actualWaterLevel, 0, 0x0ea5e9, 0.7);
+  }
+  
+  // Length dimension at the back
+  const lengthY = 0.4;
+  const lengthZ = -width / 2 - 1.2;
+  const lengthPoints = [
+    new THREE.Vector3(-length / 2, lengthY, lengthZ),
+    new THREE.Vector3(length / 2, lengthY, lengthZ),
   ];
-  const waterLevelGeometry = new THREE.BufferGeometry().setFromPoints(waterLevelPoints);
-  const waterLevelLine = new THREE.Line(waterLevelGeometry, dashedMaterial);
-  waterLevelLine.computeLineDistances();
-  scene.add(waterLevelLine);
+  const lengthGeometry = new THREE.BufferGeometry().setFromPoints(lengthPoints);
+  const lengthLine = new THREE.Line(lengthGeometry, lineMaterial);
+  scene.add(lengthLine);
   
-  // Small ticks for depth markers
-  const topTick = createTick(length / 2 + 0.7, 0, 0);
-  const bottomTick = createTick(length / 2 + 0.7, -poolDepth, 0);
-  const waterTick = createTick(length / 2 + 0.7, actualWaterLevel, 0);
-  scene.add(topTick, bottomTick, waterTick);
+  addVerticalTick(scene, -length / 2, lengthY, lengthZ, 0.2, lineMaterial);
+  addVerticalTick(scene, length / 2, lengthY, lengthZ, 0.2, lineMaterial);
+  addTextLabel(scene, `${length.toFixed(1)}ft`, 0, lengthY + 0.5, lengthZ, 0x64748b);
   
-  // Add text labels for dimensions
-  addTextLabel(scene, `${shallowDepth.toFixed(1)}ft`, length / 2 + 1.5, -shallowDepth / 2, 0);
-  addTextLabel(scene, `${deepDepth.toFixed(1)}ft`, length / 2 + 1.5, -deepDepth, 0);
-  addTextLabel(scene, 'Water Level', 0, actualWaterLevel + 0.3, 0);
+  // Width dimension on the right side
+  const widthX = length / 2 + 1.2;
+  const widthY = 0.4;
+  const widthPoints = [
+    new THREE.Vector3(widthX, widthY, -width / 2),
+    new THREE.Vector3(widthX, widthY, width / 2),
+  ];
+  const widthGeometry = new THREE.BufferGeometry().setFromPoints(widthPoints);
+  const widthLine = new THREE.Line(widthGeometry, lineMaterial);
+  scene.add(widthLine);
   
-  // Length and width labels
-  addTextLabel(scene, `${length.toFixed(1)}ft`, 0, 0.5, -width / 2 - 1);
-  addTextLabel(scene, `${width.toFixed(1)}ft`, length / 2 + 1, 0.5, 0);
+  addVerticalTick(scene, widthX, widthY, -width / 2, 0.2, lineMaterial);
+  addVerticalTick(scene, widthX, widthY, width / 2, 0.2, lineMaterial);
+  addTextLabel(scene, `${width.toFixed(1)}ft`, widthX, widthY + 0.5, 0, 0x64748b);
 }
 
 function addTextLabel(scene, text, x, y, z) {
