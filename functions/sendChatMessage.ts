@@ -1,15 +1,16 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
 
 Deno.serve(async (req) => {
+  const base44 = createClientFromRequest(req);
+  
   try {
-    const base44 = createClientFromRequest(req);
     const { conversationId, message } = await req.json();
 
     if (!conversationId || !message) {
       return Response.json({ error: 'Missing conversationId or message' }, { status: 400 });
     }
 
-    // Add message to conversation using service role
+    // Add message to conversation using service role (no auth required for public chat)
     await base44.asServiceRole.agents.addMessage(conversationId, {
       role: 'user',
       content: message
