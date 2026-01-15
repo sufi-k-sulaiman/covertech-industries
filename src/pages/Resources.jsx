@@ -313,7 +313,7 @@ export default function Resources() {
               </Button>
             </Link>
             <Link to={createPageUrl('Products')}>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8">
+              <Button size="lg" variant="outline" className="border-white/30 text-cyan-500 hover:bg-white/10 px-8">
                 View All Products
               </Button>
             </Link>
