@@ -529,24 +529,48 @@ function addDimensionLines(scene, length, width, poolDepth, waterDepth, shallowD
   addTextLabel(scene, `${width.toFixed(1)}ft`, widthX, widthY + 0.5, 0, 0x64748b);
 }
 
-function addTextLabel(scene, text, x, y, z) {
+function addTextLabel(scene, text, x, y, z, color = 0x1e293b, scale = 1) {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
   canvas.width = 512;
   canvas.height = 128;
   
-  context.fillStyle = '#1e293b';
+  // Convert hex color to CSS format
+  const cssColor = '#' + color.toString(16).padStart(6, '0');
+  
+  context.fillStyle = cssColor;
   context.font = 'bold 64px Arial';
   context.textAlign = 'center';
   context.textBaseline = 'middle';
   context.fillText(text, 256, 64);
   
   const texture = new THREE.CanvasTexture(canvas);
-  const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+  const spriteMaterial = new THREE.SpriteMaterial({ map: texture, depthTest: false });
   const sprite = new THREE.Sprite(spriteMaterial);
   sprite.position.set(x, y, z);
-  sprite.scale.set(2, 0.5, 1);
+  sprite.scale.set(2 * scale, 0.5 * scale, 1);
+  sprite.renderOrder = 999;
   scene.add(sprite);
+}
+
+function addHorizontalTick(scene, x, y, z, length, material) {
+  const tickPoints = [
+    new THREE.Vector3(x - length / 2, y, z),
+    new THREE.Vector3(x + length / 2, y, z),
+  ];
+  const tickGeometry = new THREE.BufferGeometry().setFromPoints(tickPoints);
+  const tick = new THREE.Line(tickGeometry, material);
+  scene.add(tick);
+}
+
+function addVerticalTick(scene, x, y, z, length, material) {
+  const tickPoints = [
+    new THREE.Vector3(x, y - length / 2, z),
+    new THREE.Vector3(x, y + length / 2, z),
+  ];
+  const tickGeometry = new THREE.BufferGeometry().setFromPoints(tickPoints);
+  const tick = new THREE.Line(tickGeometry, material);
+  scene.add(tick);
 }
 
 function createTick(x, y, z) {
