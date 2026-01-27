@@ -17,7 +17,7 @@ const productsData = {
     name: "In-Ground Pool Liners",
     category: "Pool Liners",
     tagline: "Premium AquaShimmer vinyl liners with custom patterns",
-    description: "Premium AquaShimmer collection featuring Harmony Gold HDE, Carnival, Esagono & Butterfly patterns. Custom designed and fabricated incorporating proprietary sealing technology. Manufactured with attached vinyl over steps, benches, and sundecks.",
+    description: "Premium 30 Mil liners with AquaShimmer effect patterns. Custom designed and fabricated incorporating proprietary sealing technology. Manufactured with attached vinyl over-steps, benches,and sundecks.",
     fullDescription: "Experience unmatched quality with our In-Ground Liners. Engineered with precision and crafted from premium materials, this product delivers exceptional performance and durability that pool owners have trusted for over 35 years. Our commitment to excellence means every liner undergoes rigorous quality testing and meets the highest industry standards.",
     warranty: 25,
     warrantyDetails: {
