@@ -932,30 +932,60 @@ export default function ProductDetails() {
       {product.patterns && (
         <section className="py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">2026 Available Patterns</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {product.patterns.map((pattern) => (
-                <motion.div
-                  key={pattern.name}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
-                >
-                  <div className="aspect-square overflow-hidden relative">
-                    <img
-                      src={pattern.image}
-                      alt={pattern.name}
-                      className="w-full h-full object-cover group-hover:scale-[4] transition-transform duration-700 cursor-zoom-in"
-                      style={{ transformOrigin: 'center center' }}
-                    />
-                  </div>
-                  <div className="p-3 text-center">
-                    <p className="font-medium text-slate-900 text-sm">{pattern.name}</p>
-                    <p className="text-xs text-slate-500">{pattern.collection}</p>
-                  </div>
-                </motion.div>
-              ))}
+            {/* Platinum Plus Patterns */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">2026 Platinum Plus Patterns</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {product.patterns.filter(p => p.tier === 'platinum-plus').map((pattern) => (
+                  <motion.div
+                    key={pattern.name}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden relative">
+                      <img
+                        src={pattern.image}
+                        alt={pattern.name}
+                        className="w-full h-full object-cover group-hover:scale-[4] transition-transform duration-700 cursor-zoom-in"
+                        style={{ transformOrigin: 'center center' }}
+                      />
+                    </div>
+                    <div className="p-3 text-center">
+                      <p className="font-medium text-slate-900 text-sm">{pattern.name}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Platinum Patterns */}
+            <div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">2026 Platinum Patterns</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {product.patterns.filter(p => p.tier === 'platinum').map((pattern) => (
+                  <motion.div
+                    key={pattern.name}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden relative">
+                      <img
+                        src={pattern.image}
+                        alt={pattern.name}
+                        className="w-full h-full object-cover group-hover:scale-[4] transition-transform duration-700 cursor-zoom-in"
+                        style={{ transformOrigin: 'center center' }}
+                      />
+                    </div>
+                    <div className="p-3 text-center">
+                      <p className="font-medium text-slate-900 text-sm">{pattern.name}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
