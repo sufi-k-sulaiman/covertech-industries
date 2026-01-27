@@ -342,7 +342,7 @@ const productsData = {
     specifications: {
       Category: "Pool Liners",
       Thickness: "18 Mil (±10%)",
-      "Bead Type": "Unibead (Other Beads Available)",
+      "Bead Type": "Unibead or Overlap",
       "Wall Heights": "48″ – 52″",
       Pattern: "Lancashire Wall, Blue Beach Floor",
       "Round Sizes": "12′, 15′, 18′, 21′, 24′, 27′",
