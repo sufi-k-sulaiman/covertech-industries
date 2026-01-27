@@ -1146,7 +1146,7 @@ export default function ProductDetails() {
           </div>
 
           {/* Warranty Card */}
-          {slug !== 'steel-kits' && (
+          {slug !== 'steel-kits' && slug !== 'pool-insulation' && (
             <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
               <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
               <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
