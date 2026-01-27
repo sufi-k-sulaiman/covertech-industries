@@ -263,14 +263,14 @@ const productsData = {
     tagline: "Reduce heating costs by up to 70%",
     description: "Premium solar covers and systems designed to maximize your pool's efficiency. Reduce heating costs by up to 70%, minimize evaporation, and extend your swimming season with our innovative solar solutions.",
     fullDescription: "Solar covers are one of the most cost-effective investments you can make for your pool, providing year-round benefits and substantial savings on heating and chemical costs.",
-    warranty: 10,
+    warranty: 3,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9d4b0311e_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b01955c2_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/db6908d7d_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a12858356_image.png"
     ],
-    features: ["Up to 70% Heating Cost Reduction", "Prevents Night Heat Loss", "Reduces Evaporation & Chemicals", "Keeps Pool Clean", "Raises Water Temperature", "Multiple Options Available"],
+    features: ["3-Year Warranty (1-Year Full)", "Up to 70% Heating Cost Reduction", "Prevents Night Heat Loss", "Reduces Evaporation & Chemicals", "Keeps Pool Clean", "Raises Water Temperature"],
     specifications: { Category: "Solar Covers", "Heat Reduction": "Up to 70%", Types: "Solar-Extreme™, Thermo Shield™", "Custom Sizes": "Available" },
     bestseller: true,
     downloads: [
