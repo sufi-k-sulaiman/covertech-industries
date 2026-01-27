@@ -312,7 +312,7 @@ const productsData = {
     tagline: "Heavy-duty winter protection",
     description: "Durable and reliable, Covertech's Superior Winter cover sets the standard for the industry. You'll get years of winter protection for your pool.",
     fullDescription: "Protect your pool during the off-season with our durable winter covers. Designed to withstand harsh weather conditions, heavy snow loads, and keep debris out all winter long. Made of super strong rip-stop fabric that saves maintenance and Spring clean-up costs.",
-    warranty: 10,
+    warranty: 15,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f0ddd1c7e_WinterCover-WinterCover.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/1de8c9711_WinterCover-Beaded-02.jpg"
@@ -475,18 +475,15 @@ const productsData = {
     name: "Steel Pool Kits",
     category: "Accessories",
     tagline: "Professional-grade construction kits",
-    description: "Premium steel construction kits for pool installation. Durable, corrosion-resistant materials engineered for long-lasting performance and structural integrity.",
-    fullDescription: "Heavy-duty galvanized steel panels engineered for structural integrity. Complete hardware package including brackets, bolts, and fasteners. Designed to withstand ground pressure and freeze-thaw cycles.",
+    description: "Premium steel pool kits, manufactured by Malach Metals – an industry leader in metal fabrication technologies. Using Heavy-duty 14-gauge G235 galvanized steel, these panels can be curved to any radius, and staircases, ledges, and benches can be fabricated to spec or purchased from our standard offering.",
+    fullDescription: "We also welcome custom inquiries for unique, one-of-a-kind builds. Give us a call and we’ll introduce you to this innovative pool-kits solutions.",
     warranty: 25,
     images: [
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/31b2954f6_Steelkit-01.jpg",
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ecb5b4bcb_Steelkit-02.jpg",
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e79db41ff_Steelkit-03.jpg",
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2184c5dd6_Steelkit-04.jpg",
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c63f37b30_Steelkit-05.png"
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/b4e004b08_Steelkit-01.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/b87eea138_Steelkit-02.jpg"
     ],
     features: ["Heavy Duty Construction", "Corrosion Resistant", "Easy Installation", "Professional Grade", "Complete Kit", "Made in North America"],
-    specifications: { Category: "Accessories", Material: "Galvanized Steel", Coating: "Corrosion Resistant", Origin: "North America" },
+    specifications: { Category: "Pool Steel Kits", Material: "14-gauge G235 galvanized steel", Coating: "Standard and Custom", Origin: "North America" },
     bestseller: false,
     downloads: []
   },
