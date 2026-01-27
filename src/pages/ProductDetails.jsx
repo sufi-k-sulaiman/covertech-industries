@@ -65,12 +65,12 @@ const productsData = {
     specifications: { Category: "Pool Liners", Thickness: "30mil", Material: "Anti-bacterial Virgin Resin", Texture: "Non-slip Available", "Custom Sizes": "Available", Origin: "Canada (since 1987)" },
     bestseller: true,
     downloads: [
+      { name: "2026 Pattern Catalogue", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/af5daff1a_2026LinerCatalogue-Web-R0.pdf", featured: true },
       { name: "25-Season In-Ground Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/940bf589f_25SeasonIn-GroundLinerWarranty.pdf" },
       { name: "20-Season On-Ground Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e5f9b4602_20SeasonOn-GroundLinerWarranty.pdf" },
       { name: "10-Season Above-Ground Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/94ddb6eba_10SeasonAbove-GroundLinerWarranty.pdf" },
       { name: "Installation Instructions", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ce2f38147_CVT-IngroundLinerMaintenanceandInstallation.pdf" },
-      { name: "Care & Maintenance Guide", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fcfa016dc_CVT-LinerCareMaintenance.pdf" },
-      { name: "2026 Pattern Catalogue", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/af5daff1a_2026LinerCatalogue-Web-R0.pdf" }
+      { name: "Care & Maintenance Guide", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fcfa016dc_CVT-LinerCareMaintenance.pdf" }
     ],
     galleryImages: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/410142be5_20240518_125429.jpg",
@@ -762,13 +762,17 @@ export default function ProductDetails() {
                         href={doc.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50 to-cyan-50 hover:from-cyan-50 hover:to-blue-50 border border-slate-200 hover:border-cyan-300 rounded-xl transition-all group"
+                        className={`flex items-center justify-between p-4 rounded-xl transition-all group ${
+                          doc.featured
+                            ? 'bg-blue-900 hover:bg-blue-800 border-2 border-blue-700'
+                            : 'bg-gradient-to-r from-slate-50 to-cyan-50 hover:from-cyan-50 hover:to-blue-50 border border-slate-200 hover:border-cyan-300'
+                        }`}
                       >
                         <div className="flex items-center gap-3">
-                          <FileText className="w-5 h-5 text-cyan-600" />
-                          <span className="font-medium text-slate-900">{doc.name}</span>
+                          <FileText className={`w-5 h-5 ${doc.featured ? 'text-white' : 'text-cyan-600'}`} />
+                          <span className={`font-medium ${doc.featured ? 'text-white' : 'text-slate-900'}`}>{doc.name}</span>
                         </div>
-                        <Download className="w-5 h-5 text-cyan-600 group-hover:translate-y-0.5 transition-transform" />
+                        <Download className={`w-5 h-5 ${doc.featured ? 'text-white' : 'text-cyan-600'} group-hover:translate-y-0.5 transition-transform`} />
                       </a>
                     ))}
                   </div>
