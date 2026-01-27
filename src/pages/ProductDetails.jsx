@@ -496,7 +496,7 @@ const productsData = {
     tagline: "Protect your turf investment",
     description: "The Green Shield Ice Cover is specifically engineered to prevent ice formation on golf greens and sports fields during winter months.",
     fullDescription: "This innovative cover system protects your turf from crown hydration, which is the leading cause of winter turf damage in northern climates.",
-    warranty: 10,
+    warranty: 7,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/997e37872_image.png"
     ],
