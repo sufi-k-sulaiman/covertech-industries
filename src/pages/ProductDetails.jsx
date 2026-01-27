@@ -419,7 +419,57 @@ const productsData = {
     variants: [
       { name: "48″ Unibead", features: ["Requires 4″ cove", "Easy installation", "Standard wall height"] },
       { name: "52″ Unibead", features: ["Requires 6″ cove", "Extended wall height", "Enhanced durability"] }
-    ]
+    ],
+    installationGuide: {
+      title: "Above Ground Liner Installation Instructions",
+      recommendedItems: [
+        "Screwdriver",
+        "Sharp nail or ice pick",
+        "Tamping tool",
+        "Industrial vacuum or household vacuum (filter bag removed)",
+        "Utility knife",
+        "2\" gray duct tape with non-asphaltic adhesive",
+        "Masking tape",
+        "Garden hose"
+      ],
+      poolBottomPrep: [
+        "Spread 2\" layer of brick sand over the entire pool foundation area inside the base rails. Use a rake to make the sand flat and smooth. Tamp sand to help reduce foot prints. Instead of brick sand, you can use ARMOR SHIELD® floor padding.",
+        "With the brick sand, make a curved cove about 8\" high and 8\" wide all around the bottom of the pool wall on the inside. Pack firmly into shape. Pre-cast Styrofoam cove can also be used."
+      ],
+      linerInstallation: [
+        "Set the liner in place.",
+        "Place the closed liner carton in the center of the pool.",
+        "Open the carton. DO NOT use anything sharp to open the carton.",
+        "Unpack and unfold the liner and spread it out in the sun to warm up.",
+        "Inspect all seams and surfaces for holes.",
+        "Spread out liner. The seam where wall meets floor should be centered on the cove at the base of the wall. The other seams will form straight lines across the bottom of the pool. If seams appear to have flaps, check to see if the correct side is up.",
+        "Smooth out all wrinkles in the bottom.",
+        "If you have a beaded liner, refer to \"Beaded Liner Installation\". If you have a unibead liner, refer to \"Unibead Liner Installation\".",
+        "Lift the sides of the liner and drape them over the top of the pool wall.",
+        "Fasten liner to the top of the wall with plastic coping. Let the liner hang slack for now. Do not pull liner tight.",
+        "Refer to \"Optional Step to Eliminate Wrinkles\" section or continue with Step 12.",
+        "Start filling pool with water. As the pool fills, work out the wrinkles and smooth the liner to the wall. Remove the plastic coping around the top edge of the wall one piece at a time and adjust the liner. Keep smoothing out the wrinkles.",
+        "Do not install face-plates, inlets, light fixtures, etc. until water reaches 3\" below each opening. Premature installation might result in the liner taring away from the opening due to stretching as the water level increases.",
+        "Proceed filling pool until water reaches desired level.",
+        "Attach \"No Diving\" stickers to your liner two inches above the water level. \"No Diving\" stickers must be clearly visible from all angles around pool."
+      ],
+      unibeadInstallation: {
+        description: "You have purchased a deluxe liner using Unibead construction. The patented Unibead design enables you to convert your overlap pool to an upgraded tile design or can also be used on an existing beaded pool.",
+        overlapConversion: "A traditional overlap liner is installed by draping the top of the liner over the pool wall and securing it with a plastic coping strip. Your Unibead liner is designed with a \"J-Hook\" sealed to the top of the liner. To install, simply attached the \"J-Hook\" to the top of the pool wall. Once your liner is in place, continue with installation steps.",
+        beadedApplication: "If you are using your Unibead liner for a beaded application, you will need to peel the \"J-Hook\" from the top of the bead. Once the \"J-Hook\" is removed, simply insert the beaded edge of the liner into the bead receiver which is attached to the top of your pool wall."
+      },
+      beadedInstallation: [
+        "Fasten the liner in place (beaded liner only). This step applies only if you have a beaded liner.",
+        "Lift the sides of the liner and insert the beaded edge into the liner retainer on the TOP edge.",
+        "Continue with installation steps."
+      ],
+      wrinkleElimination: [
+        "To remove air from behind the liner, which prevents wrinkles, insert a vacuum cleaner hose through the skimmer hole in the pool wall behind the liner. To minimize vacuum loss, seal the opening around the hose and the water inlet using card board and masking tape.",
+        "Turn vacuum cleaner on. While vacuum is running, you should be adjusting the liner with short tugs to eliminate wrinkles. If you have trouble shifting the liner into position, shut the vacuum off for a few minutes. You should then be able to adjust the trouble area before continuing with the vacuum.",
+        "Start filling the pool with water. The vacuum cleaner should continue to run until the water level nears the top. Make sure the vacuum cleaner hose is above the water level at all times.",
+        "Continue with installation steps."
+      ]
+    }
   },
   "steel-kits": {
     name: "Steel Pool Kits",
