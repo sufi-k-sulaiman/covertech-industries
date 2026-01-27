@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SEOHead, { createProductSchema, createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import GalleryModal from '@/components/products/GalleryModal';
+import PatternGallery from '@/components/products/PatternGallery';
 
 const productsData = {
   "in-ground-liners": {
@@ -135,38 +136,275 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/457b00097_WhiteBeachPebble_Composite.jpg"
     ],
     patterns: [
-      { name: "Bayview White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6ac94022c_BayviewWhiteDiffusion.jpg", tier: "platinum-plus" },
-      { name: "Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/614046bbe_BlueBeachPebble.jpg", tier: "platinum-plus" },
-      { name: "Butterfly", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/87c77b05c_Butterfly.jpg", tier: "platinum-plus" },
-      { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/70a73121b_Carnival.jpg", tier: "platinum-plus" },
-      { name: "Carrara Marble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d58df1741_CarraraMarble.jpg", tier: "platinum-plus" },
-      { name: "Esagono", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ee71f898c_Esagono.jpg", tier: "platinum-plus" },
-      { name: "Greystone River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/adc395d2c_GreystoneRiverWhite.jpg", tier: "platinum-plus" },
-      { name: "Harmony Gold HDE", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/17e43f373_HarmonyGold-HDE.jpg", tier: "platinum-plus" },
-      { name: "HD Antigua", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9f5ffd872_HDAntigua.jpg", tier: "platinum-plus" },
-      { name: "HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e40187f21_HDELECTRIC.jpg", tier: "platinum-plus" },
-      { name: "Ocean Midnight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/85b38b0e6_OceanMidnight.jpg", tier: "platinum-plus" },
-      { name: "Oxford HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2673c6e74_OXFORDHDELECTRIC.jpg", tier: "platinum-plus" },
-      { name: "Raleigh Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/905903d39_RaleighBlueBeachPebble.jpg", tier: "platinum-plus" },
-      { name: "Raleigh White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1d01d84df_RaleighWhiteBeachPebble.jpg", tier: "platinum-plus" },
-      { name: "River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d074ffe20_RiverWhite.jpg", tier: "platinum-plus" },
-      { name: "Summer River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/944f12e89_SummerRiverWhite.jpg", tier: "platinum-plus" },
-      { name: "Sunburst Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e701e698_SunburstOysterBay.jpg", tier: "platinum-plus" },
-      { name: "White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52269d28b_WhiteBeachPebble.jpg", tier: "platinum-plus" },
-      { name: "White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4d88ef239_WhiteDiffusion.jpg", tier: "platinum-plus" },
-      { name: "Blue Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/eec197b55_BlueMaui.jpg", tier: "platinum" },
-      { name: "Blue", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6400ce633_Blue.jpg", tier: "platinum" },
-      { name: "Canterbury", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2a6e31a2f_Canterbury.jpg", tier: "platinum" },
-      { name: "Celest", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/88e3a1acd_Celest.jpg", tier: "platinum" },
-      { name: "Garden", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e436a66a_Garden.jpg", tier: "platinum" },
-      { name: "Gladstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/372ff9641_Gladstone.jpg", tier: "platinum" },
-      { name: "Grey Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/64299e12d_GreyMaui.jpg", tier: "platinum" },
-      { name: "Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8c6d4504c_OysterBay.jpg", tier: "platinum" },
-      { name: "Sandstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/79b09c738_Sandstone.jpg", tier: "platinum" },
-      { name: "Sapphire", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ced10acfa_Sapphire.jpg", tier: "platinum" },
-      { name: "Tahoe", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1bfb6474e_Tahoe.jpg", tier: "platinum" },
-      { name: "Twilight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/52842ae7b_Twilight.jpg", tier: "platinum" },
-      { name: "White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1db999e1b_White.jpg", tier: "platinum" },
+      { 
+        name: "Bayview White Diffusion", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5a67f1612_BayviewWhiteDiffusion.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d4baf72b5_BayviewWD-02.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/60c749ddc_BayviewWD-03.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1447302c4_BayviewWD-04.jpg"
+        ]
+      },
+      { 
+        name: "Blue Beach Pebble", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/49bca1208_BlueBeachPebble.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5be7e0f43_BlueBeachPebble_004.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ec9700c39_BlueBeachPebble_005.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0185c54f6_BlueBeachPebble-01.jpg"
+        ]
+      },
+      { 
+        name: "Butterfly", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4f5b14b1f_Butterfly.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2a9e40a86_Butterfly-03.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1355f5e7c_Butterfly-04.jpg"
+        ]
+      },
+      { 
+        name: "Carnival", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/91640be38_Carnival.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e223c261b_Carnival-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/aab823049_Carnival-02.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0acfffa3f_Carnival-03.jpg"
+        ]
+      },
+      { 
+        name: "Carrara Marble", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e59feeea_CarraraMarble.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a92251539_Carrara-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e26bab066_Carrara-02.jpg"
+        ]
+      },
+      { 
+        name: "Esagono", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1c3b1ba72_Esagono.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1d1847a43_Esagono_Freeform_002.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7e4d77751_Esagono_Freeform_007.jpg"
+        ]
+      },
+      { 
+        name: "Greystone River White", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/97c559cf9_GreystoneRiverWhite.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/80b33e08e_GreystoneRiverinstall.jpg"
+        ]
+      },
+      { 
+        name: "Harmony Gold HDE", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b24218ff9_HarmonyGold-HDE.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9eeefdc81_HARMONY-NOWATER.jpg"
+        ]
+      },
+      { 
+        name: "HD Antigua", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b574d1bd_HDAntigua.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/63a3043f4_HDAntigua-01.jpeg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d5a8a1cf1_HDEAntigua_012.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1beae7db6_HDEAntigua_014.jpg"
+        ]
+      },
+      { 
+        name: "HD Electric", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/07fc1b793_HDELECTRIC.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/571a39603_HDElectric-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/89ee2f35a_HDElectric-02.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/383733282_HDElectric-03.jpg"
+        ]
+      },
+      { 
+        name: "Ocean Midnight", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bf54bc3ba_OceanMidnight.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/65f71a98b_OceanMidnight_002.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8f8ed7ed9_OceanMidnight_003.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b4ee72c83_OceanMidnight.jpg"
+        ]
+      },
+      { 
+        name: "Oxford HD Electric", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/86cfd7e9a_OXFORDHDELECTRIC.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c376dbbd2_Oxford-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/075baf271_Oxford-02.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/747123332_Oxford-03.JPG"
+        ]
+      },
+      { 
+        name: "Raleigh Blue Beach Pebble", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0fdb87fd3_RaleighBlueBeachPebble.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/78bdc1e9c_RaleighBB-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ba4e3494d_Raleigh_BlueBeachPebble_composite.jpg"
+        ]
+      },
+      { 
+        name: "Raleigh White Beach Pebble", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a149dfe63_RaleighWhiteBeachPebble.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fe4b45353_RaleighWB-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9f01e8e7b_Raleigh_003copy.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9d3e2a022_RaleignBeachPebble.jpg"
+        ]
+      },
+      { 
+        name: "River White", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8a1e62d22_RiverWhite.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bc2072771_RiverWhite-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c176a55c2_RiverWhite-02.jpg"
+        ]
+      },
+      { 
+        name: "Summer River White", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/296e83210_SummerRiverWhite.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d8e684421_summerRiverinstall.jpg"
+        ]
+      },
+      { 
+        name: "Sunburst Oyster Bay", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6bc0f75ad_SunburstOysterBay.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/029b5531e_SunburstOysterBayinstallfinal.jpg"
+        ]
+      },
+      { 
+        name: "White Beach Pebble", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3d44fed9a_WhiteBeachPebble.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/973340eba_WhiteBeachPebble-02.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/41dcdf212_WhiteBeachPebble-03.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e7c7ad0e_WhiteBeachPebble-04.jpg"
+        ]
+      },
+      { 
+        name: "White Diffusion", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b2b3f0178_WhiteDiffusion.jpg", 
+        tier: "platinum-plus",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c793728a5_WhiteDiffusion-03.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/41fd87db6_WhiteDiffusion-04.jpg"
+        ]
+      },
+      { 
+        name: "Blue Maui", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ac2618ef1_BlueMaui.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f9cd91406_BlueMaui-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6e40a45d6_Maui-02.jpg"
+        ]
+      },
+      { 
+        name: "Blue", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/415691248_Blue.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/db6b5dd6a_AllBlue-01.jpg"
+        ]
+      },
+      { 
+        name: "Canterbury", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1235fa641_Canterbury.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0cf3e1044_Canterbury-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/eef884101_Canterbury-02.jpg"
+        ]
+      },
+      { 
+        name: "Celest", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/82ef3daba_Celest.jpg", 
+        tier: "platinum"
+      },
+      { 
+        name: "Garden", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3580d7287_Garden.jpg", 
+        tier: "platinum"
+      },
+      { 
+        name: "Gladstone", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e7ef00922_Gladstone.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0be27b714_Gladstone-01.png"
+        ]
+      },
+      { 
+        name: "Grey Maui", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d73c2c8d9_GreyMaui.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2c88d5791_GrayMaui-01.jpg"
+        ]
+      },
+      { 
+        name: "Oyster Bay", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d6fd36b0a_OysterBay.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0db7b1cd9_OysterBayinstallfinal.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c297207e9_Oysterbay-01.jpg"
+        ]
+      },
+      { 
+        name: "Sandstone", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a7f229630_Sandstone.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/846455a5b_Sandstone-01.jpg",
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/381543a8f_Sandstone-02.jpg"
+        ]
+      },
+      { 
+        name: "Sapphire", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9cefde4f9_Sapphire.jpg", 
+        tier: "platinum",
+        gallery: [
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f2c66e0cd_SapphirePebble.jpg"
+        ]
+      },
+      { 
+        name: "Tahoe", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/370383aaa_Tahoe.jpg", 
+        tier: "platinum"
+      },
+      { 
+        name: "Twilight", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/867ae4129_Twilight.jpg", 
+        tier: "platinum"
+      },
+      { 
+        name: "White", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bf175feaa_White.jpg", 
+        tier: "platinum"
+      },
     ]
   },
   "safety-covers": {
@@ -974,25 +1212,7 @@ export default function ProductDetails() {
               <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">2026 Platinum Plus Patterns</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {product.patterns.filter(p => p.tier === 'platinum-plus').map((pattern) => (
-                  <motion.div
-                    key={pattern.name}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
-                  >
-                    <div className="aspect-[4/3] overflow-hidden relative">
-                      <img
-                        src={pattern.image}
-                        alt={pattern.name}
-                        className="w-full h-full object-cover group-hover:scale-[4] transition-transform duration-700 cursor-zoom-in"
-                        style={{ transformOrigin: 'center center' }}
-                      />
-                    </div>
-                    <div className="p-3 text-center">
-                      <p className="font-medium text-slate-900 text-sm">{pattern.name}</p>
-                    </div>
-                  </motion.div>
+                  <PatternGallery key={pattern.name} pattern={pattern} />
                 ))}
               </div>
             </div>
@@ -1002,25 +1222,7 @@ export default function ProductDetails() {
               <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">2026 Platinum Patterns</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {product.patterns.filter(p => p.tier === 'platinum').map((pattern) => (
-                  <motion.div
-                    key={pattern.name}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
-                  >
-                    <div className="aspect-[4/3] overflow-hidden relative">
-                      <img
-                        src={pattern.image}
-                        alt={pattern.name}
-                        className="w-full h-full object-cover group-hover:scale-[4] transition-transform duration-700 cursor-zoom-in"
-                        style={{ transformOrigin: 'center center' }}
-                      />
-                    </div>
-                    <div className="p-3 text-center">
-                      <p className="font-medium text-slate-900 text-sm">{pattern.name}</p>
-                    </div>
-                  </motion.div>
+                  <PatternGallery key={pattern.name} pattern={pattern} />
                 ))}
               </div>
             </div>
