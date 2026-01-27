@@ -591,30 +591,6 @@ const productsData = {
     bestseller: false,
     downloads: [
       { name: "Thermo-Floor Literature", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/10699896d_PoolInsulation-compressed.pdf" }
-    ],
-    variants: [
-      {
-        name: "Insul-Floor",
-        description: "Floor insulation system",
-        features: ["Installs under liner", "Reduces ground heat loss", "Smooth surface protection", "Prevents liner wear"],
-        advantages: ["Maintains solar energy in water", "Breaks thermal bridge between liner and ground", "Excellent vapor barrier", "Reduces heat loss up to 80%", "Quick and easy to install"],
-        specifications: {
-          "Width": "48 inches",
-          "Material": "Metalized Foil, bubble, clear poly",
-          "Compression Rate": "140 PSI",
-          "Puncture Rate": "69 PSI",
-          "Properties": "Durable and lightweight, no itchy fibers"
-        },
-        installation: [
-          "Insulation is 48\" width, easy to handle and install",
-          "Ensure the seams butt together",
-          "Seal seams with white poly tape (3\" wide)",
-          "Cut the perimeter of material to the size and shape of the pool",
-          "Install liner"
-        ]
-      },
-      { name: "Thermo-Wall", description: "Wall insulation system", features: ["Installs between wall & liner", "Reflects heat back to pool", "Easy to cut and fit", "Moisture resistant"] },
-      { name: "Complete System", description: "Floor and wall combo", features: ["Maximum insulation", "Best energy savings", "Year-round efficiency", "Professional grade"] }
     ]
   }
 };
