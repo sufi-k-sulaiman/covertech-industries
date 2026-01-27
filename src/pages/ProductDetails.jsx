@@ -326,7 +326,7 @@ const productsData = {
     }
   },
   "above-ground-liners": {
-    name: "Above-Ground Vinyl Pool Liners",
+    name: "Above-Ground Pool Liners",
     category: "Pool Liners",
     tagline: "Premium patterns with industry-leading warranty",
     description: "Classic full-print patterns with UV and chemical resistant materials. Available in Lancashire Wall with Blue Beach Floor pattern, designed specifically for above-ground pools.",
