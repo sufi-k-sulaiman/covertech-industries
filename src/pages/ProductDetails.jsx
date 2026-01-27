@@ -331,7 +331,7 @@ const productsData = {
     tagline: "Premium patterns with industry-leading warranty",
     description: "Classic full-print patterns with UV and chemical resistant materials. Available in Lancashire Wall with Blue Beach Floor pattern, designed specifically for above-ground pools.",
     fullDescription: "Our above-ground liners feature heat-sealed floors and Unibead design for easy installation. Made with 18 mil thickness (±10%) for durability and long-lasting performance. Available in round sizes from 12' to 27' and oval configurations, with custom sizes available upon request.",
-    warranty: 15,
+    warranty: 10,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3082ce0f7_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d3bbf53c6_image.png",
