@@ -559,7 +559,9 @@ const productsData = {
       Colors: "Black, Blue, Green, Grey, Taupe"
     },
     bestseller: false,
-    downloads: [],
+    downloads: [
+      { name: "2024 Curing Blanket Brochure", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5d03ac9ab_2024CuringBlanketBrochure.pdf" }
+    ],
     variants: [
       { name: "Standard Curing Blanket", features: ["6x6 to 12x50 sizes", "Single-sided insulation", "Grommeted edges"] },
       { name: "Premium Insulated Blanket", features: ["Double-layer insulation", "Enhanced heat retention", "Reinforced corners"] },
