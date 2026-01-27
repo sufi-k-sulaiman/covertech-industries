@@ -174,7 +174,7 @@ const productsData = {
     category: "Safety Covers",
     tagline: "ASTM F1346-91 certified protection",
     description: "Premium ASTM-certified safety covers engineered for maximum protection and durability. Our safety covers meet or exceed ASTM F1346-91 standards, providing unmatched safety for your pool during off-season months.",
-    fullDescription: "• Designed to support the weight of children, pets, and adults.\n• Enhances the appearance and value of your outdoor space.\n• Made from high-strength UV-resistant materials.\n• Meets or exceed ASTM safety standards.\n• Results in cleaner pool opening in the spring.\n• Built to withstand snow loads, ice, wind, and harsh winter conditions.\n• Helps protect the pool structure, liner & coping.\n• Manufactured to fit any pool shape or size.\n• Available in mesh or solid options, multiple colors, and fabric grades.",
+    fullDescription: "Designed to support the weight of children, pets, and adults. Enhances the appearance and value of your outdoor space. Made from high-strength UV-resistant materials. Meets or exceed ASTM safety standards. Results in cleaner pool opening in the spring. Built to withstand snow loads, ice, wind, and harsh winter conditions. Helps protect the pool structure, liner & coping. Manufactured to fit any pool shape or size. Available in mesh or solid options, multiple colors, and fabric grades.",
     warranty: 30,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2e2d0d292_02.png",
@@ -748,7 +748,48 @@ export default function ProductDetails() {
               </div>
 
               <p className="text-slate-600 text-lg mb-6 leading-relaxed">{product.description}</p>
-              <p className="text-slate-600 mb-8">{product.fullDescription}</p>
+              {slug === 'safety-covers' ? (
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Designed to support the weight of children, pets, and adults.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Enhances the appearance and value of your outdoor space.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Made from high-strength UV-resistant materials.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Meets or exceed ASTM safety standards.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Results in cleaner pool opening in the spring.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Built to withstand snow loads, ice, wind, and harsh winter conditions.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Helps protect the pool structure, liner & coping.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Manufactured to fit any pool shape or size.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-slate-600">
+                    <Check className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    <span>Available in mesh or solid options, multiple colors, and fabric grades.</span>
+                  </li>
+                </ul>
+              ) : (
+                <p className="text-slate-600 mb-8">{product.fullDescription}</p>
+              )}
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4 mb-8">
