@@ -479,8 +479,11 @@ const productsData = {
     fullDescription: "We also welcome custom inquiries for unique, one-of-a-kind builds. Give us a call and we’ll introduce you to this innovative pool-kits solutions.",
     warranty: 25,
     images: [
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/b4e004b08_Steelkit-01.jpg",
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/b87eea138_Steelkit-02.jpg"
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/dd3767799_Steelkit-01.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d7552b103_Steelkit-02.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b3120339d_Steelkit-03.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/70f678ca6_Steelkit-04.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f771b20aa_Steelkit-05.png"
     ],
     features: ["Heavy Duty Construction", "Corrosion Resistant", "Easy Installation", "Professional Grade", "Complete Kit", "Made in North America"],
     specifications: { Category: "Pool Steel Kits", Material: "14-gauge G235 galvanized steel", Coating: "Standard and Custom", Origin: "North America" },
