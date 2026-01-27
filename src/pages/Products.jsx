@@ -63,7 +63,7 @@ const products = [
     category: "winter-covers",
     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f0ddd1c7e_WinterCover-WinterCover.png",
     description: "Heavy-duty protection for off-season. Weather resistant and UV protected.",
-    warranty: "15 Years",
+    warranty: "10 Years",
     bestseller: false
   },
   {
