@@ -174,7 +174,7 @@ const productsData = {
     category: "Safety Covers",
     tagline: "ASTM F1346-91 certified protection",
     description: "Premium ASTM-certified safety covers engineered for maximum protection and durability. Our safety covers meet or exceed ASTM F1346-91 standards, providing unmatched safety for your pool during off-season months.",
-    fullDescription: "Available in mesh and solid configurations with industry-leading warranties up to 30 years. Experience unmatched quality with our Pool Safety Covers, engineered with precision and crafted from premium materials.",
+    fullDescription: "• Designed to support the weight of children, pets, and adults.\n• Enhances the appearance and value of your outdoor space.\n• Made from high-strength UV-resistant materials.\n• Meets or exceed ASTM safety standards.\n• Results in cleaner pool opening in the spring.\n• Built to withstand snow loads, ice, wind, and harsh winter conditions.\n• Helps protect the pool structure, liner & coping.\n• Manufactured to fit any pool shape or size.\n• Available in mesh or solid options, multiple colors, and fabric grades.",
     warranty: 30,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2e2d0d292_02.png",
