@@ -1167,15 +1167,17 @@ export default function ProductDetails() {
           </div>
 
           {/* Warranty Card */}
-          <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
-            <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
-            <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
-            <div className="flex justify-center gap-8 text-sm">
-              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Material defects covered</div>
-              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> UV degradation protected</div>
-              <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Seam integrity guaranteed</div>
+          {slug !== 'steel-kits' && (
+            <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
+              <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
+              <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
+              <div className="flex justify-center gap-8 text-sm">
+                <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Material defects covered</div>
+                <div className="flex items-center gap-2"><Check className="w-4 h-4" /> UV degradation protected</div>
+                <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Seam integrity guaranteed</div>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Detailed Warranty Information */}
           {product.warrantyDetails && (
