@@ -182,7 +182,7 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/7ce8b575e_attachment1669383714640.jpg",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/db941bb08_attachment1669391953454.jpg"
     ],
-    features: ["ASTM F1346-91 Certified", "Up to 30-Year Warranty", "Professional Installation Available", "Custom-Fit Design", "Multiple Anchoring Systems", "Winter-Ready Protection"],
+    features: ["ASTM F1346-91 Certified", "Up to 30-Year Warranty", "Custom-Fit Design", "Multiple Anchoring Systems", "Winter-Ready Protection"],
     specifications: { Category: "Safety Covers", Certification: "ASTM F1346-91", Types: "Mesh & Solid", Warranty: "Up to 30 Years", Installation: "Professional Recommended", Origin: "North America" },
     bestseller: true,
     downloads: [
