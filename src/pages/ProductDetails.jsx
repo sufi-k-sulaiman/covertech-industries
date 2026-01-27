@@ -590,7 +590,7 @@ const productsData = {
     },
     bestseller: false,
     downloads: [
-      { name: "Thermo-Floor Literature", url: "https://covertechind.com/wp-content/uploads/2019/12/Thermo-Floor.pdf" }
+      { name: "Thermo-Floor Literature", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/10699896d_PoolInsulation-compressed.pdf" }
     ],
     variants: [
       {
