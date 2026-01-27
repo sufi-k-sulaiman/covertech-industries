@@ -61,12 +61,9 @@ export default function Layout({ children, currentPageName }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const isHomePage = currentPageName === 'Home';
-  const headerBg = scrolled || !isHomePage 
-    ? 'bg-white shadow-sm' 
-    : 'bg-transparent';
-  const textColor = scrolled || !isHomePage ? 'text-slate-900' : 'text-white';
-  const logoColor = scrolled || !isHomePage ? 'text-cyan-600' : 'text-white';
+  const headerBg = 'bg-white shadow-sm';
+  const textColor = 'text-slate-900';
+  const logoColor = 'text-cyan-600';
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -127,7 +124,7 @@ export default function Layout({ children, currentPageName }) {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <Link to={createPageUrl('DesignCenter')}>
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white rounded-lg">
+              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg px-6">
                 Get a Quote
               </Button>
             </Link>
@@ -190,7 +187,7 @@ export default function Layout({ children, currentPageName }) {
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className={`flex-1 ${isHomePage ? '' : 'pt-20 lg:pt-28'}`}>
+      <main className="flex-1 pt-20">
         {children}
       </main>
 
