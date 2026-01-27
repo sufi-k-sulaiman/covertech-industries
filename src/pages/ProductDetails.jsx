@@ -324,31 +324,6 @@ const productsData = {
       { name: "Winter Cover Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2064be08f_WinterCoverWarranty-CVT-English.pdf" },
       { name: "Beaded Winter Cover Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ea750810d_BeadedWinterCoverWarranty-CVT-English.pdf" }
     ],
-    installationGuide: {
-      title: "Winter Cover Installation & Use",
-      generalPrep: [
-        "Since the cover is designed to rest on the pool's water, ensure the pool is not leaking.",
-        "Follow the pool manufacturer's winterizing instructions.",
-        "The pool must be chlorinated until freeze-up to prevent algae growth.",
-        "Pad sharp corners, rough edges, or protrusions to protect your new cover.",
-        "Lower the water level in the pool below the skimmer (18″ below the coping).",
-        "Lay the cover on the ground with the black side down.",
-        "It is important that covers be installed properly and snugly to prevent flopping in high winds which will cause damage to the cover."
-      ],
-      aboveGround: [
-        "Thread the cable through the loop until the ends of the cable meet.",
-        "Pull the cable as tight as you can using your hands.",
-        "Insert on cable end through the other hole in the winch and into the center spindle. Insert the other cable end through the other hole in the winch and pull both ends of the cable as far as it will go.",
-        "Turn the winch handle to tighten the cable. Make sure the cable is tight against the pool wall to prevent wind from causing the cover to flop.",
-        "For deck pools, cut individual pieces and tie loops to the deck post."
-      ],
-      inGround: [
-        "Secure the cover by placing unfilled water bags on the outside perimeter of the cover.",
-        "The water bags must cover the entire perimeter of the cover.",
-        "Proceed in filling water bags only half-filled allowing for ice expansion in freezing temperature."
-      ]
-    }
-  },
   "above-ground-liners": {
     name: "Above-Ground Pool Liners",
     category: "Pool Liners",
