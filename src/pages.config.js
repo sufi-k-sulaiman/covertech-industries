@@ -10,6 +10,7 @@ import Products from './pages/Products';
 import Resources from './pages/Resources';
 import TermsOfService from './pages/TermsOfService';
 import Warranties from './pages/Warranties';
+import Gallery from './pages/Gallery';
 import __Layout from './Layout.jsx';
 
 
@@ -26,6 +27,7 @@ export const PAGES = {
     "Resources": Resources,
     "TermsOfService": TermsOfService,
     "Warranties": Warranties,
+    "Gallery": Gallery,
 }
 
 export const pagesConfig = {
