@@ -61,6 +61,7 @@ import Products from './pages/Products';
 import Resources from './pages/Resources';
 import TermsOfService from './pages/TermsOfService';
 import Warranties from './pages/Warranties';
+import PDFViewer from './pages/PDFViewer';
 import __Layout from './Layout.jsx';
 
 
@@ -79,6 +80,7 @@ export const PAGES = {
     "Resources": Resources,
     "TermsOfService": TermsOfService,
     "Warranties": Warranties,
+    "PDFViewer": PDFViewer,
 }
 
 export const pagesConfig = {

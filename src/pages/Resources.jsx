@@ -218,17 +218,17 @@ export default function Resources() {
 
               <div className="grid md:grid-cols-2 gap-6">
                 {category.items.map((item, index) => (
-                  <motion.a
+                  <motion.div
                     key={item.title}
-                    href={`${item.url}#toolbar=0`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
-                    className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-cyan-200 transition-all flex gap-6"
                   >
+                    <Link
+                      to={createPageUrl(`PDFViewer?url=${encodeURIComponent(item.url)}&title=${encodeURIComponent(item.title)}`)}
+                      className="group bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-cyan-200 transition-all flex gap-6 block"
+                    >
                     <div className="flex-shrink-0">
                       <item.icon 
                         className="w-7 h-7 group-hover:scale-110 transition-transform" 
@@ -240,10 +240,11 @@ export default function Resources() {
                       <p className="text-slate-600 text-sm mb-4">{item.description}</p>
                       <span className="inline-flex items-center gap-2 text-cyan-600 font-semibold text-sm">
                         <Download className="w-4 h-4" />
-                        Download PDF
+                        View PDF
                       </span>
                     </div>
-                  </motion.a>
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </div>
