@@ -14,10 +14,10 @@ export default function PDFViewer() {
     const docTitle = urlParams.get('title');
     
     if (url) {
-      setPdfUrl(decodeURIComponent(url));
+      setPdfUrl(url);
     }
     if (docTitle) {
-      setTitle(decodeURIComponent(docTitle));
+      setTitle(docTitle);
     }
   }, []);
 
