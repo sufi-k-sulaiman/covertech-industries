@@ -139,7 +139,7 @@ const productsData = {
       { 
         name: "Bayview White Diffusion", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5a67f1612_BayviewWhiteDiffusion.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d4baf72b5_BayviewWD-02.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/60c749ddc_BayviewWD-03.jpg",
@@ -149,7 +149,7 @@ const productsData = {
       { 
         name: "Blue Beach Pebble", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/49bca1208_BlueBeachPebble.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5be7e0f43_BlueBeachPebble_004.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ec9700c39_BlueBeachPebble_005.jpg",
@@ -168,7 +168,7 @@ const productsData = {
       { 
         name: "Carnival", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/91640be38_Carnival.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e223c261b_Carnival-01.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/aab823049_Carnival-02.jpg",
@@ -178,7 +178,7 @@ const productsData = {
       { 
         name: "Carrara Marble", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e59feeea_CarraraMarble.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a92251539_Carrara-01.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e26bab066_Carrara-02.jpg"
@@ -196,7 +196,7 @@ const productsData = {
       { 
         name: "Greystone River White", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/97c559cf9_GreystoneRiverWhite.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/80b33e08e_GreystoneRiverinstall.jpg"
         ]
@@ -212,7 +212,7 @@ const productsData = {
       { 
         name: "HD Antigua", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b574d1bd_HDAntigua.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/63a3043f4_HDAntigua-01.jpeg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d5a8a1cf1_HDEAntigua_012.jpg",
@@ -222,7 +222,7 @@ const productsData = {
       { 
         name: "HD Electric", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/07fc1b793_HDELECTRIC.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/571a39603_HDElectric-01.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/89ee2f35a_HDElectric-02.jpg",
@@ -232,7 +232,7 @@ const productsData = {
       { 
         name: "Ocean Midnight", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bf54bc3ba_OceanMidnight.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/65f71a98b_OceanMidnight_002.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8f8ed7ed9_OceanMidnight_003.jpg",
@@ -242,7 +242,7 @@ const productsData = {
       { 
         name: "Oxford HD Electric", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/86cfd7e9a_OXFORDHDELECTRIC.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c376dbbd2_Oxford-01.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/075baf271_Oxford-02.jpg",
@@ -252,7 +252,7 @@ const productsData = {
       { 
         name: "Raleigh Blue Beach Pebble", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0fdb87fd3_RaleighBlueBeachPebble.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/78bdc1e9c_RaleighBB-01.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ba4e3494d_Raleigh_BlueBeachPebble_composite.jpg"
@@ -261,7 +261,7 @@ const productsData = {
       { 
         name: "Raleigh White Beach Pebble", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a149dfe63_RaleighWhiteBeachPebble.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/fe4b45353_RaleighWB-01.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9f01e8e7b_Raleigh_003copy.jpg",
@@ -271,7 +271,7 @@ const productsData = {
       { 
         name: "River White", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8a1e62d22_RiverWhite.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bc2072771_RiverWhite-01.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c176a55c2_RiverWhite-02.jpg"
@@ -280,7 +280,7 @@ const productsData = {
       { 
         name: "Summer River White", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/296e83210_SummerRiverWhite.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d8e684421_summerRiverinstall.jpg"
         ]
@@ -288,7 +288,7 @@ const productsData = {
       { 
         name: "Sunburst Oyster Bay", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6bc0f75ad_SunburstOysterBay.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/029b5531e_SunburstOysterBayinstallfinal.jpg"
         ]
@@ -296,7 +296,7 @@ const productsData = {
       { 
         name: "White Beach Pebble", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3d44fed9a_WhiteBeachPebble.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/973340eba_WhiteBeachPebble-02.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/41dcdf212_WhiteBeachPebble-03.jpg",
@@ -306,7 +306,7 @@ const productsData = {
       { 
         name: "White Diffusion", 
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b2b3f0178_WhiteDiffusion.jpg", 
-        tier: "platinum-plus",
+        tier: "platinum",
         gallery: [
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c793728a5_WhiteDiffusion-03.jpg",
           "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/41fd87db6_WhiteDiffusion-04.jpg"
