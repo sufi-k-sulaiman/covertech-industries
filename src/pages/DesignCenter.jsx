@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { ArrowRight, ArrowLeft, Check, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import GalleryBanner from '@/components/ui/GalleryBanner';
@@ -67,6 +68,8 @@ export default function DesignCenter() {
     bead: 'blue'
   });
   const [contactInfo, setContactInfo] = useState({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [submittedQuoteId, setSubmittedQuoteId] = useState('');
 
   const handleToggleFeature = (featureId) => {
     setSelectedFeatures(prev =>
@@ -350,11 +353,10 @@ export default function DesignCenter() {
                             pattern_selection: patternSelection,
                             contact_info: contactInfo
                           });
-                          alert(`Your quote has been submitted successfully! Reference ID: ${quoteId}`);
-                          window.location.reload();
+                          setSubmittedQuoteId(quoteId);
+                          setShowSuccessModal(true);
                         } catch (error) {
                           console.error('Submission error:', error);
-                          alert('Error submitting design. Please try again.');
                         }
                       }}
                       className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white py-6 text-lg"
@@ -392,6 +394,53 @@ export default function DesignCenter() {
       </section>
 
       <GalleryBanner />
+
+      {/* Success Modal */}
+      <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="w-10 h-10 text-green-600" />
+            </div>
+            <DialogTitle className="text-2xl text-center">Quote Submitted Successfully!</DialogTitle>
+          </DialogHeader>
+          
+          <div className="text-center space-y-4 py-4">
+            <p className="text-slate-600">
+              Thank you for your quote request. Our team will review your design and contact you shortly with a detailed quote.
+            </p>
+            
+            <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-4">
+              <div className="text-sm text-slate-600 mb-1">Your Reference ID</div>
+              <div className="text-2xl font-bold text-cyan-600 font-mono tracking-wider">
+                {submittedQuoteId}
+              </div>
+            </div>
+            
+            <p className="text-sm text-slate-500">
+              Please save this reference ID for your records.
+            </p>
+          </div>
+
+          <div className="flex gap-3">
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                navigator.clipboard.writeText(submittedQuoteId);
+              }}
+              className="flex-1"
+            >
+              Copy ID
+            </Button>
+            <Button 
+              onClick={() => window.location.reload()}
+              className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+            >
+              Start New Quote
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
