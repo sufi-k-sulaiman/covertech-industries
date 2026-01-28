@@ -2,6 +2,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Dealer from './pages/Dealer';
 import DesignCenter from './pages/DesignCenter';
+import Gallery from './pages/Gallery';
 import Home from './pages/Home';
 import Learn from './pages/Learn';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -10,7 +11,6 @@ import Products from './pages/Products';
 import Resources from './pages/Resources';
 import TermsOfService from './pages/TermsOfService';
 import Warranties from './pages/Warranties';
-import Gallery from './pages/Gallery';
 import __Layout from './Layout.jsx';
 
 
@@ -19,6 +19,7 @@ export const PAGES = {
     "Contact": Contact,
     "Dealer": Dealer,
     "DesignCenter": DesignCenter,
+    "Gallery": Gallery,
     "Home": Home,
     "Learn": Learn,
     "PrivacyPolicy": PrivacyPolicy,
@@ -27,7 +28,6 @@ export const PAGES = {
     "Resources": Resources,
     "TermsOfService": TermsOfService,
     "Warranties": Warranties,
-    "Gallery": Gallery,
 }
 
 export const pagesConfig = {
