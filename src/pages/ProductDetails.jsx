@@ -1311,23 +1311,65 @@ export default function ProductDetails() {
       )}
 
       {/* Safety Cover Colors (if available) */}
-      {product.safetyColors && (
+      {slug === 'safety-covers' && (
         <section className="py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Colors</h2>
-            <div className="flex flex-wrap justify-center gap-6">
-              {product.safetyColors.map((color) => (
-                <div key={color} className="flex flex-col items-center gap-3">
-                  <div className={`w-24 h-24 rounded-xl shadow-md border-4 ${{
-                    'Green': 'bg-green-700',
-                    'Grey': 'bg-slate-500',
-                    'Blue': 'bg-blue-900',
-                    'Taupe': 'bg-yellow-900',
-                    'Black': 'bg-black'
-                  }[color]}`} />
-                  <span className="font-medium text-slate-900">{color}</span>
+            <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Available Colors</h2>
+            <div className="flex flex-wrap justify-center gap-8">
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 rounded-2xl shadow-lg overflow-hidden mb-3">
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/031b3bbe7_GreenMesh.png"
+                    alt="Green Mesh"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              ))}
+                <span className="font-semibold text-slate-900">Green</span>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 rounded-2xl shadow-lg overflow-hidden mb-3">
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/09d3933b4_GreyMesh.png"
+                    alt="Grey Mesh"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="font-semibold text-slate-900">Grey</span>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 rounded-2xl shadow-lg overflow-hidden mb-3">
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bd76c5987_BlueMesh.png"
+                    alt="Blue Mesh"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="font-semibold text-slate-900">Blue</span>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 rounded-2xl shadow-lg overflow-hidden mb-3">
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5f3d20276_TaupeMesh.png"
+                    alt="Taupe Mesh"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="font-semibold text-slate-900">Taupe</span>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 rounded-2xl shadow-lg overflow-hidden mb-3">
+                  <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c4494b8d4_BlackMesh.png"
+                    alt="Black Mesh"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="font-semibold text-slate-900">Black</span>
+              </div>
             </div>
           </div>
         </section>
