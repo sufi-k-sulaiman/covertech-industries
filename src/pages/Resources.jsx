@@ -220,7 +220,7 @@ export default function Resources() {
                 {category.items.map((item, index) => (
                   <motion.a
                     key={item.title}
-                    href={item.url}
+                    href={`${item.url}#toolbar=0`}
                     target="_blank"
                     rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 30 }}
