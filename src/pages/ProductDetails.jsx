@@ -501,7 +501,7 @@ const productsData = {
     tagline: "Reduce heating costs by up to 70%",
     description: "Premium solar covers and systems designed to maximize your pool's efficiency. Reduce heating costs by up to 70%, minimize evaporation, and extend your swimming season with our innovative solar solutions.",
     fullDescription: "Solar covers are one of the most cost-effective investments you can make for your pool, providing year-round benefits and substantial savings on heating and chemical costs.",
-    warranty: 10,
+    warranty: 3,
     images: [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9d4b0311e_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b01955c2_image.png",
@@ -1229,7 +1229,7 @@ export default function ProductDetails() {
       )}
 
       {/* Variants Section (if available) */}
-      {product.variants && (
+      {product.variants && slug !== 'solar-covers' && (
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Available Options</h2>
@@ -1374,6 +1374,7 @@ export default function ProductDetails() {
       )}
 
       {/* Specifications */}
+      {slug !== 'solar-covers' && (
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Specifications</h2>
@@ -1392,7 +1393,9 @@ export default function ProductDetails() {
           {/* Warranty Card */}
           {slug !== 'steel-kits' && slug !== 'pool-insulation' && slug !== 'curing-blankets' && (
             <div className="mt-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 text-white text-center">
-              <h3 className="text-2xl font-bold mb-2">Up to {product.warranty} Years Warranty</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                {slug === 'solar-covers' ? '3-Year Warranty, (1-Year Full)' : `Up to ${product.warranty} Years Warranty`}
+              </h3>
               <p className="text-cyan-100 mb-4">Industry-leading warranty coverage</p>
               <div className="flex justify-center gap-8 text-sm">
                 <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Material defects covered</div>
@@ -1488,6 +1491,7 @@ export default function ProductDetails() {
           )}
         </div>
       </section>
+      )}
 
       {/* Installation Gallery */}
       {product.galleryImages && product.galleryImages.length > 0 && (
