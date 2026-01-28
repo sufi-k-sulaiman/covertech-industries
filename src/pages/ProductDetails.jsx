@@ -1032,11 +1032,9 @@ export default function ProductDetails() {
                   </div>
                   <div className="grid gap-3">
                     {product.downloads.map((doc, idx) => (
-                      <a
+                      <Link
                         key={idx}
-                        href={doc.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        to={createPageUrl(`PDFViewer?url=${encodeURIComponent(doc.url)}&title=${encodeURIComponent(doc.name)}`)}
                         className={`flex items-center justify-between p-4 rounded-xl transition-all group ${
                           doc.featured
                             ? 'bg-blue-900 hover:bg-blue-800 border-2 border-blue-700'
@@ -1048,7 +1046,7 @@ export default function ProductDetails() {
                           <span className={`font-medium ${doc.featured ? 'text-white' : 'text-slate-900'}`}>{doc.name}</span>
                         </div>
                         <Download className={`w-5 h-5 ${doc.featured ? 'text-white' : 'text-cyan-600'} group-hover:translate-y-0.5 transition-transform`} />
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>

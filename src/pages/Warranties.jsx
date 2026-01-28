@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -252,16 +253,14 @@ export default function Warranties() {
                           </div>
                           <div className="space-y-2">
                             {product.warrantyPdfs.map((pdf, idx) => (
-                              <a
+                              <Link
                                 key={idx}
-                                href={pdf.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                to={`/PDFViewer?url=${encodeURIComponent(pdf.url)}&title=${encodeURIComponent(pdf.name)}`}
                                 className="flex items-center gap-2 text-xs text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50 p-2 rounded-lg transition-colors"
                               >
                                 <FileText className="w-4 h-4 flex-shrink-0" />
                                 <span className="line-clamp-2">{pdf.name}</span>
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -336,11 +335,9 @@ export default function Warranties() {
                     </div>
                     <div className="grid gap-3">
                       {productTypes.find(p => p.id === formData.product_type)?.warrantyPdfs.map((pdf, idx) => (
-                        <a
+                        <Link
                           key={idx}
-                          href={pdf.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          to={`/PDFViewer?url=${encodeURIComponent(pdf.url)}&title=${encodeURIComponent(pdf.name)}`}
                           className="flex items-center justify-between p-4 bg-white hover:bg-cyan-50 border border-cyan-200 hover:border-cyan-300 rounded-xl transition-all group"
                         >
                           <div className="flex items-center gap-3">
@@ -348,7 +345,7 @@ export default function Warranties() {
                             <span className="font-medium text-slate-900">{pdf.name}</span>
                           </div>
                           <Download className="w-5 h-5 text-cyan-600 group-hover:translate-y-0.5 transition-transform" />
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
