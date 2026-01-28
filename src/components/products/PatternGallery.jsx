@@ -31,11 +31,11 @@ export default function PatternGallery({ pattern }) {
         className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
       >
         {/* Main Pattern Image */}
-        <div className="aspect-square overflow-hidden relative cursor-pointer" onClick={() => openModal(0)}>
+        <div className="overflow-hidden relative cursor-pointer" onClick={() => openModal(0)}>
           <img
             src={pattern.image}
             alt={pattern.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
           />
           {pattern.gallery && pattern.gallery.length > 0 && (
             <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
