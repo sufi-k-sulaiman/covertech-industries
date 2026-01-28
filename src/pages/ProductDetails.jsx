@@ -1374,21 +1374,24 @@ export default function ProductDetails() {
       )}
 
       {/* Specifications */}
-      {slug !== 'solar-covers' && (
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Specifications</h2>
-          <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-            {Object.entries(product.specifications).map(([key, value], index) => (
-              <div
-                key={key}
-                className={`flex justify-between py-4 px-6 ${index !== Object.entries(product.specifications).length - 1 ? 'border-b border-slate-100' : ''}`}
-              >
-                <span className="text-slate-500">{key}</span>
-                <span className="font-medium text-slate-900">{value}</span>
+          {slug !== 'solar-covers' && (
+            <>
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Specifications</h2>
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+                {Object.entries(product.specifications).map(([key, value], index) => (
+                  <div
+                    key={key}
+                    className={`flex justify-between py-4 px-6 ${index !== Object.entries(product.specifications).length - 1 ? 'border-b border-slate-100' : ''}`}
+                  >
+                    <span className="text-slate-500">{key}</span>
+                    <span className="font-medium text-slate-900">{value}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
 
           {/* Warranty Card */}
           {slug !== 'steel-kits' && slug !== 'pool-insulation' && slug !== 'curing-blankets' && (
@@ -1491,7 +1494,6 @@ export default function ProductDetails() {
           )}
         </div>
       </section>
-      )}
 
       {/* Installation Gallery */}
       {product.galleryImages && product.galleryImages.length > 0 && (
