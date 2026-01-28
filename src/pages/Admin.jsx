@@ -78,6 +78,12 @@ export default function Admin() {
     enabled: isAuthenticated
   });
 
+  const { data: products = [] } = useQuery({
+    queryKey: ['products'],
+    queryFn: () => base44.entities.Product.list('-created_date', 200),
+    enabled: isAuthenticated
+  });
+
   // Process analytics data
   const analyticsData = {
     totalViews: analytics.length,
@@ -252,6 +258,7 @@ export default function Admin() {
               <TabsTrigger value="dealers">Dealers</TabsTrigger>
               <TabsTrigger value="design">Design Center</TabsTrigger>
               <TabsTrigger value="warranties">Warranties</TabsTrigger>
+              <TabsTrigger value="products">Products</TabsTrigger>
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
             </TabsList>
 
@@ -390,6 +397,61 @@ export default function Admin() {
                               }`}>
                                 {submission.status}
                               </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Products */}
+            <TabsContent value="products">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Product Management</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-slate-50 border-b">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Name</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Category</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Warranty</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Bestseller</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200">
+                        {products.map((product) => (
+                          <tr key={product.id} className="hover:bg-slate-50">
+                            <td className="px-4 py-3 text-sm font-medium text-slate-900">{product.name}</td>
+                            <td className="px-4 py-3 text-sm text-slate-600">{product.category}</td>
+                            <td className="px-4 py-3 text-sm text-slate-600">{product.warranty_years} years</td>
+                            <td className="px-4 py-3">
+                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                product.is_bestseller ? 'bg-yellow-100 text-yellow-800' : 'bg-slate-100 text-slate-600'
+                              }`}>
+                                {product.is_bestseller ? 'Yes' : 'No'}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3">
+                              <Button 
+                                size="sm" 
+                                variant="outline"
+                                onClick={() => {
+                                  const newName = prompt('Edit product name:', product.name);
+                                  if (newName && newName !== product.name) {
+                                    base44.entities.Product.update(product.id, { name: newName })
+                                      .then(() => window.location.reload());
+                                  }
+                                }}
+                              >
+                                Edit
+                              </Button>
                             </td>
                           </tr>
                         ))}

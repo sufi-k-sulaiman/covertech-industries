@@ -92,6 +92,8 @@ export default function Layout({ children, currentPageName }) {
   const textColor = 'text-slate-900';
   const logoColor = 'text-cyan-600';
 
+  const isAdminPage = currentPageName === 'Admin';
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main Header */}
@@ -107,7 +109,8 @@ export default function Layout({ children, currentPageName }) {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          {!isAdminPage && (
+            <div className="hidden lg:flex items-center gap-1">
             {navigation.map((item) => (
               <div 
                 key={item.name}
@@ -146,26 +149,31 @@ export default function Layout({ children, currentPageName }) {
                 </AnimatePresence>
               </div>
             ))}
-          </div>
+            </div>
+            )}
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+            {/* CTA Button */}
+            {!isAdminPage && (
+            <div className="hidden lg:block">
             <Link to={createPageUrl('DesignCenter')}>
               <Button className="bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg px-6">
                 Get a Quote
               </Button>
             </Link>
-          </div>
+            </div>
+            )}
 
-          {/* Mobile Menu Button */}
-          <button
+            {/* Mobile Menu Button */}
+            {!isAdminPage && (
+            <button
             className={`lg:hidden p-2 rounded-lg ${textColor}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
-        </nav>
-      </header>
+          )}
+          </nav>
+          </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -219,7 +227,8 @@ export default function Layout({ children, currentPageName }) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white">
+      {!isAdminPage && (
+        <footer className="bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand */}
@@ -309,11 +318,12 @@ export default function Layout({ children, currentPageName }) {
               <Link to={createPageUrl('Warranties')} className="hover:text-cyan-400 transition-colors">Warranty</Link>
             </div>
           </div>
-        </div>
-      </footer>
+          </div>
+          </footer>
+          )}
 
-      {/* AI Chat Widget */}
-      <ChatWidget />
+          {/* AI Chat Widget */}
+          {!isAdminPage && <ChatWidget />}
       </div>
       );
       }
