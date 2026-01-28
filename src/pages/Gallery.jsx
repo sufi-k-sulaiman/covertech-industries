@@ -205,7 +205,7 @@ export default function Gallery() {
         title="Project"
         titleAccent="Gallery"
         description="Explore hundreds of stunning installations across North America. From premium vinyl liners to ASTM-certified safety covers, see the quality and craftsmanship that sets us apart."
-        backgroundImage="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80"
+        backgroundImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/950d5be1f_image.png"
       />
 
       {/* Category Filter */}
