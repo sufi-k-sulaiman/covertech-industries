@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Lock, Users, Mail, Briefcase, Palette, BarChart3,
-  Eye, Globe, Monitor, Smartphone, ExternalLink, Calendar
+  Eye, Globe, Monitor, Smartphone, ExternalLink, Calendar, Shield
 } from 'lucide-react';
 import SEOHead from '@/components/seo/SEOHead';
 
@@ -65,6 +65,41 @@ export default function Admin() {
     queryFn: () => base44.entities.DesignCenterSubmission.list('-created_date', 100),
     enabled: isAuthenticated
   });
+
+  const { data: warranties = [] } = useQuery({
+    queryKey: ['warranties'],
+    queryFn: () => base44.entities.WarrantyRegistration.list('-created_date', 100),
+    enabled: isAuthenticated
+  });
+
+  const { data: analytics = [] } = useQuery({
+    queryKey: ['analytics'],
+    queryFn: () => base44.entities.Analytics.list('-created_date', 500),
+    enabled: isAuthenticated
+  });
+
+  // Process analytics data
+  const analyticsData = {
+    totalViews: analytics.length,
+    uniqueSessions: new Set(analytics.map(a => a.session_id)).size,
+    pageViews: analytics.reduce((acc, curr) => {
+      acc[curr.page] = (acc[curr.page] || 0) + 1;
+      return acc;
+    }, {}),
+    devices: analytics.reduce((acc, curr) => {
+      acc[curr.device_type] = (acc[curr.device_type] || 0) + 1;
+      return acc;
+    }, {}),
+    referrers: analytics.reduce((acc, curr) => {
+      const ref = curr.referrer === 'direct' ? 'Direct Traffic' : new URL(curr.referrer || 'https://direct').hostname;
+      acc[ref] = (acc[ref] || 0) + 1;
+      return acc;
+    }, {}),
+    topPages: Object.entries(analytics.reduce((acc, curr) => {
+      acc[curr.page] = (acc[curr.page] || 0) + 1;
+      return acc;
+    }, {})).sort((a, b) => b[1] - a[1]).slice(0, 10)
+  };
 
   // Login Screen
   if (!isAuthenticated) {
@@ -136,61 +171,75 @@ export default function Admin() {
 
         <div className="max-w-7xl mx-auto px-6 py-8">
           {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
             <Card>
               <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-slate-600">Contact Submissions</p>
-                    <p className="text-3xl font-bold text-slate-900">{contacts.length}</p>
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-blue-600" />
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-blue-600" />
-                  </div>
+                  <p className="text-sm text-slate-600">Contacts</p>
+                  <p className="text-2xl font-bold text-slate-900">{contacts.length}</p>
                 </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-slate-600">Dealer Applications</p>
-                    <p className="text-3xl font-bold text-slate-900">{dealers.length}</p>
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                    <Briefcase className="w-5 h-5 text-green-600" />
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                    <Briefcase className="w-6 h-6 text-green-600" />
-                  </div>
+                  <p className="text-sm text-slate-600">Dealers</p>
+                  <p className="text-2xl font-bold text-slate-900">{dealers.length}</p>
                 </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-slate-600">Design Center Leads</p>
-                    <p className="text-3xl font-bold text-slate-900">{designSubmissions.length}</p>
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                    <Palette className="w-5 h-5 text-purple-600" />
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
-                    <Palette className="w-6 h-6 text-purple-600" />
-                  </div>
+                  <p className="text-sm text-slate-600">Designs</p>
+                  <p className="text-2xl font-bold text-slate-900">{designSubmissions.length}</p>
                 </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-slate-600">Total Leads</p>
-                    <p className="text-3xl font-bold text-slate-900">
-                      {contacts.length + dealers.length + designSubmissions.length}
-                    </p>
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-orange-600" />
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center">
-                    <Users className="w-6 h-6 text-cyan-600" />
+                  <p className="text-sm text-slate-600">Warranties</p>
+                  <p className="text-2xl font-bold text-slate-900">{warranties.length}</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center">
+                    <Eye className="w-5 h-5 text-cyan-600" />
                   </div>
+                  <p className="text-sm text-slate-600">Page Views</p>
+                  <p className="text-2xl font-bold text-slate-900">{analyticsData.totalViews}</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-indigo-600" />
+                  </div>
+                  <p className="text-sm text-slate-600">Sessions</p>
+                  <p className="text-2xl font-bold text-slate-900">{analyticsData.uniqueSessions}</p>
                 </div>
               </CardContent>
             </Card>
@@ -199,9 +248,10 @@ export default function Admin() {
           {/* Main Content Tabs */}
           <Tabs defaultValue="contacts" className="space-y-6">
             <TabsList className="bg-white border border-slate-200">
-              <TabsTrigger value="contacts">Contact Submissions</TabsTrigger>
-              <TabsTrigger value="dealers">Dealer Applications</TabsTrigger>
+              <TabsTrigger value="contacts">Contacts</TabsTrigger>
+              <TabsTrigger value="dealers">Dealers</TabsTrigger>
               <TabsTrigger value="design">Design Center</TabsTrigger>
+              <TabsTrigger value="warranties">Warranties</TabsTrigger>
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
             </TabsList>
 
@@ -350,38 +400,177 @@ export default function Admin() {
               </Card>
             </TabsContent>
 
+            {/* Warranty Registrations */}
+            <TabsContent value="warranties">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Warranty Registrations</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-slate-50 border-b">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Date</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Name</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Email</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Product</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Serial</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200">
+                        {warranties.map((warranty) => (
+                          <tr key={warranty.id} className="hover:bg-slate-50">
+                            <td className="px-4 py-3 text-sm text-slate-600">
+                              {new Date(warranty.created_date).toLocaleDateString()}
+                            </td>
+                            <td className="px-4 py-3 text-sm font-medium text-slate-900">{warranty.full_name}</td>
+                            <td className="px-4 py-3 text-sm text-slate-600">{warranty.email}</td>
+                            <td className="px-4 py-3 text-sm text-slate-600">{warranty.product_type}</td>
+                            <td className="px-4 py-3 text-sm text-slate-600">{warranty.serial_number || 'N/A'}</td>
+                            <td className="px-4 py-3">
+                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                warranty.status === 'approved' ? 'bg-green-100 text-green-800' :
+                                warranty.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                                'bg-yellow-100 text-yellow-800'
+                              }`}>
+                                {warranty.status}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
             {/* Analytics */}
             <TabsContent value="analytics">
               <div className="grid gap-6">
+                {/* Traffic Overview */}
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <BarChart3 className="w-5 h-5" />
-                      Analytics Overview
+                      <Eye className="w-5 h-5" />
+                      Traffic Overview
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-center py-12">
-                      <p className="text-slate-600 mb-4">
-                        Analytics integration coming soon. Connect your analytics provider to view:
-                      </p>
-                      <ul className="text-sm text-slate-500 space-y-2 max-w-md mx-auto text-left">
-                        <li className="flex items-center gap-2">
-                          <Eye className="w-4 h-4" /> Traffic Overview & Page Views
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Globe className="w-4 h-4" /> Geographic Distribution
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <Monitor className="w-4 h-4" /> Operating Systems & Devices
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <ExternalLink className="w-4 h-4" /> Referrer Sources
-                        </li>
-                      </ul>
+                    <div className="grid grid-cols-3 gap-6 mb-6">
+                      <div>
+                        <p className="text-sm text-slate-600 mb-1">Total Page Views</p>
+                        <p className="text-3xl font-bold text-slate-900">{analyticsData.totalViews}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-slate-600 mb-1">Unique Sessions</p>
+                        <p className="text-3xl font-bold text-slate-900">{analyticsData.uniqueSessions}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-slate-600 mb-1">Avg. Pages/Session</p>
+                        <p className="text-3xl font-bold text-slate-900">
+                          {analyticsData.uniqueSessions > 0 ? (analyticsData.totalViews / analyticsData.uniqueSessions).toFixed(1) : 0}
+                        </p>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Top Pages */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <BarChart3 className="w-5 h-5" />
+                        Top Pages
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {analyticsData.topPages.map(([page, count]) => (
+                          <div key={page} className="flex items-center justify-between">
+                            <span className="text-sm text-slate-700">{page}</span>
+                            <span className="text-sm font-semibold text-slate-900">{count} views</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Devices */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Monitor className="w-5 h-5" />
+                        Devices
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {Object.entries(analyticsData.devices).map(([device, count]) => (
+                          <div key={device} className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              {device === 'mobile' ? <Smartphone className="w-4 h-4 text-slate-500" /> :
+                               device === 'tablet' ? <Monitor className="w-4 h-4 text-slate-500" /> :
+                               <Monitor className="w-4 h-4 text-slate-500" />}
+                              <span className="text-sm text-slate-700 capitalize">{device}</span>
+                            </div>
+                            <span className="text-sm font-semibold text-slate-900">{count}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Referrers */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <ExternalLink className="w-5 h-5" />
+                        Top Referrers
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {Object.entries(analyticsData.referrers)
+                          .sort((a, b) => b[1] - a[1])
+                          .slice(0, 10)
+                          .map(([referrer, count]) => (
+                            <div key={referrer} className="flex items-center justify-between">
+                              <span className="text-sm text-slate-700 truncate max-w-[200px]">{referrer}</span>
+                              <span className="text-sm font-semibold text-slate-900">{count}</span>
+                            </div>
+                          ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Recent Activity */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Calendar className="w-5 h-5" />
+                        Recent Activity
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        {analytics.slice(0, 10).map((visit) => (
+                          <div key={visit.id} className="text-xs text-slate-600 border-b border-slate-100 pb-2">
+                            <div className="font-medium text-slate-900">{visit.page}</div>
+                            <div className="flex items-center gap-2 mt-1">
+                              <span>{visit.device_type}</span>
+                              <span>•</span>
+                              <span>{new Date(visit.created_date).toLocaleTimeString()}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </TabsContent>
           </Tabs>

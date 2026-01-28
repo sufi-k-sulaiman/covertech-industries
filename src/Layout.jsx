@@ -43,6 +43,32 @@ export default function Layout({ children, currentPageName }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const location = useLocation();
 
+  // Track page views
+  useEffect(() => {
+    const trackPageView = async () => {
+      try {
+        const sessionId = sessionStorage.getItem('session_id') || 
+          `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        sessionStorage.setItem('session_id', sessionId);
+
+        const deviceType = /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' :
+          /Tablet|iPad/i.test(navigator.userAgent) ? 'tablet' : 'desktop';
+
+        await base44.entities.Analytics.create({
+          page: currentPageName || 'Home',
+          referrer: document.referrer || 'direct',
+          user_agent: navigator.userAgent,
+          device_type: deviceType,
+          session_id: sessionId
+        });
+      } catch (error) {
+        console.error('Analytics tracking error:', error);
+      }
+    };
+
+    trackPageView();
+  }, [currentPageName]);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
