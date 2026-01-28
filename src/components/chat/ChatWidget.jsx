@@ -33,16 +33,7 @@ export default function ChatWidget() {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (!conversation) return;
-    
-    const unsubscribe = base44.agents.subscribeToConversation(conversation.id, (data) => {
-      setMessages(data.messages || []);
-      setIsLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, [conversation?.id]);
+  // Note: Removed subscription for public users - messages will update from function responses
 
   const initConversation = async () => {
    try {
@@ -68,7 +59,8 @@ export default function ChatWidget() {
       });
 
       if (response.data && response.data.conversation) {
-        // Messages will be updated via subscription
+        setMessages(response.data.conversation.messages || []);
+        setIsLoading(false);
       }
     } catch (error) {
       console.error('Failed to send message:', error);
