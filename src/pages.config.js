@@ -11,6 +11,7 @@ import Resources from './pages/Resources';
 import TermsOfService from './pages/TermsOfService';
 import Warranties from './pages/Warranties';
 import Gallery from './pages/Gallery';
+import Admin from './pages/Admin';
 import __Layout from './Layout.jsx';
 
 
@@ -28,6 +29,7 @@ export const PAGES = {
     "TermsOfService": TermsOfService,
     "Warranties": Warranties,
     "Gallery": Gallery,
+    "Admin": Admin,
 }
 
 export const pagesConfig = {

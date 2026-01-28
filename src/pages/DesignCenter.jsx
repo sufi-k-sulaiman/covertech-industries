@@ -336,7 +336,25 @@ export default function DesignCenter() {
                       </div>
                     </div>
 
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white py-6 text-lg">
+                    <Button 
+                      onClick={async () => {
+                        try {
+                          await base44.entities.DesignCenterSubmission.create({
+                            product_type: selectedProduct,
+                            pool_shape: selectedShape,
+                            dimensions,
+                            features: selectedFeatures,
+                            pattern_selection: patternSelection,
+                            contact_info: contactInfo
+                          });
+                          alert('Your design has been submitted! We will contact you shortly.');
+                          window.location.reload();
+                        } catch (error) {
+                          alert('Error submitting design. Please try again.');
+                        }
+                      }}
+                      className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white py-6 text-lg"
+                    >
                       Submit for Quote
                     </Button>
                   </div>
