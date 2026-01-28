@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ChatWidget from '@/components/chat/ChatWidget';
+import { base44 } from '@/api/base44Client';
 
 const navigation = [
   { 
