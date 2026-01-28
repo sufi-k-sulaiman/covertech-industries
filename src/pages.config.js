@@ -55,13 +55,13 @@ import DesignCenter from './pages/DesignCenter';
 import Gallery from './pages/Gallery';
 import Home from './pages/Home';
 import Learn from './pages/Learn';
+import PDFViewer from './pages/PDFViewer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ProductDetails from './pages/ProductDetails';
 import Products from './pages/Products';
 import Resources from './pages/Resources';
 import TermsOfService from './pages/TermsOfService';
 import Warranties from './pages/Warranties';
-import PDFViewer from './pages/PDFViewer';
 import __Layout from './Layout.jsx';
 
 
@@ -74,13 +74,13 @@ export const PAGES = {
     "Gallery": Gallery,
     "Home": Home,
     "Learn": Learn,
+    "PDFViewer": PDFViewer,
     "PrivacyPolicy": PrivacyPolicy,
     "ProductDetails": ProductDetails,
     "Products": Products,
     "Resources": Resources,
     "TermsOfService": TermsOfService,
     "Warranties": Warranties,
-    "PDFViewer": PDFViewer,
 }
 
 export const pagesConfig = {
