@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Lock, Users, Mail, Briefcase, Palette, BarChart3,
-  Eye, Globe, Monitor, Smartphone, ExternalLink, Calendar, Shield
+  Eye, Globe, Monitor, Smartphone, ExternalLink, Calendar, Shield, MessageSquare
 } from 'lucide-react';
 import SEOHead from '@/components/seo/SEOHead';
 import ProductEditDialog from '@/components/admin/ProductEditDialog';
@@ -83,6 +83,17 @@ export default function Admin() {
   const { data: products = [], refetch: refetchProducts } = useQuery({
     queryKey: ['products'],
     queryFn: () => base44.entities.Product.list('-created_date', 200),
+    enabled: isAuthenticated
+  });
+
+  const { data: chatConversations = [] } = useQuery({
+    queryKey: ['chat-conversations'],
+    queryFn: async () => {
+      const conversations = await base44.asServiceRole.agents.listConversations({
+        agent_name: 'covertech_assistant'
+      });
+      return conversations || [];
+    },
     enabled: isAuthenticated
   });
 
@@ -251,6 +262,18 @@ export default function Admin() {
                 </div>
               </CardContent>
             </Card>
+
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center">
+                    <MessageSquare className="w-5 h-5 text-pink-600" />
+                  </div>
+                  <p className="text-sm text-slate-600">Chat Convos</p>
+                  <p className="text-2xl font-bold text-slate-900">{chatConversations.length}</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Main Content Tabs */}
@@ -260,6 +283,7 @@ export default function Admin() {
               <TabsTrigger value="dealers">Dealers</TabsTrigger>
               <TabsTrigger value="design">Design Center</TabsTrigger>
               <TabsTrigger value="warranties">Warranties</TabsTrigger>
+              <TabsTrigger value="chat">Chat Conversations</TabsTrigger>
               <TabsTrigger value="products">Products</TabsTrigger>
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
             </TabsList>
@@ -431,6 +455,53 @@ export default function Admin() {
                            </td>
                          </tr>
                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Chat Conversations */}
+            <TabsContent value="chat">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Chat Conversations</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-slate-50 border-b">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Date</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Session ID</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Messages</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Last Message</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Source</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200">
+                        {chatConversations.map((conversation) => (
+                          <tr key={conversation.id} className="hover:bg-slate-50">
+                            <td className="px-4 py-3 text-sm text-slate-600">
+                              {new Date(conversation.created_date).toLocaleDateString()} {new Date(conversation.created_date).toLocaleTimeString()}
+                            </td>
+                            <td className="px-4 py-3 text-sm font-mono text-slate-600">
+                              {conversation.metadata?.sessionId || 'N/A'}
+                            </td>
+                            <td className="px-4 py-3 text-sm text-slate-900 font-medium">
+                              {conversation.messages?.length || 0} messages
+                            </td>
+                            <td className="px-4 py-3">
+                              <div className="text-sm text-slate-700 max-w-md truncate">
+                                {conversation.messages?.[conversation.messages.length - 1]?.content || 'No messages'}
+                              </div>
+                            </td>
+                            <td className="px-4 py-3 text-sm text-slate-600">
+                              {conversation.metadata?.source || 'N/A'}
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
