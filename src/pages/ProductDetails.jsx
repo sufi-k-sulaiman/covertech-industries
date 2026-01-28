@@ -1370,7 +1370,7 @@ export default function ProductDetails() {
       {/* Specifications */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6">
-          {slug !== 'solar-covers' && (
+          {slug !== 'solar-covers' && product.specifications && (
             <>
               <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Specifications</h2>
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
