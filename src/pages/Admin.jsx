@@ -370,38 +370,67 @@ export default function Admin() {
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead className="bg-slate-50 border-b">
-                        <tr>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Date</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Contact</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Product</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Shape</th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
-                        </tr>
+                       <tr>
+                         <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Quote ID</th>
+                         <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Date</th>
+                         <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Contact</th>
+                         <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Product</th>
+                         <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Details</th>
+                         <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
+                       </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-200">
-                        {designSubmissions.map((submission) => (
-                          <tr key={submission.id} className="hover:bg-slate-50">
-                            <td className="px-4 py-3 text-sm text-slate-600">
-                              {new Date(submission.created_date).toLocaleDateString()}
-                            </td>
-                            <td className="px-4 py-3 text-sm font-medium text-slate-900">
-                              {submission.contact_info?.fullName || 'N/A'}
-                              <div className="text-xs text-slate-500">{submission.contact_info?.email}</div>
-                            </td>
-                            <td className="px-4 py-3 text-sm text-slate-600">{submission.product_type}</td>
-                            <td className="px-4 py-3 text-sm text-slate-600">{submission.pool_shape || 'N/A'}</td>
-                            <td className="px-4 py-3">
-                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                submission.status === 'closed' ? 'bg-slate-100 text-slate-800' :
-                                submission.status === 'quoted' ? 'bg-green-100 text-green-800' :
-                                submission.status === 'contacted' ? 'bg-blue-100 text-blue-800' :
-                                'bg-yellow-100 text-yellow-800'
-                              }`}>
-                                {submission.status}
-                              </span>
-                            </td>
-                          </tr>
-                        ))}
+                       {designSubmissions.map((submission) => (
+                         <tr key={submission.id} className="hover:bg-slate-50">
+                           <td className="px-4 py-3">
+                             <span className="text-sm font-mono font-semibold text-cyan-600">
+                               {submission.quote_id || 'N/A'}
+                             </span>
+                           </td>
+                           <td className="px-4 py-3 text-sm text-slate-600">
+                             {new Date(submission.created_date).toLocaleDateString()}
+                           </td>
+                           <td className="px-4 py-3">
+                             <div className="text-sm font-medium text-slate-900">
+                               {submission.contact_info?.fullName || 'N/A'}
+                             </div>
+                             <div className="text-xs text-slate-500">{submission.contact_info?.email}</div>
+                             {submission.contact_info?.phone && (
+                               <div className="text-xs text-slate-500">{submission.contact_info.phone}</div>
+                             )}
+                           </td>
+                           <td className="px-4 py-3">
+                             <div className="text-sm text-slate-900">{submission.product_type}</div>
+                             <div className="text-xs text-slate-500">{submission.pool_shape || 'N/A'}</div>
+                           </td>
+                           <td className="px-4 py-3">
+                             <div className="text-xs text-slate-600 space-y-1">
+                               {submission.dimensions?.length && (
+                                 <div>Size: {submission.dimensions.length} x {submission.dimensions.width} ft</div>
+                               )}
+                               {submission.dimensions?.shallowDepth && (
+                                 <div>Depth: {submission.dimensions.shallowDepth}-{submission.dimensions.deepDepth} ft</div>
+                               )}
+                               {submission.pattern_selection?.collection && (
+                                 <div>Pattern: {submission.pattern_selection.collection}</div>
+                               )}
+                               {submission.features?.length > 0 && (
+                                 <div>Features: {submission.features.join(', ')}</div>
+                               )}
+                             </div>
+                           </td>
+                           <td className="px-4 py-3">
+                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                               submission.status === 'closed' ? 'bg-slate-100 text-slate-800' :
+                               submission.status === 'quoted' ? 'bg-green-100 text-green-800' :
+                               submission.status === 'contacted' ? 'bg-blue-100 text-blue-800' :
+                               'bg-yellow-100 text-yellow-800'
+                             }`}>
+                               {submission.status}
+                             </span>
+                           </td>
+                         </tr>
+                       ))}
                       </tbody>
                     </table>
                   </div>
