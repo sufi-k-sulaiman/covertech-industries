@@ -24,8 +24,9 @@ const navigation = [
       { name: 'Pool Insulation', href: 'ProductDetails?slug=pool-insulation' },
       { name: 'Curing Blankets', href: 'ProductDetails?slug=curing-blankets' },
       { name: 'View All Products', href: 'Products' },
-    ]
-  },
+      { name: 'Gallery', href: 'Gallery' },
+      ]
+      },
   { name: 'Design Center', href: 'DesignCenter' },
   { name: 'Warranties', href: 'Warranties' },
   { name: 'Resources', href: 'Resources' },
