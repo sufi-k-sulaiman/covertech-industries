@@ -13,6 +13,15 @@ export default function SEOHead({
     // Set document title
     document.title = title ? `${title} | Covertech Industries` : 'Covertech Industries - Premium Pool Liners, Safety Covers & Custom Solutions';
     
+    // Set favicon
+    let favicon = document.querySelector('link[rel="icon"]');
+    if (!favicon) {
+      favicon = document.createElement('link');
+      favicon.setAttribute('rel', 'icon');
+      document.head.appendChild(favicon);
+    }
+    favicon.setAttribute('href', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png');
+    
     // Update meta tags
     const setMeta = (name, content, property = false) => {
       let meta = document.querySelector(property ? `meta[property="${name}"]` : `meta[name="${name}"]`);
