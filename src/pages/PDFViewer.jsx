@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Download, ArrowLeft, ExternalLink } from 'lucide-react';
+import { Download, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 
 export default function PDFViewer() {
+  const navigate = useNavigate();
   const [pdfUrl, setPdfUrl] = useState('');
   const [title, setTitle] = useState('Document Viewer');
 
@@ -38,12 +40,15 @@ export default function PDFViewer() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4 flex-1 min-w-0">
-              <Link to={createPageUrl('Resources')}>
-                <Button variant="outline" size="sm" className="gap-2 flex-shrink-0">
-                  <ArrowLeft className="w-4 h-4" />
-                  Back
-                </Button>
-              </Link>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="gap-2 flex-shrink-0"
+                onClick={() => navigate(-1)}
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back
+              </Button>
               <h1 className="text-lg font-semibold text-slate-900 truncate">{title}</h1>
             </div>
             <div className="flex gap-2 flex-shrink-0">
