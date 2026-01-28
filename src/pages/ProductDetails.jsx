@@ -554,7 +554,6 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/1de8c9711_WinterCover-Beaded-02.jpg"
     ],
     features: ["Saves Maintenance Costs", "Super Strong Rip-Stop Fabric", "Spring Clean-up Savings", "Weather Resistant", "Heavy Duty Material", "UV Protected"],
-    specifications: { Category: "Winter Covers", Material: "Rip-Stop Fabric", "UV Protection": "Yes", "Custom Sizes": "Available" },
     bestseller: false,
     downloads: [
       { name: "Winter Cover Warranty", url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/2064be08f_WinterCoverWarranty-CVT-English.pdf" },
