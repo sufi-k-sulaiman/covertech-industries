@@ -114,11 +114,11 @@ export default function PatternGallery({ pattern }) {
               </>
             )}
 
-            <div className="max-w-5xl max-h-[90vh] w-full px-16" onClick={(e) => e.stopPropagation()}>
+            <div className="max-w-5xl w-full px-16 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
               <img
                 src={allImages[currentIndex]}
                 alt={pattern.name}
-                className="w-full h-full object-contain rounded-lg"
+                className="max-h-[85vh] w-auto h-auto object-contain rounded-lg"
               />
               <div className="text-center mt-4">
                 <p className="text-white font-medium text-lg">{pattern.name}</p>
