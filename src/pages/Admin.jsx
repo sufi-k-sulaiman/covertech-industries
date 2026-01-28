@@ -11,6 +11,7 @@ import {
   Eye, Globe, Monitor, Smartphone, ExternalLink, Calendar, Shield
 } from 'lucide-react';
 import SEOHead from '@/components/seo/SEOHead';
+import ProductEditDialog from '@/components/admin/ProductEditDialog';
 
 const ADMIN_USERNAME = 'Covertechind';
 const ADMIN_PASSWORD = 'CoverHenry2026@1';
@@ -20,6 +21,7 @@ export default function Admin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [editingProduct, setEditingProduct] = useState(null);
 
   // Check if already authenticated
   useEffect(() => {
@@ -78,7 +80,7 @@ export default function Admin() {
     enabled: isAuthenticated
   });
 
-  const { data: products = [] } = useQuery({
+  const { data: products = [], refetch: refetchProducts } = useQuery({
     queryKey: ['products'],
     queryFn: () => base44.entities.Product.list('-created_date', 200),
     enabled: isAuthenticated
@@ -442,13 +444,7 @@ export default function Admin() {
                               <Button 
                                 size="sm" 
                                 variant="outline"
-                                onClick={() => {
-                                  const newName = prompt('Edit product name:', product.name);
-                                  if (newName && newName !== product.name) {
-                                    base44.entities.Product.update(product.id, { name: newName })
-                                      .then(() => window.location.reload());
-                                  }
-                                }}
+                                onClick={() => setEditingProduct(product)}
                               >
                                 Edit
                               </Button>
@@ -638,6 +634,19 @@ export default function Admin() {
           </Tabs>
         </div>
       </div>
+
+      {/* Product Edit Dialog */}
+      {editingProduct && (
+        <ProductEditDialog
+          product={editingProduct}
+          open={!!editingProduct}
+          onClose={() => setEditingProduct(null)}
+          onSave={() => {
+            refetchProducts();
+            setEditingProduct(null);
+          }}
+        />
+      )}
     </>
   );
 }
