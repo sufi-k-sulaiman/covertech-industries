@@ -278,14 +278,35 @@ export default function Admin() {
 
           {/* Main Content Tabs */}
           <Tabs defaultValue="contacts" className="space-y-6">
-            <TabsList className="bg-white border border-slate-200">
-              <TabsTrigger value="contacts">Contacts</TabsTrigger>
-              <TabsTrigger value="dealers">Dealers</TabsTrigger>
-              <TabsTrigger value="design">Design Center</TabsTrigger>
-              <TabsTrigger value="warranties">Warranties</TabsTrigger>
-              <TabsTrigger value="chat">Chat Conversations</TabsTrigger>
-              <TabsTrigger value="products">Products</TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsList className="inline-flex h-12 items-center justify-start gap-1 rounded-full bg-white p-1.5 shadow-sm border border-slate-200">
+              <TabsTrigger value="contacts" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-cyan-500 data-[state=active]:text-white data-[state=active]:shadow-sm">
+                <Mail className="w-4 h-4" />
+                Contacts
+              </TabsTrigger>
+              <TabsTrigger value="dealers" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-cyan-500 data-[state=active]:text-white data-[state=active]:shadow-sm">
+                <Briefcase className="w-4 h-4" />
+                Dealers
+              </TabsTrigger>
+              <TabsTrigger value="design" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-cyan-500 data-[state=active]:text-white data-[state=active]:shadow-sm">
+                <Palette className="w-4 h-4" />
+                Design Center
+              </TabsTrigger>
+              <TabsTrigger value="warranties" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-cyan-500 data-[state=active]:text-white data-[state=active]:shadow-sm">
+                <Shield className="w-4 h-4" />
+                Warranties
+              </TabsTrigger>
+              <TabsTrigger value="chat" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-cyan-500 data-[state=active]:text-white data-[state=active]:shadow-sm">
+                <MessageSquare className="w-4 h-4" />
+                Chat
+              </TabsTrigger>
+              <TabsTrigger value="products" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-cyan-500 data-[state=active]:text-white data-[state=active]:shadow-sm">
+                <Palette className="w-4 h-4" />
+                Products
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-cyan-500 data-[state=active]:text-white data-[state=active]:shadow-sm">
+                <BarChart3 className="w-4 h-4" />
+                Analytics
+              </TabsTrigger>
             </TabsList>
 
             {/* Contact Submissions */}
