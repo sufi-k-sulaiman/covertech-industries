@@ -12,6 +12,7 @@ import PoolDimensions from '@/components/design-center/PoolDimensions';
 import PoolFeatures from '@/components/design-center/PoolFeatures';
 import PatternSelector from '@/components/design-center/PatternSelector';
 import ContactForm from '@/components/design-center/ContactForm';
+import { base44 } from '@/api/base44Client';
 
 const productTypes = [
   {
@@ -339,7 +340,9 @@ export default function DesignCenter() {
                     <Button 
                       onClick={async () => {
                         try {
+                          const quoteId = `CT${Date.now()}${Math.random().toString(36).substr(2, 5).toUpperCase()}`;
                           await base44.entities.DesignCenterSubmission.create({
+                            quote_id: quoteId,
                             product_type: selectedProduct,
                             pool_shape: selectedShape,
                             dimensions,
@@ -347,9 +350,10 @@ export default function DesignCenter() {
                             pattern_selection: patternSelection,
                             contact_info: contactInfo
                           });
-                          alert('Your design has been submitted! We will contact you shortly.');
+                          alert(`Your quote has been submitted successfully! Reference ID: ${quoteId}`);
                           window.location.reload();
                         } catch (error) {
+                          console.error('Submission error:', error);
                           alert('Error submitting design. Please try again.');
                         }
                       }}
