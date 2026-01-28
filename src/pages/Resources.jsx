@@ -5,6 +5,7 @@ import { FileText, BookOpen, Download, ArrowRight, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import GalleryBanner from '@/components/ui/GalleryBanner';
 
 const colorMap = {
   'cyan-500': '#06b6d4',
@@ -320,6 +321,8 @@ export default function Resources() {
           </div>
         </div>
       </section>
+
+      <GalleryBanner />
     </>
   );
 }

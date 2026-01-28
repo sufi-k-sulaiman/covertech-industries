@@ -8,6 +8,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import GalleryModal from '@/components/products/GalleryModal';
+import GalleryBanner from '@/components/ui/GalleryBanner';
 
 const productGuides = [
   {
@@ -493,6 +494,8 @@ export default function Learn() {
           </div>
         </div>
       </section>
+
+      <GalleryBanner />
     </>
   );
 }

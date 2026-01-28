@@ -6,6 +6,7 @@ import { ArrowRight, ArrowLeft, Check, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import GalleryBanner from '@/components/ui/GalleryBanner';
 import PoolShapeSelector from '@/components/design-center/PoolShapeSelector';
 import PoolDimensions from '@/components/design-center/PoolDimensions';
 import PoolFeatures from '@/components/design-center/PoolFeatures';
@@ -366,6 +367,8 @@ export default function DesignCenter() {
             </div>
         </div>
       </section>
+
+      <GalleryBanner />
     </>
   );
 }

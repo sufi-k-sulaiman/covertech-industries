@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { base44 } from '@/api/base44Client';
 import SEOHead, { localBusinessSchema, createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import GalleryBanner from '@/components/ui/GalleryBanner';
 
 const contactInfo = [
   { icon: Phone, label: "Phone", value: "+1 (416) 640-5590", href: "tel:+14166405590" },
@@ -240,6 +241,8 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      <GalleryBanner />
     </>
   );
 }

@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { base44 } from '@/api/base44Client';
 import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import GalleryBanner from '@/components/ui/GalleryBanner';
 
 const benefits = [
   { icon: DollarSign, title: "Competitive Margins", description: "Enjoy excellent profit margins on all our premium products" },
@@ -344,6 +345,8 @@ export default function Dealer() {
           </div>
         </div>
       </section>
+
+      <GalleryBanner />
     </>
   );
 }
