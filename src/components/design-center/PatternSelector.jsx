@@ -57,9 +57,73 @@ const beadColors = [
   { id: 'white', name: 'White', color: '#f1f5f9' }
 ];
 
-export default function PatternSelector({ selectedCollection, selectedPattern, selectedBead, onSelectionChange }) {
+const safetyCoverColors = [
+  { id: 'black-mesh', name: 'Black Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e2384ff67_BlackMesh.png' },
+  { id: 'blue-mesh', name: 'Blue Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a4d6d527c_BlueMesh.png' },
+  { id: 'green-mesh', name: 'Green Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b04e1ef2d_GreenMesh.png' },
+  { id: 'grey-mesh', name: 'Grey Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a1472d9b7_GreyMesh.png' },
+  { id: 'taupe-mesh', name: 'Taupe Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/671f9a32d_TaupeMesh.png' }
+];
+
+export default function PatternSelector({ selectedCollection, selectedPattern, selectedBead, onSelectionChange, productType }) {
   const currentPatterns = patterns[selectedCollection] || patterns['platinum-plus-2026'];
   const currentCollection = collections.find(c => c.id === selectedCollection);
+
+  // Show safety cover colors for safety covers
+  if (productType === 'safety-cover') {
+    return (
+      <div>
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-slate-900 mb-3">Select Safety Cover Color</h2>
+          <p className="text-slate-600">Choose from our premium mesh color options.</p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+          {safetyCoverColors.map((color) => (
+            <motion.button
+              key={color.id}
+              onClick={() => onSelectionChange('pattern', color.id)}
+              className={`relative rounded-xl overflow-hidden group ${
+                selectedPattern === color.id ? 'ring-4 ring-cyan-500' : 'ring-1 ring-slate-200'
+              }`}
+              whileHover={{ y: -4 }}
+            >
+              <div className="aspect-square relative overflow-hidden">
+                <img
+                  src={color.image}
+                  alt={color.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent" />
+                
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <div className="text-white font-medium text-sm text-center">{color.name}</div>
+                </div>
+
+                {selectedPattern === color.id && (
+                  <div className="absolute top-2 right-2 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                )}
+              </div>
+            </motion.button>
+          ))}
+        </div>
+
+        <div className="bg-cyan-50 rounded-xl p-6">
+          <h4 className="font-semibold text-cyan-900 mb-3">Safety Cover Features</h4>
+          <ul className="space-y-2 text-sm text-cyan-700">
+            <li>• ASTM F1346-91 Certified for safety compliance</li>
+            <li>• Up to 30-year warranty coverage</li>
+            <li>• Mesh fabric allows water drainage while keeping debris out</li>
+            <li>• Custom-fit to your pool shape and size</li>
+            <li>• UV-resistant and weatherproof materials</li>
+            <li>• Professional installation recommended</li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

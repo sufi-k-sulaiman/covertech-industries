@@ -252,6 +252,7 @@ export default function DesignCenter() {
                     selectedPattern={patternSelection.pattern}
                     selectedBead={patternSelection.bead}
                     onSelectionChange={handlePatternChange}
+                    productType={selectedProduct}
                   />
                 </motion.div>
               )}
