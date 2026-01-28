@@ -48,15 +48,6 @@ export default function PDFViewer() {
             </div>
             <div className="flex gap-2 flex-shrink-0">
               <Button
-                variant="outline"
-                size="sm"
-                onClick={() => window.open(pdfUrl, '_blank')}
-                className="gap-2"
-              >
-                <ExternalLink className="w-4 h-4" />
-                <span className="hidden sm:inline">Open in New Tab</span>
-              </Button>
-              <Button
                 onClick={handleDownload}
                 className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white gap-2"
                 size="sm"
