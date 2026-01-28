@@ -20,7 +20,7 @@ export default function SEOHead({
       favicon.setAttribute('rel', 'icon');
       document.head.appendChild(favicon);
     }
-    favicon.setAttribute('href', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png');
+    favicon.setAttribute('href', 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9287cb6ef_favicon.png');
     
     // Update meta tags
     const setMeta = (name, content, property = false) => {
