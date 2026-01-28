@@ -73,11 +73,17 @@ export default function PDFViewer() {
       <div className="flex-1 p-4 md:p-6">
         <div className="max-w-7xl mx-auto h-full">
           {pdfUrl ? (
-            <iframe
-              src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
-              className="w-full h-[calc(100vh-200px)] rounded-xl shadow-lg bg-white"
-              title={title}
-            />
+            <object
+              data={pdfUrl}
+              type="application/pdf"
+              className="w-full h-[calc(100vh-200px)] rounded-xl shadow-lg"
+            >
+              <iframe
+                src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
+                className="w-full h-[calc(100vh-200px)] rounded-xl shadow-lg bg-white"
+                title={title}
+              />
+            </object>
           ) : (
             <div className="flex items-center justify-center h-[calc(100vh-200px)] bg-white rounded-xl shadow-lg">
               <div className="text-center">
