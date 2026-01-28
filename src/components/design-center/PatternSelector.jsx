@@ -58,11 +58,11 @@ const beadColors = [
 ];
 
 const safetyCoverColors = [
-  { id: 'black-mesh', name: 'Black Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e2384ff67_BlackMesh.png' },
-  { id: 'blue-mesh', name: 'Blue Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a4d6d527c_BlueMesh.png' },
-  { id: 'green-mesh', name: 'Green Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b04e1ef2d_GreenMesh.png' },
-  { id: 'grey-mesh', name: 'Grey Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a1472d9b7_GreyMesh.png' },
-  { id: 'taupe-mesh', name: 'Taupe Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/671f9a32d_TaupeMesh.png' }
+  { id: 'black-mesh', name: 'Black Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/c4494b8d4_BlackMesh.png' },
+  { id: 'blue-mesh', name: 'Blue Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bd76c5987_BlueMesh.png' },
+  { id: 'green-mesh', name: 'Green Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/031b3bbe7_GreenMesh.png' },
+  { id: 'grey-mesh', name: 'Grey Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/09d3933b4_GreyMesh.png' },
+  { id: 'taupe-mesh', name: 'Taupe Mesh', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5f3d20276_TaupeMesh.png' }
 ];
 
 export default function PatternSelector({ selectedCollection, selectedPattern, selectedBead, onSelectionChange, productType }) {
