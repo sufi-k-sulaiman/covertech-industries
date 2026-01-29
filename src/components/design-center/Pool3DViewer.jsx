@@ -5,10 +5,18 @@ import { ZoomIn, ZoomOut, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const PATTERN_TEXTURES = {
-  mosaic: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4b18878f0_image.png',
-  hexagon: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a30ba3dca_image.png',
-  wave: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ddc2c2ef2_image.png',
-  speckle: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e3942e1f_image.png'
+  terrazzo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cfe990211_Screenshot2026-01-29at54358AM.png',
+  hexagon: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f6c8b188b_image.png',
+  wave: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f298ce101_image.png',
+  speckle: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/82d082712_image.png',
+  mosaic: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/87b3e198e_Screenshot2026-01-29at54533AM.png',
+  finespeckle: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b3d10361e_image.png',
+  lattice: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a2fe6a2d3_image.png',
+  marble: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e0e869c0a_image.png',
+  ripple: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e0f408195_image.png',
+  granite: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3e9bd7341_image.png',
+  reflection1: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1d65a5131_image.png',
+  reflection2: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/48f19ddcb_image.png'
 };
 
 export default function Pool3DViewer({ shape, dimensions, unit, pattern = 'mosaic' }) {
@@ -333,21 +341,29 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   
   scene.add(group);
 
-  // Create water volume
+  // Create water volume with pattern reflection
   const waterLevelPercent = waterLevel / 100;
   const waterDepth = avgDepth * waterLevelPercent;
   
+  // Clone the pattern texture for water reflection
+  const waterTexture = patternTexture.clone();
+  waterTexture.wrapS = THREE.RepeatWrapping;
+  waterTexture.wrapT = THREE.RepeatWrapping;
+  waterTexture.repeat.set(2, 2);
+  
   const waterMaterial = new THREE.MeshPhysicalMaterial({
+    map: waterTexture,
     color: 0x06b6d4,
     transparent: true,
-    opacity: 0.7,
-    metalness: 0,
-    roughness: 0.1,
-    transmission: 0.95,
-    thickness: 1,
+    opacity: 0.6,
+    metalness: 0.1,
+    roughness: 0.05,
+    transmission: 0.9,
+    thickness: 1.5,
     clearcoat: 1,
-    clearcoatRoughness: 0.1,
+    clearcoatRoughness: 0.05,
     ior: 1.33,
+    envMapIntensity: 1,
   });
   
   const waterExtrudeSettings = {

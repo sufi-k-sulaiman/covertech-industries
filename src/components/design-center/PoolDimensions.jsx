@@ -6,24 +6,64 @@ import Pool3DViewer from './Pool3DViewer';
 
 const POOL_PATTERNS = [
   {
-    id: 'mosaic',
-    name: 'Blue Mosaic',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4b18878f0_image.png'
+    id: 'terrazzo',
+    name: 'Dark Terrazzo',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/cfe990211_Screenshot2026-01-29at54358AM.png'
   },
   {
     id: 'hexagon',
-    name: 'Hexagon Pattern',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a30ba3dca_image.png'
+    name: 'Hexagon Blue',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f6c8b188b_image.png'
   },
   {
     id: 'wave',
-    name: 'Wave Pattern',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ddc2c2ef2_image.png'
+    name: 'Wave Swirl',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f298ce101_image.png'
   },
   {
     id: 'speckle',
-    name: 'Speckle Blue',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e3942e1f_image.png'
+    name: 'Cosmic Speckle',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/82d082712_image.png'
+  },
+  {
+    id: 'mosaic',
+    name: 'Broken Tile',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/87b3e198e_Screenshot2026-01-29at54533AM.png'
+  },
+  {
+    id: 'finespeckle',
+    name: 'Fine Speckle',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b3d10361e_image.png'
+  },
+  {
+    id: 'lattice',
+    name: 'Lattice',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a2fe6a2d3_image.png'
+  },
+  {
+    id: 'marble',
+    name: 'Blue Marble',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e0e869c0a_image.png'
+  },
+  {
+    id: 'ripple',
+    name: 'Water Ripple',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e0f408195_image.png'
+  },
+  {
+    id: 'granite',
+    name: 'Granite',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3e9bd7341_image.png'
+  },
+  {
+    id: 'reflection1',
+    name: 'Ocean Depth',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1d65a5131_image.png'
+  },
+  {
+    id: 'reflection2',
+    name: 'Pool Reflection',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/48f19ddcb_image.png'
   }
 ];
 
@@ -125,12 +165,12 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
           </div>
         </div>
         
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-6 gap-3">
           {POOL_PATTERNS.map((pattern) => (
             <button
               key={pattern.id}
               onClick={() => setSelectedPattern(pattern.id)}
-              className={`relative rounded-xl overflow-hidden border-2 transition-all hover:scale-105 ${
+              className={`relative rounded-lg overflow-hidden border-2 transition-all hover:scale-105 ${
                 selectedPattern === pattern.id 
                   ? 'border-cyan-500 shadow-lg shadow-cyan-500/30' 
                   : 'border-slate-200 hover:border-cyan-300'
@@ -141,10 +181,10 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
                 alt={pattern.name}
                 className="w-full aspect-square object-cover"
               />
-              <div className={`absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/60 to-transparent ${
-                selectedPattern === pattern.id ? 'from-cyan-600/80' : ''
+              <div className={`absolute inset-0 flex items-end p-2 bg-gradient-to-t from-black/70 to-transparent ${
+                selectedPattern === pattern.id ? 'from-cyan-600/90' : ''
               }`}>
-                <span className="text-white text-sm font-medium">{pattern.name}</span>
+                <span className="text-white text-xs font-medium leading-tight">{pattern.name}</span>
               </div>
             </button>
           ))}
