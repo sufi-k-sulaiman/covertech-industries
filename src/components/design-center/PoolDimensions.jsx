@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
-import { Ruler, Info } from 'lucide-react';
+import { Ruler, Info, ArrowLeftRight, ArrowUpDown, Waves, Droplets } from 'lucide-react';
 import Pool3DViewer from './Pool3DViewer';
 
 export default function PoolDimensions({ dimensions, onDimensionsChange, selectedShape }) {
@@ -73,40 +73,56 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-8">
           <div>
-            <div className="flex justify-between items-center mb-3">
-              <Label>Length (A)</Label>
-              <span className="text-sm font-semibold text-cyan-600">{dimensions.length || 20} {unit}</span>
+            <div className="flex justify-between items-center mb-4">
+              <Label className="text-base font-semibold">Length (A)</Label>
+              <span className="text-lg font-bold text-cyan-600">{dimensions.length || 20} {unit}</span>
             </div>
-            <Slider
-              value={[dimensions.length || 20]}
-              onValueChange={(value) => handleChange('length', value[0])}
-              min={10}
-              max={50}
-              step={0.5}
-              className="w-full"
-            />
-            <div className="flex justify-between text-xs text-slate-500 mt-1">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                <ArrowLeftRight className="w-6 h-6 text-white" />
+              </div>
+              <Slider
+                value={[dimensions.length || 20]}
+                onValueChange={(value) => handleChange('length', value[0])}
+                min={10}
+                max={50}
+                step={0.5}
+                className="flex-1 h-3"
+              />
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                <ArrowLeftRight className="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <div className="flex justify-between text-xs text-slate-500 mt-2 px-14">
               <span>10</span>
               <span>50 {unit}</span>
             </div>
           </div>
 
           <div>
-            <div className="flex justify-between items-center mb-3">
-              <Label>Width (B)</Label>
-              <span className="text-sm font-semibold text-cyan-600">{dimensions.width || 10} {unit}</span>
+            <div className="flex justify-between items-center mb-4">
+              <Label className="text-base font-semibold">Width (B)</Label>
+              <span className="text-lg font-bold text-cyan-600">{dimensions.width || 10} {unit}</span>
             </div>
-            <Slider
-              value={[dimensions.width || 10]}
-              onValueChange={(value) => handleChange('width', value[0])}
-              min={5}
-              max={30}
-              step={0.5}
-              className="w-full"
-            />
-            <div className="flex justify-between text-xs text-slate-500 mt-1">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                <ArrowUpDown className="w-6 h-6 text-white" />
+              </div>
+              <Slider
+                value={[dimensions.width || 10]}
+                onValueChange={(value) => handleChange('width', value[0])}
+                min={5}
+                max={30}
+                step={0.5}
+                className="flex-1 h-3"
+              />
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                <ArrowUpDown className="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <div className="flex justify-between text-xs text-slate-500 mt-2 px-14">
               <span>5</span>
               <span>30 {unit}</span>
             </div>
@@ -118,59 +134,83 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
             <Ruler className="w-4 h-4" />
             <span className="font-medium">Depth & Water Level</span>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
-              <div className="flex justify-between items-center mb-3">
-                <Label>Shallow End Depth</Label>
-                <span className="text-sm font-semibold text-blue-600">{dimensions.shallowDepth || 3} {unit}</span>
+              <div className="flex justify-between items-center mb-4">
+                <Label className="text-base font-semibold">Shallow End Depth</Label>
+                <span className="text-lg font-bold text-cyan-600">{dimensions.shallowDepth || 3} {unit}</span>
               </div>
-              <Slider
-                value={[dimensions.shallowDepth || 3]}
-                onValueChange={(value) => handleChange('shallowDepth', value[0])}
-                min={2}
-                max={6}
-                step={0.5}
-                className="w-full"
-              />
-              <div className="flex justify-between text-xs text-slate-500 mt-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                  <Waves className="w-6 h-6 text-white" />
+                </div>
+                <Slider
+                  value={[dimensions.shallowDepth || 3]}
+                  onValueChange={(value) => handleChange('shallowDepth', value[0])}
+                  min={2}
+                  max={6}
+                  step={0.5}
+                  className="flex-1 h-3"
+                />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <Waves className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div className="flex justify-between text-xs text-slate-500 mt-2 px-14">
                 <span>2</span>
                 <span>6 {unit}</span>
               </div>
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-3">
-                <Label>Deep End Depth</Label>
-                <span className="text-sm font-semibold text-blue-600">{dimensions.deepDepth || 8} {unit}</span>
+              <div className="flex justify-between items-center mb-4">
+                <Label className="text-base font-semibold">Deep End Depth</Label>
+                <span className="text-lg font-bold text-cyan-600">{dimensions.deepDepth || 8} {unit}</span>
               </div>
-              <Slider
-                value={[dimensions.deepDepth || 8]}
-                onValueChange={(value) => handleChange('deepDepth', value[0])}
-                min={4}
-                max={12}
-                step={0.5}
-                className="w-full"
-              />
-              <div className="flex justify-between text-xs text-slate-500 mt-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                  <Waves className="w-6 h-6 text-white" />
+                </div>
+                <Slider
+                  value={[dimensions.deepDepth || 8]}
+                  onValueChange={(value) => handleChange('deepDepth', value[0])}
+                  min={4}
+                  max={12}
+                  step={0.5}
+                  className="flex-1 h-3"
+                />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <Waves className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div className="flex justify-between text-xs text-slate-500 mt-2 px-14">
                 <span>4</span>
                 <span>12 {unit}</span>
               </div>
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-3">
-                <Label>Water Level</Label>
-                <span className="text-sm font-semibold text-cyan-600">{dimensions.waterLevel || 90}%</span>
+              <div className="flex justify-between items-center mb-4">
+                <Label className="text-base font-semibold">Water Level</Label>
+                <span className="text-lg font-bold text-cyan-600">{dimensions.waterLevel || 90}%</span>
               </div>
-              <Slider
-                value={[dimensions.waterLevel || 90]}
-                onValueChange={(value) => handleChange('waterLevel', value[0])}
-                min={50}
-                max={100}
-                step={5}
-                className="w-full"
-              />
-              <div className="flex justify-between text-xs text-slate-500 mt-1">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                  <Droplets className="w-6 h-6 text-white" />
+                </div>
+                <Slider
+                  value={[dimensions.waterLevel || 90]}
+                  onValueChange={(value) => handleChange('waterLevel', value[0])}
+                  min={50}
+                  max={100}
+                  step={5}
+                  className="flex-1 h-3"
+                />
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <Droplets className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div className="flex justify-between text-xs text-slate-500 mt-2 px-14">
                 <span>Low (50%)</span>
                 <span>Medium (75%)</span>
                 <span>High (100%)</span>
