@@ -309,13 +309,27 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   walls.receiveShadow = true;
   group.add(walls);
   
-  // Create interior floor
+  // Create interior floor with texture
   const floorGeometry = new THREE.ShapeGeometry(innerShape);
-  const floor = new THREE.Mesh(floorGeometry, interiorMaterial);
+  const floor = new THREE.Mesh(floorGeometry, wallMaterial);
   floor.rotation.x = -Math.PI / 2;
   floor.position.y = -avgDepth;
   floor.receiveShadow = true;
   group.add(floor);
+  
+  // Create interior walls with texture
+  const wallHeight = avgDepth * 0.8;
+  const wallExtrudeSettings2 = {
+    depth: wallHeight,
+    bevelEnabled: false,
+  };
+  
+  const interiorWallsGeometry = new THREE.ExtrudeGeometry(innerShape, wallExtrudeSettings2);
+  const interiorWalls = new THREE.Mesh(interiorWallsGeometry, wallMaterial);
+  interiorWalls.rotation.x = -Math.PI / 2;
+  interiorWalls.position.y = -wallHeight;
+  interiorWalls.receiveShadow = true;
+  group.add(interiorWalls);
   
   scene.add(group);
 
