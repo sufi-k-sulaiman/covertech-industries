@@ -73,7 +73,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
           </div>
         </div>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-2 gap-6">
           <div>
             <div className="flex justify-between items-center mb-4">
               <Label className="text-base font-semibold">Length (A)</Label>
@@ -89,7 +89,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
                 min={10}
                 max={50}
                 step={0.5}
-                className="flex-1 h-3"
+                className="flex-1 h-6"
               />
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
                 <ArrowLeftRight className="w-6 h-6 text-white" />
@@ -116,7 +116,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
                 min={5}
                 max={30}
                 step={0.5}
-                className="flex-1 h-3"
+                className="flex-1 h-6"
               />
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
                 <ArrowUpDown className="w-6 h-6 text-white" />
@@ -134,7 +134,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
             <Ruler className="w-4 h-4" />
             <span className="font-medium">Depth & Water Level</span>
           </div>
-          <div className="space-y-8">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="flex justify-between items-center mb-4">
                 <Label className="text-base font-semibold">Shallow End Depth</Label>
@@ -150,7 +150,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
                   min={2}
                   max={6}
                   step={0.5}
-                  className="flex-1 h-3"
+                  className="flex-1 h-6"
                 />
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
                   <Waves className="w-6 h-6 text-white" />
@@ -177,7 +177,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
                   min={4}
                   max={12}
                   step={0.5}
-                  className="flex-1 h-3"
+                  className="flex-1 h-6"
                 />
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
                   <Waves className="w-6 h-6 text-white" />
@@ -189,7 +189,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
               </div>
             </div>
 
-            <div>
+            <div className="col-span-2">
               <div className="flex justify-between items-center mb-4">
                 <Label className="text-base font-semibold">Water Level</Label>
                 <span className="text-lg font-bold text-cyan-600">{dimensions.waterLevel || 90}%</span>
@@ -204,7 +204,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
                   min={50}
                   max={100}
                   step={5}
-                  className="flex-1 h-3"
+                  className="flex-1 h-6"
                 />
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
                   <Droplets className="w-6 h-6 text-white" />
