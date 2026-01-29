@@ -48,6 +48,33 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
         <p className="text-slate-600">Provide accurate measurements for a perfect fit.</p>
       </div>
 
+      {/* Depth & Water Level Display Above Pool */}
+      <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 border border-cyan-200">
+          <div className="flex items-center gap-2 mb-2">
+            <Waves className="w-5 h-5 text-cyan-600" />
+            <span className="text-sm font-medium text-slate-700">Shallow Depth</span>
+          </div>
+          <div className="text-2xl font-bold text-cyan-600">{dimensions.shallowDepth || 3} {unit}</div>
+        </div>
+        
+        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 border border-blue-200">
+          <div className="flex items-center gap-2 mb-2">
+            <Waves className="w-5 h-5 text-blue-600" />
+            <span className="text-sm font-medium text-slate-700">Deep End Depth</span>
+          </div>
+          <div className="text-2xl font-bold text-blue-600">{dimensions.deepDepth || 8} {unit}</div>
+        </div>
+        
+        <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 border border-cyan-200">
+          <div className="flex items-center gap-2 mb-2">
+            <Droplets className="w-5 h-5 text-cyan-600" />
+            <span className="text-sm font-medium text-slate-700">Water Level</span>
+          </div>
+          <div className="text-2xl font-bold text-cyan-600">{dimensions.waterLevel || 90}%</div>
+        </div>
+      </div>
+
       {/* 3D Preview - Full Width */}
       <div className="bg-slate-900 rounded-2xl p-6 mb-8">
         <div className="mb-4 text-center">
@@ -195,13 +222,12 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
         <div className="border-t border-slate-200 pt-6">
           <div className="flex items-center gap-2 text-slate-700 mb-4">
             <Ruler className="w-4 h-4" />
-            <span className="font-medium">Depth & Water Level</span>
+            <span className="font-medium">Depth & Water Level Controls</span>
           </div>
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="flex justify-between items-center mb-4">
                 <Label className="text-base font-semibold">Shallow End Depth</Label>
-                <span className="text-lg font-bold text-cyan-600">{dimensions.shallowDepth || 3} {unit}</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">
@@ -228,7 +254,6 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
             <div>
               <div className="flex justify-between items-center mb-4">
                 <Label className="text-base font-semibold">Deep End Depth</Label>
-                <span className="text-lg font-bold text-cyan-600">{dimensions.deepDepth || 8} {unit}</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">
@@ -255,7 +280,6 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
             <div className="col-span-2">
               <div className="flex justify-between items-center mb-4">
                 <Label className="text-base font-semibold">Water Level</Label>
-                <span className="text-lg font-bold text-cyan-600">{dimensions.waterLevel || 90}%</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center flex-shrink-0">

@@ -223,15 +223,15 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
     side: THREE.DoubleSide,
   });
 
-  // Load pattern texture
+  // Load pattern texture for all walls
   const textureLoader = new THREE.TextureLoader();
   const patternTexture = textureLoader.load(PATTERN_TEXTURES[pattern] || PATTERN_TEXTURES.mosaic);
   patternTexture.wrapS = THREE.RepeatWrapping;
   patternTexture.wrapT = THREE.RepeatWrapping;
   patternTexture.repeat.set(4, 4);
 
-  // Interior material with pattern texture
-  const interiorMaterial = new THREE.MeshStandardMaterial({
+  // Wall material with pattern texture - used for all interior surfaces
+  const wallMaterial = new THREE.MeshStandardMaterial({
     map: patternTexture,
     roughness: 0.4,
     metalness: 0.1,
