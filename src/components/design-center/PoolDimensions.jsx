@@ -1,11 +1,35 @@
 import { useState } from 'react';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
-import { Ruler, Info, ArrowLeftRight, ArrowUpDown, Waves, Droplets } from 'lucide-react';
+import { Ruler, Info, ArrowLeftRight, ArrowUpDown, Waves, Droplets, Palette } from 'lucide-react';
 import Pool3DViewer from './Pool3DViewer';
+
+const POOL_PATTERNS = [
+  {
+    id: 'mosaic',
+    name: 'Blue Mosaic',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4b18878f0_image.png'
+  },
+  {
+    id: 'hexagon',
+    name: 'Hexagon Pattern',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a30ba3dca_image.png'
+  },
+  {
+    id: 'wave',
+    name: 'Wave Pattern',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ddc2c2ef2_image.png'
+  },
+  {
+    id: 'speckle',
+    name: 'Speckle Blue',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e3942e1f_image.png'
+  }
+];
 
 export default function PoolDimensions({ dimensions, onDimensionsChange, selectedShape }) {
   const [unit, setUnit] = useState('feet');
+  const [selectedPattern, setSelectedPattern] = useState(POOL_PATTERNS[0].id);
 
   const handleChange = (field, value) => {
     onDimensionsChange({ ...dimensions, [field]: value });
@@ -37,6 +61,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
             shape={selectedShape} 
             dimensions={dimensions}
             unit={unit}
+            pattern={selectedPattern}
           />
         </div>
 
@@ -58,6 +83,44 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
           >
             Meters
           </button>
+        </div>
+      </div>
+
+      {/* Pattern Selection */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 text-cyan-600 mb-4">
+          <div className="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center">
+            <Palette className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="font-semibold">Pool Liner Pattern</div>
+            <div className="text-sm text-slate-600">Choose your interior finish</div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-4 gap-4">
+          {POOL_PATTERNS.map((pattern) => (
+            <button
+              key={pattern.id}
+              onClick={() => setSelectedPattern(pattern.id)}
+              className={`relative rounded-xl overflow-hidden border-2 transition-all hover:scale-105 ${
+                selectedPattern === pattern.id 
+                  ? 'border-cyan-500 shadow-lg shadow-cyan-500/30' 
+                  : 'border-slate-200 hover:border-cyan-300'
+              }`}
+            >
+              <img 
+                src={pattern.image} 
+                alt={pattern.name}
+                className="w-full aspect-square object-cover"
+              />
+              <div className={`absolute inset-0 flex items-end p-3 bg-gradient-to-t from-black/60 to-transparent ${
+                selectedPattern === pattern.id ? 'from-cyan-600/80' : ''
+              }`}>
+                <span className="text-white text-sm font-medium">{pattern.name}</span>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
 

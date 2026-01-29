@@ -4,7 +4,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ZoomIn, ZoomOut, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function Pool3DViewer({ shape, dimensions, unit }) {
+const PATTERN_TEXTURES = {
+  mosaic: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4b18878f0_image.png',
+  hexagon: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a30ba3dca_image.png',
+  wave: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ddc2c2ef2_image.png',
+  speckle: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5e3942e1f_image.png'
+};
+
+export default function Pool3DViewer({ shape, dimensions, unit, pattern = 'mosaic' }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const rendererRef = useRef(null);
@@ -82,7 +89,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
     const waterLevel = parseFloat(dimensions.waterLevel) || 90;
 
     // Create pool based on shape
-    const water = createPoolShape(scene, shape || 'rectangle', poolLength, poolWidth, shallowDepth, deepDepth, waterLevel);
+    const water = createPoolShape(scene, shape || 'rectangle', poolLength, poolWidth, shallowDepth, deepDepth, waterLevel, pattern);
     waterRef.current = water;
 
     // Grid helper (ground)
@@ -132,7 +139,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
         container.removeChild(renderer.domElement);
       }
     };
-  }, [shape, dimensions, unit]);
+  }, [shape, dimensions, unit, pattern]);
 
   const handleZoomIn = () => {
     if (cameraRef.current && controlsRef.current) {
@@ -207,7 +214,7 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
   );
 }
 
-function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90) {
+function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90, pattern = 'mosaic') {
   // Pool material - bright cyan/blue like reference image
   const poolMaterial = new THREE.MeshStandardMaterial({
     color: 0x22d3ee,
@@ -216,9 +223,16 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
     side: THREE.DoubleSide,
   });
 
-  // Interior material - darker for depth
+  // Load pattern texture
+  const textureLoader = new THREE.TextureLoader();
+  const patternTexture = textureLoader.load(PATTERN_TEXTURES[pattern] || PATTERN_TEXTURES.mosaic);
+  patternTexture.wrapS = THREE.RepeatWrapping;
+  patternTexture.wrapT = THREE.RepeatWrapping;
+  patternTexture.repeat.set(4, 4);
+
+  // Interior material with pattern texture
   const interiorMaterial = new THREE.MeshStandardMaterial({
-    color: 0x0891b2,
+    map: patternTexture,
     roughness: 0.4,
     metalness: 0.1,
     side: THREE.DoubleSide,
