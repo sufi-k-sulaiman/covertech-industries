@@ -317,19 +317,18 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   floor.receiveShadow = true;
   group.add(floor);
   
-  // Create interior walls with texture
-  const wallHeight = avgDepth * 0.8;
-  const wallExtrudeSettings2 = {
-    depth: wallHeight,
+  // Create textured inner walls by extruding the inner shape
+  const innerWallExtrudeSettings = {
+    depth: avgDepth,
     bevelEnabled: false,
   };
   
-  const interiorWallsGeometry = new THREE.ExtrudeGeometry(innerShape, wallExtrudeSettings2);
-  const interiorWalls = new THREE.Mesh(interiorWallsGeometry, wallMaterial);
-  interiorWalls.rotation.x = -Math.PI / 2;
-  interiorWalls.position.y = -wallHeight;
-  interiorWalls.receiveShadow = true;
-  group.add(interiorWalls);
+  const innerWallsGeometry = new THREE.ExtrudeGeometry(innerShape, innerWallExtrudeSettings);
+  const innerWalls = new THREE.Mesh(innerWallsGeometry, wallMaterial);
+  innerWalls.rotation.x = -Math.PI / 2;
+  innerWalls.position.y = 0;
+  innerWalls.receiveShadow = true;
+  group.add(innerWalls);
   
   scene.add(group);
 
