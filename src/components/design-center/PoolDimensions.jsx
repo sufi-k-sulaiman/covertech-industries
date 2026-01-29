@@ -116,7 +116,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
       </div>
 
       {/* 3D Preview - Full Width */}
-      <div className="bg-slate-900 rounded-2xl p-6 mb-8">
+      <div className="mb-8">
         <div className="mb-4 text-center">
           <div className="text-slate-400 text-sm mb-1">{shapeDisplay} Pool</div>
           <div className="text-white text-lg font-medium">3D Interactive Preview</div>
