@@ -16,7 +16,11 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
   return (
     <div>
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-slate-900 mb-3">Enter your pool dimensions</h2>
+        <h2 className="text-3xl font-bold mb-3">
+          <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent [-webkit-text-stroke:2px_rgba(6,182,212,0.3)] [text-stroke:2px_rgba(6,182,212,0.3)]" style={{WebkitTextFillColor: 'transparent', WebkitTextStroke: '2px rgba(6,182,212,0.3)'}}>
+            Enter your pool dimensions
+          </span>
+        </h2>
         <p className="text-slate-600">Provide accurate measurements for a perfect fit.</p>
       </div>
 
