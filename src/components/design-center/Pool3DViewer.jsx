@@ -208,25 +208,20 @@ export default function Pool3DViewer({ shape, dimensions, unit }) {
 }
 
 function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, waterLevel = 90) {
-  // Pool outer material (exterior walls)
-  const outerMaterial = new THREE.MeshStandardMaterial({
-    color: 0x3b82f6,
-    roughness: 0.4,
+  // Pool material - bright cyan/blue like reference image
+  const poolMaterial = new THREE.MeshStandardMaterial({
+    color: 0x22d3ee,
+    roughness: 0.3,
     metalness: 0.2,
+    side: THREE.DoubleSide,
   });
 
-  // Pool inner material (interior walls - lighter blue)
-  const innerMaterial = new THREE.MeshStandardMaterial({
-    color: 0x60a5fa,
-    roughness: 0.3,
+  // Interior material - darker for depth
+  const interiorMaterial = new THREE.MeshStandardMaterial({
+    color: 0x0891b2,
+    roughness: 0.4,
     metalness: 0.1,
-  });
-
-  // Floor material
-  const floorMaterial = new THREE.MeshStandardMaterial({
-    color: 0x93c5fd,
-    roughness: 0.3,
-    metalness: 0.1,
+    side: THREE.DoubleSide,
   });
 
   let poolShape;
@@ -265,9 +260,9 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
 
   const group = new THREE.Group();
   const avgDepth = (shallowDepth + deepDepth) / 2;
-  const wallThickness = 0.15;
+  const wallThickness = 0.2;
   
-  // Create inner shape for hollow interior
+  // Create inner shape (hollow interior)
   const points = poolShape.getPoints(50);
   const innerPoints = points.map(p => {
     const center = new THREE.Vector2(0, 0);
@@ -282,71 +277,51 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   }
   innerShape.closePath();
 
-  // Create outer walls
-  const outerWallSettings = {
+  // Create hollow pool shell with outer shape minus inner shape
+  const hollowShape = poolShape.clone();
+  hollowShape.holes = [innerShape];
+  
+  // Extrude hollow walls
+  const wallExtrudeSettings = {
     depth: avgDepth,
     bevelEnabled: false,
   };
-  const outerWallGeometry = new THREE.ExtrudeGeometry(poolShape, outerWallSettings);
-  const outerWalls = new THREE.Mesh(outerWallGeometry, outerMaterial);
-  outerWalls.rotation.x = -Math.PI / 2;
-  outerWalls.position.y = 0;
-  outerWalls.castShadow = true;
-  outerWalls.receiveShadow = true;
-  group.add(outerWalls);
-
-  // Create inner walls (visible from inside)
-  const innerWallSettings = {
-    depth: avgDepth - 0.05, // Slightly shorter
-    bevelEnabled: false,
-  };
-  const innerWallGeometry = new THREE.ExtrudeGeometry(innerShape, innerWallSettings);
-  const innerWalls = new THREE.Mesh(innerWallGeometry, innerMaterial);
-  innerWalls.rotation.x = -Math.PI / 2;
-  innerWalls.position.y = -0.05;
-  innerWalls.receiveShadow = true;
-  group.add(innerWalls);
   
-  // Create floor (bottom of pool)
+  const wallsGeometry = new THREE.ExtrudeGeometry(hollowShape, wallExtrudeSettings);
+  const walls = new THREE.Mesh(wallsGeometry, poolMaterial);
+  walls.rotation.x = -Math.PI / 2;
+  walls.position.y = 0;
+  walls.castShadow = true;
+  walls.receiveShadow = true;
+  group.add(walls);
+  
+  // Create interior floor
   const floorGeometry = new THREE.ShapeGeometry(innerShape);
-  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  const floor = new THREE.Mesh(floorGeometry, interiorMaterial);
   floor.rotation.x = -Math.PI / 2;
   floor.position.y = -avgDepth;
   floor.receiveShadow = true;
   group.add(floor);
-
-  // Create top rim (coping)
-  const rimShape = poolShape.clone();
-  rimShape.holes.push(innerShape);
-  
-  const rimGeometry = new THREE.ShapeGeometry(rimShape);
-  const rim = new THREE.Mesh(rimGeometry, outerMaterial);
-  rim.rotation.x = -Math.PI / 2;
-  rim.position.y = 0.05;
-  rim.castShadow = true;
-  rim.receiveShadow = true;
-  group.add(rim);
   
   scene.add(group);
 
-  // Create water volume based on water level percentage
+  // Create water volume
   const waterLevelPercent = waterLevel / 100;
   const waterDepth = avgDepth * waterLevelPercent;
   
   const waterMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0x0891b2,
+    color: 0x06b6d4,
     transparent: true,
-    opacity: 0.75,
+    opacity: 0.7,
     metalness: 0,
-    roughness: 0.05,
-    transmission: 0.9,
-    thickness: 1.5,
+    roughness: 0.1,
+    transmission: 0.95,
+    thickness: 1,
     clearcoat: 1,
-    clearcoatRoughness: 0.05,
+    clearcoatRoughness: 0.1,
     ior: 1.33,
   });
   
-  // Create water filling
   const waterExtrudeSettings = {
     depth: waterDepth,
     bevelEnabled: false,
@@ -360,7 +335,7 @@ function createPoolShape(scene, shape, length, width, shallowDepth, deepDepth, w
   
   scene.add(water);
   
-  // Add dimension lines/labels with actual values
+  // Add dimension lines/labels
   addDimensionLines(scene, length, width, avgDepth, waterDepth, shallowDepth, deepDepth);
   
   return water;
