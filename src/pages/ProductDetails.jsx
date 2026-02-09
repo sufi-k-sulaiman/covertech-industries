@@ -57,10 +57,11 @@ const productsData = {
       }
     },
     images: [
-      "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?w=800&q=80",
-      "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80",
-      "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80",
-      "https://images.unsplash.com/photo-1562778612-e1e0cda9915c?w=800&q=80"
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/51ca60482_01-Liner.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d14add331_02-Liner.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/12a9b5099_03-Liner.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/094fb6e1a_04-Liner.png",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1410af5bf_05-Liner.jpg"
     ],
     features: ["25-Season Warranty", "AquaShimmer Technology", "30mil Cold Crack-resistant", "100% Anti-bacterial Virgin Resin", "UV & Chemical-resistant", "Made in Canada since 1987"],
     specifications: { Category: "Pool Liners", Thickness: "30mil", Material: "Anti-bacterial Virgin Resin", Texture: "Non-slip Available", "Custom Sizes": "Available", Origin: "Canada (since 1987)" },
