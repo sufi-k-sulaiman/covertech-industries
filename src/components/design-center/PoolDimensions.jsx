@@ -129,6 +129,7 @@ export default function PoolDimensions({ dimensions, onDimensionsChange, selecte
             dimensions={dimensions}
             unit={unit}
             pattern={selectedPattern}
+            isLinerView={true}
           />
         </div>
 
