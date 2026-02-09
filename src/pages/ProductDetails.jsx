@@ -816,7 +816,7 @@ const productsData = {
     fullDescription: "Our pool insulation technology creates a thermal barrier between your pool and the ground or walls, dramatically reducing heat loss. The reflective surface reflects heat back into the pool while the bubble design provides excellent insulation properties. Easy to install and compatible with all pool types.",
     warranty: 5,
     images: [
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b4c94711_Insu-floor.jpg",
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d81f4fb0f_NewThermo-floor.jpg",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/204ca0231_Insul.JPG",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f3acaf446_InsulationRoll.jpg",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3289fdcbe_Thero-wall.png"
