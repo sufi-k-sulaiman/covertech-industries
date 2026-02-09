@@ -43,10 +43,10 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
-            Keeping You
+            Liner & Safety Cover
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-              Covered
+              Bringing Beauty and Strength to Every Pool
             </span>
           </motion.h1>
 
@@ -57,8 +57,8 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-2xl"
           >
-            Premium pool liners, safety covers, steel kits, and custom blankets. 
-            Trusted by professionals across North America for over 35 years.
+Premium Pool Liners, Safety Covers, Steel Kits, Construction Curing Blankets,
+and Golf Covers. Trusted by professionals across North America for over 35 years.
           </motion.p>
 
           {/* CTA Buttons */}
