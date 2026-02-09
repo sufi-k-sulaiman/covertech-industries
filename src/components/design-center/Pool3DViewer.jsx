@@ -19,7 +19,7 @@ const PATTERN_TEXTURES = {
   reflection2: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/48f19ddcb_image.png'
 };
 
-export default function Pool3DViewer({ shape, dimensions, unit, pattern = 'mosaic' }) {
+export default function Pool3DViewer({ shape, dimensions, unit, pattern = 'mosaic', isLinerView = false }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
   const rendererRef = useRef(null);
@@ -44,8 +44,14 @@ export default function Pool3DViewer({ shape, dimensions, unit, pattern = 'mosai
 
     // Camera
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
-    camera.position.set(8, 10, 8);
-    camera.lookAt(0, 0, 0);
+    // Zoomed-in view for liner products, standard view for others
+    if (isLinerView) {
+      camera.position.set(4, 3, 4);
+      camera.lookAt(0, -1, 0);
+    } else {
+      camera.position.set(8, 10, 8);
+      camera.lookAt(0, 0, 0);
+    }
     cameraRef.current = camera;
 
     // Renderer
@@ -173,9 +179,15 @@ export default function Pool3DViewer({ shape, dimensions, unit, pattern = 'mosai
 
   const handleDefaultView = () => {
     if (cameraRef.current && controlsRef.current) {
-      cameraRef.current.position.set(8, 10, 8);
-      cameraRef.current.lookAt(0, 0, 0);
-      controlsRef.current.target.copy(new THREE.Vector3(0, 0, 0));
+      if (isLinerView) {
+        cameraRef.current.position.set(4, 3, 4);
+        cameraRef.current.lookAt(0, -1, 0);
+        controlsRef.current.target.copy(new THREE.Vector3(0, -1, 0));
+      } else {
+        cameraRef.current.position.set(8, 10, 8);
+        cameraRef.current.lookAt(0, 0, 0);
+        controlsRef.current.target.copy(new THREE.Vector3(0, 0, 0));
+      }
       setRender(r => r + 1);
     }
   };
