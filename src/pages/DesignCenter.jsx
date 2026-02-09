@@ -29,13 +29,6 @@ const productTypes = [
     description: "ASTM-certified mesh and solid covers for complete peace of mind",
     image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/3bbe8095b_image.png",
     features: ["ASTM certified", "Child safe", "Custom fit"]
-  },
-  {
-    id: "winter-cover",
-    name: "Winter Cover",
-    description: "Heavy-duty protection to keep your pool pristine through winter",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/442b73ecc_image.png",
-    features: ["Heavy duty", "Debris protection", "Easy install"]
   }
 ];
 
