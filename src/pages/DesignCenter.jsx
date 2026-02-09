@@ -31,13 +31,6 @@ const productTypes = [
     features: ["ASTM certified", "Child safe", "Custom fit"]
   },
   {
-    id: "solar-blanket",
-    name: "Solar Blanket",
-    description: "Maximize heat retention and reduce energy costs naturally",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/08f9cb0ee_image.png",
-    features: ["Heats water", "Reduces evaporation", "UV resistant"]
-  },
-  {
     id: "winter-cover",
     name: "Winter Cover",
     description: "Heavy-duty protection to keep your pool pristine through winter",
