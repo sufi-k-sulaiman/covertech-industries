@@ -153,16 +153,7 @@ export default function Layout({ children, currentPageName }) {
             </div>
             )}
 
-            {/* CTA Button */}
-            {!isAdminPage && (
-            <div className="hidden lg:block">
-            <Link to={createPageUrl('DesignCenter')}>
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg px-6">
-                Get a Quote
-              </Button>
-            </Link>
-            </div>
-            )}
+
 
             {/* Mobile Menu Button */}
             {!isAdminPage && (
