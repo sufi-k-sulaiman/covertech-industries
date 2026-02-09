@@ -93,7 +93,7 @@ and Golf Covers. Trusted by professionals across North America for over 35 years
                 <Shield className="w-6 h-6 text-cyan-400" />
               </div>
               <div>
-                <p className="text-white font-semibold">25-Year Warranty</p>
+                <p className="text-white font-semibold">Warranty</p>
                 <p className="text-slate-400 text-sm">Industry-leading coverage</p>
               </div>
             </div>
