@@ -997,14 +997,10 @@ export default function ProductDetails() {
               </div>
 
               {/* Trust badges */}
-              <div className="grid grid-cols-3 gap-4 p-4 bg-slate-50 rounded-xl">
+              <div className="grid grid-cols-2 gap-4 p-4 bg-slate-50 rounded-xl">
                 <div className="text-center">
                   <Shield className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
                   <p className="text-sm font-medium text-slate-900">Warranty Protected</p>
-                </div>
-                <div className="text-center">
-                  <Award className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
-                  <p className="text-sm font-medium text-slate-900">ASTM Certified</p>
                 </div>
                 <div className="text-center">
                   <MapPin className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
