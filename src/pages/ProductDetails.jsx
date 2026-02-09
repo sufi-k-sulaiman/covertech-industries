@@ -649,6 +649,13 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/eb0ffad28_WhiteBeachPebble_011copy.jpg",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/457b00097_WhiteBeachPebble_Composite.jpg"
     ],
+    patterns: [
+      { 
+        name: "Lancashire Wall with Blue Beach Floor", 
+        image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/23d2feb3e_AGLancashirePattern.jpg", 
+        tier: "standard"
+      }
+    ],
     variants: [
       { name: "48″ Unibead", features: ["Requires 4″ cove", "Easy installation", "Standard wall height"] },
       { name: "52″ Unibead", features: ["Requires 6″ cove", "Extended wall height", "Enhanced durability"] }
