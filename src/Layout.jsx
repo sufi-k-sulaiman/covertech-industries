@@ -28,7 +28,7 @@ const navigation = [
       { name: 'Product Gallery', href: 'Gallery' },
       ]
       },
-  { name: 'Design Center', href: 'DesignCenter' },
+
   { name: 'Warranties', href: 'Warranties' },
   { name: 'Resources', href: 'Resources' },
   { name: 'Dealer', href: 'Dealer' },
