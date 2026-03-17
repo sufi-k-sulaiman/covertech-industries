@@ -996,14 +996,7 @@ export default function ProductDetails() {
                     Request Quote
                   </Button>
                 </Link>
-                {(slug === 'in-ground-liners' || slug === 'safety-covers') && (
-                  <Link to={createPageUrl('DesignCenter')}>
-                    <Button size="lg" variant="outline" className="px-8 gap-2">
-                      <Palette className="w-5 h-5" />
-                      Design Custom
-                    </Button>
-                  </Link>
-                )}
+
               </div>
 
               {/* Trust badges */}
@@ -1542,20 +1535,13 @@ export default function ProductDetails() {
       <section className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold text-slate-900 mb-4">Ready to Get Started?</h2>
-        <p className="text-slate-600 mb-8">Contact our team for a personalized quote{(slug === 'in-ground-liners' || slug === 'safety-covers') && ' or use our Design Center to customize your perfect pool product'}.</p>
+        <p className="text-slate-600 mb-8">Contact our team for a personalized quote.</p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to={createPageUrl('Contact')}>
             <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8">
               Request Quote
             </Button>
           </Link>
-          {(slug === 'in-ground-liners' || slug === 'safety-covers') && (
-            <Link to={createPageUrl('DesignCenter')}>
-              <Button size="lg" variant="outline" className="px-8">
-                Design Custom
-              </Button>
-            </Link>
-          )}
         </div>
       </div>
       </section>
