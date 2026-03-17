@@ -202,11 +202,7 @@ export default function Layout({ children, currentPageName }) {
                     )}
                   </div>
                 ))}
-                <Link to={createPageUrl('DesignCenter')} className="block mt-6">
-                  <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
-                    Get a Quote
-                  </Button>
-                </Link>
+
               </div>
             </div>
           </motion.div>

@@ -267,11 +267,7 @@ export default function Products() {
                 Contact Us
               </Button>
             </Link>
-            <Link to={createPageUrl('DesignCenter')}>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8">
-                Design Custom
-              </Button>
-            </Link>
+
           </div>
         </div>
       </section>

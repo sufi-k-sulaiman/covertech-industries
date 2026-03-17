@@ -68,12 +68,6 @@ and Golf Covers. Trusted by professionals across North America for over 35 years
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-wrap gap-4 mb-12"
           >
-            <Link to={createPageUrl('DesignCenter')}>
-              <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-cyan-500/25 group">
-                Design Your Product
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
             <Link to={createPageUrl('Products')}>
               <Button size="lg" variant="outline" className="border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 px-8 py-6 text-lg rounded-xl backdrop-blur-sm">
                 Explore Products
