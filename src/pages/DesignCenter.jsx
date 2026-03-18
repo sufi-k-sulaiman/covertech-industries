@@ -5,7 +5,7 @@ import { createPageUrl } from '@/utils';
 import { ArrowRight, ArrowLeft, Check, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import GalleryBanner from '@/components/ui/GalleryBanner';
 import PoolShapeSelector from '@/components/design-center/PoolShapeSelector';
