@@ -4,6 +4,7 @@ import { Download, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import SEOHead from '@/components/seo/SEOHead';
 
 export default function PDFViewer() {
   const navigate = useNavigate();
