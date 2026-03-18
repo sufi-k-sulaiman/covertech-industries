@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowRight, ArrowLeft, CheckCircle, Shield, FileText, Download } from 'lucide-react';
-import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
 const productTypes = [

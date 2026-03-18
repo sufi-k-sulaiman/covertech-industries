@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Shield, Award, Globe, Heart, Check } from 'lucide-react';
-import SEOHead, { organizationSchema, createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import SEOHead, { organizationSchema, createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import TrustBadges from '@/components/ui/TrustBadges';
 

@@ -5,7 +5,7 @@ import { createPageUrl } from '@/utils';
 import { Droplets, Shield, Sun, Snowflake, Check, Lightbulb, Wrench, ArrowRight, Image } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import GalleryModal from '@/components/products/GalleryModal';
 import GalleryBanner from '@/components/ui/GalleryBanner';

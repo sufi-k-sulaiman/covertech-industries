@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { FileText, BookOpen, Download, ArrowRight, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import GalleryBanner from '@/components/ui/GalleryBanner';
 
