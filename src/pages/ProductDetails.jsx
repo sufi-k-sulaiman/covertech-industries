@@ -1046,7 +1046,7 @@ export default function ProductDetails() {
               )}
 
               {/* Installation Guide Section */}
-              {product.installationGuide && (
+              {product.installationGuide && slug !== 'above-ground-liners' && (
                 <div className="mt-8 border-t border-slate-200 pt-8">
                   <h3 className="text-2xl font-bold text-slate-900 mb-6">{product.installationGuide.title}</h3>
 
@@ -1195,7 +1195,7 @@ export default function ProductDetails() {
       </section>
 
       {/* Patterns Section (if available) */}
-      {product.patterns && (
+      {product.patterns && slug !== 'above-ground-liners' && (
         <section className="py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-6">
             {/* Platinum Plus Patterns */}
