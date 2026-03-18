@@ -790,7 +790,7 @@ const productsData = {
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/50dcbcca9_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/93a6600f0_image.png"
     ],
-    features: ["Cold Weather Protection", "Heat Retention", "Heavy-Duty Construction", "Multiple Sizes Available", "Reusable", "UV Resistant"],
+    features: ["Cold Weather Protection", "Heat Retention", "Heavy-Duty Construction", "Multiple Sizes Available"],
     specifications: {
       Category: "Construction & Industrial",
       Application: "Concrete Curing",
