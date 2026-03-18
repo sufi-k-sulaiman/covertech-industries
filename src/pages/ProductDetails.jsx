@@ -921,7 +921,7 @@ export default function ProductDetails() {
                         activeImage === index ? 'border-cyan-500 shadow-lg' : 'border-transparent hover:border-slate-300'
                       }`}
                     >
-                      <img src={img} alt="" className="w-full h-full object-cover" />
+                      <img src={img} alt="" className={`w-full h-full ${slug === 'above-ground-liners' ? 'object-contain' : 'object-cover'}`} />
                     </button>
                   ))}
                 </div>
