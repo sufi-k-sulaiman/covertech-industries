@@ -41,7 +41,7 @@ export default function PDFViewer() {
         description={`View and download ${title || 'warranty and installation documentation'} from Covertech Industries.`}
         keywords={["Covertech documents", "pool warranty pdf", "installation guide"]}
       />
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
       <div className="bg-white border-b border-slate-200 sticky top-20 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
