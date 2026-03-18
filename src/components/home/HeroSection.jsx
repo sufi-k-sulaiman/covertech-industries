@@ -46,7 +46,7 @@ export default function HeroSection() {
             Liner & Safety Cover
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-              Bringing Beauty and Strength to Every Pool
+              Beauty and Strength to Every Pool
             </span>
           </motion.h1>
 
