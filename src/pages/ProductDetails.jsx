@@ -739,9 +739,9 @@ const productsData = {
     fullDescription: "This innovative cover system protects your turf from crown hydration, which is the leading cause of winter turf damage in northern climates.",
     warranty: 7,
     images: [
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/997e37872_image.png"
+      "https://media.base44.com/images/public/6966301493bec01d4fb29d56/8fbad609f_image.png"
     ],
-    features: ["Ice protection", "Winter durability", "Easy removal", "Reusable", "Breathable fabric", "UV stabilized"],
+    features: ["Ice protection", "Winter durability", "Easy removal", "Reusable", "Breathable fabric"],
     specifications: { Category: "Golf & Sports", Application: "Golf Greens, Sports Fields", Season: "Winter", "Custom Sizes": "Available" },
     bestseller: false,
     downloads: [
