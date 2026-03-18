@@ -1,4 +1,4 @@
-import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
 export default function PrivacyPolicy() {
@@ -7,12 +7,19 @@ export default function PrivacyPolicy() {
     { name: "Privacy Policy", url: "https://covertechind.com/privacy-policy" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Privacy Policy - Covertech Industries",
+    description: "Privacy Policy for Covertech Industries. Learn how we collect, use, and protect your personal information.",
+    url: "https://covertechind.com/privacy-policy"
+  });
+
   return (
     <>
       <SEOHead
         title="Privacy Policy - Covertech Industries"
         description="Privacy Policy for Covertech Industries. Learn how we collect, use, and protect your personal information."
-        schema={breadcrumbSchema}
+        keywords={["privacy policy", "Covertech privacy", "data protection"]}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero
