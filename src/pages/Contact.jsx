@@ -66,7 +66,7 @@ export default function Contact() {
         title="Contact Covertech Industries - Get a Quote"
         description="Contact Covertech Industries for pool liners, safety covers, and custom solutions. Call +1 (416) 640-5590 or email info@covertechind.com. Located in Toronto, Ontario."
         keywords={["contact Covertech", "pool liner quote", "safety cover quote", "Toronto pool manufacturer"]}
-        schema={{ "@context": "https://schema.org", "@graph": [localBusinessSchema, breadcrumbSchema] }}
+        schema={{ "@context": "https://schema.org", "@graph": [localBusinessSchema, breadcrumbSchema, faqSchema, webPageSchema] }}
       />
 
       <PageHero
