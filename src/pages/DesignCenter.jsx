@@ -84,13 +84,19 @@ export default function DesignCenter() {
     { name: "Design Center", url: "https://covertechind.com/design-center" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Design Center - Custom Pool Product Designer",
+    description: "Design your custom vinyl pool liner, safety cover, solar blanket or winter cover. Get instant quotes tailored to your exact specifications. Free design consultation.",
+    url: "https://covertechind.com/design-center"
+  });
+
   return (
     <>
       <SEOHead
         title="Design Center - Custom Pool Product Designer"
         description="Design your custom vinyl pool liner, safety cover, solar blanket or winter cover. Get instant quotes tailored to your exact specifications. Free design consultation."
         keywords={["custom pool liner", "pool cover designer", "custom safety cover", "pool liner design tool", "Covertech design center"]}
-        schema={breadcrumbSchema}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero
