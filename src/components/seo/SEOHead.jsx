@@ -93,6 +93,48 @@ export default function SEOHead({
   return null;
 }
 
+// WebPage schema helper
+export const createWebPageSchema = ({ name, description, url, breadcrumb }) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": name,
+  "description": description,
+  "url": url,
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Covertech Industries",
+    "url": "https://covertechind.com"
+  },
+  ...(breadcrumb ? { "breadcrumb": breadcrumb } : {})
+});
+
+// FAQ schema helper
+export const createFAQSchema = (faqs) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+});
+
+// HowTo schema helper
+export const createHowToSchema = ({ name, description, steps }) => ({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": name,
+  "description": description,
+  "step": steps.map((step, index) => ({
+    "@type": "HowToStep",
+    "position": index + 1,
+    "text": step
+  }))
+});
+
 // Common schemas
 export const organizationSchema = {
   "@context": "https://schema.org",
