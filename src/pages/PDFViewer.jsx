@@ -96,7 +96,7 @@ export default function PDFViewer() {
           )}
         </div>
       </div>
-    </div>
+      </div>
     </>
   );
 }
