@@ -1,4 +1,4 @@
-import SEOHead, { createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
 export default function TermsOfService() {
@@ -7,12 +7,19 @@ export default function TermsOfService() {
     { name: "Terms of Service", url: "https://covertechind.com/terms-of-service" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Terms of Service - Covertech Industries",
+    description: "Terms of Service for Covertech Industries. Read our terms and conditions for using our products and services.",
+    url: "https://covertechind.com/terms-of-service"
+  });
+
   return (
     <>
       <SEOHead
         title="Terms of Service - Covertech Industries"
         description="Terms of Service for Covertech Industries. Read our terms and conditions for using our products and services."
-        schema={breadcrumbSchema}
+        keywords={["terms of service", "Covertech terms", "conditions of use"]}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero
