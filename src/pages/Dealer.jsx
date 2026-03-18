@@ -48,13 +48,19 @@ export default function Dealer() {
     { name: "Become a Dealer", url: "https://covertechind.com/dealer" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Become a Covertech Dealer - Partner With Industry Leaders",
+    description: "Join Covertech's dealer network across North America. Competitive margins, quality ASTM-certified products, marketing support, and dedicated account management.",
+    url: "https://covertechind.com/dealer"
+  });
+
   return (
     <>
       <SEOHead
         title="Become a Covertech Dealer - Partner With Industry Leaders"
         description="Join Covertech's dealer network across North America. Competitive margins, quality ASTM-certified products, marketing support, and dedicated account management. Apply today!"
         keywords={["Covertech dealer", "pool dealer program", "become a dealer", "pool cover distributor", "pool liner dealer"]}
-        schema={breadcrumbSchema}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero

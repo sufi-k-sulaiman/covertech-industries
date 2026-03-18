@@ -191,13 +191,19 @@ export default function Gallery() {
     { name: "Gallery", url: "https://covertechind.com/gallery" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Project Gallery - Pool Liners & Safety Covers Installation Photos",
+    description: "Browse our comprehensive gallery of completed pool liner and safety cover installations. See real examples of Covertech Industries products in action across North America.",
+    url: "https://covertechind.com/gallery"
+  });
+
   return (
     <>
       <SEOHead
         title="Project Gallery - Pool Liners & Safety Covers Installation Photos"
         description="Browse our comprehensive gallery of completed pool liner and safety cover installations. See real examples of Covertech Industries products in action across North America."
         keywords={["pool liner gallery", "safety cover installations", "pool photos", "Covertech projects", "vinyl liner examples"]}
-        schema={breadcrumbSchema}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero

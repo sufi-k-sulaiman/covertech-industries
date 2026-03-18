@@ -120,6 +120,12 @@ export default function Warranties() {
     { name: "Warranty Registration", url: "https://covertechind.com/warranties" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Warranty Registration - Register Your Covertech Product",
+    description: "Register your Covertech pool liner, safety cover, solar blanket, or winter cover warranty online. Quick and easy registration process. Protect your investment.",
+    url: "https://covertechind.com/warranties"
+  });
+
   if (submitted) {
     return (
       <>
@@ -180,7 +186,7 @@ export default function Warranties() {
         title="Warranty Registration - Register Your Product"
         description="Register your Covertech pool liner, safety cover, solar blanket, or winter cover warranty online. Quick and easy registration process."
         keywords={["warranty registration", "pool liner warranty", "safety cover warranty", "solar blanket warranty", "winter cover warranty"]}
-        schema={breadcrumbSchema}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero

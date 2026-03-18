@@ -28,6 +28,12 @@ export default function About() {
     { name: "About Us", url: "https://covertechind.com/about" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "About Covertech Industries - 35+ Years of Excellence",
+    description: "Learn about Covertech Industries' 35+ year history manufacturing premium pool liners, safety covers, and custom solutions. Family-owned, ASTM certified, made in North America since 1987.",
+    url: "https://covertechind.com/about"
+  });
+
   return (
     <>
       <SEOHead
@@ -41,7 +47,7 @@ export default function About() {
           "family owned pool company",
           "ASTM certified manufacturer"
         ]}
-        schema={{ "@context": "https://schema.org", "@graph": [organizationSchema, breadcrumbSchema] }}
+        schema={{ "@context": "https://schema.org", "@graph": [organizationSchema, breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero

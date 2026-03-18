@@ -168,13 +168,19 @@ export default function Resources() {
     { name: "Resources", url: "https://covertechind.com/resources" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Resources & Downloads - Installation Guides & Measuring Forms",
+    description: "Download Covertech's installation guides, measuring forms, and technical resources for pool liners, safety covers, and more. Expert documentation for professionals.",
+    url: "https://covertechind.com/resources"
+  });
+
   return (
     <>
       <SEOHead
         title="Resources & Downloads - Installation Guides & Measuring Forms"
         description="Download Covertech's installation guides, measuring forms, and technical resources for pool liners, safety covers, and more. Expert documentation for professionals."
         keywords={["pool liner measuring form", "safety cover installation guide", "pool cover instructions", "Covertech resources"]}
-        schema={breadcrumbSchema}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero

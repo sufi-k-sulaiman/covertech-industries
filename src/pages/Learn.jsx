@@ -239,13 +239,19 @@ export default function Learn() {
     { name: "Learn", url: "https://covertechind.com/learn" }
   ]);
 
+  const webPageSchema = createWebPageSchema({
+    name: "Learn About Pool Products - Expert Guides & Care Tips",
+    description: "Expert guides, care tips, and warranty information for vinyl pool liners, safety covers, solar blankets, and winter covers.",
+    url: "https://covertechind.com/learn"
+  });
+
   return (
     <>
       <SEOHead
         title="Learn About Pool Products - Expert Guides & Care Tips"
         description="Expert guides, care tips, and warranty information for vinyl pool liners, safety covers, solar blankets, and winter covers. Learn how to maintain your pool products."
         keywords={["pool liner care", "safety cover maintenance", "solar cover tips", "pool cover guide", "pool liner installation"]}
-        schema={breadcrumbSchema}
+        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
       />
 
       <PageHero
