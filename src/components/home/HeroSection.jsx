@@ -73,6 +73,12 @@ and Golf Covers. Trusted by professionals across North America for over 35 years
                 Explore Products
               </Button>
             </Link>
+            <Link to={createPageUrl('Contact')}>
+              <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-cyan-500/25 group">
+                Get a Quote
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Trust Indicators */}
