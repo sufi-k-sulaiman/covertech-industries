@@ -1306,7 +1306,7 @@ export default function ProductDetails() {
       {slug === 'safety-covers' && (
         <section className="py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Available Colors</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Available Mesh Colors</h2>
             <div className="flex flex-wrap justify-center gap-8">
               <div className="flex flex-col items-center">
                 <div className="w-32 h-32 rounded-2xl shadow-lg overflow-hidden mb-3">
