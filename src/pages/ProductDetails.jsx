@@ -906,7 +906,7 @@ export default function ProductDetails() {
                 <img
                   src={product.images[activeImage]}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${slug === 'above-ground-liners' ? 'object-contain' : 'object-cover'}`}
                 />
               </div>
 
