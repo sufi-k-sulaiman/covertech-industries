@@ -35,6 +35,12 @@ export default function PDFViewer() {
   };
 
   return (
+    <>
+      <SEOHead
+        title={title ? `${title} - Covertech Industries` : 'Document Viewer - Covertech Industries'}
+        description={`View and download ${title || 'warranty and installation documentation'} from Covertech Industries.`}
+        keywords={["Covertech documents", "pool warranty pdf", "installation guide"]}
+      />
     <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
       <div className="bg-white border-b border-slate-200 sticky top-20 z-10">
