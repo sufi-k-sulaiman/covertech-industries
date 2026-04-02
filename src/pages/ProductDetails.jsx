@@ -223,7 +223,8 @@ const productsData = {
         image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9cefde4f9_Sapphire.jpg", 
         tier: "platinum",
         gallery: [
-          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f2c66e0cd_SapphirePebble.jpg"
+          "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f2c66e0cd_SapphirePebble.jpg",
+          "https://media.base44.com/images/public/6966301493bec01d4fb29d56/262d910c1_image.png"
         ]
       },
       { 
