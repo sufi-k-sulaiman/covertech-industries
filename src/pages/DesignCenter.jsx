@@ -43,11 +43,42 @@ const PATTERNS = [
 ];
 
 const POOL_TYPES = [
-  { id: 'rectangular', label: 'Rectangular', description: 'Classic rectangular shape' },
-  { id: 'oval', label: 'Oval', description: 'Elegant curved design' },
-  { id: 'kidney', label: 'Kidney', description: 'Organic kidney shape' },
-  { id: 'freeform', label: 'Free-Form', description: 'Custom shape' },
+  { id: 'rectangular', label: 'Rectangle', description: 'Classic lap pool' },
+  { id: 'oval', label: 'Oval', description: 'Elegant curves' },
+  { id: 'round', label: 'Round', description: 'Compact circle' },
+  { id: 'grecian', label: 'Grecian', description: 'Cut corners style' },
+  { id: 'roman', label: 'Roman', description: 'Rounded ends' },
+  { id: 'lazy-l', label: 'Lazy L', description: 'Angled design' },
+  { id: 'true-l', label: 'True L', description: 'Right angle' },
+  { id: 'kidney', label: 'Kidney', description: 'Organic shape' },
+  { id: 'freeform', label: 'Freeform', description: 'Natural curves' },
 ];
+
+const PoolShapeIcon = ({ type, className = "w-16 h-16" }) => {
+  const baseClass = className + " text-cyan-500";
+  switch(type) {
+    case 'rectangular':
+      return <svg viewBox="0 0 100 80" className={baseClass} fill="currentColor"><rect x="10" y="15" width="80" height="50" rx="4"/></svg>;
+    case 'oval':
+      return <svg viewBox="0 0 100 80" className={baseClass} fill="currentColor"><ellipse cx="50" cy="40" rx="40" ry="28"/></svg>;
+    case 'round':
+      return <svg viewBox="0 0 100 100" className={baseClass} fill="currentColor"><circle cx="50" cy="50" r="35"/></svg>;
+    case 'grecian':
+      return <svg viewBox="0 0 100 80" className={baseClass} fill="currentColor"><path d="M 20 40 L 20 20 Q 20 15 25 15 L 75 15 Q 80 15 80 20 L 80 40 Q 80 65 50 65 Q 20 65 20 40" fillRule="evenodd"/></svg>;
+    case 'roman':
+      return <svg viewBox="0 0 100 70" className={baseClass} fill="currentColor"><path d="M 15 35 Q 15 20 30 15 L 70 15 Q 85 20 85 35 Q 85 55 50 60 Q 15 55 15 35" fillRule="evenodd"/></svg>;
+    case 'lazy-l':
+      return <svg viewBox="0 0 100 100" className={baseClass} fill="currentColor"><path d="M 20 20 L 20 70 L 70 70 L 70 40 L 40 40 L 40 20 Z" fillRule="evenodd"/></svg>;
+    case 'true-l':
+      return <svg viewBox="0 0 100 100" className={baseClass} fill="currentColor"><path d="M 25 25 L 25 75 L 75 75 L 75 50 L 50 50 L 50 25 Z" fillRule="evenodd"/></svg>;
+    case 'kidney':
+      return <svg viewBox="0 0 100 80" className={baseClass} fill="currentColor"><path d="M 30 25 Q 20 25 20 40 Q 20 60 45 65 Q 70 60 75 40 Q 75 25 55 25 Q 50 32 45 32 Q 40 32 30 25" fillRule="evenodd"/></svg>;
+    case 'freeform':
+      return <svg viewBox="0 0 100 80" className={baseClass} fill="currentColor"><path d="M 25 35 Q 15 25 30 15 Q 50 10 65 18 Q 80 25 80 40 Q 80 60 60 68 Q 35 70 20 55 Q 10 45 25 35" fillRule="evenodd"/></svg>;
+    default:
+      return null;
+  }
+};
 
 export default function DesignCenter() {
   const [step, setStep] = useState(1); // 1: Pattern, 2: Pool Type, 3: AI Preview, 4: Contact, 5: Success
@@ -238,23 +269,26 @@ export default function DesignCenter() {
                   <p className="text-slate-600">Choose your pool shape - we'll visualize it with your pattern</p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 mb-8">
                   {POOL_TYPES.map((poolType) => (
                     <motion.button
                       key={poolType.id}
                       onClick={() => setSelectedPoolType(poolType)}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`p-5 rounded-xl border-2 transition-all text-center ${
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`p-4 rounded-xl border-2 transition-all text-center flex flex-col items-center gap-2 ${
                         selectedPoolType?.id === poolType.id
-                          ? 'border-cyan-500 bg-cyan-50'
+                          ? 'border-cyan-500 bg-cyan-50 shadow-md'
                           : 'border-slate-200 hover:border-cyan-300 bg-white'
                       }`}
                     >
-                      <div className="text-base font-semibold text-slate-900 mb-1">{poolType.label}</div>
-                      <div className="text-slate-600 text-xs mb-3">{poolType.description}</div>
+                      <PoolShapeIcon type={poolType.id} className="w-12 h-12" />
+                      <div>
+                        <div className="text-sm font-semibold text-slate-900">{poolType.label}</div>
+                        <div className="text-slate-500 text-xs">{poolType.description}</div>
+                      </div>
                       {selectedPoolType?.id === poolType.id && (
-                        <Check className="w-5 h-5 text-cyan-500 mx-auto" />
+                        <Check className="w-4 h-4 text-cyan-500 absolute top-2 right-2" />
                       )}
                     </motion.button>
                   ))}
