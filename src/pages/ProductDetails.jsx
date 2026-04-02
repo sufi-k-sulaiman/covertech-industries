@@ -1001,16 +1001,18 @@ export default function ProductDetails() {
               </div>
 
               {/* Trust badges */}
-              <div className="grid grid-cols-2 gap-4 p-4 bg-slate-50 rounded-xl">
-                <div className="text-center">
-                  <Shield className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
-                  <p className="text-sm font-medium text-slate-900">Warranty Protected</p>
+              {slug !== 'golf-covers' && slug !== 'pool-insulation' && (
+                <div className="grid grid-cols-2 gap-4 p-4 bg-slate-50 rounded-xl">
+                  <div className="text-center">
+                    <Shield className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
+                    <p className="text-sm font-medium text-slate-900">Warranty Protected</p>
+                  </div>
+                  <div className="text-center">
+                    <MapPin className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
+                    <p className="text-sm font-medium text-slate-900">Made in NA</p>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <MapPin className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
-                  <p className="text-sm font-medium text-slate-900">Made in NA</p>
-                </div>
-              </div>
+              )}
 
               {/* Downloads Section */}
               {product.downloads && product.downloads.length > 0 && (
