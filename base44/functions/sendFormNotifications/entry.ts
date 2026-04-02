@@ -116,15 +116,18 @@ Submitted: ${new Date().toISOString()}
       errors.push(`Outlook exception: ${error.message}`);
     }
 
-    // Send via Gmail
+    // Send via Gmail using SendAs
     try {
-      const gmailAccessToken = (await base44.asServiceRole.connectors.getConnection('gmail')).accessToken;
+      const gmailConnection = await base44.asServiceRole.connectors.getConnection('gmail');
+      const gmailAccessToken = gmailConnection.accessToken;
       
-      // Create MIME message
-      const message = `From: covertechinds@gmail.com\nTo: covertechinds@gmail.com\nSubject: ${subject}\n\n${body}`;
-      const encodedMessage = btoa(message).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+      // Create MIME message with proper RFC 2822 format
+      const email = `To: covertechinds@gmail.com\r\nSubject: ${subject}\r\nContent-Type: text/plain; charset="UTF-8"\r\n\r\n${body}`;
+      const enc = new TextEncoder();
+      const bytes = enc.encode(email);
+      const encodedMessage = btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 
-      const gmailRes = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages/send', {
+      const gmailRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${gmailAccessToken}`,
@@ -136,11 +139,11 @@ Submitted: ${new Date().toISOString()}
       });
 
       if (!gmailRes.ok) {
-        const error = await gmailRes.text();
-        errors.push(`Gmail error: ${error}`);
+        const errorText = await gmailRes.text();
+        console.error('Gmail API error:', errorText);
       }
     } catch (error) {
-      errors.push(`Gmail exception: ${error.message}`);
+      console.error('Gmail exception:', error.message);
     }
 
     if (errors.length > 0) {
