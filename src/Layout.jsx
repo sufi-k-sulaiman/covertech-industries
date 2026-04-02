@@ -7,7 +7,6 @@ import {
   Facebook, Linkedin, Instagram, ArrowUp 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ChatWidget from '@/components/chat/ChatWidget';
 import { base44 } from '@/api/base44Client';
 
 const navigation = [
@@ -69,6 +68,18 @@ export default function Layout({ children, currentPageName }) {
 
     trackPageView();
   }, [currentPageName]);
+
+  useEffect(() => {
+    // Load Tawk.to chat widget
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = new Date();
+    const s1 = document.createElement('script');
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/69ceee71b2f8a31c44a28971/1jl856rao';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    document.head.appendChild(s1);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -310,8 +321,7 @@ export default function Layout({ children, currentPageName }) {
           </footer>
           )}
 
-          {/* AI Chat Widget */}
-          {!isAdminPage && <ChatWidget />}
+
       </div>
       );
       }
