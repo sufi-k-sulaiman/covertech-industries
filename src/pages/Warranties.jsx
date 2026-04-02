@@ -30,7 +30,7 @@ const productTypes = [
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/3bbe8095b_image.png',
     warranty: 'Up to 30 Years',
     warrantyPdfs: [
-      { name: 'Safety Cover Warranty 2025', url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9876ef1df_CVT-SafetyCoverWarranty-2025.pdf' }
+      { name: 'Safety Cover Warranty 2025', url: 'https://media.base44.com/files/public/6966301493bec01d4fb29d56/bf0df5b74_CVT-SafetyCoverWarranty.pdf' }
     ]
   },
   {
