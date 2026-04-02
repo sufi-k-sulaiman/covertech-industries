@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Loader2, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,40 +6,40 @@ import { base44 } from '@/api/base44Client';
 import SEOHead from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
-// Pattern data from ProductDetails
+// Pattern data with images from ProductDetails
 const PATTERNS = [
-  { name: "Butterfly", tier: "platinum-plus" },
-  { name: "Esagono", tier: "platinum-plus" },
-  { name: "Harmony Gold HDE", tier: "platinum-plus" },
-  { name: "Twilight", tier: "platinum-plus" },
-  { name: "Carnival", tier: "platinum" },
-  { name: "Canterbury", tier: "platinum" },
-  { name: "HD Antigua", tier: "platinum" },
-  { name: "Gladstone", tier: "platinum" },
-  { name: "Celest", tier: "platinum" },
-  { name: "Tahoe", tier: "platinum" },
-  { name: "Garden", tier: "platinum" },
-  { name: "Sapphire", tier: "platinum" },
-  { name: "Sunburst Oyster Bay", tier: "platinum" },
-  { name: "Oyster Bay", tier: "platinum" },
-  { name: "Oxford HD Electric", tier: "platinum" },
-  { name: "HD Electric", tier: "platinum" },
-  { name: "Bayview White Diffusion", tier: "platinum" },
-  { name: "White Diffusion", tier: "platinum" },
-  { name: "Grey Maui", tier: "platinum" },
-  { name: "Blue Maui", tier: "platinum" },
-  { name: "Greystone River White", tier: "platinum" },
-  { name: "River White", tier: "platinum" },
-  { name: "Summer River White", tier: "platinum" },
-  { name: "Ocean Midnight", tier: "platinum" },
-  { name: "Carrara Marble", tier: "platinum" },
-  { name: "Raleigh Blue Beach Pebble", tier: "platinum" },
-  { name: "Blue Beach Pebble", tier: "platinum" },
-  { name: "Sandstone", tier: "platinum" },
-  { name: "Raleigh White Beach Pebble", tier: "platinum" },
-  { name: "White Beach Pebble", tier: "platinum" },
-  { name: "White", tier: "platinum" },
-  { name: "Blue", tier: "platinum" },
+  { name: "Butterfly", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4f5b14b1f_Butterfly.jpg", tier: "platinum-plus" },
+  { name: "Esagono", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1c3b1ba72_Esagono.jpg", tier: "platinum-plus" },
+  { name: "Harmony Gold HDE", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b24218ff9_HarmonyGold-HDE.jpg", tier: "platinum-plus" },
+  { name: "Twilight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/867ae4129_Twilight.jpg", tier: "platinum-plus" },
+  { name: "Carnival", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/91640be38_Carnival.jpg", tier: "platinum" },
+  { name: "Canterbury", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1235fa641_Canterbury.jpg", tier: "platinum" },
+  { name: "HD Antigua", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/1b574d1bd_HDAntigua.jpg", tier: "platinum" },
+  { name: "Gladstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/e7ef00922_Gladstone.jpg", tier: "platinum" },
+  { name: "Celest", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/82ef3daba_Celest.jpg", tier: "platinum" },
+  { name: "Tahoe", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/370383aaa_Tahoe.jpg", tier: "platinum" },
+  { name: "Garden", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3580d7287_Garden.jpg", tier: "platinum" },
+  { name: "Sapphire", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/9cefde4f9_Sapphire.jpg", tier: "platinum" },
+  { name: "Sunburst Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/6bc0f75ad_SunburstOysterBay.jpg", tier: "platinum" },
+  { name: "Oyster Bay", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d6fd36b0a_OysterBay.jpg", tier: "platinum" },
+  { name: "Oxford HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/86cfd7e9a_OXFORDHDELECTRIC.jpg", tier: "platinum" },
+  { name: "HD Electric", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/07fc1b793_HDELECTRIC.jpg", tier: "platinum" },
+  { name: "Bayview White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/5a67f1612_BayviewWhiteDiffusion.jpg", tier: "platinum" },
+  { name: "White Diffusion", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/b2b3f0178_WhiteDiffusion.jpg", tier: "platinum" },
+  { name: "Grey Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/d73c2c8d9_GreyMaui.jpg", tier: "platinum" },
+  { name: "Blue Maui", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/ac2618ef1_BlueMaui.jpg", tier: "platinum" },
+  { name: "Greystone River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/97c559cf9_GreystoneRiverWhite.jpg", tier: "platinum" },
+  { name: "River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/8a1e62d22_RiverWhite.jpg", tier: "platinum" },
+  { name: "Summer River White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/296e83210_SummerRiverWhite.jpg", tier: "platinum" },
+  { name: "Ocean Midnight", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bf54bc3ba_OceanMidnight.jpg", tier: "platinum" },
+  { name: "Carrara Marble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4e59feeea_CarraraMarble.jpg", tier: "platinum" },
+  { name: "Raleigh Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/0fdb87fd3_RaleighBlueBeachPebble.jpg", tier: "platinum" },
+  { name: "Blue Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/49bca1208_BlueBeachPebble.jpg", tier: "platinum" },
+  { name: "Sandstone", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a7f229630_Sandstone.jpg", tier: "platinum" },
+  { name: "Raleigh White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/a149dfe63_RaleighWhiteBeachPebble.jpg", tier: "platinum" },
+  { name: "White Beach Pebble", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/3d44fed9a_WhiteBeachPebble.jpg", tier: "platinum" },
+  { name: "White", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/bf175feaa_White.jpg", tier: "platinum" },
+  { name: "Blue", image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/415691248_Blue.jpg", tier: "platinum" },
 ];
 
 const POOL_TYPES = [
@@ -55,6 +55,7 @@ export default function DesignCenter() {
   const [selectedPoolType, setSelectedPoolType] = useState(null);
   const [generatedImages, setGeneratedImages] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [generationTime, setGenerationTime] = useState(0);
   const [contactInfo, setContactInfo] = useState({
     name: '',
     email: '',
@@ -63,6 +64,18 @@ export default function DesignCenter() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [quoteId, setQuoteId] = useState('');
+
+  // Timer for generation
+  useEffect(() => {
+    let interval;
+    if (isGenerating) {
+      setGenerationTime(0);
+      interval = setInterval(() => {
+        setGenerationTime(prev => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isGenerating]);
 
   const generatePoolVisualizations = async () => {
     if (!selectedPattern || !selectedPoolType) return;
@@ -157,24 +170,35 @@ export default function DesignCenter() {
                   <p className="text-slate-600">Select from our collection of premium pool liner patterns</p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                   {PATTERNS.map((pattern) => (
                     <motion.button
                       key={pattern.name}
                       onClick={() => setSelectedPattern(pattern.name)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`p-4 rounded-lg border-2 transition-all text-left ${
+                      className={`rounded-lg border-2 transition-all overflow-hidden group relative ${
                         selectedPattern === pattern.name
-                          ? 'border-cyan-500 bg-cyan-50'
-                          : 'border-slate-200 hover:border-cyan-300 bg-white'
+                          ? 'border-cyan-500'
+                          : 'border-slate-200 hover:border-cyan-300'
                       }`}
                     >
-                      <div className="text-sm font-semibold text-slate-900 mb-1">{pattern.name}</div>
-                      <div className="text-xs text-slate-500 capitalize">{pattern.tier.replace('-', ' ')}</div>
-                      {selectedPattern === pattern.name && (
-                        <Check className="w-5 h-5 text-cyan-500 mt-2" />
-                      )}
+                      <div className="aspect-square overflow-hidden bg-slate-100">
+                        <img
+                          src={pattern.image}
+                          alt={pattern.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className={`absolute inset-0 flex flex-col items-center justify-center bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity ${selectedPattern === pattern.name ? 'opacity-100' : ''}`}>
+                        <div className="text-white text-center px-2">
+                          <div className="text-xs font-semibold mb-1">{pattern.name}</div>
+                          <div className="text-xs text-cyan-300 capitalize">{pattern.tier.replace('-', ' ')}</div>
+                        </div>
+                        {selectedPattern === pattern.name && (
+                          <Check className="w-5 h-5 text-cyan-400 mt-2 absolute top-2 right-2" />
+                        )}
+                      </div>
                     </motion.button>
                   ))}
                 </div>
@@ -208,23 +232,23 @@ export default function DesignCenter() {
                   <p className="text-slate-600">Choose your pool shape - we'll visualize it with your pattern</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                   {POOL_TYPES.map((poolType) => (
                     <motion.button
                       key={poolType.id}
                       onClick={() => setSelectedPoolType(poolType)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`p-6 rounded-xl border-2 transition-all text-left ${
+                      className={`p-5 rounded-xl border-2 transition-all text-center ${
                         selectedPoolType?.id === poolType.id
                           ? 'border-cyan-500 bg-cyan-50'
                           : 'border-slate-200 hover:border-cyan-300 bg-white'
                       }`}
                     >
-                      <div className="text-lg font-semibold text-slate-900 mb-1">{poolType.label}</div>
-                      <div className="text-slate-600 text-sm mb-3">{poolType.description}</div>
+                      <div className="text-base font-semibold text-slate-900 mb-1">{poolType.label}</div>
+                      <div className="text-slate-600 text-xs mb-3">{poolType.description}</div>
                       {selectedPoolType?.id === poolType.id && (
-                        <Check className="w-5 h-5 text-cyan-500" />
+                        <Check className="w-5 h-5 text-cyan-500 mx-auto" />
                       )}
                     </motion.button>
                   ))}
@@ -246,7 +270,7 @@ export default function DesignCenter() {
                     {isGenerating ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        Generating Preview...
+                        Generating... {generationTime}s
                       </>
                     ) : (
                       <>
