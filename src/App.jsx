@@ -11,6 +11,7 @@ import WinterCoverGuide from './pages/WinterCoverGuide';
 import SolarBlanketGuide from './pages/SolarBlanketGuide';
 import SpaCovers from './pages/SpaCovers';
 import PortfolioProject from './pages/PortfolioProject';
+import CustomPoolLiners from './pages/CustomPoolLiners';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -128,6 +129,14 @@ const AuthenticatedApp = () => {
          element={
            <LayoutWrapper currentPageName="SpaCovers">
              <SpaCovers />
+           </LayoutWrapper>
+         }
+       />
+       <Route
+         path="/CustomPoolLiners"
+         element={
+           <LayoutWrapper currentPageName="CustomPoolLiners">
+             <CustomPoolLiners />
            </LayoutWrapper>
          }
        />
