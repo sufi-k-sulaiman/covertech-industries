@@ -820,7 +820,8 @@ const productsData = {
     images: [
       "https://media.base44.com/images/public/6966301493bec01d4fb29d56/f7d38ce38_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/204ca0231_Insul.JPG",
-      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f3acaf446_InsulationRoll.jpg"
+      "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/f3acaf446_InsulationRoll.jpg",
+      "https://media.base44.com/images/public/6966301493bec01d4fb29d56/6746e9514_NewThermo-floor.jpg"
     ],
     features: ["Reduces Heat Loss", "Energy Cost Savings", "Easy Installation", "Compatible with All Pool Types", "Reflective Technology"],
     specifications: {
