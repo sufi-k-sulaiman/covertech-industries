@@ -104,7 +104,14 @@ export default function DesignCenter() {
       }
 
       setGeneratedImages(images);
-      setStep(3);
+      if (images.length > 0) {
+        setStep(3);
+      } else {
+        alert('Image generation failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Generation failed:', error);
+      alert('Error generating images. Please try again.');
     } finally {
       setIsGenerating(false);
     }
@@ -312,9 +319,13 @@ export default function DesignCenter() {
                       </motion.div>
                     ))
                   ) : (
-                    <div className="col-span-full text-center py-12">
+                    <div className="col-span-full text-center py-12 bg-slate-50 rounded-xl">
                       <Loader2 className="w-8 h-8 animate-spin mx-auto text-cyan-500 mb-4" />
-                      <p className="text-slate-600">Generating your pool visualization...</p>
+                      <p className="text-slate-600 mb-2">Generating your pool visualization...</p>
+                      <p className="text-sm text-slate-500">Elapsed: {generationTime}s</p>
+                      {generationTime > 60 && (
+                        <p className="text-sm text-amber-600 mt-2">Generation is taking longer than expected. Please wait...</p>
+                      )}
                     </div>
                   )}
                 </div>
