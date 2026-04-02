@@ -1001,7 +1001,7 @@ export default function ProductDetails() {
               </div>
 
               {/* Trust badges */}
-              {slug !== 'golf-covers' && slug !== 'pool-insulation' && (
+              {slug !== 'golf-covers' && slug !== 'pool-insulation' && slug !== 'curing-blankets' && (
                 <div className="grid grid-cols-2 gap-4 p-4 bg-slate-50 rounded-xl">
                   <div className="text-center">
                     <Shield className="w-6 h-6 text-cyan-500 mx-auto mb-1" />
