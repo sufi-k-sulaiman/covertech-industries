@@ -84,6 +84,14 @@ const AuthenticatedApp = () => {
        <Route path="/in-ground-pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
        <Route path="/product-category/spa-covers/*" element={<Navigate to="/Products" replace />} />
        <Route path="/product-category/winter-pool-safety-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
+       <Route path="/product-category/in-ground-pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
+       <Route path="/shop/above-ground-liners/*" element={<Navigate to="/ProductDetails?slug=above-ground-liners" replace />} />
+       <Route path="/shop/tarps-curing-blankets/*" element={<Navigate to="/ProductDetails?slug=curing-blankets" replace />} />
+       <Route path="/shop/in-ground-pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
+       <Route path="/product-category/golf-green-sports-field-covers/*" element={<Navigate to="/ProductDetails?slug=golf-covers" replace />} />
+       <Route path="/shop/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
+       <Route path="/shop/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
+       <Route path="/page/:page" element={<Navigate to="/Products" replace />} />
        <Route path="/product-category/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
        <Route path="/product-category/tarps-curing-blankets/*" element={<Navigate to="/ProductDetails?slug=curing-blankets" replace />} />
        <Route path="/product-category/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
