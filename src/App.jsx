@@ -55,19 +55,10 @@ const AuthenticatedApp = () => {
        <Route path="/lightweight-solid/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
        <Route path="/supreme-solid/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
        <Route path="/pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
-       <Route path="/in-ground-pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
        <Route path="/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
        <Route path="/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
-       <Route path="/winter-pool-safety-covers/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
-       <Route path="/golf-green-sports-field-covers/*" element={<Navigate to="/ProductDetails?slug=golf-covers" replace />} />
-       <Route path="/shop/insulation/*" element={<Navigate to="/ProductDetails?slug=pool-insulation" replace />} />
        <Route path="/product-category/insulation/*" element={<Navigate to="/ProductDetails?slug=pool-insulation" replace />} />
        <Route path="/product-category/mesh/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
-       <Route path="/product-category/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
-       <Route path="/product-category/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
-       <Route path="/product-category/spa-covers/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
-       <Route path="/product-category/tarps-curing-blankets/*" element={<Navigate to="/ProductDetails?slug=curing-blankets" replace />} />
-       <Route path="/25-year-limited-warranty/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/safety-cover-warranty/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/safety-cover-registration/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/safety-warranty-1d/*" element={<Navigate to="/Warranties" replace />} />
@@ -75,9 +66,6 @@ const AuthenticatedApp = () => {
        <Route path="/winter-cover-warranty/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/vinyl-liner-registration/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/solar-blanket-warranty-english/*" element={<Navigate to="/Warranties" replace />} />
-       <Route path="/solar-blanket-warranty-online-registration/*" element={<Navigate to="/Warranties" replace />} />
-       <Route path="/winter-cover-installation-and-use/*" element={<Navigate to="/Learn" replace />} />
-       <Route path="/solar-blanket-installation-and-use/*" element={<Navigate to="/Learn" replace />} />
        <Route path="/toolbox/*" element={<Navigate to="/Resources" replace />} />
        <Route path="/portfolio/*" element={<Navigate to="/Gallery" replace />} />
        <Route path="/portfolio-type/*" element={<Navigate to="/Gallery" replace />} />
