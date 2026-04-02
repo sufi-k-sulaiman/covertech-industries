@@ -269,20 +269,20 @@ export default function DesignCenter() {
                   <p className="text-slate-600">Choose your pool shape - we'll visualize it with your pattern</p>
                 </div>
 
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
                   {POOL_TYPES.map((poolType) => (
                     <motion.button
                       key={poolType.id}
                       onClick={() => setSelectedPoolType(poolType)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`p-4 rounded-xl border-2 transition-all text-center flex flex-col items-center gap-2 ${
+                      className={`p-6 rounded-xl border-2 transition-all text-center flex flex-col items-center gap-3 ${
                         selectedPoolType?.id === poolType.id
                           ? 'border-cyan-500 bg-cyan-50 shadow-md'
                           : 'border-slate-200 hover:border-cyan-300 bg-white'
                       }`}
                     >
-                      <PoolShapeIcon type={poolType.id} className="w-12 h-12" />
+                      <PoolShapeIcon type={poolType.id} className="w-20 h-20" />
                       <div>
                         <div className="text-sm font-semibold text-slate-900">{poolType.label}</div>
                         <div className="text-slate-500 text-xs">{poolType.description}</div>
