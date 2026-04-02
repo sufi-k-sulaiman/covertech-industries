@@ -7,6 +7,10 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import WinterCoverGuide from './pages/WinterCoverGuide';
+import SolarBlanketGuide from './pages/SolarBlanketGuide';
+import SpaCovers from './pages/SpaCovers';
+import PortfolioProject from './pages/PortfolioProject';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -82,6 +86,34 @@ const AuthenticatedApp = () => {
        <Route path="/solar-blanket-installation-and-use/*" element={<Navigate to="/Learn" replace />} />
        <Route path="/golf-green-sports-field-covers/*" element={<Navigate to="/ProductDetails?slug=golf-covers" replace />} />
        <Route path="/solar-blanket-warranty-online-registration/*" element={<Navigate to="/Warranties" replace />} />
+       <Route path="/winter-cover-installation-and-use/*" element={<Navigate to="/WinterCoverGuide" replace />} />
+       <Route path="/solar-blanket-installation-and-use/*" element={<Navigate to="/SolarBlanketGuide" replace />} />
+       <Route path="/product-category/spa-covers/*" element={<Navigate to="/SpaCovers" replace />} />
+       <Route path="/portfolio/:projectId" element={<LayoutWrapper currentPageName="Portfolio"><PortfolioProject /></LayoutWrapper>} />
+       <Route
+         path="/WinterCoverGuide"
+         element={
+           <LayoutWrapper currentPageName="WinterCoverGuide">
+             <WinterCoverGuide />
+           </LayoutWrapper>
+         }
+       />
+       <Route
+         path="/SolarBlanketGuide"
+         element={
+           <LayoutWrapper currentPageName="SolarBlanketGuide">
+             <SolarBlanketGuide />
+           </LayoutWrapper>
+         }
+       />
+       <Route
+         path="/SpaCovers"
+         element={
+           <LayoutWrapper currentPageName="SpaCovers">
+             <SpaCovers />
+           </LayoutWrapper>
+         }
+       />
        {Object.entries(Pages).map(([path, Page]) => (
          <Route
            key={path}
