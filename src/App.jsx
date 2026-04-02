@@ -83,6 +83,7 @@ const AuthenticatedApp = () => {
        <Route path="/winter-pool-safety-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
        <Route path="/in-ground-pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
        <Route path="/product-category/spa-covers/*" element={<Navigate to="/Products" replace />} />
+       <Route path="/product-category/winter-pool-safety-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
        <Route path="/product-category/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
        <Route path="/product-category/tarps-curing-blankets/*" element={<Navigate to="/ProductDetails?slug=curing-blankets" replace />} />
        <Route path="/product-category/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
