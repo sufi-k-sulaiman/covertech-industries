@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Loader2, Check } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { base44 } from '@/api/base44Client';
 import SEOHead from '@/components/seo/SEOHead';
@@ -357,8 +358,11 @@ export default function DesignCenter() {
                   ) : (
                     <div className="col-span-full text-center py-16 bg-slate-50 rounded-xl">
                       <Loader2 className="w-8 h-8 animate-spin mx-auto text-cyan-500 mb-4" />
-                      <p className="text-slate-600 mb-2">Generating your pool visualization...</p>
-                      <p className="text-sm text-slate-500">Elapsed: {generationTime}s</p>
+                      <p className="text-slate-600 mb-6">Generating your pool visualization...</p>
+                      <div className="max-w-xs mx-auto mb-4">
+                        <Progress value={Math.min((generationTime / 60) * 100, 100)} className="h-2" />
+                      </div>
+                      <p className="text-sm text-slate-500">{generationTime}s</p>
                       {generationTime > 60 && (
                         <p className="text-sm text-amber-600 mt-2">Generation is taking longer than expected. Please wait...</p>
                       )}
