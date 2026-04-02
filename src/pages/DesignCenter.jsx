@@ -84,6 +84,7 @@ const PoolShapeIcon = ({ type, className = "w-16 h-16" }) => {
 export default function DesignCenter() {
   const [step, setStep] = useState(1); // 1: Pattern, 2: Pool Type, 3: AI Preview, 4: Contact, 5: Success
   const [selectedPattern, setSelectedPattern] = useState(null);
+  const [selectedPatternImage, setSelectedPatternImage] = useState(null);
   const [selectedPoolType, setSelectedPoolType] = useState(null);
   const [generatedImages, setGeneratedImages] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -115,14 +116,17 @@ export default function DesignCenter() {
     
     setIsGenerating(true);
     try {
-      // Generate 1 view of the pool (dry view without water)
+      // Generate pool with the selected pattern overlay
       const prompts = [
-        `A stunning in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern vinyl liner, empty dry view from above showing the full design, professional architectural photography, high quality`,
+        `An in-ground ${selectedPoolType.label} swimming pool with a ${selectedPattern} pattern vinyl liner, empty dry view from directly above showing the full design clearly, professional architectural photography, high quality. The liner pattern should feature intricate designs and textures.`,
       ];
 
       const responses = await Promise.all(
         prompts.map(prompt => 
-          base44.integrations.Core.GenerateImage({ prompt }).catch(err => {
+          base44.integrations.Core.GenerateImage({ 
+            prompt,
+            existing_image_urls: selectedPatternImage ? [selectedPatternImage] : undefined
+          }).catch(err => {
             console.error('Image generation error:', err);
             return null;
           })
@@ -211,6 +215,7 @@ export default function DesignCenter() {
                       key={pattern.name}
                       onClick={() => {
                         setSelectedPattern(pattern.name);
+                        setSelectedPatternImage(pattern.image);
                         setStep(2);
                       }}
                       whileHover={{ scale: 1.05 }}
@@ -354,23 +359,25 @@ export default function DesignCenter() {
                       </motion.button>
                     ))
                   ) : (
-                    <div className="col-span-full text-center py-16 bg-slate-50 rounded-xl">
-                      <div className="flex items-center justify-center gap-3 mb-6">
-                        <Loader2 className="w-5 h-5 animate-spin text-cyan-500" />
-                        <span className="text-slate-700 font-medium">Generating... {Math.max(0, 60 - generationTime)}s</span>
+                    <div className="col-span-full text-center py-16 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl">
+                      <div className="mb-8">
+                        <Loader2 className="w-8 h-8 animate-spin text-cyan-500 mx-auto mb-4" />
+                        <p className="text-slate-700 font-semibold text-lg mb-2">Generating your pool design...</p>
+                        <p className="text-slate-600 text-sm">This usually takes about 8 seconds</p>
                       </div>
-                      <div className="max-w-xs mx-auto">
-                        <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+                      <div className="max-w-xs mx-auto mb-6">
+                        <div className="h-3 bg-slate-300 rounded-full overflow-hidden shadow-sm">
                           <motion.div
                             initial={{ width: '100%' }}
                             animate={{ width: `${Math.max(0, ((60 - generationTime) / 60) * 100)}%` }}
-                            className="h-full bg-gradient-to-r from-cyan-500 to-blue-500"
-                            transition={{ duration: 0.3 }}
+                            className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 shadow-lg"
+                            transition={{ duration: 0.5, ease: "linear" }}
                           />
                         </div>
+                        <p className="text-sm text-slate-600 mt-3 font-medium">{Math.max(0, 60 - generationTime)}s remaining</p>
                       </div>
                       {generationTime > 60 && (
-                        <p className="text-sm text-amber-600 mt-4">Generation is taking longer than expected. Please wait...</p>
+                        <p className="text-sm text-amber-600 font-medium">Generation is taking longer than expected. Please wait...</p>
                       )}
                     </div>
                   )}
