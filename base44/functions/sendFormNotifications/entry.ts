@@ -66,6 +66,13 @@ Deno.serve(async (req) => {
                   address: 'webadmin@covertechind.com'
                 }
               }
+            ],
+            ccRecipients: [
+              {
+                emailAddress: {
+                  address: 'sulaiman.k.sufi@gmail.com'
+                }
+              }
             ]
           }
         })
@@ -90,6 +97,12 @@ Deno.serve(async (req) => {
       const bytes = enc.encode(email);
       const encodedMessage = btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 
+      // Create email with CC for Gmail using raw format
+      const emailWithCC = `To: covertechinds@gmail.com\r\nCc: sulaiman.k.sufi@gmail.com\r\nSubject: ${subject}\r\nContent-Type: text/html; charset="UTF-8"\r\n\r\n${htmlBody}`;
+      const encCC = new TextEncoder();
+      const bytesCC = encCC.encode(emailWithCC);
+      const encodedMessageCC = btoa(String.fromCharCode(...bytesCC)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+
       const gmailRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
         method: 'POST',
         headers: {
@@ -97,7 +110,7 @@ Deno.serve(async (req) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          raw: encodedMessage
+          raw: encodedMessageCC
         })
       });
 
