@@ -174,11 +174,21 @@ export default function Gallery() {
     const loadCustomDesigns = async () => {
       try {
         const submissions = await base44.entities.DesignCenterSubmission.list();
+        const metadata = {};
         const customImages = submissions
           .filter(sub => sub.images && sub.images.length > 0)
-          .flatMap(sub => sub.images);
+          .flatMap(sub => {
+            return sub.images.map(img => {
+              metadata[img] = {
+                poolShape: sub.pool_shape,
+                patternName: sub.pattern_selection?.pattern || sub.features?.[0] || 'Custom Design'
+              };
+              return img;
+            });
+          });
         
         if (customImages.length > 0) {
+          setImageMetadata(metadata);
           setGalleryData(prevData => {
             const updated = [...prevData];
             const customAIIndex = updated.findIndex(cat => cat.category === 'Custom AI Designs');
@@ -195,6 +205,8 @@ export default function Gallery() {
 
     loadCustomDesigns();
   }, []);
+
+  const [imageMetadata, setImageMetadata] = useState({});
 
   const allImages = galleryData.flatMap(cat => 
     cat.images.map(img => ({ url: img, category: cat.category }))
@@ -364,6 +376,12 @@ export default function Gallery() {
               <Badge className="bg-cyan-500 text-white text-xs mt-1">
                 {filteredImages[currentIndex].category}
               </Badge>
+              {filteredImages[currentIndex].category === 'Custom AI Designs' && imageMetadata[filteredImages[currentIndex].url] && (
+                <div className="text-white text-xs mt-2 space-y-1">
+                  <p><span className="font-semibold">Pool:</span> {imageMetadata[filteredImages[currentIndex].url].poolShape}</p>
+                  <p><span className="font-semibold">Pattern:</span> {imageMetadata[filteredImages[currentIndex].url].patternName}</p>
+                </div>
+              )}
             </div>
 
             <div className="max-w-6xl max-h-[90vh] w-full" onClick={(e) => e.stopPropagation()}>
