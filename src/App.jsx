@@ -70,6 +70,18 @@ const AuthenticatedApp = () => {
        <Route path="/portfolio/*" element={<Navigate to="/Gallery" replace />} />
        <Route path="/portfolio-type/*" element={<Navigate to="/Gallery" replace />} />
        <Route path="/author/*" element={<Navigate to="/" replace />} />
+       <Route path="/25-year-limited-warranty/*" element={<Navigate to="/Warranties" replace />} />
+       <Route path="/shop/insulation/*" element={<Navigate to="/ProductDetails?slug=pool-insulation" replace />} />
+       <Route path="/winter-pool-safety-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
+       <Route path="/in-ground-pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
+       <Route path="/product-category/spa-covers/*" element={<Navigate to="/Products" replace />} />
+       <Route path="/product-category/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
+       <Route path="/product-category/tarps-curing-blankets/*" element={<Navigate to="/ProductDetails?slug=curing-blankets" replace />} />
+       <Route path="/product-category/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
+       <Route path="/winter-cover-installation-and-use/*" element={<Navigate to="/Learn" replace />} />
+       <Route path="/solar-blanket-installation-and-use/*" element={<Navigate to="/Learn" replace />} />
+       <Route path="/golf-green-sports-field-covers/*" element={<Navigate to="/ProductDetails?slug=golf-covers" replace />} />
+       <Route path="/solar-blanket-warranty-online-registration/*" element={<Navigate to="/Warranties" replace />} />
        {Object.entries(Pages).map(([path, Page]) => (
          <Route
            key={path}
