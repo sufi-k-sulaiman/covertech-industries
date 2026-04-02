@@ -121,19 +121,15 @@ export default function DesignCenter() {
         `A luxurious in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern liner filled with crystal clear water, resort-style backyard, professional installation, sunny day`,
       ];
 
-      const images = [];
-      for (const prompt of prompts) {
-        try {
-          const response = await base44.integrations.Core.GenerateImage({
-            prompt
-          });
-          if (response?.url) {
-            images.push(response.url);
-          }
-        } catch (err) {
-          console.error('Image generation error:', err);
-        }
-      }
+      const responses = await Promise.all(
+        prompts.map(prompt => 
+          base44.integrations.Core.GenerateImage({ prompt }).catch(err => {
+            console.error('Image generation error:', err);
+            return null;
+          })
+        )
+      );
+      const images = responses.filter(r => r?.url).map(r => r.url);
 
       setGeneratedImages(images);
       if (images.length > 0) {
