@@ -12,39 +12,92 @@ const projects = {
     description: 'Elegant in-ground pool with Carrara marble-pattern vinyl liner',
     category: 'Residential',
     poolType: 'In-Ground',
-    size: 'Large',
-    features: ['Custom Vinyl Liner', 'Safety Cover', 'Premium Finishes'],
+    size: '20ft x 40ft',
+    depth: '3-8ft',
+    features: ['Custom Carrara Marble Pattern Liner', 'Premium Safety Cover', 'Custom Design', 'Professional Installation', '25-Year Warranty'],
+    specifications: {
+      liner: 'Premium Reinforced Vinyl - Carrara Pattern',
+      warranty: '25 Years (Full Coverage Years 1-2)',
+      thickness: '20 mil',
+      colors: 'Carrara Marble Pattern'
+    },
     images: [
       'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f311abf6a_beautiful-outdoor-swimming-pool-hotel-resort.jpg',
-      'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f311abf6a_beautiful-outdoor-swimming-pool-hotel-resort.jpg'
+      'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80',
+      'https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?w=1200&q=80'
     ],
-    details: 'This stunning residential pool features our premium Carrara marble-pattern vinyl liner. The custom installation showcases the beauty of natural stone aesthetics with the durability of our reinforced vinyl materials.'
+    details: 'This stunning residential pool features our premium Carrara marble-pattern vinyl liner, combining timeless elegance with unmatched durability. The custom installation showcases the beauty of natural stone aesthetics with reinforced vinyl materials that withstand years of use. Our expert installation team ensured perfect fit and sealing for long-lasting protection.',
+    highlights: [
+      'Custom-fit Carrara marble pattern for sophisticated aesthetics',
+      'Premium reinforced vinyl construction for superior durability',
+      'Professional installation with precision sealing',
+      '25-year comprehensive warranty',
+      'Reduced maintenance with premium materials',
+      'Energy-efficient design retains heat naturally'
+    ],
+    relatedProducts: ['in-ground-liners', 'safety-covers']
   },
   'aqua-space': {
     title: 'Aqua Space Resort Pool',
-    description: 'Commercial resort pool with thermal covers and custom features',
+    description: 'Commercial resort pool with thermal covers and comprehensive solutions',
     category: 'Commercial',
     poolType: 'In-Ground',
-    size: 'Large',
-    features: ['Thermal Cover', 'Solar Blanket', 'Custom Design'],
+    size: '50ft x 80ft',
+    depth: '3-10ft',
+    features: ['Thermal Insulation Cover', 'Solar Blanket System', 'Custom Commercial Design', 'Safety Mesh Cover', 'Professional Maintenance Package'],
+    specifications: {
+      liner: 'Commercial-Grade Vinyl',
+      coverType: 'Thermal + Solar System',
+      warranty: '20 Years (Commercial)',
+      capacity: '250,000+ gallons'
+    },
     images: [
       'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f311abf6a_beautiful-outdoor-swimming-pool-hotel-resort.jpg',
-      'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f311abf6a_beautiful-outdoor-swimming-pool-hotel-resort.jpg'
+      'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80',
+      'https://images.unsplash.com/photo-1560085541-daf4ee36b26f?w=1200&q=80'
     ],
-    details: 'A premier resort installation featuring our commercial-grade pool covers and thermal insulation system. This project demonstrates the reliability of our products in high-traffic, commercial environments.'
+    details: 'A premier resort installation featuring our commercial-grade thermal and solar cover system. This comprehensive solution demonstrates the reliability of our products in high-traffic, commercial resort environments. The dual-cover system reduces heating costs by 60-75% while maintaining pristine water quality and guest safety.',
+    highlights: [
+      'Dual thermal and solar cover system for maximum efficiency',
+      'Commercial-grade materials built for heavy use',
+      'Reduces heating costs by 60-75% annually',
+      'Professional installation and ongoing support',
+      '20-year commercial warranty',
+      'Suitable for high-volume guest facilities',
+      'Environmentally conscious solution'
+    ],
+    relatedProducts: ['solar-covers', 'winter-covers', 'safety-covers']
   },
   'resort-pool': {
     title: 'Luxury Resort Pool',
-    description: 'High-end resort pool with premium safety and thermal covers',
+    description: 'High-end resort pool with premium safety and thermal protection solutions',
     category: 'Commercial',
     poolType: 'In-Ground',
-    size: 'Large',
-    features: ['Safety Mesh Cover', 'Thermal Insulation', 'Professional Installation'],
+    size: '40ft x 60ft',
+    depth: '3-8ft',
+    features: ['Safety Mesh Cover System', 'Thermal Insulation', 'Premium Professional Installation', 'Custom Color Matching', '20-Year Commercial Warranty'],
+    specifications: {
+      coverType: 'Premium Safety Mesh',
+      material: 'Commercial-Grade Polypropylene',
+      warranty: '20 Years (Full Coverage Years 1-3)',
+      safety: 'Exceeds ASTM F1346 Standards'
+    },
     images: [
       'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f311abf6a_beautiful-outdoor-swimming-pool-hotel-resort.jpg',
-      'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f311abf6a_beautiful-outdoor-swimming-pool-hotel-resort.jpg'
+      'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80'
     ],
-    details: 'This luxury resort pool showcases our commitment to excellence in both safety and aesthetics. Our thermal covers reduce heating costs by over 60% while maintaining the pristine appearance expected in premium hospitality settings.'
+    details: 'This luxury resort pool showcases our commitment to excellence in both safety and aesthetics. Our premium safety mesh covers provide superior protection while maintaining the pristine appearance expected in premium hospitality settings. The thermal insulation properties reduce heating costs by over 60% without compromising style.',
+    highlights: [
+      'Premium safety mesh exceeds ASTM safety standards',
+      'Thermal insulation reduces heating costs 60%+',
+      'Maintains elegant appearance for luxury properties',
+      'Professional installation and maintenance',
+      '20-year comprehensive warranty',
+      'Custom color and pattern options',
+      'Durable construction withstands resort traffic'
+    ],
+    relatedProducts: ['safety-covers', 'winter-covers', 'solar-covers']
   }
 };
 
