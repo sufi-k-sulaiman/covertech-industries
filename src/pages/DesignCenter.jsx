@@ -82,11 +82,10 @@ export default function DesignCenter() {
     
     setIsGenerating(true);
     try {
-      // Generate 3 different views of the pool
+      // Generate 2 different views of the pool
       const prompts = [
-        `A beautiful in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern vinyl liner, dry pool view from above, realistic daylight, professional photography`,
-        `An elegant in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern liner filled with water, sparkling daylight, resort style`,
-        `A luxurious backyard ${selectedPoolType.label} in-ground pool with ${selectedPattern} pattern vinyl liner, evening ambiance with landscaping, professional installation`,
+        `A stunning in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern vinyl liner, empty dry view from above showing the full design, professional architectural photography, high quality`,
+        `A luxurious in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern liner filled with crystal clear water, resort-style backyard, professional installation, sunny day`,
       ];
 
       const images = [];
@@ -306,20 +305,20 @@ export default function DesignCenter() {
                   <p className="text-slate-600">AI-generated preview of your {selectedPoolType?.label} pool with {selectedPattern} pattern</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
                   {generatedImages.length > 0 ? (
                     generatedImages.map((image, idx) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="rounded-xl overflow-hidden aspect-square bg-slate-100"
+                        className="rounded-2xl overflow-hidden aspect-video bg-slate-100 shadow-lg"
                       >
                         <img src={image} alt={`Pool preview ${idx + 1}`} className="w-full h-full object-cover" />
                       </motion.div>
                     ))
                   ) : (
-                    <div className="col-span-full text-center py-12 bg-slate-50 rounded-xl">
+                    <div className="col-span-full text-center py-16 bg-slate-50 rounded-xl">
                       <Loader2 className="w-8 h-8 animate-spin mx-auto text-cyan-500 mb-4" />
                       <p className="text-slate-600 mb-2">Generating your pool visualization...</p>
                       <p className="text-sm text-slate-500">Elapsed: {generationTime}s</p>
