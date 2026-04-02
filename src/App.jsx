@@ -71,6 +71,10 @@ const AuthenticatedApp = () => {
        <Route path="/vinyl-liner-registration/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/solar-blanket-warranty-english/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/toolbox/*" element={<Navigate to="/Resources" replace />} />
+       <Route path="/portfolio/detroit/*" element={<Navigate to="/portfolio/resort-pool" replace />} />
+       <Route path="/portfolio/carnival/*" element={<Navigate to="/portfolio/aqua-space" replace />} />
+       <Route path="/portfolio/paradiso/*" element={<Navigate to="/portfolio/carrara-marble" replace />} />
+       <Route path="/portfolio/white-diffusion/*" element={<Navigate to="/portfolio/aqua-space" replace />} />
        <Route path="/portfolio/*" element={<Navigate to="/Gallery" replace />} />
        <Route path="/portfolio-type/*" element={<Navigate to="/Gallery" replace />} />
        <Route path="/author/*" element={<Navigate to="/" replace />} />
