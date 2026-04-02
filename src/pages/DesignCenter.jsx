@@ -153,26 +153,10 @@ export default function DesignCenter() {
     try {
       const quoteIdGenerated = `CT${Date.now()}${Math.random().toString(36).substr(2, 5).toUpperCase()}`;
       
-      // Save generated images to gallery by updating the Gallery component's data
-      // Store images in sessionStorage to persist across page navigation
-      const designGalleryData = {
-        quote_id: quoteIdGenerated,
-        pattern: selectedPattern,
-        pool_shape: selectedPoolType.label,
-        customer_name: contactInfo.name,
-        images: generatedImages,
-        created_at: new Date().toISOString()
-      };
-      
-      const existingDesigns = JSON.parse(sessionStorage.getItem('customAIDesigns') || '[]');
-      existingDesigns.push(designGalleryData);
-      sessionStorage.setItem('customAIDesigns', JSON.stringify(existingDesigns));
-      
       await base44.entities.DesignCenterSubmission.create({
         quote_id: quoteIdGenerated,
         product_type: 'in-ground-liners',
         pool_shape: selectedPoolType.label,
-        features: [selectedPattern],
         pattern_selection: { pattern: selectedPattern },
         contact_info: contactInfo,
         images: generatedImages
@@ -182,6 +166,7 @@ export default function DesignCenter() {
       setSubmitted(true);
       setStep(5);
     } catch (error) {
+      console.error('Error submitting quote:', error);
       alert('Error submitting quote. Please try again.');
     }
   };
