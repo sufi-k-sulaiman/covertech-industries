@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { base44 } from '@/api/base44Client';
 import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
@@ -168,21 +169,31 @@ export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [galleryData, setGalleryData] = useState(galleryCategories);
 
-  // Load custom AI designs from sessionStorage
+  // Load custom AI designs from server
   useEffect(() => {
-    const customDesigns = JSON.parse(sessionStorage.getItem('customAIDesigns') || '[]');
-    const customImages = customDesigns.flatMap(design => design.images);
-    
-    if (customImages.length > 0) {
-      setGalleryData(prevData => {
-        const updated = [...prevData];
-        const customAIIndex = updated.findIndex(cat => cat.category === 'Custom AI Designs');
-        if (customAIIndex !== -1) {
-          updated[customAIIndex].images = customImages;
+    const loadCustomDesigns = async () => {
+      try {
+        const submissions = await base44.entities.DesignCenterSubmission.list();
+        const customImages = submissions
+          .filter(sub => sub.images && sub.images.length > 0)
+          .flatMap(sub => sub.images);
+        
+        if (customImages.length > 0) {
+          setGalleryData(prevData => {
+            const updated = [...prevData];
+            const customAIIndex = updated.findIndex(cat => cat.category === 'Custom AI Designs');
+            if (customAIIndex !== -1) {
+              updated[customAIIndex].images = customImages;
+            }
+            return updated;
+          });
         }
-        return updated;
-      });
-    }
+      } catch (error) {
+        console.error('Error loading custom designs:', error);
+      }
+    };
+
+    loadCustomDesigns();
   }, []);
 
   const allImages = galleryData.flatMap(cat => 
