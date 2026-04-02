@@ -211,7 +211,10 @@ export default function DesignCenter() {
                   {PATTERNS.map((pattern) => (
                     <motion.button
                       key={pattern.name}
-                      onClick={() => setSelectedPattern(pattern.name)}
+                      onClick={() => {
+                        setSelectedPattern(pattern.name);
+                        setStep(2);
+                      }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className={`rounded-xl border-2 transition-all overflow-hidden group relative ${
