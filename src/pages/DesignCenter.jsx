@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Loader2, Check } from 'lucide-react';
+import { ArrowRight, Loader2, Check, X } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { base44 } from '@/api/base44Client';
@@ -96,6 +96,7 @@ export default function DesignCenter() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [quoteId, setQuoteId] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Timer for generation
   useEffect(() => {
@@ -343,17 +344,18 @@ export default function DesignCenter() {
                   <p className="text-slate-600">AI-generated preview of your {selectedPoolType?.label} pool with {selectedPattern} pattern</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   {generatedImages.length > 0 ? (
                     generatedImages.map((image, idx) => (
-                      <motion.div
+                      <motion.button
                         key={idx}
+                        onClick={() => setSelectedImage(image)}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="rounded-2xl overflow-hidden aspect-video bg-slate-100 shadow-lg"
+                        className="w-full rounded-2xl overflow-hidden aspect-square bg-slate-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                       >
-                        <img src={image} alt={`Pool preview ${idx + 1}`} className="w-full h-full object-cover" />
-                      </motion.div>
+                        <img src={image} alt={`Pool preview ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform" />
+                      </motion.button>
                     ))
                   ) : (
                     <div className="col-span-full text-center py-16 bg-slate-50 rounded-xl">
@@ -369,6 +371,35 @@ export default function DesignCenter() {
                     </div>
                   )}
                 </div>
+
+                {/* Lightbox Modal */}
+                <AnimatePresence>
+                  {selectedImage && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={() => setSelectedImage(null)}
+                      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+                    >
+                      <motion.div
+                        initial={{ scale: 0.9 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0.9 }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="relative max-w-4xl max-h-screen w-full rounded-2xl overflow-hidden"
+                      >
+                        <img src={selectedImage} alt="Pool preview" className="w-full h-full object-contain" />
+                        <button
+                          onClick={() => setSelectedImage(null)}
+                          className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+                        >
+                          <X className="w-6 h-6" />
+                        </button>
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <div className="bg-cyan-50 rounded-xl p-6 mb-8">
                   <div className="flex items-start gap-4">
