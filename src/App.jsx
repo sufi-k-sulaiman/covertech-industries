@@ -92,6 +92,10 @@ const AuthenticatedApp = () => {
        <Route path="/shop/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
        <Route path="/shop/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
        <Route path="/page/:page" element={<Navigate to="/Products" replace />} />
+       <Route path="/wp-content/uploads/*" element={<Navigate to="/Resources" replace />} />
+       <Route path="/when-to-use-and-remove-your-supreme-green-turf-cover/*" element={<Navigate to="/Resources" replace />} />
+       <Route path="/shop/winter-pool-safety-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
+       <Route path="/shop/golf-green-sports-field-covers/*" element={<Navigate to="/ProductDetails?slug=golf-covers" replace />} />
        <Route path="/product-category/winter-pool-covers/*" element={<Navigate to="/ProductDetails?slug=winter-covers" replace />} />
        <Route path="/product-category/tarps-curing-blankets/*" element={<Navigate to="/ProductDetails?slug=curing-blankets" replace />} />
        <Route path="/product-category/solar-pool-covers/*" element={<Navigate to="/ProductDetails?slug=solar-covers" replace />} />
