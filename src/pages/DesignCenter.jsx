@@ -189,7 +189,7 @@ export default function DesignCenter() {
                           : 'border-slate-200 hover:border-cyan-300'
                       }`}
                     >
-                      <div className="aspect-video overflow-hidden bg-slate-100">
+                      <div className="aspect-[3/4] overflow-hidden bg-slate-100">
                         <img
                           src={pattern.image}
                           alt={pattern.name}
