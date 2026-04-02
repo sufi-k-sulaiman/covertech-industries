@@ -155,6 +155,10 @@ const galleryCategories = [
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/50dcbcca9_image.png",
       "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/93a6600f0_image.png"
     ]
+  },
+  {
+    category: "Custom AI Designs",
+    images: []
   }
 ];
 
