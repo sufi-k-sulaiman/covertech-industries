@@ -115,10 +115,9 @@ export default function DesignCenter() {
     
     setIsGenerating(true);
     try {
-      // Generate 2 different views of the pool
+      // Generate 1 view of the pool (dry view without water)
       const prompts = [
         `A stunning in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern vinyl liner, empty dry view from above showing the full design, professional architectural photography, high quality`,
-        `A luxurious in-ground ${selectedPoolType.label} swimming pool with ${selectedPattern} pattern liner filled with crystal clear water, resort-style backyard, professional installation, sunny day`,
       ];
 
       const responses = await Promise.all(
