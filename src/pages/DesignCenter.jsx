@@ -9,8 +9,8 @@ import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/componen
 import PageHero from '@/components/ui/PageHero';
 import GalleryBanner from '@/components/ui/GalleryBanner';
 import PoolShapeSelector from '@/components/design-center/PoolShapeSelector';
-import PoolDimensions from '@/components/design-center/PoolDimensions';
 import PoolFeatures from '@/components/design-center/PoolFeatures';
+import InGroundGallery from '@/components/design-center/InGroundGallery';
 import PatternSelector from '@/components/design-center/PatternSelector';
 import ContactForm from '@/components/design-center/ContactForm';
 import { base44 } from '@/api/base44Client';
@@ -34,19 +34,17 @@ const productTypes = [
 
 const steps = [
   { num: 1, label: "Product Type" },
-  { num: 2, label: "Pool Shape" },
-  { num: 3, label: "Dimensions" },
-  { num: 4, label: "Features" },
-  { num: 5, label: "Customization" },
-  { num: 6, label: "Your Info" },
-  { num: 7, label: "Review" },
+  { num: 2, label: "Pool Design" },
+  { num: 3, label: "Features" },
+  { num: 4, label: "Customization" },
+  { num: 5, label: "Your Info" },
+  { num: 6, label: "Review" },
 ];
 
 export default function DesignCenter() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [selectedShape, setSelectedShape] = useState(null);
-  const [dimensions, setDimensions] = useState({});
+  const [selectedDesign, setSelectedDesign] = useState(null);
   const [selectedFeatures, setSelectedFeatures] = useState([]);
   const [patternSelection, setPatternSelection] = useState({
     collection: 'platinum-plus-2026',
@@ -72,9 +70,8 @@ export default function DesignCenter() {
   const canProceed = () => {
     switch (currentStep) {
       case 1: return selectedProduct !== null;
-      case 2: return selectedShape !== null;
-      case 3: return dimensions.length && dimensions.width;
-      case 6: return contactInfo.fullName && contactInfo.email;
+      case 2: return selectedDesign !== null;
+      case 5: return contactInfo.fullName && contactInfo.email;
       default: return true;
     }
   };
@@ -194,35 +191,20 @@ export default function DesignCenter() {
               )}
 
               {currentStep === 2 && (
-                <motion.div
-                  key="step2"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <PoolShapeSelector 
-                    selectedShape={selectedShape}
-                    onSelectShape={setSelectedShape}
-                  />
-                </motion.div>
+               <motion.div
+                 key="step2"
+                 initial={{ opacity: 0, x: 20 }}
+                 animate={{ opacity: 1, x: 0 }}
+                 exit={{ opacity: 0, x: -20 }}
+               >
+                 <InGroundGallery 
+                   selectedDesign={selectedDesign}
+                   onSelectDesign={setSelectedDesign}
+                 />
+               </motion.div>
               )}
 
               {currentStep === 3 && (
-                <motion.div
-                  key="step3"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <PoolDimensions
-                    dimensions={dimensions}
-                    onDimensionsChange={setDimensions}
-                    selectedShape={selectedShape}
-                  />
-                </motion.div>
-              )}
-
-              {currentStep === 4 && (
                 <motion.div
                   key="step4"
                   initial={{ opacity: 0, x: 20 }}
@@ -236,9 +218,9 @@ export default function DesignCenter() {
                 </motion.div>
               )}
 
-              {currentStep === 5 && (
+              {currentStep === 4 && (
                 <motion.div
-                  key="step5"
+                  key="step4"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -253,7 +235,7 @@ export default function DesignCenter() {
                 </motion.div>
               )}
 
-              {currentStep === 6 && (
+              {currentStep === 5 && (
                 <motion.div
                   key="step6"
                   initial={{ opacity: 0, x: 20 }}
@@ -267,9 +249,9 @@ export default function DesignCenter() {
                 </motion.div>
               )}
 
-              {currentStep === 7 && (
+              {currentStep === 6 && (
                 <motion.div
-                  key="step7"
+                  key="step6"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -285,20 +267,10 @@ export default function DesignCenter() {
                   <div className="max-w-3xl mx-auto space-y-6">
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="bg-slate-50 rounded-xl p-6">
-                        <h3 className="font-semibold text-slate-900 mb-4">Product Selection</h3>
+                        <h3 className="font-semibold text-slate-900 mb-4">Product & Design</h3>
                         <div className="space-y-2 text-sm">
                           <div><span className="text-slate-600">Product:</span> <span className="font-medium">{selectedProduct}</span></div>
-                          <div><span className="text-slate-600">Shape:</span> <span className="font-medium">{selectedShape}</span></div>
-                        </div>
-                      </div>
-
-                      <div className="bg-slate-50 rounded-xl p-6">
-                        <h3 className="font-semibold text-slate-900 mb-4">Dimensions</h3>
-                        <div className="space-y-2 text-sm">
-                          <div><span className="text-slate-600">Length:</span> <span className="font-medium">{dimensions.length} ft</span></div>
-                          <div><span className="text-slate-600">Width:</span> <span className="font-medium">{dimensions.width} ft</span></div>
-                          {dimensions.shallowDepth && <div><span className="text-slate-600">Shallow:</span> <span className="font-medium">{dimensions.shallowDepth} ft</span></div>}
-                          {dimensions.deepDepth && <div><span className="text-slate-600">Deep:</span> <span className="font-medium">{dimensions.deepDepth} ft</span></div>}
+                          <div><span className="text-slate-600">Design:</span> <span className="font-medium">{selectedDesign}</span></div>
                         </div>
                       </div>
 
@@ -336,15 +308,14 @@ export default function DesignCenter() {
                       onClick={async () => {
                         try {
                           const quoteId = `CT${Date.now()}${Math.random().toString(36).substr(2, 5).toUpperCase()}`;
-                          await base44.entities.DesignCenterSubmission.create({
-                            quote_id: quoteId,
-                            product_type: selectedProduct,
-                            pool_shape: selectedShape,
-                            dimensions,
-                            features: selectedFeatures,
-                            pattern_selection: patternSelection,
-                            contact_info: contactInfo
-                          });
+                           await base44.entities.DesignCenterSubmission.create({
+                             quote_id: quoteId,
+                             product_type: selectedProduct,
+                             pool_shape: selectedDesign,
+                             features: selectedFeatures,
+                             pattern_selection: patternSelection,
+                             contact_info: contactInfo
+                           });
                           setSubmittedQuoteId(quoteId);
                           setShowSuccessModal(true);
                         } catch (error) {
@@ -373,11 +344,11 @@ export default function DesignCenter() {
               </Button>
 
               <Button
-                onClick={() => setCurrentStep(Math.min(7, currentStep + 1))}
+                onClick={() => setCurrentStep(Math.min(6, currentStep + 1))}
                 disabled={!canProceed()}
                 className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {currentStep === 7 ? 'Submit' : 'Continue'}
+                {currentStep === 6 ? 'Submit' : 'Continue'}
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
