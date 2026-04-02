@@ -176,29 +176,29 @@ export default function DesignCenter() {
                   <p className="text-slate-600">Select from our collection of premium pool liner patterns</p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
                   {PATTERNS.map((pattern) => (
                     <motion.button
                       key={pattern.name}
                       onClick={() => setSelectedPattern(pattern.name)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`rounded-lg border-2 transition-all overflow-hidden group relative ${
+                      className={`rounded-xl border-2 transition-all overflow-hidden group relative ${
                         selectedPattern === pattern.name
-                          ? 'border-cyan-500'
+                          ? 'border-cyan-500 shadow-lg'
                           : 'border-slate-200 hover:border-cyan-300'
                       }`}
                     >
-                      <div className="aspect-square overflow-hidden bg-slate-100">
+                      <div className="aspect-video overflow-hidden bg-slate-100">
                         <img
                           src={pattern.image}
                           alt={pattern.name}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
-                      <div className={`absolute inset-0 flex flex-col items-center justify-center bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity ${selectedPattern === pattern.name ? 'opacity-100' : ''}`}>
+                      <div className={`absolute inset-0 flex flex-col items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity ${selectedPattern === pattern.name ? 'opacity-100' : ''}`}>
                         <div className="text-white text-center px-2">
-                          <div className="text-xs font-semibold mb-1">{pattern.name}</div>
+                          <div className="text-sm font-semibold mb-1">{pattern.name}</div>
                           <div className="text-xs text-cyan-300 capitalize">{pattern.tier.replace('-', ' ')}</div>
                         </div>
                         {selectedPattern === pattern.name && (
