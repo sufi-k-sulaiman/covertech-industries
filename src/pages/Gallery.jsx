@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -166,8 +166,26 @@ export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [galleryData, setGalleryData] = useState(galleryCategories);
 
-  const allImages = galleryCategories.flatMap(cat => 
+  // Load custom AI designs from sessionStorage
+  useEffect(() => {
+    const customDesigns = JSON.parse(sessionStorage.getItem('customAIDesigns') || '[]');
+    const customImages = customDesigns.flatMap(design => design.images);
+    
+    if (customImages.length > 0) {
+      setGalleryData(prevData => {
+        const updated = [...prevData];
+        const customAIIndex = updated.findIndex(cat => cat.category === 'Custom AI Designs');
+        if (customAIIndex !== -1) {
+          updated[customAIIndex].images = customImages;
+        }
+        return updated;
+      });
+    }
+  }, []);
+
+  const allImages = galleryData.flatMap(cat => 
     cat.images.map(img => ({ url: img, category: cat.category }))
   );
 
@@ -175,7 +193,7 @@ export default function Gallery() {
     ? allImages 
     : allImages.filter(img => img.category === selectedCategory);
 
-  const categories = ['All', ...galleryCategories.map(c => c.category)];
+  const categories = ['All', ...galleryData.map(c => c.category)];
 
   const openModal = (index) => {
     setCurrentIndex(index);
