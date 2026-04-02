@@ -49,6 +49,13 @@ const AuthenticatedApp = () => {
        } />
        <Route path="/insulation/*" element={<Navigate to="/ProductDetails?slug=pool-insulation" replace />} />
        <Route path="/mesh/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
+       <Route path="/deluxe-mesh/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
+       <Route path="/standard-mesh/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
+       <Route path="/commercial-mesh/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
+       <Route path="/lightweight-solid/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
+       <Route path="/supreme-solid/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
+       <Route path="/pool-liners/*" element={<Navigate to="/ProductDetails?slug=in-ground-liners" replace />} />
+       <Route path="/safety-cover-warranty/*" element={<Navigate to="/Warranties" replace />} />
        <Route path="/toolbox/*" element={<Navigate to="/Resources" replace />} />
        <Route path="/portfolio/*" element={<Navigate to="/Gallery" replace />} />
        {Object.entries(Pages).map(([path, Page]) => (
