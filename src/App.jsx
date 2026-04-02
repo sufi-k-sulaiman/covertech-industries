@@ -48,6 +48,9 @@ const AuthenticatedApp = () => {
          </LayoutWrapper>
        } />
        <Route path="/insulation/*" element={<Navigate to="/ProductDetails?slug=pool-insulation" replace />} />
+       <Route path="/mesh/*" element={<Navigate to="/ProductDetails?slug=safety-covers" replace />} />
+       <Route path="/toolbox/*" element={<Navigate to="/Resources" replace />} />
+       <Route path="/portfolio/*" element={<Navigate to="/Gallery" replace />} />
        {Object.entries(Pages).map(([path, Page]) => (
          <Route
            key={path}
