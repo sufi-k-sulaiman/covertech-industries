@@ -375,14 +375,22 @@ export default function DesignCenter() {
                     ))
                   ) : (
                     <div className="col-span-full text-center py-16 bg-slate-50 rounded-xl">
-                      <Loader2 className="w-8 h-8 animate-spin mx-auto text-cyan-500 mb-4" />
-                      <p className="text-slate-600 mb-6">Generating your pool visualization...</p>
-                      <div className="max-w-xs mx-auto mb-4">
-                        <Progress value={Math.min((generationTime / 60) * 100, 100)} className="h-2" />
+                      <div className="flex items-center justify-center gap-3 mb-6">
+                        <Loader2 className="w-5 h-5 animate-spin text-cyan-500" />
+                        <span className="text-slate-700 font-medium">Generating... {Math.max(0, 60 - generationTime)}s</span>
                       </div>
-                      <p className="text-sm text-slate-500">{generationTime}s</p>
+                      <div className="max-w-xs mx-auto">
+                        <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: '100%' }}
+                            animate={{ width: `${Math.max(0, ((60 - generationTime) / 60) * 100)}%` }}
+                            className="h-full bg-gradient-to-r from-cyan-500 to-blue-500"
+                            transition={{ duration: 0.3 }}
+                          />
+                        </div>
+                      </div>
                       {generationTime > 60 && (
-                        <p className="text-sm text-amber-600 mt-2">Generation is taking longer than expected. Please wait...</p>
+                        <p className="text-sm text-amber-600 mt-4">Generation is taking longer than expected. Please wait...</p>
                       )}
                     </div>
                   )}
