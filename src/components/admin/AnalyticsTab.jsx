@@ -1,9 +1,30 @@
 import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import {
   Eye, BarChart3, Monitor, Smartphone, ExternalLink,
-  Calendar, Globe, TrendingUp, Users, Clock, Activity
+  Calendar, Globe, TrendingUp, Users, Clock, Activity, Download
 } from 'lucide-react';
+
+const exportToCSV = (rows, filename) => {
+  if (!rows.length) return;
+  const headers = Object.keys(rows[0]);
+  const csvContent = [
+    headers.join(','),
+    ...rows.map(row =>
+      headers.map(h => {
+        const val = row[h];
+        const str = val === null || val === undefined ? '' : String(val);
+        return `"${str.replace(/"/g, '""')}"`;
+      }).join(',')
+    )
+  ].join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+};
 
 const COUNTRY_FLAGS = {
   US: '🇺🇸', CA: '🇨🇦', GB: '🇬🇧', AU: '🇦🇺', DE: '🇩🇪', FR: '🇫🇷',
@@ -195,8 +216,9 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
 
   return (
     <div className="space-y-6">
-      {/* Date Range Filter */}
-      <div className="flex flex-wrap items-center gap-2">
+      {/* Date Range Filter + Export */}
+      <div className="flex flex-wrap items-center gap-2 justify-between">
+        <div className="flex flex-wrap items-center gap-2">
         <span className="text-sm font-medium text-slate-600">Period:</span>
         {[['7', 'Last 7 days'], ['30', 'Last 30 days'], ['90', 'Last 90 days'], ['all', 'All time']].map(([val, label]) => (
           <button
@@ -211,7 +233,11 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
             {label}
           </button>
         ))}
-        <span className="text-xs text-slate-400 ml-1">{analytics.length.toLocaleString()} events</span>
+          <span className="text-xs text-slate-400 ml-1">{analytics.length.toLocaleString()} events</span>
+        </div>
+        <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(analytics.map(a => ({ Date: new Date(a.created_date).toLocaleDateString(), Time: new Date(a.created_date).toLocaleTimeString(), Page: a.page, Device: a.device_type || '', Country: a.country || '', Referrer: a.referrer || '', 'Session ID': a.session_id || '' })), 'analytics.csv')}>
+          <Download className="w-4 h-4" /> Export CSV
+        </Button>
       </div>
 
       {/* KPI Cards */}

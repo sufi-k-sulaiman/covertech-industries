@@ -8,8 +8,31 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Lock, Users, Mail, Briefcase, Palette, BarChart3,
-  Eye, Shield, MessageSquare, Send, CheckCircle2, Loader2
+  Eye, Shield, MessageSquare, Send, CheckCircle2, Loader2, Download
 } from 'lucide-react';
+
+const exportToCSV = (rows, filename) => {
+  if (!rows.length) return;
+  const headers = Object.keys(rows[0]);
+  const csvContent = [
+    headers.join(','),
+    ...rows.map(row =>
+      headers.map(h => {
+        const val = row[h];
+        const str = val === null || val === undefined ? '' :
+          typeof val === 'object' ? JSON.stringify(val) : String(val);
+        return `"${str.replace(/"/g, '""')}"`;
+      }).join(',')
+    )
+  ].join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+};
 import SEOHead from '@/components/seo/SEOHead';
 import ProductEditDialog from '@/components/admin/ProductEditDialog';
 import AnalyticsTab from '@/components/admin/AnalyticsTab';
@@ -307,8 +330,11 @@ export default function Admin() {
             {/* Contact Submissions */}
             <TabsContent value="contacts">
               <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Contact Submissions</CardTitle>
+                  <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(contacts.map(c => ({ Date: new Date(c.created_date).toLocaleDateString(), Name: c.name, Email: c.email, Phone: c.phone || '', Subject: c.subject || '', Message: c.message || '', Status: c.status })), 'contacts.csv')}>
+                    <Download className="w-4 h-4" /> Export CSV
+                  </Button>
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
@@ -367,8 +393,11 @@ export default function Admin() {
             {/* Dealer Applications */}
             <TabsContent value="dealers">
               <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Dealer Applications</CardTitle>
+                  <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(dealers.map(d => ({ Date: new Date(d.created_date).toLocaleDateString(), Name: `${d.first_name} ${d.last_name}`, Email: d.email, Phone: d.phone, Company: d.company_name, City: d.city, Province: d.state_province, 'Business Type': d.business_type, 'About Business': d.about_business || '', Status: d.status })), 'dealer-applications.csv')}>
+                    <Download className="w-4 h-4" /> Export CSV
+                  </Button>
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
@@ -435,8 +464,11 @@ export default function Admin() {
             {/* Design Center Submissions */}
             <TabsContent value="design">
               <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Design Center Submissions</CardTitle>
+                  <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(designSubmissions.map(s => ({ 'Quote ID': s.quote_id, Date: new Date(s.created_date).toLocaleDateString(), Name: s.contact_info?.fullName || '', Email: s.contact_info?.email || '', Phone: s.contact_info?.phone || '', Product: s.product_type, Shape: s.pool_shape || '', Features: (s.features || []).join('; '), Status: s.status })), 'design-center.csv')}>
+                    <Download className="w-4 h-4" /> Export CSV
+                  </Button>
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
@@ -528,8 +560,11 @@ export default function Admin() {
             {/* Chat Conversations */}
             <TabsContent value="chat">
               <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Chat Conversations</CardTitle>
+                  <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(chatConversations.map(c => ({ Date: new Date(c.created_date).toLocaleDateString(), Time: new Date(c.created_date).toLocaleTimeString(), 'Session ID': c.metadata?.sessionId || '', Messages: c.messages?.length || 0, 'Last Message': c.messages?.[c.messages.length - 1]?.content || '', Source: c.metadata?.source || '' })), 'chat-conversations.csv')}>
+                    <Download className="w-4 h-4" /> Export CSV
+                  </Button>
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
@@ -575,8 +610,11 @@ export default function Admin() {
             {/* Products */}
             <TabsContent value="products">
               <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Product Management</CardTitle>
+                  <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(products.map(p => ({ Name: p.name, Slug: p.slug, Category: p.category, Tagline: p.tagline || '', 'Warranty Years': p.warranty_years || '', Bestseller: p.is_bestseller ? 'Yes' : 'No' })), 'products.csv')}>
+                    <Download className="w-4 h-4" /> Export CSV
+                  </Button>
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
@@ -624,8 +662,11 @@ export default function Admin() {
             {/* Warranty Registrations */}
             <TabsContent value="warranties">
               <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Warranty Registrations</CardTitle>
+                  <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(warranties.map(w => ({ Date: new Date(w.created_date).toLocaleDateString(), Name: w.full_name, Email: w.email, Phone: w.phone, Product: w.product_type, Serial: w.serial_number || '', 'Pool Type': w.pool_type || '', 'Pool Size': w.pool_size || '', 'Pool Shape': w.pool_shape || '', 'Dealer Purchased From': w.dealer_purchased_from || '', 'Purchase Date': w.purchase_date || '', 'Installation Date': w.installation_date || '', Status: w.status })), 'warranty-registrations.csv')}>
+                    <Download className="w-4 h-4" /> Export CSV
+                  </Button>
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
