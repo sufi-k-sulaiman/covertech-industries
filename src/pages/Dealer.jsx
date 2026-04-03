@@ -38,7 +38,8 @@ export default function Dealer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await base44.entities.DealerApplication.create(formData);
+    const record = await base44.entities.DealerApplication.create(formData);
+    await base44.functions.invoke('sendFormNotifications', { entityType: 'DealerApplication', entityData: record });
     setSubmitted(true);
     setLoading(false);
   };
