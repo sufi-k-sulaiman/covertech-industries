@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Lock, Users, Mail, Briefcase, Palette, BarChart3,
-  Eye, Shield, MessageSquare
+  Eye, Shield, MessageSquare, Send, CheckCircle2, Loader2
 } from 'lucide-react';
 import SEOHead from '@/components/seo/SEOHead';
 import ProductEditDialog from '@/components/admin/ProductEditDialog';
@@ -23,6 +23,15 @@ export default function Admin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [editingProduct, setEditingProduct] = useState(null);
+  const [sendingEmail, setSendingEmail] = useState(null); // stores record id
+  const [sentEmails, setSentEmails] = useState(new Set());
+
+  const handleResendEmail = async (entityType, record) => {
+    setSendingEmail(record.id);
+    await base44.functions.invoke('sendFormNotifications', { entityType, entityData: record });
+    setSentEmails(prev => new Set([...prev, record.id]));
+    setSendingEmail(null);
+  };
 
   // Check if already authenticated
   useEffect(() => {
@@ -311,6 +320,7 @@ export default function Admin() {
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Email</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Subject</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-200">
@@ -323,15 +333,29 @@ export default function Admin() {
                             <td className="px-4 py-3 text-sm text-slate-600">{contact.email}</td>
                             <td className="px-4 py-3 text-sm text-slate-600">{contact.subject || 'N/A'}</td>
                             <td className="px-4 py-3">
-                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                contact.status === 'resolved' ? 'bg-green-100 text-green-800' :
-                                contact.status === 'in-progress' ? 'bg-blue-100 text-blue-800' :
-                                'bg-yellow-100 text-yellow-800'
-                              }`}>
-                                {contact.status}
-                              </span>
+                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                               contact.status === 'resolved' ? 'bg-green-100 text-green-800' :
+                               contact.status === 'in-progress' ? 'bg-blue-100 text-blue-800' :
+                               'bg-yellow-100 text-yellow-800'
+                             }`}>
+                               {contact.status}
+                             </span>
                             </td>
-                          </tr>
+                            <td className="px-4 py-3">
+                             <Button
+                               size="sm"
+                               variant="outline"
+                               disabled={sendingEmail === contact.id}
+                               onClick={() => handleResendEmail('ContactSubmission', contact)}
+                               className={`gap-1.5 text-xs ${sentEmails.has(contact.id) ? 'border-green-400 text-green-600' : ''}`}
+                             >
+                               {sendingEmail === contact.id ? <Loader2 className="w-3 h-3 animate-spin" /> :
+                                sentEmails.has(contact.id) ? <CheckCircle2 className="w-3 h-3" /> :
+                                <Send className="w-3 h-3" />}
+                               {sentEmails.has(contact.id) ? 'Sent' : 'Send Email'}
+                             </Button>
+                            </td>
+                            </tr>
                         ))}
                       </tbody>
                     </table>
@@ -408,6 +432,7 @@ export default function Admin() {
                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Product</th>
                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Details</th>
                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
+                         <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Actions</th>
                        </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-200">
@@ -459,6 +484,20 @@ export default function Admin() {
                              }`}>
                                {submission.status}
                              </span>
+                           </td>
+                           <td className="px-4 py-3">
+                             <Button
+                               size="sm"
+                               variant="outline"
+                               disabled={sendingEmail === submission.id}
+                               onClick={() => handleResendEmail('DesignCenterSubmission', submission)}
+                               className={`gap-1.5 text-xs ${sentEmails.has(submission.id) ? 'border-green-400 text-green-600' : ''}`}
+                             >
+                               {sendingEmail === submission.id ? <Loader2 className="w-3 h-3 animate-spin" /> :
+                                sentEmails.has(submission.id) ? <CheckCircle2 className="w-3 h-3" /> :
+                                <Send className="w-3 h-3" />}
+                               {sentEmails.has(submission.id) ? 'Sent' : 'Send Email'}
+                             </Button>
                            </td>
                          </tr>
                        ))}
@@ -582,6 +621,7 @@ export default function Admin() {
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Product</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Serial</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-200">
@@ -595,15 +635,29 @@ export default function Admin() {
                             <td className="px-4 py-3 text-sm text-slate-600">{warranty.product_type}</td>
                             <td className="px-4 py-3 text-sm text-slate-600">{warranty.serial_number || 'N/A'}</td>
                             <td className="px-4 py-3">
-                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                warranty.status === 'approved' ? 'bg-green-100 text-green-800' :
-                                warranty.status === 'rejected' ? 'bg-red-100 text-red-800' :
-                                'bg-yellow-100 text-yellow-800'
-                              }`}>
-                                {warranty.status}
-                              </span>
+                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                               warranty.status === 'approved' ? 'bg-green-100 text-green-800' :
+                               warranty.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                               'bg-yellow-100 text-yellow-800'
+                             }`}>
+                               {warranty.status}
+                             </span>
                             </td>
-                          </tr>
+                            <td className="px-4 py-3">
+                             <Button
+                               size="sm"
+                               variant="outline"
+                               disabled={sendingEmail === warranty.id}
+                               onClick={() => handleResendEmail('WarrantyRegistration', warranty)}
+                               className={`gap-1.5 text-xs ${sentEmails.has(warranty.id) ? 'border-green-400 text-green-600' : ''}`}
+                             >
+                               {sendingEmail === warranty.id ? <Loader2 className="w-3 h-3 animate-spin" /> :
+                                sentEmails.has(warranty.id) ? <CheckCircle2 className="w-3 h-3" /> :
+                                <Send className="w-3 h-3" />}
+                               {sentEmails.has(warranty.id) ? 'Sent' : 'Send Email'}
+                             </Button>
+                            </td>
+                            </tr>
                         ))}
                       </tbody>
                     </table>
