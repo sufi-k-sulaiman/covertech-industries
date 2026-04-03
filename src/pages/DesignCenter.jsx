@@ -157,7 +157,7 @@ export default function DesignCenter() {
     try {
       const quoteIdGenerated = `CT${Date.now()}${Math.random().toString(36).substr(2, 5).toUpperCase()}`;
       
-      await base44.entities.DesignCenterSubmission.create({
+      const record = await base44.entities.DesignCenterSubmission.create({
         quote_id: quoteIdGenerated,
         product_type: 'in-ground-liners',
         pool_shape: selectedPoolType.label,
@@ -165,6 +165,8 @@ export default function DesignCenter() {
         contact_info: contactInfo,
         images: generatedImages
       });
+
+      await base44.functions.invoke('sendFormNotifications', { entityType: 'DesignCenterSubmission', entityData: record });
 
       setQuoteId(quoteIdGenerated);
       setSubmitted(true);

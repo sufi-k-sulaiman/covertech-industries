@@ -105,7 +105,8 @@ export default function Warranties() {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      await base44.entities.WarrantyRegistration.create(formData);
+      const record = await base44.entities.WarrantyRegistration.create(formData);
+      await base44.functions.invoke('sendFormNotifications', { entityType: 'WarrantyRegistration', entityData: record });
       setSubmitted(true);
     } catch (error) {
       console.error('Submission error:', error);

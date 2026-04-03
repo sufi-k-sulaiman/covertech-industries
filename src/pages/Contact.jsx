@@ -42,7 +42,8 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await base44.entities.ContactSubmission.create(formData);
+    const record = await base44.entities.ContactSubmission.create(formData);
+    await base44.functions.invoke('sendFormNotifications', { entityType: 'ContactSubmission', entityData: record });
     setSubmitted(true);
     setLoading(false);
   };
