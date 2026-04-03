@@ -60,13 +60,25 @@ export default function SafetyCoverVisualizerPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { label: "ASTM F1346-91 Certified", icon: "🛡️" },
-              { label: "Up to 30-Year Warranty", icon: "✅" },
-              { label: "5 Mesh Colors", icon: "🎨" },
-              { label: "Custom Fit Any Pool", icon: "📐" },
+              { 
+                label: "ASTM F1346-91 Certified", 
+                icon: <svg className="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              },
+              { 
+                label: "Up to 30-Year Warranty", 
+                icon: <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              },
+              { 
+                label: "5 Mesh Colors", 
+                icon: <svg className="w-8 h-8 text-slate-600" fill="currentColor" viewBox="0 0 24 24"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><circle cx="12" cy="12" r="2.5"/></svg>
+              },
+              { 
+                label: "Custom Fit Any Pool", 
+                icon: <svg className="w-8 h-8 text-slate-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h2v2H3V3zm4 0h2v2H7V3zm4 0h2v2h-2V3zm4 0h2v2h-2V3zm4 0h2v2h-2V3zM3 7h18v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V7zm0 14h18v2H3v-2z"/></svg>
+              },
             ].map((f) => (
               <div key={f.label} className="flex flex-col items-center gap-2">
-                <span className="text-3xl">{f.icon}</span>
+                {f.icon}
                 <span className="text-sm font-semibold text-slate-700">{f.label}</span>
               </div>
             ))}
