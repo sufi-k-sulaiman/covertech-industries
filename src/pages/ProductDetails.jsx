@@ -1213,16 +1213,6 @@ export default function ProductDetails() {
                   <PatternGallery key={pattern.name} pattern={pattern} />
                 ))}
               </div>
-              {/* Pool Visualizer */}
-              {slug === 'in-ground-liners' && (
-                <div className="mt-4">
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-slate-900">See Patterns in Your Pool</h3>
-                    <p className="text-slate-500 mt-1">Visualize all 30 patterns — Platinum Plus & Platinum — in round or rectangular pools</p>
-                  </div>
-                  <PlatinumPlusVisualizer />
-                </div>
-              )}
             </div>
 
             {/* Platinum Patterns */}
