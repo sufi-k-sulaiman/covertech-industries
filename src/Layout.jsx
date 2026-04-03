@@ -312,7 +312,7 @@ export default function Layout({ children, currentPageName }) {
           {/* Bottom Bar */}
           <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-500 text-sm">
-              © {new Date().getFullYear()} Covertech Industries. All rights reserved.
+              © 2026 Covertech Industries. Developed by <a href="https://sufikhan.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors">Sufi K Sulaiman</a>. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-slate-500">
               <Link to={createPageUrl('PrivacyPolicy')} className="hover:text-cyan-400 transition-colors">Privacy Policy</Link>
