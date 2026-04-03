@@ -74,10 +74,23 @@ export default function Admin() {
     enabled: isAuthenticated
   });
 
-  const { data: analytics = [] } = useQuery({
+  const [analyticsDateRange, setAnalyticsDateRange] = useState('30');
+
+  const { data: analyticsRaw = [] } = useQuery({
     queryKey: ['analytics'],
-    queryFn: () => base44.entities.Analytics.list('-created_date', 500),
+    queryFn: () => base44.entities.Analytics.list('-created_date', 2000),
     enabled: isAuthenticated
+  });
+
+  // Filter out admin visits and apply date range
+  const analytics = analyticsRaw.filter(a => {
+    if (a.page === 'Admin' || a.page?.toLowerCase().includes('admin')) return false;
+    if (analyticsDateRange !== 'all') {
+      const cutoff = new Date();
+      cutoff.setDate(cutoff.getDate() - parseInt(analyticsDateRange));
+      if (new Date(a.created_date) < cutoff) return false;
+    }
+    return true;
   });
 
   const { data: products = [], refetch: refetchProducts } = useQuery({
@@ -629,6 +642,25 @@ export default function Admin() {
             {/* Analytics */}
             <TabsContent value="analytics">
               <div className="grid gap-6">
+                {/* Date Range Filter */}
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-medium text-slate-700">Date range:</span>
+                  {['7', '30', '90', 'all'].map(range => (
+                    <button
+                      key={range}
+                      onClick={() => setAnalyticsDateRange(range)}
+                      className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                        analyticsDateRange === range
+                          ? 'bg-cyan-500 text-white'
+                          : 'bg-white border border-slate-200 text-slate-600 hover:border-cyan-300'
+                      }`}
+                    >
+                      {range === 'all' ? 'All time' : `Last ${range} days`}
+                    </button>
+                  ))}
+                  <span className="text-xs text-slate-400 ml-2">({analytics.length} records, admin visits excluded)</span>
+                </div>
+
                 {/* Traffic Overview */}
                 <Card>
                   <CardHeader>

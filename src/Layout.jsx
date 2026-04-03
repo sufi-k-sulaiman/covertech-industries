@@ -47,6 +47,9 @@ export default function Layout({ children, currentPageName }) {
   useEffect(() => {
     const trackPageView = async () => {
       try {
+        // Don't track admin page views
+        if (currentPageName === 'Admin') return;
+
         const sessionId = sessionStorage.getItem('session_id') || 
           `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
         sessionStorage.setItem('session_id', sessionId);
