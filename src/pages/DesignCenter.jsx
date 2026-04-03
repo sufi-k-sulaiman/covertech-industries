@@ -118,7 +118,7 @@ export default function DesignCenter() {
     try {
       // Generate pool with the selected pattern overlay
       const prompts = [
-        `An in-ground ${selectedPoolType.label} swimming pool with a ${selectedPattern} pattern vinyl liner, empty dry view from directly above showing the full design clearly, professional architectural photography, high quality. The liner pattern should feature intricate designs and textures.`,
+        `Create a dry, empty in-ground ${selectedPoolType.label} swimming pool photographed from directly above. The pool liner features the exact ${selectedPattern} pattern shown in the reference image - use this pattern consistently across the entire pool bottom. Professional architectural photography, clear daylight, high quality, no water, no clutter.`,
       ];
 
       const responses = await Promise.all(
