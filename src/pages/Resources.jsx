@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { FileText, BookOpen, Download, ArrowRight, Shield } from 'lucide-react';
+import { FileText, BookOpen, Download, ArrowRight, Shield, Palette, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
@@ -255,6 +255,99 @@ export default function Resources() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Interactive Visualizers */}
+      <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-cyan-600 font-semibold text-sm tracking-wider uppercase">Interactive Tools</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4">
+              Visualize Your <span className="text-cyan-600">Pool Design</span>
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              See how different patterns and colors look with our interactive visualizer tools
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Pool Liner Visualizer Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
+            >
+              <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-cyan-50 to-blue-50">
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4f5b14b1f_Butterfly.jpg"
+                  alt="Pool Liner Visualizer"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <Palette className="w-12 h-12 text-cyan-600 mx-auto mb-3" />
+                    <h3 className="text-2xl font-bold text-slate-900">Pool Liner Patterns</h3>
+                    <p className="text-slate-600 mt-2">30+ exclusive designs</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-8">
+                <p className="text-slate-600 mb-6">
+                  Explore all 30 in-ground pool liner patterns from our 2026 Platinum Plus and Platinum collections. See how each pattern looks in both round and rectangular pools.
+                </p>
+                <Link to={createPageUrl('PoolVisualizer')}>
+                  <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white group">
+                    <Eye className="w-4 h-4 mr-2" />
+                    Explore Patterns
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Safety Cover Visualizer Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
+            >
+              <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50">
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f28c1a388_GreenMesh.png"
+                  alt="Safety Cover Visualizer"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <Eye className="w-12 h-12 text-green-600 mx-auto mb-3" />
+                    <h3 className="text-2xl font-bold text-slate-900">Safety Cover Colors</h3>
+                    <p className="text-slate-600 mt-2">5 mesh color options</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-8">
+                <p className="text-slate-600 mb-6">
+                  Preview all 5 safety cover mesh colors (Green, Grey, Blue, Taupe, Black) on both round and rectangular pool shapes. ASTM F1346-91 certified protection.
+                </p>
+                <Link to={createPageUrl('SafetyCoverVisualizer')}>
+                  <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white group">
+                    <Eye className="w-4 h-4 mr-2" />
+                    View Colors
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
