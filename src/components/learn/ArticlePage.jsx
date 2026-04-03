@@ -10,14 +10,14 @@ function ArticleSection({ title, excerpt, paragraphs, image, imageAlt, imageRigh
       transition={{ duration: 0.5, delay: index * 0.05 }}
       className="mb-16 last:mb-0"
     >
-      <div className={`grid lg:grid-cols-2 gap-10 items-center ${imageRight ? 'lg:flex lg:flex-row-reverse' : ''}`}>
+      <div className={`grid lg:grid-cols-2 gap-10 items-start ${imageRight ? 'lg:flex lg:flex-row-reverse' : ''}`}>
         {/* Image */}
         {image && (
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
               src={image}
               alt={imageAlt || title}
-              className="w-full h-72 lg:h-80 object-cover"
+              className="w-full h-auto object-cover"
             />
           </div>
         )}
