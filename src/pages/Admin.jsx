@@ -312,7 +312,7 @@ export default function Admin() {
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
-                    <table className="w-full">
+                    <table className="w-full min-w-max">
                       <thead className="bg-slate-50 border-b">
                         <tr>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Date</th>
@@ -423,7 +423,7 @@ export default function Admin() {
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
-                    <table className="w-full">
+                    <table className="w-full min-w-max">
                       <thead className="bg-slate-50 border-b">
                        <tr>
                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Quote ID</th>
@@ -612,7 +612,7 @@ export default function Admin() {
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
-                    <table className="w-full">
+                    <table className="w-full min-w-max">
                       <thead className="bg-slate-50 border-b">
                         <tr>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Date</th>
