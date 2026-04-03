@@ -18,6 +18,7 @@ const navigation = [
       { name: 'Pool Liner Visualizer', href: 'PoolVisualizer' },
       { name: 'Above Ground Liners', href: 'ProductDetails?slug=above-ground-liners' },
       { name: 'Safety Covers', href: 'ProductDetails?slug=safety-covers' },
+      { name: 'Safety Cover Visualizer', href: 'SafetyCoverVisualizer' },
       { name: 'Solar Covers', href: 'ProductDetails?slug=solar-covers' },
       { name: 'Winter Covers', href: 'ProductDetails?slug=winter-covers' },
       { name: 'Steel Kits', href: 'ProductDetails?slug=steel-kits' },
