@@ -43,90 +43,33 @@ Deno.serve(async (req) => {
       return Response.json({ error: 'Unknown entity type' }, { status: 400 });
     }
 
-    const errors = [];
+    const { accessToken } = await base44.asServiceRole.connectors.getConnection('outlook');
 
-    // Send via Outlook
-    try {
-      const outlookRes = await fetch('https://graph.microsoft.com/v1.0/me/sendMail', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${(await base44.asServiceRole.connectors.getConnection('outlook')).accessToken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: {
-            subject: subject,
-            body: {
-              contentType: 'html',
-              content: htmlBody
-            },
-            toRecipients: [
-              {
-                emailAddress: {
-                  address: 'webadmin@covertechind.com'
-                }
-              }
-            ],
-            ccRecipients: [
-              {
-                emailAddress: {
-                  address: 'sulaiman.k.sufi@gmail.com'
-                }
-              }
-            ]
-          }
-        })
-      });
-
-      if (!outlookRes.ok) {
-        const error = await outlookRes.text();
-        errors.push(`Outlook error: ${error}`);
-      }
-    } catch (error) {
-      errors.push(`Outlook exception: ${error.message}`);
-    }
-
-    // Send via Gmail using SendAs
-    try {
-      const gmailConnection = await base44.asServiceRole.connectors.getConnection('gmail');
-      const gmailAccessToken = gmailConnection.accessToken;
-      
-      // Create MIME message with proper RFC 2822 format for HTML
-      const email = `To: covertechinds@gmail.com\r\nSubject: ${subject}\r\nContent-Type: text/html; charset="UTF-8"\r\n\r\n${htmlBody}`;
-      const enc = new TextEncoder();
-      const bytes = enc.encode(email);
-      const encodedMessage = btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
-
-      // Create email with CC for Gmail using raw format
-      const emailWithCC = `To: covertechinds@gmail.com\r\nCc: sulaiman.k.sufi@gmail.com\r\nSubject: ${subject}\r\nContent-Type: text/html; charset="UTF-8"\r\n\r\n${htmlBody}`;
-      const encCC = new TextEncoder();
-      const bytesCC = encCC.encode(emailWithCC);
-      const encodedMessageCC = btoa(String.fromCharCode(...bytesCC)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
-
-      const gmailRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${gmailAccessToken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          raw: encodedMessageCC
-        })
-      });
-
-      if (!gmailRes.ok) {
-        const errorText = await gmailRes.text();
-        console.error('Gmail API error:', errorText);
-      }
-    } catch (error) {
-      console.error('Gmail exception:', error.message);
-    }
-
-    return Response.json({
-      success: errors.length === 0,
-      message: errors.length === 0 ? 'Emails sent to both Outlook and Gmail' : `Partial failure: ${errors.join('; ')}`,
-      errors: errors.length > 0 ? errors : undefined
+    const outlookRes = await fetch('https://graph.microsoft.com/v1.0/me/sendMail', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: {
+          subject: subject,
+          body: { contentType: 'html', content: htmlBody },
+          toRecipients: [{ emailAddress: { address: 'webadmin@covertechind.com' } }],
+          ccRecipients: [
+            { emailAddress: { address: 'Mazen@covertechind.com' } },
+            { emailAddress: { address: 'henry@covertechind.com' } }
+          ]
+        }
+      })
     });
+
+    if (!outlookRes.ok) {
+      const error = await outlookRes.text();
+      return Response.json({ success: false, message: `Outlook error: ${error}` }, { status: 500 });
+    }
+
+    return Response.json({ success: true, message: 'Email sent via Microsoft 365' });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }
