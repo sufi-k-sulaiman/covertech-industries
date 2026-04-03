@@ -372,15 +372,17 @@ export default function Admin() {
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
-                    <table className="w-full">
+                    <table className="w-full min-w-max">
                       <thead className="bg-slate-50 border-b">
                         <tr>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Date</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Name</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Email</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Company</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Location</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Type</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Actions</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-200">
@@ -392,6 +394,7 @@ export default function Admin() {
                             <td className="px-4 py-3 text-sm font-medium text-slate-900">
                               {dealer.first_name} {dealer.last_name}
                             </td>
+                            <td className="px-4 py-3 text-sm text-slate-600">{dealer.email}</td>
                             <td className="px-4 py-3 text-sm text-slate-600">{dealer.company_name}</td>
                             <td className="px-4 py-3 text-sm text-slate-600">
                               {dealer.city}, {dealer.state_province}
@@ -405,6 +408,20 @@ export default function Admin() {
                               }`}>
                                 {dealer.status}
                               </span>
+                            </td>
+                            <td className="px-4 py-3">
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                disabled={sendingEmail === dealer.id}
+                                onClick={() => handleResendEmail('DealerApplication', dealer)}
+                                className={`gap-1.5 text-xs ${sentEmails.has(dealer.id) ? 'border-green-400 text-green-600' : ''}`}
+                              >
+                                {sendingEmail === dealer.id ? <Loader2 className="w-3 h-3 animate-spin" /> :
+                                 sentEmails.has(dealer.id) ? <CheckCircle2 className="w-3 h-3" /> :
+                                 <Send className="w-3 h-3" />}
+                                {sentEmails.has(dealer.id) ? 'Sent' : 'Send Email'}
+                              </Button>
                             </td>
                           </tr>
                         ))}
