@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import SEOHead, { createProductSchema, createBreadcrumbSchema } from '@/components/seo/SEOHead';
 import GalleryModal from '@/components/products/GalleryModal';
 import PatternGallery from '@/components/products/PatternGallery';
+import PlatinumPlusVisualizer from '@/components/products/PlatinumPlusVisualizer';
 
 const productsData = {
   "in-ground-liners": {
@@ -1204,12 +1205,24 @@ export default function ProductDetails() {
           <div className="max-w-7xl mx-auto px-6">
             {/* Platinum Plus Patterns */}
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">2026 Platinum Plus Patterns</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              <h2 className="text-3xl font-bold text-slate-900 mb-2 text-center">2026 Platinum Plus Patterns</h2>
+              <p className="text-center text-slate-500 mb-8">Our most premium collection — featuring exclusive AquaShimmer technology</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-10">
                 {product.patterns.filter(p => p.tier === 'platinum-plus').map((pattern) => (
                   <PatternGallery key={pattern.name} pattern={pattern} />
                 ))}
               </div>
+              {/* Pool Visualizer */}
+              {slug === 'in-ground-liners' && (
+                <div className="mt-4">
+                  <div className="text-center mb-6">
+                    <span className="inline-block px-4 py-1.5 bg-amber-100 text-amber-800 text-sm font-semibold rounded-full mb-2">✨ New Feature</span>
+                    <h3 className="text-2xl font-bold text-slate-900">See Patterns in Your Pool</h3>
+                    <p className="text-slate-500 mt-1">Visualize how each Platinum Plus pattern looks in round or rectangular pools</p>
+                  </div>
+                  <PlatinumPlusVisualizer />
+                </div>
+              )}
             </div>
 
             {/* Platinum Patterns */}
