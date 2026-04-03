@@ -13,6 +13,7 @@ import SpaCovers from './pages/SpaCovers';
 import PortfolioProject from './pages/PortfolioProject';
 import CustomPoolLiners from './pages/CustomPoolLiners';
 import CustomInGroundLiners from './pages/CustomInGroundLiners';
+import PoolVisualizer from './pages/PoolVisualizer';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -146,6 +147,14 @@ const AuthenticatedApp = () => {
          element={
            <LayoutWrapper currentPageName="CustomInGroundLiners">
              <CustomInGroundLiners />
+           </LayoutWrapper>
+         }
+       />
+       <Route
+         path="/PoolVisualizer"
+         element={
+           <LayoutWrapper currentPageName="PoolVisualizer">
+             <PoolVisualizer />
            </LayoutWrapper>
          }
        />
