@@ -1216,9 +1216,8 @@ export default function ProductDetails() {
               {slug === 'in-ground-liners' && (
                 <div className="mt-4">
                   <div className="text-center mb-6">
-                    <span className="inline-block px-4 py-1.5 bg-amber-100 text-amber-800 text-sm font-semibold rounded-full mb-2">✨ New Feature</span>
                     <h3 className="text-2xl font-bold text-slate-900">See Patterns in Your Pool</h3>
-                    <p className="text-slate-500 mt-1">Visualize how each Platinum Plus pattern looks in round or rectangular pools</p>
+                    <p className="text-slate-500 mt-1">Visualize all 30 patterns — Platinum Plus & Platinum — in round or rectangular pools</p>
                   </div>
                   <PlatinumPlusVisualizer />
                 </div>
