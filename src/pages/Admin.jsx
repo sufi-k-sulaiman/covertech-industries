@@ -8,10 +8,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Lock, Users, Mail, Briefcase, Palette, BarChart3,
-  Eye, Globe, Monitor, Smartphone, ExternalLink, Calendar, Shield, MessageSquare
+  Eye, Shield, MessageSquare
 } from 'lucide-react';
 import SEOHead from '@/components/seo/SEOHead';
 import ProductEditDialog from '@/components/admin/ProductEditDialog';
+import AnalyticsTab from '@/components/admin/AnalyticsTab';
 
 const ADMIN_USERNAME = 'Covertechind';
 const ADMIN_PASSWORD = 'CoverHenry2026@1';
@@ -74,24 +75,14 @@ export default function Admin() {
     enabled: isAuthenticated
   });
 
-  const [analyticsDateRange, setAnalyticsDateRange] = useState('30');
-
   const { data: analyticsRaw = [] } = useQuery({
     queryKey: ['analytics'],
-    queryFn: () => base44.entities.Analytics.list('-created_date', 2000),
+    queryFn: () => base44.entities.Analytics.list('-created_date'),
     enabled: isAuthenticated
   });
 
-  // Filter out admin visits and apply date range
-  const analytics = analyticsRaw.filter(a => {
-    if (a.page === 'Admin' || a.page?.toLowerCase().includes('admin')) return false;
-    if (analyticsDateRange !== 'all') {
-      const cutoff = new Date();
-      cutoff.setDate(cutoff.getDate() - parseInt(analyticsDateRange));
-      if (new Date(a.created_date) < cutoff) return false;
-    }
-    return true;
-  });
+  // Filter out admin visits for overview stats
+  const analytics = analyticsRaw.filter(a => a.page !== 'Admin' && !a.page?.toLowerCase().includes('admin'));
 
   const { data: products = [], refetch: refetchProducts } = useQuery({
     queryKey: ['products'],
@@ -110,27 +101,9 @@ export default function Admin() {
     enabled: isAuthenticated
   });
 
-  // Process analytics data
   const analyticsData = {
     totalViews: analytics.length,
-    uniqueSessions: new Set(analytics.map(a => a.session_id)).size,
-    pageViews: analytics.reduce((acc, curr) => {
-      acc[curr.page] = (acc[curr.page] || 0) + 1;
-      return acc;
-    }, {}),
-    devices: analytics.reduce((acc, curr) => {
-      acc[curr.device_type] = (acc[curr.device_type] || 0) + 1;
-      return acc;
-    }, {}),
-    referrers: analytics.reduce((acc, curr) => {
-      const ref = curr.referrer === 'direct' ? 'Direct Traffic' : new URL(curr.referrer || 'https://direct').hostname;
-      acc[ref] = (acc[ref] || 0) + 1;
-      return acc;
-    }, {}),
-    topPages: Object.entries(analytics.reduce((acc, curr) => {
-      acc[curr.page] = (acc[curr.page] || 0) + 1;
-      return acc;
-    }, {})).sort((a, b) => b[1] - a[1]).slice(0, 10)
+    uniqueSessions: new Set(analytics.map(a => a.session_id).filter(Boolean)).size,
   };
 
   // Login Screen
@@ -641,148 +614,7 @@ export default function Admin() {
 
             {/* Analytics */}
             <TabsContent value="analytics">
-              <div className="grid gap-6">
-                {/* Date Range Filter */}
-                <div className="flex items-center gap-3">
-                  <span className="text-sm font-medium text-slate-700">Date range:</span>
-                  {['7', '30', '90', 'all'].map(range => (
-                    <button
-                      key={range}
-                      onClick={() => setAnalyticsDateRange(range)}
-                      className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                        analyticsDateRange === range
-                          ? 'bg-cyan-500 text-white'
-                          : 'bg-white border border-slate-200 text-slate-600 hover:border-cyan-300'
-                      }`}
-                    >
-                      {range === 'all' ? 'All time' : `Last ${range} days`}
-                    </button>
-                  ))}
-                  <span className="text-xs text-slate-400 ml-2">({analytics.length} records, admin visits excluded)</span>
-                </div>
-
-                {/* Traffic Overview */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Eye className="w-5 h-5" />
-                      Traffic Overview
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-3 gap-6 mb-6">
-                      <div>
-                        <p className="text-sm text-slate-600 mb-1">Total Page Views</p>
-                        <p className="text-3xl font-bold text-slate-900">{analyticsData.totalViews}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-slate-600 mb-1">Unique Sessions</p>
-                        <p className="text-3xl font-bold text-slate-900">{analyticsData.uniqueSessions}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-slate-600 mb-1">Avg. Pages/Session</p>
-                        <p className="text-3xl font-bold text-slate-900">
-                          {analyticsData.uniqueSessions > 0 ? (analyticsData.totalViews / analyticsData.uniqueSessions).toFixed(1) : 0}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Top Pages */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <BarChart3 className="w-5 h-5" />
-                        Top Pages
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        {analyticsData.topPages.map(([page, count]) => (
-                          <div key={page} className="flex items-center justify-between">
-                            <span className="text-sm text-slate-700">{page}</span>
-                            <span className="text-sm font-semibold text-slate-900">{count} views</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Devices */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Monitor className="w-5 h-5" />
-                        Devices
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        {Object.entries(analyticsData.devices).map(([device, count]) => (
-                          <div key={device} className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                              {device === 'mobile' ? <Smartphone className="w-4 h-4 text-slate-500" /> :
-                               device === 'tablet' ? <Monitor className="w-4 h-4 text-slate-500" /> :
-                               <Monitor className="w-4 h-4 text-slate-500" />}
-                              <span className="text-sm text-slate-700 capitalize">{device}</span>
-                            </div>
-                            <span className="text-sm font-semibold text-slate-900">{count}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Referrers */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <ExternalLink className="w-5 h-5" />
-                        Top Referrers
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        {Object.entries(analyticsData.referrers)
-                          .sort((a, b) => b[1] - a[1])
-                          .slice(0, 10)
-                          .map(([referrer, count]) => (
-                            <div key={referrer} className="flex items-center justify-between">
-                              <span className="text-sm text-slate-700 truncate max-w-[200px]">{referrer}</span>
-                              <span className="text-sm font-semibold text-slate-900">{count}</span>
-                            </div>
-                          ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Recent Activity */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Calendar className="w-5 h-5" />
-                        Recent Activity
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2">
-                        {analytics.slice(0, 10).map((visit) => (
-                          <div key={visit.id} className="text-xs text-slate-600 border-b border-slate-100 pb-2">
-                            <div className="font-medium text-slate-900">{visit.page}</div>
-                            <div className="flex items-center gap-2 mt-1">
-                              <span>{visit.device_type}</span>
-                              <span>•</span>
-                              <span>{new Date(visit.created_date).toLocaleTimeString()}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+              <AnalyticsTab analyticsRaw={analyticsRaw} />
             </TabsContent>
           </Tabs>
         </div>
