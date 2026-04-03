@@ -13,6 +13,7 @@ import SEOHead, { createProductSchema, createBreadcrumbSchema } from '@/componen
 import GalleryModal from '@/components/products/GalleryModal';
 import PatternGallery from '@/components/products/PatternGallery';
 import PlatinumPlusVisualizer from '@/components/products/PlatinumPlusVisualizer';
+import SafetyCoverVisualizer from '@/components/products/SafetyCoverVisualizer';
 
 const productsData = {
   "in-ground-liners": {
@@ -1313,6 +1314,19 @@ export default function ProductDetails() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Safety Cover Visualizer */}
+      {slug === 'safety-covers' && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Visualize Your Safety Cover</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">See how different mesh colors look on various pool shapes</p>
+            </div>
+            <SafetyCoverVisualizer />
           </div>
         </section>
       )}
