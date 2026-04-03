@@ -29,7 +29,7 @@ export default function PoolVisualizer() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to={createPageUrl('ProductDetails?slug=in-ground-liners')}>
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 gap-2">
+              <Button className="bg-slate-700 hover:bg-slate-800 text-white gap-2">
                 View Product Details
                 <ArrowRight className="w-4 h-4" />
               </Button>
