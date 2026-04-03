@@ -993,9 +993,9 @@ export default function ProductDetails() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4 mb-8">
-                <Link to={createPageUrl('Contact')}>
-                  <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 gap-2">
-                    <MessageSquare className="w-5 h-5" />
+                <Link to={createPageUrl('Contact')} className="flex-1 sm:flex-none">
+                  <Button size="xl" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-12 py-6 gap-2 w-full sm:w-auto text-lg h-16">
+                    <MessageSquare className="w-6 h-6" />
                     Request Quote
                   </Button>
                 </Link>
@@ -1526,7 +1526,7 @@ export default function ProductDetails() {
         <p className="text-slate-600 mb-8">Contact our team for a personalized quote.</p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to={createPageUrl('Contact')}>
-            <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8">
+            <Button size="xl" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-12 py-6 text-lg h-16">
               Request Quote
             </Button>
           </Link>
