@@ -122,17 +122,10 @@ Deno.serve(async (req) => {
       console.error('Gmail exception:', error.message);
     }
 
-    if (errors.length > 0) {
-      return Response.json({
-        success: false,
-        message: 'Partial failure',
-        errors: errors
-      }, { status: 207 });
-    }
-
     return Response.json({
-      success: true,
-      message: 'Emails sent to both Outlook and Gmail'
+      success: errors.length === 0,
+      message: errors.length === 0 ? 'Emails sent to both Outlook and Gmail' : `Partial failure: ${errors.join('; ')}`,
+      errors: errors.length > 0 ? errors : undefined
     });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
