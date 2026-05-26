@@ -57,12 +57,24 @@ export default function Layout({ children, currentPageName }) {
         const deviceType = /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' :
           /Tablet|iPad/i.test(navigator.userAgent) ? 'tablet' : 'desktop';
 
-        let country = '';
-        try {
-          const geoRes = await fetch('https://ipapi.co/json/');
-          const geoData = await geoRes.json();
-          country = geoData.country_code || '';
-        } catch {}
+        // Cache country per session to avoid repeated API calls + rate limits
+        let country = sessionStorage.getItem('visitor_country') || '';
+        if (!country) {
+          try {
+            const geoRes = await fetch('https://ipapi.co/json/');
+            const geoData = await geoRes.json();
+            country = geoData.country_code || '';
+          } catch {}
+          // Fallback API if ipapi.co failed or rate-limited
+          if (!country) {
+            try {
+              const geoRes2 = await fetch('https://api.country.is/');
+              const geoData2 = await geoRes2.json();
+              country = geoData2.country || '';
+            } catch {}
+          }
+          if (country) sessionStorage.setItem('visitor_country', country);
+        }
 
         await base44.entities.Analytics.create({
           page: currentPageName || 'Home',
