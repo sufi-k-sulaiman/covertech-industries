@@ -35,6 +35,7 @@ const exportToCSV = (rows, filename) => {
 };
 import SEOHead from '@/components/seo/SEOHead';
 import ProductEditDialog from '@/components/admin/ProductEditDialog';
+import { productsData } from '@/lib/productsData';
 import WarrantyEditDialog from '@/components/admin/WarrantyEditDialog';
 import ContactEditDialog from '@/components/admin/ContactEditDialog';
 import AnalyticsTab from '@/components/admin/AnalyticsTab';
@@ -664,7 +665,19 @@ export default function Admin() {
                               <Button 
                                 size="sm" 
                                 variant="outline"
-                                onClick={() => setEditingProduct(product)}
+                                onClick={() => {
+                                  const staticData = productsData[product.slug] || {};
+                                  // Merge: DB data takes priority, fall back to static for images/docs
+                                  setEditingProduct({
+                                    ...product,
+                                    images: (product.images?.length ? product.images : staticData.images) || [],
+                                    galleryImages: (product.galleryImages?.length ? product.galleryImages : staticData.galleryImages) || [],
+                                    downloads: (product.downloads?.length ? product.downloads : staticData.downloads) || [],
+                                    specifications: (product.specifications && Object.keys(product.specifications).length ? product.specifications : staticData.specifications) || {},
+                                    features: (product.features?.length ? product.features : staticData.features) || [],
+                                    variants: (product.variants?.length ? product.variants : staticData.variants) || [],
+                                  });
+                                }}
                               >
                                 Edit
                               </Button>
