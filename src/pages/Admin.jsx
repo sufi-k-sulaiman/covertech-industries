@@ -35,6 +35,7 @@ const exportToCSV = (rows, filename) => {
 };
 import SEOHead from '@/components/seo/SEOHead';
 import ProductEditDialog from '@/components/admin/ProductEditDialog';
+import WarrantyEditDialog from '@/components/admin/WarrantyEditDialog';
 import AnalyticsTab from '@/components/admin/AnalyticsTab';
 
 const ADMIN_USERNAME = 'Covertechind';
@@ -46,6 +47,7 @@ export default function Admin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [editingProduct, setEditingProduct] = useState(null);
+  const [editingWarranty, setEditingWarranty] = useState(null);
   const [sendingEmail, setSendingEmail] = useState(null); // stores record id
   const [sentEmails, setSentEmails] = useState(new Set());
 
@@ -101,7 +103,7 @@ export default function Admin() {
     enabled: isAuthenticated
   });
 
-  const { data: warranties = [] } = useQuery({
+  const { data: warranties = [], refetch: refetchWarranties } = useQuery({
     queryKey: ['warranties'],
     queryFn: () => base44.entities.WarrantyRegistration.list('-created_date', 100),
     enabled: isAuthenticated
@@ -678,6 +680,7 @@ export default function Admin() {
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Email</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Product</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Serial</th>
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Invoice #</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Status</th>
                           <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900">Actions</th>
                         </tr>
@@ -692,6 +695,7 @@ export default function Admin() {
                             <td className="px-4 py-3 text-sm text-slate-600">{warranty.email}</td>
                             <td className="px-4 py-3 text-sm text-slate-600">{warranty.product_type}</td>
                             <td className="px-4 py-3 text-sm text-slate-600">{warranty.serial_number || 'N/A'}</td>
+                            <td className="px-4 py-3 text-sm text-slate-600">{warranty.invoice_number || '—'}</td>
                             <td className="px-4 py-3">
                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                                warranty.status === 'approved' ? 'bg-green-100 text-green-800' :
@@ -701,7 +705,15 @@ export default function Admin() {
                                {warranty.status}
                              </span>
                             </td>
-                            <td className="px-4 py-3">
+                            <td className="px-4 py-3 flex items-center gap-2">
+                             <Button
+                               size="sm"
+                               variant="outline"
+                               onClick={() => setEditingWarranty(warranty)}
+                               className="gap-1.5 text-xs"
+                             >
+                               Edit
+                             </Button>
                              <Button
                                size="sm"
                                variant="outline"
@@ -731,6 +743,19 @@ export default function Admin() {
           </Tabs>
         </div>
       </div>
+
+      {/* Warranty Edit Dialog */}
+      {editingWarranty && (
+        <WarrantyEditDialog
+          warranty={editingWarranty}
+          open={!!editingWarranty}
+          onClose={() => setEditingWarranty(null)}
+          onSave={() => {
+            refetchWarranties();
+            setEditingWarranty(null);
+          }}
+        />
+      )}
 
       {/* Product Edit Dialog */}
       {editingProduct && (

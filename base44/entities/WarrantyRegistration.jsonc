@@ -1,0 +1,119 @@
+{
+  "name": "WarrantyRegistration",
+  "type": "object",
+  "properties": {
+    "product_type": {
+      "type": "string",
+      "enum": [
+        "vinyl-liner",
+        "safety-cover",
+        "solar-blanket",
+        "winter-cover"
+      ],
+      "description": "Type of product being registered"
+    },
+    "full_name": {
+      "type": "string",
+      "description": "Customer full name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "enum": [
+        "US",
+        "Canada"
+      ]
+    },
+    "street_address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state_province": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "serial_number": {
+      "type": "string",
+      "description": "Product serial number"
+    },
+    "invoice_number": {
+      "type": "string",
+      "description": "Invoice number for the warranty registration"
+    },
+    "pool_size": {
+      "type": "string"
+    },
+    "pool_shape": {
+      "type": "string"
+    },
+    "pool_type": {
+      "type": "string",
+      "enum": [
+        "above-ground",
+        "in-ground"
+      ]
+    },
+    "cover_shape": {
+      "type": "string",
+      "enum": [
+        "round",
+        "oval",
+        "rectangular",
+        "form-fit"
+      ]
+    },
+    "cover_type": {
+      "type": "string"
+    },
+    "warranty_years": {
+      "type": "string"
+    },
+    "installer_name": {
+      "type": "string"
+    },
+    "installer_type": {
+      "type": "string",
+      "enum": [
+        "consumer-install",
+        "dealer-install",
+        "other-party-install"
+      ]
+    },
+    "dealer_purchased_from": {
+      "type": "string"
+    },
+    "purchase_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "installation_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "product_type",
+    "full_name",
+    "email",
+    "phone"
+  ]
+}
