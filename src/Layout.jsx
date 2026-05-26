@@ -57,12 +57,20 @@ export default function Layout({ children, currentPageName }) {
         const deviceType = /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' :
           /Tablet|iPad/i.test(navigator.userAgent) ? 'tablet' : 'desktop';
 
+        let country = '';
+        try {
+          const geoRes = await fetch('https://ipapi.co/json/');
+          const geoData = await geoRes.json();
+          country = geoData.country_code || '';
+        } catch {}
+
         await base44.entities.Analytics.create({
           page: currentPageName || 'Home',
           referrer: document.referrer || 'direct',
           user_agent: navigator.userAgent,
           device_type: deviceType,
-          session_id: sessionId
+          session_id: sessionId,
+          country
         });
       } catch (error) {
         console.error('Analytics tracking error:', error);

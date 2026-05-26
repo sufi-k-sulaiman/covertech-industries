@@ -335,18 +335,23 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-end gap-1 h-28">
-            {dailyData.map(([date, count]) => (
-              <div key={date} className="flex-1 flex flex-col items-center gap-1 group relative">
-                <div
-                  className="w-full bg-cyan-500 rounded-t hover:bg-cyan-400 transition-colors cursor-default"
-                  style={{ height: `${(count / maxDaily) * 100}%`, minHeight: count > 0 ? '3px' : '0' }}
-                />
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none z-10">
-                  {date}: {count}
-                </div>
-              </div>
-            ))}
+          <div className="relative h-32">
+            <div className="absolute inset-0 flex items-end gap-px">
+              {dailyData.map(([date, count]) => {
+                const barHeight = Math.round((count / maxDaily) * 112);
+                return (
+                  <div key={date} className="flex-1 flex flex-col justify-end group relative" style={{ height: '112px' }}>
+                    <div
+                      className="w-full bg-cyan-500 hover:bg-cyan-400 transition-colors cursor-default rounded-t"
+                      style={{ height: count > 0 ? `${barHeight}px` : '1px', opacity: count > 0 ? 1 : 0.15 }}
+                    />
+                    <div className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none z-10">
+                      {date}: {count}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="flex justify-between text-xs text-slate-400 mt-2">
             <span>{dailyData[0]?.[0]}</span>
