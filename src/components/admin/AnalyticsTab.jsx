@@ -196,19 +196,37 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
     }, {})
   ).sort((a, b) => b[1] - a[1]);
 
-  // Daily traffic (last N days)
-  const daysToShow = dateRange === 'all' ? 30 : parseInt(dateRange);
+  // Daily traffic
   const dailyMap = {};
-  for (let i = daysToShow - 1; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    dailyMap[d.toLocaleDateString('en-CA')] = 0;
+  if (dateRange === 'all') {
+    // Span from earliest record to today
+    analytics.forEach(a => {
+      const key = new Date(a.created_date).toLocaleDateString('en-CA');
+      dailyMap[key] = (dailyMap[key] || 0) + 1;
+    });
+    // Fill gaps between min and max date
+    if (analytics.length > 0) {
+      const dates = analytics.map(a => new Date(a.created_date).toLocaleDateString('en-CA')).sort();
+      const start = new Date(dates[0]);
+      const end = new Date();
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        const key = d.toLocaleDateString('en-CA');
+        if (!(key in dailyMap)) dailyMap[key] = 0;
+      }
+    }
+  } else {
+    const daysToShow = parseInt(dateRange);
+    for (let i = daysToShow - 1; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      dailyMap[d.toLocaleDateString('en-CA')] = 0;
+    }
+    analytics.forEach(a => {
+      const key = new Date(a.created_date).toLocaleDateString('en-CA');
+      if (key in dailyMap) dailyMap[key]++;
+    });
   }
-  analytics.forEach(a => {
-    const key = new Date(a.created_date).toLocaleDateString('en-CA');
-    if (key in dailyMap) dailyMap[key]++;
-  });
-  const dailyData = Object.entries(dailyMap);
+  const dailyData = Object.entries(dailyMap).sort(([a], [b]) => a.localeCompare(b));
   const maxDaily = Math.max(...dailyData.map(([, v]) => v), 1);
 
   // Recent activity — last 20
