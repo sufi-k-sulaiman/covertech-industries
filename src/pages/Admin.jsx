@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Lock, Users, Mail, Briefcase, Palette, BarChart3,
-  Eye, Shield, MessageSquare, Send, CheckCircle2, Loader2, Download
+  Eye, Shield, MessageSquare, Send, CheckCircle2, Loader2, Download, Upload
 } from 'lucide-react';
 
 const exportToCSV = (rows, filename) => {
@@ -38,6 +38,7 @@ import ProductEditDialog from '@/components/admin/ProductEditDialog';
 import WarrantyEditDialog from '@/components/admin/WarrantyEditDialog';
 import ContactEditDialog from '@/components/admin/ContactEditDialog';
 import AnalyticsTab from '@/components/admin/AnalyticsTab';
+import ContactImportDialog from '@/components/admin/ContactImportDialog';
 
 const ADMIN_USERNAME = 'Covertechind';
 const ADMIN_PASSWORD = 'CoverHenry2026@1';
@@ -50,6 +51,7 @@ export default function Admin() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [editingWarranty, setEditingWarranty] = useState(null);
   const [editingContact, setEditingContact] = useState(null);
+  const [showContactImport, setShowContactImport] = useState(false);
   const [sendingEmail, setSendingEmail] = useState(null); // stores record id
   const [sentEmails, setSentEmails] = useState(new Set());
 
@@ -336,9 +338,14 @@ export default function Admin() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Contact Submissions</CardTitle>
-                  <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(contacts.map(c => ({ Date: new Date(c.created_date).toLocaleDateString(), Name: c.name, Email: c.email, Phone: c.phone || '', Subject: c.subject || '', Message: c.message || '', Status: c.status })), 'contacts.csv')}>
-                    <Download className="w-4 h-4" /> Export CSV
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline" className="gap-1.5" onClick={() => setShowContactImport(true)}>
+                      <Upload className="w-4 h-4" /> Import CSV
+                    </Button>
+                    <Button size="sm" variant="outline" className="gap-1.5" onClick={() => exportToCSV(contacts.map(c => ({ Date: new Date(c.created_date).toLocaleDateString(), Name: c.name, Email: c.email, Phone: c.phone || '', Subject: c.subject || '', Message: c.message || '', Status: c.status })), 'contacts.csv')}>
+                      <Download className="w-4 h-4" /> Export CSV
+                    </Button>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="overflow-x-auto">
@@ -753,6 +760,13 @@ export default function Admin() {
           </Tabs>
         </div>
       </div>
+
+      {/* Contact Import Dialog */}
+      <ContactImportDialog
+        open={showContactImport}
+        onClose={() => setShowContactImport(false)}
+        onImported={() => { refetchContacts(); setShowContactImport(false); }}
+      />
 
       {/* Contact Edit Dialog */}
       {editingContact && (
