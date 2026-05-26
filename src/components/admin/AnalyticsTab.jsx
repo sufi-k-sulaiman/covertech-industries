@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import {
   Eye, BarChart3, Monitor, Smartphone, ExternalLink,
-  Calendar, Globe, TrendingUp, Users, Clock, Activity, Download
+  Calendar, Globe, TrendingUp, Users, Clock, Activity, Download, Radio
 } from 'lucide-react';
+import { base44 } from '@/api/base44Client';
 
 const exportToCSV = (rows, filename) => {
   if (!rows.length) return;
@@ -95,6 +96,34 @@ function getReferrerLabel(referrer) {
 
 export default function AnalyticsTab({ analyticsRaw = [] }) {
   const [dateRange, setDateRange] = useState('30');
+  const [liveCount, setLiveCount] = useState(0);
+  const [livePages, setLivePages] = useState([]);
+
+  useEffect(() => {
+    const LIVE_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
+
+    const fetchLive = async () => {
+      try {
+        const recent = await base44.entities.Analytics.list('-created_date', 200);
+        const cutoff = Date.now() - LIVE_WINDOW_MS;
+        const active = recent.filter(a => {
+          if (a.page === 'Admin' || a.page?.toLowerCase().includes('admin')) return false;
+          return new Date(a.created_date).getTime() > cutoff;
+        });
+        const uniqueSess = new Set(active.map(a => a.session_id).filter(Boolean));
+        setLiveCount(uniqueSess.size);
+        // Get pages being viewed right now
+        const pageCounts = active.reduce((acc, a) => {
+          acc[a.page] = (acc[a.page] || 0) + 1; return acc;
+        }, {});
+        setLivePages(Object.entries(pageCounts).sort((a, b) => b[1] - a[1]).slice(0, 5));
+      } catch {}
+    };
+
+    fetchLive();
+    const interval = setInterval(fetchLive, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const analytics = useMemo(() => {
     return analyticsRaw.filter(a => {
@@ -257,6 +286,37 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
           <Download className="w-4 h-4" /> Export CSV
         </Button>
       </div>
+
+      {/* Live Visitors */}
+      <Card className="border-green-200 bg-green-50">
+        <CardContent className="pt-4 pb-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-green-100">
+                <Radio className="w-5 h-5 text-green-600" />
+                <span className="absolute top-0 right-0 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-green-50 animate-pulse" />
+              </div>
+              <div>
+                <p className="text-xs text-green-700 font-medium uppercase tracking-wide">Live Visitors</p>
+                <p className="text-xs text-green-600">Active in last 5 minutes</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-4xl font-bold text-green-700">{liveCount}</p>
+            </div>
+          </div>
+          {livePages.length > 0 && (
+            <div className="mt-3 pt-3 border-t border-green-200 flex flex-wrap gap-2">
+              {livePages.map(([page, count]) => (
+                <span key={page} className="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
+                  {page} ({count})
+                </span>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
