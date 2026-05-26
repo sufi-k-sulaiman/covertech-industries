@@ -36,6 +36,7 @@ const exportToCSV = (rows, filename) => {
 import SEOHead from '@/components/seo/SEOHead';
 import ProductEditDialog from '@/components/admin/ProductEditDialog';
 import WarrantyEditDialog from '@/components/admin/WarrantyEditDialog';
+import ContactEditDialog from '@/components/admin/ContactEditDialog';
 import AnalyticsTab from '@/components/admin/AnalyticsTab';
 
 const ADMIN_USERNAME = 'Covertechind';
@@ -48,6 +49,7 @@ export default function Admin() {
   const [error, setError] = useState('');
   const [editingProduct, setEditingProduct] = useState(null);
   const [editingWarranty, setEditingWarranty] = useState(null);
+  const [editingContact, setEditingContact] = useState(null);
   const [sendingEmail, setSendingEmail] = useState(null); // stores record id
   const [sentEmails, setSentEmails] = useState(new Set());
 
@@ -85,7 +87,7 @@ export default function Admin() {
   };
 
   // Fetch entities data
-  const { data: contacts = [] } = useQuery({
+  const { data: contacts = [], refetch: refetchContacts } = useQuery({
     queryKey: ['contacts'],
     queryFn: () => base44.entities.ContactSubmission.list('-created_date', 100),
     enabled: isAuthenticated
@@ -369,7 +371,15 @@ export default function Admin() {
                                {contact.status}
                              </span>
                             </td>
-                            <td className="px-4 py-3">
+                            <td className="px-4 py-3 flex items-center gap-2">
+                             <Button
+                               size="sm"
+                               variant="outline"
+                               onClick={() => setEditingContact(contact)}
+                               className="gap-1.5 text-xs"
+                             >
+                               Edit
+                             </Button>
                              <Button
                                size="sm"
                                variant="outline"
@@ -743,6 +753,19 @@ export default function Admin() {
           </Tabs>
         </div>
       </div>
+
+      {/* Contact Edit Dialog */}
+      {editingContact && (
+        <ContactEditDialog
+          contact={editingContact}
+          open={!!editingContact}
+          onClose={() => setEditingContact(null)}
+          onSave={() => {
+            refetchContacts();
+            setEditingContact(null);
+          }}
+        />
+      )}
 
       {/* Warranty Edit Dialog */}
       {editingWarranty && (
