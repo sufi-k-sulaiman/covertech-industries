@@ -127,8 +127,8 @@ export default function About() {
                 className="w-48 h-48 rounded-2xl object-cover shadow-lg"
               />
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">President & Founder</h3>
-                <p className="text-cyan-600 font-medium mb-4">Covertech Industries</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-1">Henry Schnurbach</h3>
+                <p className="text-cyan-600 font-medium mb-4">President & Founder</p>
                 <p className="text-slate-600 leading-relaxed mb-6">
                   Established in 2012, Covertech Industries manufactures specialty products including swimming pool covers, golf course covers, spa covers, tarps, curing blankets, and construction materials. The company serves markets across North America with a commitment to quality and innovation.
                 </p>
