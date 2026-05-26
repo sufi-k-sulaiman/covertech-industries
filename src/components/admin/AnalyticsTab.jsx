@@ -209,13 +209,16 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
   }, {});
   const browserList = Object.entries(browserMap).sort((a, b) => b[1] - a[1]);
 
-  // Referrers — ALL
-  const referrers = Object.entries(
-    analytics.reduce((acc, a) => {
-      const label = getReferrerLabel(a.referrer);
-      acc[label] = (acc[label] || 0) + 1; return acc;
-    }, {})
-  ).sort((a, b) => b[1] - a[1]);
+  // Referrers — ALL (exclude app.base44.com)
+   const referrers = Object.entries(
+     analytics.reduce((acc, a) => {
+       const label = getReferrerLabel(a.referrer);
+       if (label !== 'app.base44.com') {
+         acc[label] = (acc[label] || 0) + 1;
+       }
+       return acc;
+     }, {})
+   ).sort((a, b) => b[1] - a[1]);
 
   // Countries — ALL
   const countries = Object.entries(
@@ -468,7 +471,7 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
                       <span>·</span>
                       <span>{COUNTRY_FLAGS[visit.country] || '🌍'} {visit.country}</span>
                     </>}
-                    {visit.referrer && visit.referrer !== 'direct' && visit.referrer !== '' && <>
+                    {visit.referrer && visit.referrer !== 'direct' && visit.referrer !== '' && getReferrerLabel(visit.referrer) !== 'app.base44.com' && <>
                       <span>·</span>
                       <span className="text-cyan-600">{getReferrerLabel(visit.referrer)}</span>
                     </>}
