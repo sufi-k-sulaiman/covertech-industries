@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { base44 } from '@/api/base44Client';
-import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
+import SEOHead, { organizationSchema, createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import GalleryBanner from '@/components/ui/GalleryBanner';
 
@@ -46,22 +46,70 @@ export default function Dealer() {
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Become a Dealer", url: "https://covertechind.com/dealer" }
+    { name: "Become a Dealer", url: "https://covertechind.com/Dealer" }
   ]);
 
   const webPageSchema = createWebPageSchema({
     name: "Become a Covertech Dealer - Partner With Industry Leaders",
-    description: "Join Covertech's dealer network across North America. Competitive margins, quality ASTM-certified products, marketing support, and dedicated account management.",
-    url: "https://covertechind.com/dealer"
+    description: "Join Covertech's dealer network across North America. Competitive margins, ASTM-certified products, marketing support, and dedicated account management. Apply today.",
+    url: "https://covertechind.com/Dealer"
   });
+
+  const dealerServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Covertech Dealer Partnership Program",
+    "description": "Become an authorized Covertech dealer. Access premium pool liners, safety covers, and custom solutions with competitive margins, marketing support, and lead generation.",
+    "provider": { "@id": "https://covertechind.com/#organization" },
+    "areaServed": ["CA", "US"],
+    "serviceType": "Dealer Distribution Program",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Pool Contractors, Pool Retailers, Landscapers, Golf Courses, Construction Companies"
+    }
+  };
+
+  const dealerFAQSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I become a Covertech dealer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Fill out the dealer application form on this page with your business details. Our team reviews applications and responds within 2-3 business days." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the requirements to become a Covertech dealer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You need an established business with a valid business license, preferably a physical showroom, commitment to customer service, and agreement to minimum annual purchase requirements." }
+      },
+      {
+        "@type": "Question",
+        "name": "What support does Covertech provide to dealers?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Covertech provides competitive margins, co-op advertising, sales materials, dedicated account management, product training, and customer lead generation for dealers." }
+      }
+    ]
+  };
 
   return (
     <>
       <SEOHead
         title="Become a Covertech Dealer - Partner With Industry Leaders"
         description="Join Covertech's dealer network across North America. Competitive margins, quality ASTM-certified products, marketing support, and dedicated account management. Apply today!"
-        keywords={["Covertech dealer", "pool dealer program", "become a dealer", "pool cover distributor", "pool liner dealer"]}
-        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
+        canonicalUrl="https://covertechind.com/Dealer"
+        keywords={[
+          "Covertech dealer program",
+          "pool dealer Canada",
+          "pool cover distributor",
+          "become a pool liner dealer",
+          "pool products dealer",
+          "safety cover dealer",
+          "pool contractor supplier",
+          "Covertech authorized dealer",
+          "pool products wholesale",
+          "ASTM safety cover distributor"
+        ]}
+        schema={[organizationSchema, breadcrumbSchema, webPageSchema, dealerServiceSchema, dealerFAQSchema]}
       />
 
       <PageHero

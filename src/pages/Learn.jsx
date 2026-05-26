@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Droplets, Shield, Sun, Snowflake, ArrowRight, Image } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema, createHowToSchema, createArticleSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import GalleryModal from '@/components/products/GalleryModal';
 import GalleryBanner from '@/components/ui/GalleryBanner';
@@ -334,8 +334,6 @@ export default function Learn() {
   const [galleryModalOpen, setGalleryModalOpen] = useState(false);
   const [galleryModalIndex, setGalleryModalIndex] = useState(0);
 
-  const guide = GUIDE_DATA[activeTab];
-
   const openGalleryModal = (index) => {
     setGalleryModalIndex(index);
     setGalleryModalOpen(true);
@@ -343,22 +341,54 @@ export default function Learn() {
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Learn", url: "https://covertechind.com/learn" }
+    { name: "Learn", url: "https://covertechind.com/Learn" }
   ]);
 
   const webPageSchema = createWebPageSchema({
     name: "Learn About Pool Products - Expert Guides & Care Tips",
-    description: "Expert guides, care tips, and warranty information for vinyl pool liners, safety covers, solar blankets, and winter covers.",
-    url: "https://covertechind.com/learn"
+    description: "Expert guides, care tips, installation advice, and warranty information for vinyl pool liners, safety covers, solar blankets, and winter covers. Written by industry experts.",
+    url: "https://covertechind.com/Learn"
   });
+
+  const guide = GUIDE_DATA[activeTab];
+  const articleSchemas = guide?.articles?.map(article => createArticleSchema({
+    title: article.title,
+    description: article.excerpt || article.paragraphs?.[0]?.substring(0, 160),
+    url: `https://covertechind.com/Learn#${activeTab}`,
+    image: article.image
+  })) || [];
+
+  const howToSchema = activeTab === 'vinyl-liners' ? createHowToSchema({
+    name: "How to Care for Your Vinyl Pool Liner",
+    description: "Essential maintenance steps to maximize the life of your vinyl pool liner.",
+    image: guide.image,
+    steps: guide.care
+  }) : activeTab === 'safety-covers' ? createHowToSchema({
+    name: "How to Care for Your Pool Safety Cover",
+    description: "Proper care and maintenance for ASTM-certified safety covers.",
+    image: guide.image,
+    steps: guide.care
+  }) : null;
 
   return (
     <>
       <SEOHead
         title="Learn About Pool Products - Expert Guides & Care Tips"
         description="Expert guides, care tips, and warranty information for vinyl pool liners, safety covers, solar blankets, and winter covers."
-        keywords={["pool liner care", "safety cover maintenance", "solar cover tips", "pool cover guide", "pool liner installation"]}
-        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
+        canonicalUrl="https://covertechind.com/Learn"
+        keywords={[
+          "pool liner care tips",
+          "how to care for vinyl pool liner",
+          "safety cover maintenance guide",
+          "solar pool cover tips",
+          "winter pool cover installation",
+          "ASTM safety cover guide",
+          "pool liner installation instructions",
+          "vinyl liner water chemistry",
+          "pool safety tips",
+          "solar cover energy savings"
+        ]}
+        schema={[breadcrumbSchema, webPageSchema, ...articleSchemas, ...(howToSchema ? [howToSchema] : [])]}
       />
 
       <PageHero

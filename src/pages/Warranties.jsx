@@ -118,14 +118,30 @@ export default function Warranties() {
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Warranty Registration", url: "https://covertechind.com/warranties" }
+    { name: "Warranty Registration", url: "https://covertechind.com/Warranties" }
   ]);
 
   const webPageSchema = createWebPageSchema({
     name: "Warranty Registration - Register Your Covertech Product",
-    description: "Register your Covertech pool liner, safety cover, solar blanket, or winter cover warranty online. Quick and easy registration process. Protect your investment.",
-    url: "https://covertechind.com/warranties"
+    description: "Register your Covertech pool liner, safety cover, solar blanket, or winter cover warranty online. Quick and easy process — protect your investment today.",
+    url: "https://covertechind.com/Warranties"
   });
+
+  const warrantyServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Covertech Warranty Registration",
+    "description": "Online warranty registration service for Covertech pool liners, safety covers, solar blankets, and winter covers.",
+    "provider": { "@id": "https://covertechind.com/#organization" },
+    "areaServed": ["CA", "US"],
+    "serviceType": "Warranty Registration",
+    "offers": [
+      { "@type": "Offer", "name": "Vinyl Liner Warranty", "description": "Up to 25-year warranty on in-ground vinyl pool liners" },
+      { "@type": "Offer", "name": "Safety Cover Warranty", "description": "Up to 30-year warranty on ASTM-certified safety covers" },
+      { "@type": "Offer", "name": "Solar Blanket Warranty", "description": "3 to 7-year warranty on solar pool covers" },
+      { "@type": "Offer", "name": "Winter Cover Warranty", "description": "8 to 10-year warranty on winter pool covers" }
+    ]
+  };
 
   if (submitted) {
     return (
@@ -186,8 +202,20 @@ export default function Warranties() {
       <SEOHead
         title="Warranty Registration - Register Your Product"
         description="Register your Covertech pool liner, safety cover, solar blanket, or winter cover warranty online. Quick and easy registration process."
-        keywords={["warranty registration", "pool liner warranty", "safety cover warranty", "solar blanket warranty", "winter cover warranty"]}
-        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
+        canonicalUrl="https://covertechind.com/Warranties"
+        keywords={[
+          "pool liner warranty registration",
+          "safety cover warranty",
+          "solar blanket warranty",
+          "winter cover warranty",
+          "Covertech warranty",
+          "25 year pool liner warranty",
+          "30 year safety cover warranty",
+          "register pool product warranty",
+          "ASTM safety cover warranty",
+          "vinyl liner warranty Canada"
+        ]}
+        schema={[breadcrumbSchema, webPageSchema, warrantyServiceSchema]}
       />
 
       <PageHero

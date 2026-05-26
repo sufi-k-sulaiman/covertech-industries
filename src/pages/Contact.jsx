@@ -50,7 +50,7 @@ export default function Contact() {
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Contact", url: "https://covertechind.com/contact" }
+    { name: "Contact", url: "https://covertechind.com/Contact" }
   ]);
 
   const faqSchema = createFAQSchema(faqs);
@@ -58,7 +58,7 @@ export default function Contact() {
   const webPageSchema = createWebPageSchema({
     name: "Contact Covertech Industries - Get a Quote",
     description: "Contact Covertech Industries for pool liners, safety covers, and custom solutions. Call +1 (416) 640-5590 or email info@covertechind.com. Located in Toronto, Ontario.",
-    url: "https://covertechind.com/contact"
+    url: "https://covertechind.com/Contact"
   });
 
   return (
@@ -66,8 +66,20 @@ export default function Contact() {
       <SEOHead
         title="Contact Covertech Industries - Get a Quote"
         description="Contact Covertech Industries for pool liners, safety covers, and custom solutions. Call +1 (416) 640-5590 or email info@covertechind.com. Located in Toronto, Ontario."
-        keywords={["contact Covertech", "pool liner quote", "safety cover quote", "Toronto pool manufacturer"]}
-        schema={{ "@context": "https://schema.org", "@graph": [localBusinessSchema, breadcrumbSchema, faqSchema, webPageSchema] }}
+        canonicalUrl="https://covertechind.com/Contact"
+        keywords={[
+          "contact Covertech Industries",
+          "pool liner quote Toronto",
+          "safety cover quote",
+          "pool cover manufacturer contact",
+          "pool products customer service",
+          "Covertech phone number",
+          "pool liner warranty inquiry",
+          "Toronto pool manufacturer",
+          "pool cover dealer contact",
+          "request pool liner quote"
+        ]}
+        schema={[localBusinessSchema, breadcrumbSchema, faqSchema, webPageSchema]}
       />
 
       <PageHero

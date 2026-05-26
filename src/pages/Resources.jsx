@@ -165,22 +165,55 @@ const products = [
 export default function Resources() {
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Resources", url: "https://covertechind.com/resources" }
+    { name: "Resources", url: "https://covertechind.com/Resources" }
   ]);
 
   const webPageSchema = createWebPageSchema({
     name: "Resources & Downloads - Installation Guides & Measuring Forms",
-    description: "Download Covertech's installation guides, measuring forms, and technical resources for pool liners, safety covers, and more. Expert documentation for professionals.",
-    url: "https://covertechind.com/resources"
+    description: "Download Covertech's installation guides, warranty documents, measuring forms, and technical resources for pool liners, safety covers, and more.",
+    url: "https://covertechind.com/Resources"
   });
+
+  const allDownloads = downloads.flatMap(cat => cat.items);
+  const downloadListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Covertech Technical Resources & Downloads",
+    "description": "Installation guides, warranty documents, and measuring forms for Covertech pool products.",
+    "numberOfItems": allDownloads.length,
+    "itemListElement": allDownloads.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "DigitalDocument",
+        "name": item.title,
+        "description": item.description,
+        "url": item.url,
+        "encodingFormat": "application/pdf",
+        "publisher": { "@id": "https://covertechind.com/#organization" }
+      }
+    }))
+  };
 
   return (
     <>
       <SEOHead
         title="Resources & Downloads - Installation Guides & Measuring Forms"
         description="Download Covertech's installation guides, measuring forms, and technical resources for pool liners, safety covers, and more. Expert documentation for professionals."
-        keywords={["pool liner measuring form", "safety cover installation guide", "pool cover instructions", "Covertech resources"]}
-        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
+        canonicalUrl="https://covertechind.com/Resources"
+        keywords={[
+          "pool liner installation guide",
+          "safety cover measuring form",
+          "pool cover instructions",
+          "Covertech technical resources",
+          "pool liner warranty PDF",
+          "safety cover installation instructions",
+          "solar cover care guide",
+          "winter cover warranty download",
+          "pool product brochures",
+          "liner pattern catalogue 2026"
+        ]}
+        schema={[breadcrumbSchema, webPageSchema, downloadListSchema]}
       />
 
       <PageHero

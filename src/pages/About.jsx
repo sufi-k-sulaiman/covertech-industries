@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Shield, Award, Globe, Heart, Check } from 'lucide-react';
-import SEOHead, { organizationSchema, createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
+import SEOHead, { organizationSchema, localBusinessSchema, createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import TrustBadges from '@/components/ui/TrustBadges';
 
@@ -25,14 +25,24 @@ const values = [
 export default function About() {
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "About Us", url: "https://covertechind.com/about" }
+    { name: "About Us", url: "https://covertechind.com/About" }
   ]);
 
   const webPageSchema = createWebPageSchema({
     name: "About Covertech Industries - 35+ Years of Excellence",
     description: "Learn about Covertech Industries' 35+ year history manufacturing premium pool liners, safety covers, and custom solutions. Family-owned, ASTM certified, made in North America since 1987.",
-    url: "https://covertechind.com/about"
+    url: "https://covertechind.com/About"
   });
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Henry Schnurbach",
+    "jobTitle": "President & Founder",
+    "worksFor": { "@id": "https://covertechind.com/#organization" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Concordia University" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" }
+  };
 
   return (
     <>
@@ -41,13 +51,19 @@ export default function About() {
         description="Learn about Covertech Industries' 35+ year history manufacturing premium pool liners, safety covers, and custom solutions. Family-owned, ASTM certified, made in North America since 1987."
         keywords={[
           "Covertech Industries history",
-          "pool cover manufacturer",
-          "Canadian pool manufacturer",
-          "about Covertech",
+          "Canadian pool products manufacturer",
+          "pool cover manufacturer Toronto",
+          "about Covertech Industries",
           "family owned pool company",
-          "ASTM certified manufacturer"
+          "ASTM certified safety cover manufacturer",
+          "vinyl liner manufacturer Canada",
+          "Henry Schnurbach Covertech",
+          "pool manufacturer since 1987",
+          "North American pool products"
         ]}
-        schema={{ "@context": "https://schema.org", "@graph": [organizationSchema, breadcrumbSchema, webPageSchema] }}
+        canonicalUrl="https://covertechind.com/About"
+        ogImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f311abf6a_beautiful-outdoor-swimming-pool-hotel-resort.jpg"
+        schema={[organizationSchema, localBusinessSchema, breadcrumbSchema, webPageSchema, personSchema]}
       />
 
       <PageHero

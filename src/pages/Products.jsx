@@ -117,12 +117,15 @@ export default function Products() {
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Products", url: "https://covertechind.com/products" }
+    { name: "Products", url: "https://covertechind.com/Products" }
   ]);
 
   const productsSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "name": "Covertech Industries Pool Products",
+    "description": "Complete range of premium pool liners, safety covers, solar covers, and construction products by Covertech Industries.",
+    "numberOfItems": products.length,
     "itemListElement": products.map((product, index) => ({
       "@type": "ListItem",
       "position": index + 1,
@@ -131,9 +134,28 @@ export default function Products() {
         "name": product.name,
         "description": product.description,
         "image": product.image,
-        "brand": { "@type": "Brand", "name": "Covertech Industries" }
+        "url": `https://covertechind.com/ProductDetails?slug=${product.slug}`,
+        "brand": { "@type": "Brand", "name": "Covertech Industries" },
+        "manufacturer": { "@id": "https://covertechind.com/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "CAD",
+          "seller": { "@id": "https://covertechind.com/#organization" }
+        }
       }
     }))
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://covertechind.com/Products#webpage",
+    "name": "Products - Pool Liners, Safety Covers, Solar Covers & More",
+    "description": "Browse Covertech's complete range of premium pool products: vinyl liners, ASTM-certified safety covers, solar blankets, winter covers, steel kits, and golf green covers.",
+    "url": "https://covertechind.com/Products",
+    "inLanguage": "en-CA",
+    "isPartOf": { "@id": "https://covertechind.com/#website" }
   };
 
   return (
@@ -141,8 +163,23 @@ export default function Products() {
       <SEOHead
         title="Products - Pool Liners, Safety Covers, Solar Covers & More"
         description="Browse Covertech's complete range of premium pool products: vinyl liners, ASTM-certified safety covers, solar blankets, winter covers, steel kits, and golf green covers."
-        keywords={["pool products", "pool liners", "safety covers", "solar covers", "winter covers", "Covertech products"]}
-        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, productsSchema] }}
+        canonicalUrl="https://covertechind.com/Products"
+        keywords={[
+          "pool products Canada",
+          "vinyl pool liners",
+          "ASTM safety covers",
+          "solar pool covers",
+          "winter pool covers",
+          "pool steel kits",
+          "golf green covers",
+          "pool insulation",
+          "curing blankets",
+          "Covertech pool products",
+          "above ground pool liners",
+          "in-ground pool liners",
+          "custom pool covers"
+        ]}
+        schema={[breadcrumbSchema, productsSchema, webPageSchema]}
       />
 
       <PageHero

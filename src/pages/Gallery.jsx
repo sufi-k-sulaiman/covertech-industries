@@ -4,7 +4,7 @@ import { X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { base44 } from '@/api/base44Client';
-import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
+import SEOHead, { createBreadcrumbSchema, createWebPageSchema, createImageGallerySchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 
 const galleryCategories = [
@@ -233,22 +233,41 @@ export default function Gallery() {
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Gallery", url: "https://covertechind.com/gallery" }
+    { name: "Gallery", url: "https://covertechind.com/Gallery" }
   ]);
 
   const webPageSchema = createWebPageSchema({
     name: "Project Gallery - Pool Liners & Safety Covers Installation Photos",
-    description: "Browse our comprehensive gallery of completed pool liner and safety cover installations. See real examples of Covertech Industries products in action across North America.",
-    url: "https://covertechind.com/gallery"
+    description: "Browse hundreds of completed pool liner and safety cover installations across North America. Real examples of Covertech Industries premium products in action.",
+    url: "https://covertechind.com/Gallery"
   });
+
+  const gallerySchema = createImageGallerySchema(
+    galleryData.find(c => c.category === 'Pool Liners')?.images.slice(0, 10) || [],
+    "Covertech Pool Liner Installation Gallery",
+    "Photos of installed vinyl pool liners from Covertech Industries across North America."
+  );
 
   return (
     <>
       <SEOHead
         title="Project Gallery - Pool Liners & Safety Covers Installation Photos"
         description="Browse our comprehensive gallery of completed pool liner and safety cover installations. See real examples of Covertech Industries products in action across North America."
-        keywords={["pool liner gallery", "safety cover installations", "pool photos", "Covertech projects", "vinyl liner examples"]}
-        schema={{ "@context": "https://schema.org", "@graph": [breadcrumbSchema, webPageSchema] }}
+        canonicalUrl="https://covertechind.com/Gallery"
+        ogImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/410142be5_20240518_125429.jpg"
+        keywords={[
+          "pool liner installation photos",
+          "safety cover installation gallery",
+          "vinyl pool liner gallery",
+          "Covertech projects gallery",
+          "pool liner patterns gallery",
+          "ASTM safety cover photos",
+          "pool renovation photos",
+          "in-ground pool liner photos",
+          "safety cover installation examples",
+          "pool cover gallery Canada"
+        ]}
+        schema={[breadcrumbSchema, webPageSchema, gallerySchema]}
       />
 
       <PageHero
