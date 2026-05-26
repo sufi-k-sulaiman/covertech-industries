@@ -359,13 +359,9 @@ export default function ProductEditDialog({ product, open, onClose, onSave }) {
                       <Input
                         value={doc.name}
                         onChange={(e) => updatePDFName(index, e.target.value)}
-                        className="text-sm h-8 mb-1"
+                        className="text-sm h-8"
                         placeholder="Document name"
                       />
-                      <a href={doc.url} target="_blank" rel="noopener noreferrer" className="text-xs text-cyan-600 hover:underline flex items-center gap-1 truncate">
-                        <ExternalLink className="w-3 h-3 shrink-0" />
-                        <span className="truncate">{doc.url}</span>
-                      </a>
                     </div>
                     <button onClick={() => removePDF(index)} className="text-red-500 hover:text-red-700 shrink-0"><X className="w-4 h-4" /></button>
                   </div>
