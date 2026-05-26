@@ -5,6 +5,9 @@ import {
   Eye, BarChart3, Monitor, Smartphone, ExternalLink,
   Calendar, Globe, TrendingUp, Users, Clock, Activity, Download, Radio
 } from 'lucide-react';
+import {
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LineChart, Line, CartesianGrid
+} from 'recharts';
 import { base44 } from '@/api/base44Client';
 
 const exportToCSV = (rows, filename) => {
@@ -264,6 +267,43 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
   // Recent activity — last 20
   const recentActivity = [...analytics].sort((a, b) => new Date(b.created_date) - new Date(a.created_date)).slice(0, 20);
 
+  // Country chart data (top 10)
+  const countryChartData = countries.slice(0, 10).map(([code, count]) => ({
+    name: `${COUNTRY_FLAGS[code] || '🌍'} ${code}`,
+    visits: count,
+  }));
+
+  // Pages per session per day
+  const pagesPerDayData = dailyData.map(([date, views]) => {
+    const daySessions = new Set(
+      analytics
+        .filter(a => new Date(a.created_date).toLocaleDateString('en-CA') === date)
+        .map(a => a.session_id).filter(Boolean)
+    ).size;
+    return { date, pps: daySessions > 0 ? parseFloat((views / daySessions).toFixed(1)) : 0 };
+  }).filter(d => d.pps > 0);
+
+  // Avg pages per session per day (rolling)
+  const sessionPagesData = (() => {
+    const sessionMap = {};
+    analytics.forEach(a => {
+      if (!a.session_id) return;
+      if (!sessionMap[a.session_id]) sessionMap[a.session_id] = { pages: 0, date: a.created_date };
+      sessionMap[a.session_id].pages += 1;
+    });
+    const byDay = {};
+    Object.values(sessionMap).forEach(({ pages, date }) => {
+      const key = new Date(date).toLocaleDateString('en-CA');
+      if (!byDay[key]) byDay[key] = { total: 0, count: 0 };
+      byDay[key].total += pages;
+      byDay[key].count += 1;
+    });
+    return dailyData.map(([date]) => ({
+      date,
+      avg: byDay[date] ? parseFloat((byDay[date].total / byDay[date].count).toFixed(1)) : 0,
+    })).filter(d => d.avg > 0);
+  })();
+
   return (
     <div className="space-y-6">
       {/* Date Range Filter + Export */}
@@ -363,6 +403,73 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Countries Bar Chart */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-base">
+            <Globe className="w-4 h-4" />
+            Visits by Country
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={220}>
+            <BarChart data={countryChartData} layout="vertical" margin={{ left: 8, right: 24, top: 0, bottom: 0 }}>
+              <XAxis type="number" tick={{ fontSize: 11 }} />
+              <YAxis type="category" dataKey="name" tick={{ fontSize: 12 }} width={72} />
+              <Tooltip formatter={(v) => [v, 'Visits']} />
+              <Bar dataKey="visits" radius={[0, 4, 4, 0]}>
+                {countryChartData.map((_, i) => (
+                  <Cell key={i} fill={i === 0 ? '#06b6d4' : '#93c5fd'} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+
+      {/* Pages per Session + Avg Pages/Session over time */}
+      <div className="grid md:grid-cols-2 gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <TrendingUp className="w-4 h-4" />
+              Pages / Session (daily)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={160}>
+              <LineChart data={pagesPerDayData} margin={{ left: 0, right: 8, top: 4, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <XAxis dataKey="date" tick={{ fontSize: 10 }} tickFormatter={d => d.slice(5)} interval="preserveStartEnd" />
+                <YAxis tick={{ fontSize: 11 }} width={28} />
+                <Tooltip formatter={(v) => [v, 'Pages/Session']} labelFormatter={d => `Date: ${d}`} />
+                <Line type="monotone" dataKey="pps" stroke="#06b6d4" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <BarChart3 className="w-4 h-4" />
+              Avg Pages/Session (by session)
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={160}>
+              <LineChart data={sessionPagesData} margin={{ left: 0, right: 8, top: 4, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <XAxis dataKey="date" tick={{ fontSize: 10 }} tickFormatter={d => d.slice(5)} interval="preserveStartEnd" />
+                <YAxis tick={{ fontSize: 11 }} width={28} />
+                <Tooltip formatter={(v) => [v, 'Avg Pages']} labelFormatter={d => `Date: ${d}`} />
+                <Line type="monotone" dataKey="avg" stroke="#8b5cf6" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
 
       {/* 3-column grid */}
       <div className="grid md:grid-cols-3 gap-6">
