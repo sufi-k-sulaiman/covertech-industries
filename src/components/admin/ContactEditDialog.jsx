@@ -14,6 +14,7 @@ const getTemplates = (name) => [
     id: 'welcome',
     label: '👋 Welcome',
     subject: 'Welcome to the Covertech Family!',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop',
     body: `Dear ${name},
 
 Thank you for reaching out to Covertech Industries! We're thrilled to connect with you.
@@ -37,6 +38,7 @@ The Covertech Industries Team`,
     id: 'products',
     label: '🏊 Product Offerings',
     subject: "Discover Covertech's Premium Pool Products",
+    image: 'https://images.unsplash.com/photo-1581578731414-40c6498a3800?w=600&h=300&fit=crop',
     body: `Dear ${name},
 
 Thank you for your interest in Covertech Industries. We'd love to share what we offer!
@@ -62,6 +64,7 @@ The Covertech Industries Team`,
     id: 'warranty',
     label: '📋 Warranty Registration',
     subject: 'Register Your Covertech Product Warranty',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=300&fit=crop',
     body: `Dear ${name},
 
 Congratulations on your new Covertech product! To ensure you receive the full benefit of your warranty coverage, we encourage you to complete your warranty registration as soon as possible.
@@ -91,6 +94,7 @@ The Covertech Industries Team`,
     id: 'maintenance',
     label: '🔧 Pool Maintenance Tips',
     subject: 'Expert Pool Maintenance Tips from Covertech',
+    image: 'https://images.unsplash.com/photo-1584622181563-430f63602d4b?w=600&h=300&fit=crop',
     body: `Dear ${name},
 
 At Covertech Industries, we believe that proper maintenance is the key to maximizing the life of your pool products. Here are our top expert tips to keep your pool — and your Covertech products — in peak condition:
@@ -164,6 +168,7 @@ export default function ContactEditDialog({ contact, open, onClose, onSave }) {
     if (!emailBody.trim()) return;
     setSending(true);
 
+    const activeTemplate = templates.find(t => t.subject === emailSubject) || {};
     const footerStyle = `margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; font-size: 0.85em; color: #666;`;
     const html = `
 <html><body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
@@ -171,6 +176,7 @@ export default function ContactEditDialog({ contact, open, onClose, onSave }) {
     <div style="padding: 15px; border-bottom: 1px solid #ddd; text-align: center;">
       <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png" alt="Covertech Industries" style="height: 40px; max-width: 200px;">
     </div>
+    ${activeTemplate.image ? `<div style="width: 100%; height: auto; overflow: hidden;"><img src="${activeTemplate.image}" alt="Covertech" style="width: 100%; height: auto; display: block;"></div>` : ''}
     <div style="background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%); padding: 20px; color: white;">
       <h2 style="margin:0;">Covertech Industries</h2>
     </div>
