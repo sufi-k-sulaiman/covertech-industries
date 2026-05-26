@@ -185,8 +185,7 @@ export default function ContactEditDialog({ contact, open, onClose, onSave }) {
         ${emailBody.replace(/\n/g, '<br>')}
       </div>
       <div style="${footerStyle}">
-        <p><strong>Covertech Industries</strong></p>
-        <p>26 Dansk Court<br>Toronto, ON M9W 5V8<br>Phone: +1 (416) 640-5590<br>Email: <a href="mailto:info@covertechind.com" style="color: #0891b2;">info@covertechind.com</a></p>
+        <p>26 Dansk Court<br>Toronto, ON M9W 5V8<br>+1 (416) 640-5590<br><a href="mailto:info@covertechind.com" style="color: #0891b2; text-decoration: none;">info@covertechind.com</a></p>
       </div>
     </div>
   </div>
