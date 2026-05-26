@@ -9,6 +9,7 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LineChart, Line, CartesianGrid
 } from 'recharts';
 import { base44 } from '@/api/base44Client';
+import RawDataTable from './AnalyticsRawTable';
 
 const exportToCSV = (rows, filename) => {
   if (!rows.length) return;
@@ -517,6 +518,9 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
           </CardContent>
         </Card>
       </div>
+
+      {/* Raw Data Table */}
+      <RawDataTable analytics={analytics} exportToCSV={exportToCSV} />
 
       {/* 4-column grid */}
       <div className="grid md:grid-cols-4 gap-6">
