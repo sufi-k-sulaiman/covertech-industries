@@ -462,8 +462,16 @@ export default function AnalyticsTab({ analyticsRaw = [] }) {
               {recentActivity.map((visit) => (
                 <div key={visit.id} className="text-xs border-b border-slate-100 pb-1.5">
                   <div className="font-medium text-slate-900">{visit.page}</div>
-                  <div className="text-slate-400 flex gap-1.5 mt-0.5">
+                  <div className="text-slate-400 flex flex-wrap gap-1.5 mt-0.5">
                     <span>{visit.device_type}</span>
+                    {visit.country && <>
+                      <span>·</span>
+                      <span>{COUNTRY_FLAGS[visit.country] || '🌍'} {visit.country}</span>
+                    </>}
+                    {visit.referrer && visit.referrer !== 'direct' && visit.referrer !== '' && <>
+                      <span>·</span>
+                      <span className="text-cyan-600">{getReferrerLabel(visit.referrer)}</span>
+                    </>}
                     <span>·</span>
                     <span>{new Date(visit.created_date).toLocaleString('en-CA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
