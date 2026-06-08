@@ -1,0 +1,58 @@
+{
+  "name": "DealerApplication",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state_province": {
+      "type": "string"
+    },
+    "business_type": {
+      "type": "string",
+      "enum": [
+        "pool-contractor",
+        "pool-retailer",
+        "landscaper",
+        "golf-course",
+        "construction",
+        "other"
+      ]
+    },
+    "about_business": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "declined"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name",
+    "company_name",
+    "email",
+    "phone"
+  ]
+}

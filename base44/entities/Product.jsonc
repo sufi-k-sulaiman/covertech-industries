@@ -1,0 +1,124 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "pool-liners",
+        "safety-covers",
+        "solar-covers",
+        "winter-covers",
+        "steel-kits",
+        "insulation",
+        "golf-sports",
+        "tarps-blankets"
+      ],
+      "description": "Product category"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Short tagline for the product"
+    },
+    "description": {
+      "type": "string",
+      "description": "Full product description"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key product features"
+    },
+    "specifications": {
+      "type": "object",
+      "description": "Technical specifications"
+    },
+    "warranty_years": {
+      "type": "number",
+      "description": "Warranty period in years"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Product image URLs"
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "collection": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Available patterns/colors"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warranty": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Product variants/options"
+    },
+    "is_bestseller": {
+      "type": "boolean",
+      "default": false
+    },
+    "seo_title": {
+      "type": "string"
+    },
+    "seo_description": {
+      "type": "string"
+    },
+    "seo_keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "slug",
+    "category"
+  ]
+}

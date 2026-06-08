@@ -908,7 +908,9 @@ export default function ProductDetails() {
                 )}
                 <img
                   src={product.images[activeImage]}
-                  alt={product.name}
+                  alt={`${product.name} - ${product.tagline}`}
+                  width="800"
+                  height="800"
                   className={`w-full h-full ${(slug === 'above-ground-liners' || slug === 'pool-insulation') ? 'object-contain' : 'object-cover'}`}
                 />
               </div>
@@ -924,7 +926,7 @@ export default function ProductDetails() {
                         activeImage === index ? 'border-cyan-500 shadow-lg' : 'border-transparent hover:border-slate-300'
                       }`}
                     >
-                      <img src={img} alt="" className={`w-full h-full ${(slug === 'above-ground-liners' || slug === 'pool-insulation') ? 'object-contain' : 'object-cover'}`} />
+                      <img src={img} alt={`${product.name} view ${index + 1}`} loading="lazy" className={`w-full h-full ${(slug === 'above-ground-liners' || slug === 'pool-insulation') ? 'object-contain' : 'object-cover'}`} />
                     </button>
                   ))}
                 </div>
@@ -1508,7 +1510,8 @@ export default function ProductDetails() {
                 >
                   <img
                     src={image}
-                    alt={`Installation ${index + 1}`}
+                    alt={`${product.name} installation example ${index + 1}`}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">

@@ -93,15 +93,26 @@ export default function Layout({ children, currentPageName }) {
   }, [currentPageName]);
 
   useEffect(() => {
-    // Load Tawk.to chat widget
-    window.Tawk_API = window.Tawk_API || {};
-    window.Tawk_LoadStart = new Date();
-    const s1 = document.createElement('script');
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/69ceee71b2f8a31c44a28971/1jl856rao';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    document.head.appendChild(s1);
+    // Load Tawk.to chat widget — deferred to avoid blocking initial page render
+    const loadTawk = () => {
+      if (document.getElementById('tawk-script')) return;
+      window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_LoadStart = new Date();
+      const s1 = document.createElement('script');
+      s1.id = 'tawk-script';
+      s1.async = true;
+      s1.defer = true;
+      s1.src = 'https://embed.tawk.to/69ceee71b2f8a31c44a28971/1jl856rao';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      document.body.appendChild(s1);
+    };
+    // Delay load until page is interactive to improve LCP / TBT scores
+    if (document.readyState === 'complete') {
+      setTimeout(loadTawk, 3000);
+    } else {
+      window.addEventListener('load', () => setTimeout(loadTawk, 3000), { once: true });
+    }
   }, []);
 
   useEffect(() => {

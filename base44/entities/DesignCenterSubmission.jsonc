@@ -1,0 +1,52 @@
+{
+  "name": "DesignCenterSubmission",
+  "type": "object",
+  "properties": {
+    "quote_id": {
+      "type": "string",
+      "description": "Unique quote identifier starting with CT"
+    },
+    "product_type": {
+      "type": "string",
+      "description": "Type of product selected"
+    },
+    "pool_shape": {
+      "type": "string",
+      "description": "Pool shape selected"
+    },
+    "dimensions": {
+      "type": "object",
+      "description": "Pool dimensions"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Selected pool features"
+    },
+    "pattern_selection": {
+      "type": "object",
+      "description": "Pattern and customization choices"
+    },
+    "contact_info": {
+      "type": "object",
+      "description": "Customer contact information"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "quoted",
+        "closed"
+      ],
+      "default": "new"
+    }
+  },
+  "required": [
+    "quote_id",
+    "product_type",
+    "contact_info"
+  ]
+}

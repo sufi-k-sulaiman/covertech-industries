@@ -1,0 +1,33 @@
+{
+  "name": "Analytics",
+  "type": "object",
+  "properties": {
+    "page": {
+      "type": "string",
+      "description": "Page visited"
+    },
+    "referrer": {
+      "type": "string",
+      "description": "Referrer URL"
+    },
+    "user_agent": {
+      "type": "string",
+      "description": "User agent string"
+    },
+    "device_type": {
+      "type": "string",
+      "description": "Device type (mobile/desktop/tablet)"
+    },
+    "country": {
+      "type": "string",
+      "description": "Visitor country"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier"
+    }
+  },
+  "required": [
+    "page"
+  ]
+}
