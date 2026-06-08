@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Droplets, Shield, Sun, Snowflake, ArrowRight, Image } from 'lucide-react';
+import { CATEGORY_SLUGS, ARTICLES } from './LearnArticle';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createWebPageSchema, createHowToSchema, createArticleSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
@@ -439,6 +440,7 @@ export default function Learn() {
                 warranty={guide.warranty}
                 image={guide.image}
                 name={guide.name}
+                categorySlugs={CATEGORY_SLUGS[activeTab]}
               />
 
               {/* Gallery */}

@@ -138,6 +138,24 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Learn Articles -->
+  <url><loc>https://covertechind.com/LearnArticle?slug=how-to-choose-pool-liner-pattern</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=vinyl-liner-thickness-durability</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=pool-liner-installation-diy-vs-professional</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=vinyl-liner-water-chemistry-lifespan</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=astm-f1346-safety-standards-explained</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=mesh-vs-solid-safety-covers</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=safety-cover-installation-anchoring-guide</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=year-round-pool-safety</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=science-behind-solar-pool-heating</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=maximizing-energy-savings-solar-covers</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=solar-covers-reduce-evaporation-chemical-costs</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=solar-cover-care-storage-lifespan</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=complete-pool-winterization-guide</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=winter-cover-materials-construction-quality</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=managing-snow-ice-pool-cover</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://covertechind.com/LearnArticle?slug=spring-pool-opening-cover-removal</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
   <!-- Legal -->
   <url>
     <loc>https://covertechind.com/PrivacyPolicy</loc>

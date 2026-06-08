@@ -12,7 +12,7 @@ export default function SEOHead({
 }) {
   useEffect(() => {
     const siteName = 'Covertech Industries';
-    document.title = title ? `${title} | ${siteName}` : `${siteName} - Premium Pool Liners, Safety Covers & Custom Solutions Since 1987`;
+    document.title = title ? `${siteName} | ${title}` : `${siteName} - Premium Pool Liners, Safety Covers & Custom Solutions Since 1987`;
     
     // Favicon
     let favicon = document.querySelector('link[rel="icon"]');
@@ -27,7 +27,7 @@ export default function SEOHead({
     };
 
     const fullDesc = description || 'Covertech Industries — North America\'s trusted manufacturer of premium vinyl pool liners, ASTM-certified safety covers, solar blankets and winter covers since 1987. Made in Canada. 25-year warranty.';
-    const fullTitle = title ? `${title} | ${siteName}` : siteName;
+    const fullTitle = title ? `${siteName} | ${title}` : siteName;
     const pageUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://covertechind.com');
 
     // Core meta

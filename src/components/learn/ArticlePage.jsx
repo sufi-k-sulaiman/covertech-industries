@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
-import { Check, Lightbulb, Wrench } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { Check, Lightbulb, Wrench, ArrowRight } from 'lucide-react';
 
-function ArticleSection({ title, excerpt, paragraphs, image, imageAlt, imageRight = false, index }) {
+function ArticleSection({ title, excerpt, paragraphs, image, imageAlt, imageRight = false, index, articleSlug }) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
@@ -27,10 +29,19 @@ function ArticleSection({ title, excerpt, paragraphs, image, imageAlt, imageRigh
           <h3 className="text-2xl font-bold text-slate-900 mb-3 leading-snug">{title}</h3>
           <p className="text-cyan-600 font-medium mb-5 text-lg leading-relaxed">{excerpt}</p>
           <div className="space-y-4">
-            {paragraphs.map((para, i) => (
+            {paragraphs.slice(0, 2).map((para, i) => (
               <p key={i} className="text-slate-700 leading-relaxed">{para}</p>
             ))}
           </div>
+          {articleSlug && (
+            <Link
+              to={createPageUrl(`LearnArticle?slug=${articleSlug}`)}
+              className="inline-flex items-center gap-2 mt-5 text-cyan-600 font-semibold hover:text-cyan-700 group"
+            >
+              Read Full Article
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          )}
         </div>
       </div>
       {/* Divider */}
@@ -39,7 +50,7 @@ function ArticleSection({ title, excerpt, paragraphs, image, imageAlt, imageRigh
   );
 }
 
-export default function ArticlePage({ articles, tips, care, warranty, image, name }) {
+export default function ArticlePage({ articles, tips, care, warranty, image, name, categorySlugs = [] }) {
   return (
     <div>
       {/* Articles */}
@@ -55,6 +66,7 @@ export default function ArticlePage({ articles, tips, care, warranty, image, nam
             image={article.image}
             imageAlt={article.imageAlt}
             imageRight={idx % 2 !== 0}
+            articleSlug={categorySlugs[idx]}
           />
         ))}
       </div>
