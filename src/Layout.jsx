@@ -145,14 +145,20 @@ export default function Layout({ children, currentPageName }) {
       {/* Main Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
         <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link to={createPageUrl('Home')} className="flex items-center">
-            <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png"
-              alt="Covertech Industries"
-              className="h-6 md:h-8"
-            />
-          </Link>
+          {/* Logo + Phone */}
+          <div className="flex flex-col">
+            <Link to={createPageUrl('Home')} className="flex items-center">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/15f12063e_CovertehLogo220923.png"
+                alt="Covertech Industries"
+                className="h-6 md:h-8"
+              />
+            </Link>
+            <a href="tel:+14166405590" className="flex items-center gap-1 mt-1 text-xs font-medium text-slate-600 hover:text-cyan-600 transition-colors">
+              <Phone className="w-3 h-3" />
+              +1 (416) 640-5590
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           {!isAdminPage && (
