@@ -1,0 +1,39 @@
+{
+  "name": "Send Email on Dealer Application",
+  "description": "Sends email notifications to webadmin@covertechind.com and covertechinds@gmail.com when a new dealer application is created",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "DealerApplication"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_email_on_dealer_application",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendFormNotifications",
+            "args": {
+              "entityType": "DealerApplication"
+            }
+          },
+          "then": "end"
+        }
+      }
+    ]
+  },
+  "x-base44-migrated-from-automation": {
+    "legacy_payload_function": "sendFormNotifications"
+  }
+}

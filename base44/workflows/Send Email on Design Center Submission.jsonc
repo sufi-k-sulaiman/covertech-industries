@@ -1,0 +1,39 @@
+{
+  "name": "Send Email on Design Center Submission",
+  "description": "Sends email notifications to webadmin@covertechind.com and covertechinds@gmail.com when a new design center submission is created",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "DesignCenterSubmission"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_email_on_design_center_submission",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendFormNotifications",
+            "args": {
+              "entityType": "DesignCenterSubmission"
+            }
+          },
+          "then": "end"
+        }
+      }
+    ]
+  },
+  "x-base44-migrated-from-automation": {
+    "legacy_payload_function": "sendFormNotifications"
+  }
+}

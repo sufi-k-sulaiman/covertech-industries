@@ -1,0 +1,39 @@
+{
+  "name": "Send Email on Warranty Registration",
+  "description": "Sends email notifications to webadmin@covertechind.com and covertechinds@gmail.com when a new warranty registration is created",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "WarrantyRegistration"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_email_on_warranty_registration",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendFormNotifications",
+            "args": {
+              "entityType": "WarrantyRegistration"
+            }
+          },
+          "then": "end"
+        }
+      }
+    ]
+  },
+  "x-base44-migrated-from-automation": {
+    "legacy_payload_function": "sendFormNotifications"
+  }
+}
