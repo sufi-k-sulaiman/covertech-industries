@@ -222,31 +222,6 @@ export default function Features() {
         </div>
       </PageHero>
 
-      {/* Quick Stats */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: '9', label: 'Product Categories' },
-              { value: '16', label: 'Article Pages' },
-              { value: '2', label: '3D Visualizers' },
-              { value: '6', label: 'Admin Modules' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">{stat.value}</div>
-                <div className="text-slate-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Feature Categories */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
