@@ -9,7 +9,8 @@ import {
   Package, Boxes, Ruler, ShieldCheck, BarChart3, GraduationCap,
   Images, MessageSquare, Mail, Store, MapPin, Search, ArrowRight,
   CheckCircle2, Sparkles, Layers, Palette, FileText, Users, Rocket,
-  Database, Zap, Globe, Shield, Code
+  Database, Zap, Globe, Shield, Code, Megaphone, Award, Briefcase,
+  TrendingUp, Cpu, LineChart
 } from 'lucide-react';
 
 const heroImage = 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/318df9877_generated_image.png';
@@ -17,7 +18,7 @@ const heroImage = 'https://media.base44.com/images/public/6966301493bec01d4fb29d
 const pitchStats = [
   { icon: Rocket, value: 'Turnkey', label: 'Launch in weeks, not months' },
   { icon: Database, value: 'Full CMS', label: 'Manage everything yourself' },
-  { icon: Zap, value: '9 Modules', label: 'Out of the box' },
+  { icon: Zap, value: '10 Modules', label: 'Out of the box' },
   { icon: Globe, value: 'SEO-Ready', label: 'Built to rank from day one' },
 ];
 
@@ -166,6 +167,22 @@ const featureCategories = [
       { label: 'See the Dashboard', href: 'Admin' },
     ],
   },
+  {
+    id: 'marketing',
+    title: 'Automated Emails & Marketing',
+    description: 'Every form submission triggers an automated email — to your team, to your customer, or both. Pair that with built-in SEO, social, and ad-ready marketing tools to turn visitors into buyers on autopilot.',
+    image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/1b215b6bb_generated_image.png',
+    icon: Megaphone,
+    points: [
+      'Automated email workflows on every form submission',
+      'Gmail and Outlook connector integration',
+      'SEO, sitemap, and schema markup built in',
+      'Multi-channel marketing — search, social, and email',
+    ],
+    links: [
+      { label: 'See Lead Capture', href: 'Contact' },
+    ],
+  },
 ];
 
 const platformHighlights = [
@@ -197,7 +214,7 @@ export default function Features() {
     <div>
       <SEOHead
         title="Web Solution & CMS Platform"
-        description="A complete, turnkey web solution with a robust CMS — product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, and live analytics. Launch your business online in weeks."
+        description="A complete, turnkey web solution with a robust CMS — product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, automated emails, marketing, and live analytics. Launch your business online in weeks."
         canonicalUrl="https://covertechind.com/Features"
         keywords={['web solution', 'cms platform', 'turnkey website', 'product catalog cms', '3d visualizer', 'quote builder', 'warranty portal', 'admin dashboard', 'lead capture website']}
         ogImage={heroImage}
@@ -285,7 +302,7 @@ export default function Features() {
               What's Included
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Nine Modules, One Platform
+              Ten Modules, One Platform
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Every module below comes ready to use. Click through to see a live example of each one in action.
@@ -447,6 +464,115 @@ export default function Features() {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* About the Builder */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-50 text-cyan-600 text-sm font-semibold mb-4">
+              Built By
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Meet the Architect Behind the Platform
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              This solution was designed and engineered by a technology executive with two decades of scaling digital businesses.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Profile */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-1 bg-white rounded-3xl shadow-sm border border-slate-200 p-8 text-center"
+            >
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-3xl font-bold">
+                SK
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-1">Sufi Khan Sulaiman</h3>
+              <p className="text-cyan-600 font-medium mb-4">Technology Executive & E-Commerce Strategist</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                Over 20 years building scalable software and leading large cross-functional teams. Specializes in growing online sales and automating business operations with AI and machine learning.
+              </p>
+              <a
+                href="https://sufikhan.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-cyan-600 font-medium hover:text-cyan-700 transition-colors"
+              >
+                Visit sufikhan.com <ArrowRight className="w-4 h-4" />
+              </a>
+            </motion.div>
+
+            {/* Career Highlights */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-slate-200 p-8"
+            >
+              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <Award className="w-5 h-5 text-cyan-600" /> Career Highlights
+              </h3>
+              <div className="space-y-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center flex-shrink-0">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">Executive Leadership</h4>
+                    <p className="text-slate-600 text-sm">Managed global technology teams of 100+ across engineering, product management, and marketing.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">E-Commerce Growth</h4>
+                    <p className="text-slate-600 text-sm">Led digital redesigns and relaunches for major brands including Lorex Technology (VP of eCommerce & Digital Experience), FLIR, Cosmo Music, and MGM Resorts.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center flex-shrink-0">
+                    <Cpu className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">AI & Automation</h4>
+                    <p className="text-slate-600 text-sm">Designs autonomous software agents and smart applications, including an AI-powered iOS note-taking workspace with assisted writing and image generation.</p>
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-xl font-bold text-slate-900 mt-8 mb-5 flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-cyan-600" /> Core Expertise
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  { icon: Code, title: 'System Design', desc: 'Distributed systems serving millions of concurrent users.' },
+                  { icon: LineChart, title: 'Web Analytics', desc: 'Google Analytics and Power BI frameworks that lift conversion.' },
+                  { icon: Megaphone, title: 'Customer Acquisition', desc: 'Multi-channel campaigns — SEO, search ads, and email.' },
+                  { icon: Users, title: 'Change Management', desc: 'Leading organizational transformations and software adoption.' },
+                ].map((exp) => {
+                  const Icon = exp.icon;
+                  return (
+                    <div key={exp.title} className="flex items-start gap-3 p-4 rounded-xl bg-slate-50">
+                      <Icon className="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold text-slate-900 text-sm">{exp.title}</h4>
+                        <p className="text-slate-600 text-xs">{exp.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
