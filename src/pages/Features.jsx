@@ -213,21 +213,48 @@ export default function Features() {
   return (
     <div>
       <SEOHead
-        title="Web Solution & CMS Platform"
-        description="A complete, turnkey web solution with a robust CMS — product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, automated emails, marketing, and live analytics. Launch your business online in weeks."
+        title="Web Solution & CMS Platform by Sufi Khan Sulaiman"
+        description="A complete, turnkey web solution with a robust CMS — product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, automated emails, marketing, and live analytics. Designed and engineered by Sufi Khan Sulaiman, technology executive and e-commerce strategist with 20+ years building scalable software. Launch your business online in weeks."
         canonicalUrl="https://covertechind.com/Features"
-        keywords={['web solution', 'cms platform', 'turnkey website', 'product catalog cms', '3d visualizer', 'quote builder', 'warranty portal', 'admin dashboard', 'lead capture website']}
+        keywords={[
+          'web solution by Sufi Khan Sulaiman', 'Sufi Khan Sulaiman', 'cms platform',
+          'turnkey website', 'product catalog cms', '3d visualizer', 'quote builder',
+          'warranty portal', 'admin dashboard', 'lead capture website',
+          'e-commerce strategist', 'Sufi Khan Sulaiman web solution', 'automated marketing platform',
+        ]}
         ogImage={heroImage}
-        schema={createArticleSchema({
-          title: 'A Complete Web Solution with a Robust CMS',
-          description: 'Turnkey web platform for manufacturers and distributors — product catalog, visualizers, quote builder, warranty portal, learning center, dealer onboarding, and live analytics.',
-          url: 'https://covertechind.com/Features',
-          image: heroImage,
-        })}
+        schema={[
+          createArticleSchema({
+            title: 'A Complete Web Solution with a Robust CMS by Sufi Khan Sulaiman',
+            description: 'Turnkey web platform for manufacturers and distributors — product catalog, visualizers, quote builder, warranty portal, learning center, dealer onboarding, automated emails, and live analytics. Built by Sufi Khan Sulaiman.',
+            url: 'https://covertechind.com/Features',
+            image: heroImage,
+          }),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Sufi Khan Sulaiman',
+            url: 'https://sufikhan.com/about',
+            jobTitle: 'Technology Executive & E-Commerce Strategist',
+            description: 'Experienced technology executive, e-commerce strategist, and digital automation leader with over 20 years building scalable software and leading large cross-functional teams.',
+            knowsAbout: [
+              'E-Commerce', 'System Design', 'Web Analytics', 'Customer Acquisition',
+              'Change Management', 'Artificial Intelligence', 'Machine Learning', 'Digital Automation',
+            ],
+            worksFor: { '@type': 'Organization', name: 'Covertech Industries' },
+            sameAs: [
+              'https://sufikhan.com/about',
+              'https://sufikhan.com/experience',
+              'https://sufikhan.com/expertise',
+              'https://sufikhan.com/projects',
+              'https://sufikhan.com/skills',
+            ],
+          },
+        ]}
       />
 
       <PageHero
-        badge="Web Solution & CMS Platform"
+        badge="Web Solution & CMS Platform by Sufi Khan Sulaiman"
         title="A Complete Web Solution"
         titleAccent="for Manufacturers & Distributors"
         description="Turnkey, CMS-driven, and built to convert. Product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, and live analytics — all in one platform. Launch your business online in weeks, not months."
@@ -374,7 +401,7 @@ export default function Features() {
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-3xl rotate-3 scale-105 opacity-50" />
                     <img
                       src={cat.image}
-                      alt={cat.title}
+                      alt={`Sufi Khan Sulaiman — ${cat.title} web solution module`}
                       loading="lazy"
                       className="relative rounded-3xl shadow-xl w-full h-[320px] md:h-[400px] object-cover"
                     />
