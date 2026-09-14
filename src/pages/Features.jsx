@@ -547,7 +547,11 @@ export default function Features() {
               <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-3xl font-bold">
                 SK
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-1">Sufi Khan Sulaiman</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-1">
+                <a href="https://sufikhan.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-600 transition-colors">
+                  Sufi Khan Sulaiman
+                </a>
+              </h3>
               <p className="text-cyan-600 font-medium mb-4">Technology Executive & E-Commerce Strategist</p>
               <p className="text-slate-600 text-sm leading-relaxed mb-6">
                 Over 20 years building scalable software and leading large cross-functional teams. Specializes in growing online sales and automating business operations with AI and machine learning.
