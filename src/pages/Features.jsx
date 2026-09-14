@@ -18,7 +18,7 @@ const featureCategories = [
     id: 'catalog',
     title: 'Product Catalog & Details',
     description: 'A full catalog of premium pool liners, safety covers, solar covers, winter covers, steel kits, insulation, golf covers, and curing blankets — each with rich detail pages.',
-    image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/318df9877_generated_image.png',
+    image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/7785cbfda_image.png',
     icon: Package,
     points: [
       '9 product categories with dedicated detail pages',
@@ -35,7 +35,7 @@ const featureCategories = [
     id: 'visualizer',
     title: '3D Pool & Safety Cover Visualizers',
     description: 'Interactive design tools that let customers visualize custom liner patterns and safety covers on their pool in real time.',
-    image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/66180d88f_generated_image.png',
+    image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/9a4d9ca0f_image.png',
     icon: Ruler,
     points: [
       'Pool Visualizer with pattern and color selection',
@@ -52,7 +52,7 @@ const featureCategories = [
     id: 'design-center',
     title: 'Design Center & Quote Builder',
     description: 'A guided quote builder where customers configure their pool shape, dimensions, features, and pattern — then submit a request for a custom quote.',
-    image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/4998a1984_generated_image.png',
+    image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/6281fe664_image.png',
     icon: Palette,
     points: [
       'Step-by-step pool configuration wizard',
