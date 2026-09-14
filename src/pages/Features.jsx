@@ -499,14 +499,24 @@ export default function Features() {
               <p className="text-slate-600 text-sm leading-relaxed mb-6">
                 Over 20 years building scalable software and leading large cross-functional teams. Specializes in growing online sales and automating business operations with AI and machine learning.
               </p>
-              <a
-                href="https://sufikhan.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-cyan-600 font-medium hover:text-cyan-700 transition-colors"
-              >
-                Visit sufikhan.com <ArrowRight className="w-4 h-4" />
-              </a>
+              <div className="flex flex-col gap-2.5 items-center">
+                <a
+                  href="https://sufikhan.com/about"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-cyan-600 font-medium hover:text-cyan-700 transition-colors"
+                >
+                  View full profile <ArrowRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://sufikhan.com/skills"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-500 text-sm font-medium hover:text-cyan-600 transition-colors"
+                >
+                  View skills <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </motion.div>
 
             {/* Career Highlights */}
@@ -517,8 +527,11 @@ export default function Features() {
               transition={{ delay: 0.1 }}
               className="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-slate-200 p-8"
             >
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Award className="w-5 h-5 text-cyan-600" /> Career Highlights
+              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center justify-between gap-2">
+                <span className="flex items-center gap-2"><Award className="w-5 h-5 text-cyan-600" /> Career Highlights</span>
+                <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-cyan-600 hover:text-cyan-700 transition-colors inline-flex items-center gap-1">
+                  View experience <ArrowRight className="w-3.5 h-3.5" />
+                </a>
               </h3>
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
@@ -537,6 +550,9 @@ export default function Features() {
                   <div>
                     <h4 className="font-semibold text-slate-900">E-Commerce Growth</h4>
                     <p className="text-slate-600 text-sm">Led digital redesigns and relaunches for major brands including Lorex Technology (VP of eCommerce & Digital Experience), FLIR, Cosmo Music, and MGM Resorts.</p>
+                    <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-cyan-600 text-xs font-medium hover:text-cyan-700 transition-colors mt-1.5">
+                      View projects <ArrowRight className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -550,8 +566,11 @@ export default function Features() {
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold text-slate-900 mt-8 mb-5 flex items-center gap-2">
-                <Briefcase className="w-5 h-5 text-cyan-600" /> Core Expertise
+              <h3 className="text-xl font-bold text-slate-900 mt-8 mb-5 flex items-center justify-between gap-2">
+                <span className="flex items-center gap-2"><Briefcase className="w-5 h-5 text-cyan-600" /> Core Expertise</span>
+                <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-cyan-600 hover:text-cyan-700 transition-colors inline-flex items-center gap-1">
+                  View expertise <ArrowRight className="w-3.5 h-3.5" />
+                </a>
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
