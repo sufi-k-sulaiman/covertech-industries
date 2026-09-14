@@ -318,6 +318,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('Dealer')} className="text-slate-400 hover:text-cyan-400 transition-colors">Become a Dealer</Link></li>
                 <li><Link to={createPageUrl('Resources')} className="text-slate-400 hover:text-cyan-400 transition-colors">Resources</Link></li>
                 <li><Link to={createPageUrl('Learn')} className="text-slate-400 hover:text-cyan-400 transition-colors">Learn</Link></li>
+                <li><Link to={createPageUrl('Features')} className="text-slate-400 hover:text-cyan-400 transition-colors">Platform Features</Link></li>
                 <li><Link to={createPageUrl('Contact')} className="text-slate-400 hover:text-cyan-400 transition-colors">Contact</Link></li>
               </ul>
             </div>

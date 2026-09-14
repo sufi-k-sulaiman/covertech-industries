@@ -16,6 +16,7 @@ import CustomInGroundLiners from './pages/CustomInGroundLiners';
 import PoolVisualizer from './pages/PoolVisualizer';
 import SafetyCoverVisualizerPage from './pages/SafetyCoverVisualizer';
 import LearnArticle from './pages/LearnArticle';
+import Features from './pages/Features';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -173,6 +174,14 @@ const AuthenticatedApp = () => {
          element={
            <LayoutWrapper currentPageName="LearnArticle">
              <LearnArticle />
+           </LayoutWrapper>
+         }
+       />
+       <Route
+         path="/Features"
+         element={
+           <LayoutWrapper currentPageName="Features">
+             <Features />
            </LayoutWrapper>
          }
        />
