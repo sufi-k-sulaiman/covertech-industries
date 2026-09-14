@@ -245,6 +245,16 @@ export default function Features() {
             </Button>
           </Link>
         </div>
+        <p className="mt-6 text-sm text-white/80">
+          Architected by{' '}
+          <a href="https://sufikhan.com/about" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+            Sufi Khan Sulaiman
+          </a>
+          {' '}—{' '}
+          <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" className="text-white/90 underline decoration-white/40 hover:decoration-white transition-colors">
+            20+ years of e-commerce experience
+          </a>
+        </p>
       </PageHero>
 
       {/* Pitch Intro */}
@@ -262,7 +272,15 @@ export default function Features() {
               Most businesses piece together a website, a separate CMS, a quote tool, a warranty form, and an analytics dashboard — then pay someone to glue them together. This platform does it all in one.
             </p>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Built for manufacturers, distributors, and custom-order businesses, it comes with nine ready-made modules and a robust content management system your team can run without a developer. You bring the products — we bring the platform.
+              Built for manufacturers, distributors, and custom-order businesses, it comes with ten ready-made modules and a robust content management system your team can run without a developer. You bring the products — we bring the platform.{' '}
+              <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
+                See similar projects
+              </a>{' '}
+              or{' '}
+              <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
+                explore the full expertise
+              </a>{' '}
+              behind it.
             </p>
           </motion.div>
         </div>
@@ -401,7 +419,11 @@ export default function Features() {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Built for Performance & Growth</h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Beyond the modules, the platform ships with everything you need to launch, rank, and scale.
+              Beyond the modules, the platform ships with everything you need to launch, rank, and scale.{' '}
+              <a href="https://sufikhan.com/skills" target="_blank" rel="noopener noreferrer" className="text-cyan-300 font-medium hover:text-cyan-200 underline decoration-cyan-700">
+                See the full skill set
+              </a>{' '}
+              that powers it.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -437,7 +459,11 @@ export default function Features() {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Built for Custom-Order Businesses</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              If you sell products that need configuration, registration, or education, this platform fits.
+              If you sell products that need configuration, registration, or education, this platform fits.{' '}
+              <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
+                View past projects
+              </a>{' '}
+              across similar industries.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -615,6 +641,21 @@ export default function Features() {
               </Button>
             </Link>
           </div>
+          <p className="mt-8 text-cyan-50">
+            Want to know who builds solutions like this?{' '}
+            <a href="https://sufikhan.com/about" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+              Meet the architect
+            </a>{' '}·{' '}
+            <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+              Experience
+            </a>{' '}·{' '}
+            <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+              Expertise
+            </a>{' '}·{' '}
+            <a href="https://sufikhan.com/skills" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+              Skills
+            </a>
+          </p>
         </div>
       </section>
     </div>
