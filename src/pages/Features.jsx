@@ -8,168 +8,176 @@ import { Button } from '@/components/ui/button';
 import {
   Package, Boxes, Ruler, ShieldCheck, BarChart3, GraduationCap,
   Images, MessageSquare, Mail, Store, MapPin, Search, ArrowRight,
-  CheckCircle2, Sparkles, Layers, Palette, FileText, Users
+  CheckCircle2, Sparkles, Layers, Palette, FileText, Users, Rocket,
+  Database, Zap, Globe, Shield, Code
 } from 'lucide-react';
 
 const heroImage = 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/318df9877_generated_image.png';
 
+const pitchStats = [
+  { icon: Rocket, value: 'Turnkey', label: 'Launch in weeks, not months' },
+  { icon: Database, value: 'Full CMS', label: 'Manage everything yourself' },
+  { icon: Zap, value: '9 Modules', label: 'Out of the box' },
+  { icon: Globe, value: 'SEO-Ready', label: 'Built to rank from day one' },
+];
+
 const featureCategories = [
   {
     id: 'catalog',
-    title: 'Product Catalog & Details',
-    description: 'A full catalog of premium pool liners, safety covers, solar covers, winter covers, steel kits, insulation, golf covers, and curing blankets — each with rich detail pages.',
+    title: 'Product Catalog & Detail Pages',
+    description: 'A full product catalog with rich detail pages — categories, variants, specifications, patterns, and warranties. Your team manages every product from the CMS without a developer.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/7785cbfda_image.png',
     icon: Package,
     points: [
-      '9 product categories with dedicated detail pages',
-      'Patterns, variants, specifications, and warranties',
-      'Bestseller badges and SEO-optimized product pages',
-      'Search and category filtering on the catalog',
+      'Unlimited product categories with dedicated detail pages',
+      'Variants, patterns, specifications, and warranty fields',
+      'Bestseller flags and per-product SEO fields',
+      'Search and category filtering on the storefront',
     ],
     links: [
-      { label: 'Browse Products', href: 'Products' },
-      { label: 'In-Ground Liners', href: 'ProductDetails?slug=in-ground-liners' },
+      { label: 'See a Live Catalog', href: 'Products' },
     ],
   },
   {
     id: 'visualizer',
-    title: '3D Pool & Safety Cover Visualizers',
-    description: 'Interactive design tools that let customers visualize custom liner patterns and safety covers on their pool in real time.',
+    title: '3D Visualizers & Configurators',
+    description: 'Interactive 3D tools let your customers visualize products on their own property — patterns, colors, and shapes in real time. A proven conversion booster for custom-order businesses.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/9a4d9ca0f_image.png',
     icon: Ruler,
     points: [
-      'Pool Visualizer with pattern and color selection',
-      'Safety Cover Visualizer for custom shapes',
-      'Platinum Plus pattern gallery',
       'Real-time 3D rendering with Three.js',
+      'Pattern and color selection on a live preview',
+      'Step-by-step configuration wizard',
+      'Reduces returns and pre-sale questions',
     ],
     links: [
-      { label: 'Pool Visualizer', href: 'PoolVisualizer' },
-      { label: 'Safety Cover Visualizer', href: 'SafetyCoverVisualizer' },
+      { label: 'Try the Visualizer', href: 'PoolVisualizer' },
     ],
   },
   {
     id: 'design-center',
-    title: 'Design Center & Quote Builder',
-    description: 'A guided quote builder where customers configure their pool shape, dimensions, features, and pattern — then submit a request for a custom quote.',
+    title: 'Quote & Design Center',
+    description: 'A guided quote builder captures customer requirements — shape, dimensions, features, and pattern — and generates a tracked quote request straight into your admin dashboard.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/6281fe664_image.png',
     icon: Palette,
     points: [
-      'Step-by-step pool configuration wizard',
-      'Shape, dimensions, and feature selection',
-      'Pattern and customization choices',
-      'Automatic quote ID generation and submission tracking',
+      'Multi-step configuration wizard',
+      'Automatic quote ID generation',
+      'Submission tracking with status workflow',
+      'Lead data routed to your sales team instantly',
     ],
     links: [
-      { label: 'Open Design Center', href: 'DesignCenter' },
+      { label: 'See the Quote Builder', href: 'DesignCenter' },
     ],
   },
   {
     id: 'warranty',
-    title: 'Warranty Registration Portal',
-    description: 'Customers register their products online with full purchase and installation details, generating warranty records that admins review and approve.',
+    title: 'Warranty & Registration Portal',
+    description: 'Move warranty registration online. Customers submit product, purchase, and installation details; your team reviews and approves from the CMS. No more paper forms or spreadsheets.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/3726a8f4e_generated_image.png',
     icon: ShieldCheck,
     points: [
-      'Online registration for all product types',
-      'Purchase, installer, and pool details capture',
-      'Admin approval workflow (pending / approved / rejected)',
+      'Online registration for every product type',
       'Serial and invoice number tracking',
+      'Admin approval workflow (pending / approved / rejected)',
+      'Customer email confirmations',
     ],
     links: [
-      { label: 'Register a Warranty', href: 'Warranties' },
+      { label: 'See the Portal', href: 'Warranties' },
     ],
   },
   {
     id: 'learn',
-    title: 'Learning Center & Articles',
-    description: 'An educational hub with tabbed guides for each product line, plus individual article pages covering installation, maintenance, and buying guides.',
+    title: 'Learning Center & Content Hub',
+    description: 'A built-in content management system for articles, guides, and tutorials — each with its own SEO-optimized page. Educate customers and rank for long-tail search terms.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/4998a1984_generated_image.png',
     icon: GraduationCap,
     points: [
-      'Tabbed guides for liners, safety covers, solar, and winter covers',
-      '16 individual SEO-optimized article pages',
-      'Maintenance tips and care instructions',
-      'Installation guides for winter covers and solar blankets',
+      'Tabbed product guides and individual article pages',
+      'SEO-optimized content with schema markup',
+      'Maintenance tips and installation instructions',
+      'Drives organic traffic and reduces support load',
     ],
     links: [
-      { label: 'Visit Learn Center', href: 'Learn' },
-      { label: 'Winter Cover Guide', href: 'WinterCoverGuide' },
+      { label: 'See the Content Hub', href: 'Learn' },
     ],
   },
   {
     id: 'gallery',
     title: 'Project Gallery & Portfolio',
-    description: 'A showcase of completed pool liner installations and projects, with a detailed portfolio project view for featured work.',
+    description: 'Showcase completed work with a filterable gallery and dedicated project pages. High-resolution photography with lazy loading keeps the site fast.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/318df9877_generated_image.png',
     icon: Images,
     points: [
       'Filterable project gallery',
       'Individual portfolio project pages',
-      'High-resolution installation photography',
-      'Lazy-loaded images with descriptive alt text',
+      'Lazy-loaded, optimized imagery',
+      'Great for social proof and conversions',
     ],
     links: [
-      { label: 'View Gallery', href: 'Gallery' },
+      { label: 'See the Gallery', href: 'Gallery' },
     ],
   },
   {
     id: 'dealer',
-    title: 'Dealer Program & Applications',
-    description: 'A dedicated dealer onboarding flow where contractors and retailers apply to become Covertech dealers, with admin review and approval.',
+    title: 'Partner & Dealer Onboarding',
+    description: 'A dedicated onboarding flow for contractors, retailers, and partners — applications come straight into your admin panel for review and approval.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/3726a8f4e_generated_image.png',
     icon: Store,
     points: [
-      'Online dealer application form',
+      'Online partner application form',
       'Business type classification',
       'Admin review workflow (pending / approved / declined)',
-      'Dealer resource access',
+      'Grow your distribution channel on autopilot',
     ],
     links: [
-      { label: 'Become a Dealer', href: 'Dealer' },
+      { label: 'See the Onboarding Flow', href: 'Dealer' },
     ],
   },
   {
     id: 'contact',
-    title: 'Contact & Lead Capture',
-    description: 'A contact form with categorized inquiries that routes to the admin team, plus an integrated live chat widget for real-time support.',
+    title: 'Lead Capture & Live Chat',
+    description: 'Categorized contact forms route inquiries to the right team, with email notifications and an integrated live chat widget for real-time support.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/4998a1984_generated_image.png',
     icon: Mail,
     points: [
-      'Categorized contact form (quote, info, warranty, dealer, support)',
+      'Categorized inquiry routing',
       'Email notifications via Gmail and Outlook connectors',
-      'Live Tawk.to chat widget',
+      'Integrated live chat widget',
       'FAQ section with schema markup',
     ],
     links: [
-      { label: 'Contact Us', href: 'Contact' },
+      { label: 'See Lead Capture', href: 'Contact' },
     ],
   },
   {
     id: 'admin',
     title: 'Admin Dashboard & Analytics',
-    description: 'A comprehensive admin panel managing products, contacts, warranties, dealers, design quotes, and live website analytics with raw data export.',
+    description: 'A complete CMS and analytics dashboard — manage products, contacts, warranties, dealers, and quotes, plus live traffic analytics with raw data export.',
     image: 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/1b215b6bb_generated_image.png',
     icon: BarChart3,
     points: [
       'Live traffic analytics with charts and KPIs',
       'Raw data table with sorting and CSV export',
-      'Product, contact, warranty, and dealer management',
-      'Design center quote tracking',
+      'Full CRUD management for every module',
+      'Visitor geo-location and session tracking',
     ],
     links: [
-      { label: 'Admin Dashboard', href: 'Admin' },
+      { label: 'See the Dashboard', href: 'Admin' },
     ],
   },
 ];
 
-const additionalFeatures = [
-  { icon: Search, title: 'SEO Optimized', desc: 'Brand-first titles, JSON-LD schema, sitemap, robots.txt, and hreflang tags.' },
-  { icon: MessageSquare, title: 'AI Chat Assistant', desc: 'In-app conversational assistant for product guidance and support.' },
-  { icon: FileText, title: 'Resources Library', desc: 'Downloadable guides, manuals, and documentation for all products.' },
-  { icon: Users, title: 'About & Company Story', desc: 'Company history, leadership, milestones, and core values since 1987.' },
-  { icon: MapPin, title: 'Geo Analytics', desc: 'Visitor country detection and session-based analytics tracking.' },
-  { icon: Layers, title: 'Responsive Design', desc: 'Fully responsive across mobile, tablet, and desktop with fast load times.' },
+const platformHighlights = [
+  { icon: Database, title: 'Robust CMS', desc: 'Manage products, content, leads, and records from one admin panel — no developer needed.' },
+  { icon: Search, title: 'SEO Built In', desc: 'Brand-first titles, JSON-LD schema, sitemap, robots.txt, and hreflang tags out of the box.' },
+  { icon: MessageSquare, title: 'AI Chat Assistant', desc: 'An in-app conversational assistant guides visitors and answers product questions.' },
+  { icon: FileText, title: 'Resources Library', desc: 'Downloadable guides, manuals, and documentation organized by product line.' },
+  { icon: Users, title: 'About & Story Pages', desc: 'Company history, leadership, milestones, and values — fully editable content.' },
+  { icon: MapPin, title: 'Geo Analytics', desc: 'Visitor country detection and session-based analytics, with no third-party fees.' },
+  { icon: Layers, title: 'Fully Responsive', desc: 'Mobile, tablet, and desktop — with fast Core Web Vitals and lazy loading.' },
+  { icon: Shield, title: 'Secure & Scalable', desc: 'Built-in auth, role-based access, and a hosted backend that scales with you.' },
+  { icon: Code, title: 'Extensible', desc: 'Add new pages, integrations, and workflows as you grow — without rebuilding.' },
 ];
 
 const containerVariants = {
@@ -188,52 +196,99 @@ export default function Features() {
   return (
     <div>
       <SEOHead
-        title="Features & Capabilities"
-        description="Explore every feature of the Covertech Industries platform — product catalog, 3D visualizers, design center, warranty registration, learning center, admin analytics, and more."
+        title="Web Solution & CMS Platform"
+        description="A complete, turnkey web solution with a robust CMS — product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, and live analytics. Launch your business online in weeks."
         canonicalUrl="https://covertechind.com/Features"
-        keywords={['pool liner features', 'safety cover tools', 'pool visualizer', 'warranty registration', 'pool design center', 'admin analytics']}
+        keywords={['web solution', 'cms platform', 'turnkey website', 'product catalog cms', '3d visualizer', 'quote builder', 'warranty portal', 'admin dashboard', 'lead capture website']}
         ogImage={heroImage}
         schema={createArticleSchema({
-          title: 'Covertech Industries Platform Features',
-          description: 'Complete overview of all features and capabilities of the Covertech Industries website and admin platform.',
+          title: 'A Complete Web Solution with a Robust CMS',
+          description: 'Turnkey web platform for manufacturers and distributors — product catalog, visualizers, quote builder, warranty portal, learning center, dealer onboarding, and live analytics.',
           url: 'https://covertechind.com/Features',
           image: heroImage,
         })}
       />
 
       <PageHero
-        badge="Platform Features"
-        title="Everything Built Into"
-        titleAccent="Covertech Industries"
-        description="From a full product catalog and 3D visualizers to warranty registration, dealer onboarding, and a live analytics dashboard — explore every capability of the platform."
+        badge="Web Solution & CMS Platform"
+        title="A Complete Web Solution"
+        titleAccent="for Manufacturers & Distributors"
+        description="Turnkey, CMS-driven, and built to convert. Product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, and live analytics — all in one platform. Launch your business online in weeks, not months."
         backgroundImage={heroImage}
       >
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link to={createPageUrl('Products')}>
+          <Link to={createPageUrl('Contact')}>
             <Button size="lg" className="gap-2">
-              Explore Products <ArrowRight className="w-4 h-4" />
+              Get This Solution <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
-          <Link to={createPageUrl('DesignCenter')}>
+          <Link to={createPageUrl('Products')}>
             <Button size="lg" variant="outline" className="gap-2 bg-white/10 backdrop-blur text-white border-white/30 hover:bg-white/20">
-              Design Center <Sparkles className="w-4 h-4" />
+              See a Live Example <Sparkles className="w-4 h-4" />
             </Button>
           </Link>
         </div>
       </PageHero>
 
-      {/* Feature Categories */}
+      {/* Pitch Intro */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              Your Business, Online — Fully Managed
+            </h2>
+            <p className="text-lg text-slate-600 leading-relaxed mb-4">
+              Most businesses piece together a website, a separate CMS, a quote tool, a warranty form, and an analytics dashboard — then pay someone to glue them together. This platform does it all in one.
+            </p>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              Built for manufacturers, distributors, and custom-order businesses, it comes with nine ready-made modules and a robust content management system your team can run without a developer. You bring the products — we bring the platform.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pitch Stats */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {pitchStats.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center mx-auto mb-3">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">{stat.value}</div>
+                  <div className="text-slate-600 font-medium text-sm">{stat.label}</div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-50 text-cyan-600 text-sm font-semibold mb-4">
-              Core Features
+              What's Included
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Nine Feature Areas, One Platform
+              Nine Modules, One Platform
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Each section below highlights a major capability of the site. Click through to explore it live.
+              Every module below comes ready to use. Click through to see a live example of each one in action.
             </p>
           </div>
 
@@ -320,20 +375,20 @@ export default function Features() {
         </div>
       </section>
 
-      {/* Additional Features Grid */}
+      {/* Platform Highlights */}
       <section className="py-20 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-500/20 text-cyan-300 text-sm font-semibold mb-4">
-              Platform Highlights
+              Under the Hood
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Built for Performance & Growth</h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Beyond the core features, the platform includes powerful capabilities under the hood.
+              Beyond the modules, the platform ships with everything you need to launch, rank, and scale.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {additionalFeatures.map((feat, i) => {
+            {platformHighlights.map((feat, i) => {
               const Icon = feat.icon;
               return (
                 <motion.div
@@ -341,7 +396,7 @@ export default function Features() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.06 }}
                   className="p-6 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-cyan-500/50 transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -356,22 +411,62 @@ export default function Features() {
         </div>
       </section>
 
+      {/* Who It's For */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-cyan-50 text-cyan-600 text-sm font-semibold mb-4">
+              Who It's For
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Built for Custom-Order Businesses</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              If you sell products that need configuration, registration, or education, this platform fits.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Boxes, title: 'Manufacturers', desc: 'Showcase a full catalog, register warranties, and onboard dealers.' },
+              { icon: Store, title: 'Distributors & Retailers', desc: 'Capture qualified leads with a quote builder and live chat.' },
+              { icon: Palette, title: 'Custom-Order Brands', desc: 'Let customers configure and visualize before they buy.' },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm text-center"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-slate-600">{item.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-cyan-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Explore Everything?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Launch Your Solution?</h2>
           <p className="text-xl text-cyan-50 mb-8">
-            Dive into the product catalog, try the visualizers, or start a custom quote in the Design Center.
+            Get a turnkey web platform with a robust CMS and all nine modules — configured for your products and your brand.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to={createPageUrl('Products')}>
+            <Link to={createPageUrl('Contact')}>
               <Button size="lg" variant="secondary" className="gap-2">
-                Browse Products <ArrowRight className="w-4 h-4" />
+                Get a Quote <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-            <Link to={createPageUrl('DesignCenter')}>
+            <Link to={createPageUrl('Products')}>
               <Button size="lg" className="gap-2 bg-white text-cyan-600 hover:bg-cyan-50">
-                Start a Quote <Sparkles className="w-4 h-4" />
+                See a Live Example <Sparkles className="w-4 h-4" />
               </Button>
             </Link>
           </div>
