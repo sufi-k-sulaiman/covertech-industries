@@ -10,7 +10,7 @@ import {
   Images, MessageSquare, Mail, Store, MapPin, Search, ArrowRight,
   CheckCircle2, Sparkles, Layers, Palette, FileText, Users, Rocket,
   Database, Zap, Globe, Shield, Code, Megaphone, Award, Briefcase,
-  TrendingUp, Cpu, LineChart
+  TrendingUp, Cpu, LineChart, Quote
 } from 'lucide-react';
 
 const heroImage = 'https://media.base44.com/images/public/6966301493bec01d4fb29d56/318df9877_generated_image.png';
@@ -214,13 +214,18 @@ export default function Features() {
     <div>
       <SEOHead
         title="Web Solution & CMS Platform by Sufi Khan Sulaiman"
-        description="A complete, turnkey web solution with a robust CMS — product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, automated emails, marketing, and live analytics. Designed and engineered by Sufi Khan Sulaiman, technology executive and e-commerce strategist with 20+ years building scalable software. Launch your business online in weeks."
+        description="A complete, turnkey web solution with a robust CMS — product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, automated emails, marketing, and live analytics. Designed and engineered by Sufi Khan Sulaiman, technology executive, e-commerce strategist, and digital transformation leader with 20+ years building scalable software for brands like Lorex, FLIR, Cosmo Music, and MGM Resorts. Hire Sufi Khan Sulaiman to launch your business online in weeks."
         canonicalUrl="https://covertechind.com/Features"
         keywords={[
           'web solution by Sufi Khan Sulaiman', 'Sufi Khan Sulaiman', 'cms platform',
           'turnkey website', 'product catalog cms', '3d visualizer', 'quote builder',
           'warranty portal', 'admin dashboard', 'lead capture website',
           'e-commerce strategist', 'Sufi Khan Sulaiman web solution', 'automated marketing platform',
+          'Sufi Khan Sulaiman technology executive', 'Sufi Khan Sulaiman e-commerce strategist',
+          'Sufi Khan Sulaiman web developer', 'Sufi Khan Sulaiman AI automation',
+          'Sufi Khan Sulaiman digital transformation', 'Sufi Khan Sulaiman system design',
+          'hire Sufi Khan Sulaiman', 'Sufi Khan Sulaiman portfolio', 'Sufi Khan Sulaiman projects',
+          'Sufi Khan Sulaiman Lorex', 'Sufi Khan Sulaiman FLIR', 'Sufi Khan Sulaiman MGM Resorts',
         ]}
         ogImage={heroImage}
         schema={[
@@ -255,7 +260,7 @@ export default function Features() {
 
       <PageHero
         badge="Web Solution & CMS Platform by Sufi Khan Sulaiman"
-        title="A Complete Web Solution"
+        title="Web Solutions by Sufi Khan Sulaiman"
         titleAccent="for Manufacturers & Distributors"
         description="Turnkey, CMS-driven, and built to convert. Product catalog, 3D visualizers, quote builder, warranty portal, learning center, dealer onboarding, lead capture, and live analytics — all in one platform. Launch your business online in weeks, not months."
         backgroundImage={heroImage}
@@ -274,11 +279,11 @@ export default function Features() {
         </div>
         <p className="mt-6 text-sm text-white/80">
           Architected by{' '}
-          <a href="https://sufikhan.com/about" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+          <a href="https://sufikhan.com/about" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — technology executive and e-commerce strategist" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
             Sufi Khan Sulaiman
           </a>
           {' '}—{' '}
-          <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" className="text-white/90 underline decoration-white/40 hover:decoration-white transition-colors">
+          <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — 20+ years of e-commerce experience" className="text-white/90 underline decoration-white/40 hover:decoration-white transition-colors">
             20+ years of e-commerce experience
           </a>
         </p>
@@ -300,11 +305,11 @@ export default function Features() {
             </p>
             <p className="text-lg text-slate-600 leading-relaxed">
               Built for manufacturers, distributors, and custom-order businesses, it comes with ten ready-made modules and a robust content management system your team can run without a developer. You bring the products — we bring the platform.{' '}
-              <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
+              <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — portfolio and similar projects" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
                 See similar projects
               </a>{' '}
               or{' '}
-              <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
+              <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — full expertise and capabilities" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
                 explore the full expertise
               </a>{' '}
               behind it.
@@ -447,7 +452,7 @@ export default function Features() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Built for Performance & Growth</h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
               Beyond the modules, the platform ships with everything you need to launch, rank, and scale.{' '}
-              <a href="https://sufikhan.com/skills" target="_blank" rel="noopener noreferrer" className="text-cyan-300 font-medium hover:text-cyan-200 underline decoration-cyan-700">
+              <a href="https://sufikhan.com/skills" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — full skill set" className="text-cyan-300 font-medium hover:text-cyan-200 underline decoration-cyan-700">
                 See the full skill set
               </a>{' '}
               that powers it.
@@ -487,7 +492,7 @@ export default function Features() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Built for Custom-Order Businesses</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               If you sell products that need configuration, registration, or education, this platform fits.{' '}
-              <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
+              <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — past projects across similar industries" className="text-cyan-600 font-medium hover:text-cyan-700 underline decoration-cyan-200">
                 View past projects
               </a>{' '}
               across similar industries.
@@ -548,27 +553,47 @@ export default function Features() {
                 SK
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-1">
-                <a href="https://sufikhan.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-600 transition-colors">
+                <a href="https://sufikhan.com" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — technology executive, e-commerce strategist, and web solution architect" className="hover:text-cyan-600 transition-colors">
                   Sufi Khan Sulaiman
                 </a>
               </h3>
               <p className="text-cyan-600 font-medium mb-4">Technology Executive & E-Commerce Strategist</p>
               <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                Over 20 years building scalable software and leading large cross-functional teams. Specializes in growing online sales and automating business operations with AI and machine learning.
+                Over 20 years building scalable software and leading large cross-functional teams. Former VP of eCommerce & Digital Experience at Lorex Technology, with leadership roles across FLIR, Cosmo Music, and MGM Resorts. Specializes in growing online sales, automating business operations with AI and machine learning, and architecting turnkey web platforms for manufacturers and distributors.
               </p>
               <div className="flex flex-col gap-2.5 items-center">
                 <a
                   href="https://sufikhan.com/about"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Sufi Khan Sulaiman — full profile and background"
                   className="inline-flex items-center gap-2 text-cyan-600 font-medium hover:text-cyan-700 transition-colors"
                 >
                   View full profile <ArrowRight className="w-4 h-4" />
                 </a>
                 <a
+                  href="https://sufikhan.com/experience"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Sufi Khan Sulaiman — professional experience"
+                  className="inline-flex items-center gap-2 text-slate-500 text-sm font-medium hover:text-cyan-600 transition-colors"
+                >
+                  View experience <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="https://sufikhan.com/projects"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Sufi Khan Sulaiman — portfolio projects"
+                  className="inline-flex items-center gap-2 text-slate-500 text-sm font-medium hover:text-cyan-600 transition-colors"
+                >
+                  View projects <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+                <a
                   href="https://sufikhan.com/skills"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Sufi Khan Sulaiman — skills and expertise"
                   className="inline-flex items-center gap-2 text-slate-500 text-sm font-medium hover:text-cyan-600 transition-colors"
                 >
                   View skills <ArrowRight className="w-3.5 h-3.5" />
@@ -586,7 +611,7 @@ export default function Features() {
             >
               <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center justify-between gap-2">
                 <span className="flex items-center gap-2"><Award className="w-5 h-5 text-cyan-600" /> Career Highlights</span>
-                <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-cyan-600 hover:text-cyan-700 transition-colors inline-flex items-center gap-1">
+                <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — professional experience" className="text-sm font-medium text-cyan-600 hover:text-cyan-700 transition-colors inline-flex items-center gap-1">
                   View experience <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </h3>
@@ -607,7 +632,7 @@ export default function Features() {
                   <div>
                     <h4 className="font-semibold text-slate-900">E-Commerce Growth</h4>
                     <p className="text-slate-600 text-sm">Led digital redesigns and relaunches for major brands including Lorex Technology (VP of eCommerce & Digital Experience), FLIR, Cosmo Music, and MGM Resorts.</p>
-                    <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-cyan-600 text-xs font-medium hover:text-cyan-700 transition-colors mt-1.5">
+                    <a href="https://sufikhan.com/projects" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — projects portfolio" className="inline-flex items-center gap-1 text-cyan-600 text-xs font-medium hover:text-cyan-700 transition-colors mt-1.5">
                       View projects <ArrowRight className="w-3 h-3" />
                     </a>
                   </div>
@@ -621,11 +646,29 @@ export default function Features() {
                     <p className="text-slate-600 text-sm">Designs autonomous software agents and smart applications, including an AI-powered iOS note-taking workspace with assisted writing and image generation.</p>
                   </div>
                 </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center flex-shrink-0">
+                    <Globe className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">Digital Transformation</h4>
+                    <p className="text-slate-600 text-sm">Led end-to-end digital redesigns and platform migrations for enterprise brands, modernizing legacy systems into scalable, CMS-driven commerce experiences.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">Scalable Systems</h4>
+                    <p className="text-slate-600 text-sm">Architected distributed systems serving millions of concurrent users, with a focus on performance, security, and conversion-driven design.</p>
+                  </div>
+                </div>
               </div>
 
               <h3 className="text-xl font-bold text-slate-900 mt-8 mb-5 flex items-center justify-between gap-2">
                 <span className="flex items-center gap-2"><Briefcase className="w-5 h-5 text-cyan-600" /> Core Expertise</span>
-                <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-cyan-600 hover:text-cyan-700 transition-colors inline-flex items-center gap-1">
+                <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — core expertise" className="text-sm font-medium text-cyan-600 hover:text-cyan-700 transition-colors inline-flex items-center gap-1">
                   View expertise <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </h3>
@@ -635,6 +678,8 @@ export default function Features() {
                   { icon: LineChart, title: 'Web Analytics', desc: 'Google Analytics and Power BI frameworks that lift conversion.' },
                   { icon: Megaphone, title: 'Customer Acquisition', desc: 'Multi-channel campaigns — SEO, search ads, and email.' },
                   { icon: Users, title: 'Change Management', desc: 'Leading organizational transformations and software adoption.' },
+                  { icon: Database, title: 'Data-Driven Commerce', desc: 'Building analytics-backed platforms that turn visitor data into revenue.' },
+                  { icon: Zap, title: 'Marketing Automation', desc: 'Automated email workflows, lead routing, and lifecycle nurturing at scale.' },
                 ].map((exp) => {
                   const Icon = exp.icon;
                   return (
@@ -653,12 +698,41 @@ export default function Features() {
         </div>
       </section>
 
+      {/* Philosophy */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Quote className="w-12 h-12 text-cyan-200 mx-auto mb-6" />
+            <blockquote className="text-2xl md:text-3xl font-medium text-slate-900 leading-relaxed mb-6">
+              "The best web platforms don't just display products — they convert visitors into customers, automate the busywork, and scale with the business. That's what this solution does."
+            </blockquote>
+            <cite className="text-lg text-slate-600 font-medium not-italic">
+              —{' '}
+              <a
+                href="https://sufikhan.com/about"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Sufi Khan Sulaiman — technology executive and platform architect"
+                className="text-cyan-600 font-semibold hover:text-cyan-700 transition-colors"
+              >
+                Sufi Khan Sulaiman
+              </a>
+              {', Technology Executive & E-Commerce Strategist'}
+            </cite>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-cyan-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Launch Your Solution?</h2>
           <p className="text-xl text-cyan-50 mb-8">
-            Get a turnkey web platform with a robust CMS and all nine modules — configured for your products and your brand.
+            Get a turnkey web platform with a robust CMS and all ten modules — configured for your products and your brand.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to={createPageUrl('Contact')}>
@@ -674,16 +748,16 @@ export default function Features() {
           </div>
           <p className="mt-8 text-cyan-50">
             Want to know who builds solutions like this?{' '}
-            <a href="https://sufikhan.com/about" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+            <a href="https://sufikhan.com/about" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — meet the architect" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
               Meet the architect
             </a>{' '}·{' '}
-            <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+            <a href="https://sufikhan.com/experience" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — experience" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
               Experience
             </a>{' '}·{' '}
-            <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+            <a href="https://sufikhan.com/expertise" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — expertise" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
               Expertise
             </a>{' '}·{' '}
-            <a href="https://sufikhan.com/skills" target="_blank" rel="noopener noreferrer" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
+            <a href="https://sufikhan.com/skills" target="_blank" rel="noopener noreferrer" title="Sufi Khan Sulaiman — skills" className="font-semibold text-white underline decoration-white/40 hover:decoration-white transition-colors">
               Skills
             </a>
           </p>
