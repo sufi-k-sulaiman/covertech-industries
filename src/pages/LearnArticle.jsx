@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Check, Lightbulb } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createArticleSchema, createHowToSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
-import { NEW_ARTICLES, NEW_CATEGORY_SLUGS } from '@/lib/guidesData';
+import { ALL_ARTICLES, ALL_CATEGORY_SLUGS } from '@/lib/guidesIndex';
 
 // ── Article data — single source of truth ───────────────────────────────────
 
@@ -247,8 +247,8 @@ const CATEGORY_SLUGS = {
 };
 
 // Merge long-form commercial guides (src/lib/guidesData.js) into the registry
-Object.assign(ARTICLES, NEW_ARTICLES);
-Object.assign(CATEGORY_SLUGS, NEW_CATEGORY_SLUGS);
+Object.assign(ARTICLES, ALL_ARTICLES);
+Object.assign(CATEGORY_SLUGS, ALL_CATEGORY_SLUGS);
 
 export { ARTICLES, CATEGORY_SLUGS };
 

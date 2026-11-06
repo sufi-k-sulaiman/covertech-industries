@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Droplets, Shield, Sun, Snowflake, ArrowRight, Image, BookOpen } from 'lucide-react';
 import { CATEGORY_SLUGS, ARTICLES } from './LearnArticle';
-import { NEW_ARTICLES, NEW_CATEGORY_META, NEW_CATEGORY_SLUGS } from '@/lib/guidesData';
+import { ALL_ARTICLES, ALL_CATEGORY_META, ALL_CATEGORY_SLUGS } from '@/lib/guidesIndex';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createWebPageSchema, createHowToSchema, createArticleSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
@@ -502,13 +502,13 @@ export default function Learn() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            {Object.entries(NEW_CATEGORY_META).map(([catId, meta]) => (
+            {Object.entries(ALL_CATEGORY_META).map(([catId, meta]) => (
               <div key={catId} className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-1">{meta.name}</h3>
                 <p className="text-slate-500 text-sm mb-5">{meta.description}</p>
                 <ul className="space-y-3">
-                  {(NEW_CATEGORY_SLUGS[catId] || []).map((slug) => {
-                    const guideArticle = NEW_ARTICLES[slug];
+                  {(ALL_CATEGORY_SLUGS[catId] || []).map((slug) => {
+                    const guideArticle = ALL_ARTICLES[slug];
                     if (!guideArticle) return null;
                     return (
                       <li key={slug}>
