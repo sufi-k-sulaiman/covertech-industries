@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createArticleSchema, createHowToSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
 import { ALL_ARTICLES, ALL_CATEGORY_SLUGS } from '@/lib/guidesIndex';
+import { getRelatedArticles } from '@/lib/guideTopics';
+import RelatedGuides from '@/components/learn/RelatedGuides';
 
 // ── Article data — single source of truth ───────────────────────────────────
 
@@ -270,6 +272,7 @@ export default function LearnArticle() {
   const currentIndex = categorySlugs.indexOf(slug);
   const prevSlug = currentIndex > 0 ? categorySlugs[currentIndex - 1] : null;
   const nextSlug = currentIndex < categorySlugs.length - 1 ? categorySlugs[currentIndex + 1] : null;
+  const relatedGuides = getRelatedArticles(slug, ARTICLES);
 
   const pageUrl = `https://covertechind.com/LearnArticle?slug=${slug}`;
   const breadcrumb = createBreadcrumbSchema([
@@ -343,6 +346,9 @@ export default function LearnArticle() {
             ))}
           </div>
         </article>
+
+        {/* Cross-links to guides sharing topic words */}
+        <RelatedGuides items={relatedGuides} />
 
         {/* Prev / Next Navigation */}
         <div className="flex items-center justify-between mt-16 pt-8 border-t border-slate-200">
