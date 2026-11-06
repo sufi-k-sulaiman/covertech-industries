@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Internal and non-content routes - kept out of the index
+Disallow: /Admin
+Disallow: /PDFViewer
+Disallow: /OAuthConsent
+
 Sitemap: https://covertechind.com/sitemap.xml

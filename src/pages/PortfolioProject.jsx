@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createWebPageSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import NotFoundSignal from '@/components/seo/NotFoundSignal';
 
 const projects = {
   'carrara-marble': {
@@ -110,6 +111,7 @@ export default function PortfolioProject() {
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <NotFoundSignal />
         <div className="text-center">
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Project Not Found</h1>
           <p className="text-slate-600">The project you're looking for doesn't exist.</p>

@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SEOHead, { createProductSchema, createBreadcrumbSchema } from '@/components/seo/SEOHead';
+import NotFoundSignal from '@/components/seo/NotFoundSignal';
 import GalleryModal from '@/components/products/GalleryModal';
 import PatternGallery from '@/components/products/PatternGallery';
 import PlatinumPlusVisualizer from '@/components/products/PlatinumPlusVisualizer';
@@ -845,7 +846,7 @@ export default function ProductDetails() {
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const slug = urlParams.get('slug') || 'in-ground-liners';
-  const product = productsData[slug] || productsData['in-ground-liners'];
+  const product = productsData[slug];
 
   const [activeImage, setActiveImage] = useState(0);
   const [galleryModalOpen, setGalleryModalOpen] = useState(false);
@@ -855,6 +856,28 @@ export default function ProductDetails() {
     setActiveImage(0);
   }, [slug]);
 
+  // An unknown slug used to quietly render the in-ground liner page under its own
+  // URL, creating endless near-duplicate pages. Missing products are now a real 404.
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+        <NotFoundSignal />
+        <p className="text-sm font-semibold uppercase tracking-widest text-cyan-600">404</p>
+        <h1 className="mt-3 text-3xl font-bold text-slate-900">Product not found</h1>
+        <p className="mt-3 max-w-md text-slate-600">
+          We couldn't find a product called "{slug}". Browse the full catalogue to find what you need.
+        </p>
+        <Link
+          to={createPageUrl('Products')}
+          className="mt-8 inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-3 font-medium text-white hover:bg-slate-800 transition-colors"
+        >
+          Browse all products
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    );
+  }
+
   const openGalleryModal = (index) => {
     setGalleryModalIndex(index);
     setGalleryModalOpen(true);
@@ -862,8 +885,8 @@ export default function ProductDetails() {
 
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", url: "https://covertechind.com" },
-    { name: "Products", url: "https://covertechind.com/products" },
-    { name: product.name, url: `https://covertechind.com/product/${slug}` }
+    { name: "Products", url: "https://covertechind.com/Products" },
+    { name: product.name, url: `https://covertechind.com/ProductDetails?slug=${slug}` }
   ]);
 
   const productSchema = createProductSchema({

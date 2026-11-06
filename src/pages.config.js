@@ -47,8 +47,12 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
+import { lazy } from 'react';
 import About from './pages/About';
-import Admin from './pages/Admin';
+
+// Admin is a single-operator screen that pulls in a charting library; loading it
+// on demand keeps that weight off every public page view.
+const Admin = lazy(() => import('./pages/Admin'));
 import Contact from './pages/Contact';
 import Dealer from './pages/Dealer';
 import DesignCenter from './pages/DesignCenter';

@@ -28,7 +28,21 @@ export default function SEOHead({
 
     const fullDesc = description || 'Covertech Industries — North America\'s trusted manufacturer of premium vinyl pool liners, ASTM-certified safety covers, solar blankets and winter covers since 1987. Made in Canada. 25-year warranty.';
     const fullTitle = title ? `${siteName} | ${title}` : siteName;
-    const pageUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://covertechind.com');
+
+    // Canonical always uses the primary domain and keeps the meaningful query string
+    // (e.g. ?slug=...). Without this, pages served on the preview/secondary domains
+    // and every query-string page collapse into one duplicate signal.
+    const buildCanonical = () => {
+      const origin = 'https://covertechind.com';
+      if (typeof window === 'undefined') return `${origin}/`;
+      const path = window.location.pathname.replace(/\/+$/, '') || '/';
+      const params = new URLSearchParams(window.location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'fbclid', 'gclid'].forEach(p => params.delete(p));
+      const qs = params.toString();
+      return `${origin}${path}${qs ? `?${qs}` : ''}`;
+    };
+
+    const pageUrl = canonicalUrl || buildCanonical();
 
     // Core meta
     setMeta('description', fullDesc);
@@ -67,7 +81,7 @@ export default function SEOHead({
     // Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement('link'); canonical.setAttribute('rel', 'canonical'); document.head.appendChild(canonical); }
-    canonical.setAttribute('href', canonicalUrl || (typeof window !== 'undefined' ? window.location.href.split('?')[0] : 'https://covertechind.com'));
+    canonical.setAttribute('href', pageUrl);
 
     // Schema.org structured data — support array of schemas
     const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];

@@ -7,6 +7,9 @@ import PageHero from '@/components/ui/PageHero';
 import { ALL_ARTICLES, ALL_CATEGORY_SLUGS } from '@/lib/guidesIndex';
 import { getRelatedArticles } from '@/lib/guideTopics';
 import RelatedGuides from '@/components/learn/RelatedGuides';
+import GuideProducts from '@/components/learn/GuideProducts';
+import NotFoundSignal from '@/components/seo/NotFoundSignal';
+import { getRelatedProducts } from '@/lib/guideProducts';
 
 // ── Article data — single source of truth ───────────────────────────────────
 
@@ -262,6 +265,7 @@ export default function LearnArticle() {
   if (!article) {
     return (
       <div className="pt-32 pb-16 text-center">
+        <NotFoundSignal />
         <h1 className="text-2xl font-bold text-slate-900">Article not found</h1>
         <Link to={createPageUrl('Learn')} className="text-cyan-600 hover:underline mt-4 block">← Back to Learn</Link>
       </div>
@@ -346,6 +350,9 @@ export default function LearnArticle() {
             ))}
           </div>
         </article>
+
+        {/* Products this guide is about */}
+        <GuideProducts items={getRelatedProducts(article)} />
 
         {/* Cross-links to guides sharing topic words */}
         <RelatedGuides items={relatedGuides} />

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -13,10 +14,18 @@ import SpaCovers from './pages/SpaCovers';
 import PortfolioProject from './pages/PortfolioProject';
 import CustomPoolLiners from './pages/CustomPoolLiners';
 import CustomInGroundLiners from './pages/CustomInGroundLiners';
-import PoolVisualizer from './pages/PoolVisualizer';
-import SafetyCoverVisualizerPage from './pages/SafetyCoverVisualizer';
-import LearnArticle from './pages/LearnArticle';
 import Features from './pages/Features';
+
+// Heavy routes load on demand so the first page a visitor opens stays light.
+const PoolVisualizer = lazy(() => import('./pages/PoolVisualizer'));
+const SafetyCoverVisualizerPage = lazy(() => import('./pages/SafetyCoverVisualizer'));
+const LearnArticle = lazy(() => import('./pages/LearnArticle'));
+
+const RouteFallback = () => (
+  <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin" />
+  </div>
+);
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -157,7 +166,9 @@ const AuthenticatedApp = () => {
          path="/PoolVisualizer"
          element={
            <LayoutWrapper currentPageName="PoolVisualizer">
-             <PoolVisualizer />
+             <Suspense fallback={<RouteFallback />}>
+               <PoolVisualizer />
+             </Suspense>
            </LayoutWrapper>
          }
        />
@@ -165,7 +176,9 @@ const AuthenticatedApp = () => {
          path="/SafetyCoverVisualizer"
          element={
            <LayoutWrapper currentPageName="SafetyCoverVisualizer">
-             <SafetyCoverVisualizerPage />
+             <Suspense fallback={<RouteFallback />}>
+               <SafetyCoverVisualizerPage />
+             </Suspense>
            </LayoutWrapper>
          }
        />
@@ -173,7 +186,9 @@ const AuthenticatedApp = () => {
          path="/LearnArticle"
          element={
            <LayoutWrapper currentPageName="LearnArticle">
-             <LearnArticle />
+             <Suspense fallback={<RouteFallback />}>
+               <LearnArticle />
+             </Suspense>
            </LayoutWrapper>
          }
        />
@@ -191,7 +206,9 @@ const AuthenticatedApp = () => {
            path={`/${path}`}
            element={
              <LayoutWrapper currentPageName={path}>
-               <Page />
+               <Suspense fallback={<RouteFallback />}>
+                 <Page />
+               </Suspense>
              </LayoutWrapper>
            }
          />

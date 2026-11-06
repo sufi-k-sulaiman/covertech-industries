@@ -15,5 +15,18 @@ export default defineConfig({
       visualEditAgent: true
     }),
     react(),
-  ]
+  ],
+  build: {
+    rollupOptions: {
+      output: {
+        // Split stable vendor code into its own long-cached files so a content
+        // change doesn't force visitors to re-download the whole app.
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          motion: ['framer-motion'],
+          charts: ['recharts'],
+        },
+      },
+    },
+  },
 });

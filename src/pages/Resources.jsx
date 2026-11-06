@@ -321,6 +321,8 @@ export default function Resources() {
                 <img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/4f5b14b1f_Butterfly.jpg"
                   alt="Pool Liner Visualizer"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -357,6 +359,8 @@ export default function Resources() {
                 <img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/f28c1a388_GreenMesh.png"
                   alt="Safety Cover Visualizer"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -419,6 +423,8 @@ export default function Resources() {
                     <img 
                       src={product.image} 
                       alt={product.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>

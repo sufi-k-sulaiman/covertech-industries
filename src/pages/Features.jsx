@@ -408,6 +408,7 @@ export default function Features() {
                       src={cat.image}
                       alt={`Sufi Khan Sulaiman — ${cat.title} web solution module`}
                       loading="lazy"
+                      decoding="async"
                       className="relative rounded-3xl shadow-xl w-full h-[320px] md:h-[400px] object-cover"
                     />
                     <div className="absolute -top-4 -left-4 w-16 h-16 rounded-2xl bg-cyan-600 text-white flex items-center justify-center shadow-lg">

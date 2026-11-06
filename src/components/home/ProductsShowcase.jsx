@@ -72,6 +72,8 @@ export default function ProductsShowcase() {
                 <img 
                   src={product.image} 
                   alt={product.name}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 

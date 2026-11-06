@@ -139,7 +139,9 @@ export default function About() {
             <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6930eac464ae2f0c94b83c34/e06907091_image.png"
-                alt="Founder"
+                alt="Henry Schnurbach, founder of Covertech Industries"
+                loading="lazy"
+                decoding="async"
                 className="w-48 h-48 rounded-2xl object-cover shadow-lg"
               />
               <div className="flex-1">
