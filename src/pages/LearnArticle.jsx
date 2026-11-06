@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Check, Lightbulb } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createArticleSchema, createHowToSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
+import { NEW_ARTICLES, NEW_CATEGORY_SLUGS } from '@/lib/guidesData';
 
 // ── Article data — single source of truth ───────────────────────────────────
 
@@ -245,6 +246,10 @@ const CATEGORY_SLUGS = {
   "winter-covers": ["complete-pool-winterization-guide", "winter-cover-materials-construction-quality", "managing-snow-ice-pool-cover", "spring-pool-opening-cover-removal"],
 };
 
+// Merge long-form commercial guides (src/lib/guidesData.js) into the registry
+Object.assign(ARTICLES, NEW_ARTICLES);
+Object.assign(CATEGORY_SLUGS, NEW_CATEGORY_SLUGS);
+
 export { ARTICLES, CATEGORY_SLUGS };
 
 export default function LearnArticle() {
@@ -278,8 +283,13 @@ export default function LearnArticle() {
     description: article.excerpt || article.paragraphs[0].substring(0, 160),
     url: pageUrl,
     image: article.image,
-    datePublished: "2024-01-01",
+    datePublished: article.datePublished || "2024-01-01",
   });
+
+  if (article.keywords?.length) {
+    articleSchema.keywords = article.keywords.join(", ");
+    articleSchema.articleSection = article.categoryName;
+  }
   const howToSchema = article.paragraphs.length >= 3 ? createHowToSchema({
     name: article.title,
     description: article.excerpt || article.paragraphs[0].substring(0, 160),
@@ -294,7 +304,7 @@ export default function LearnArticle() {
         description={article.excerpt || article.paragraphs[0].substring(0, 160)}
         canonicalUrl={pageUrl}
         ogImage={article.image || "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6966301493bec01d4fb29d56/51ca60482_01-Liner.jpg"}
-        keywords={[article.categoryName, "Covertech Industries", "pool products Canada", article.title]}
+        keywords={[article.categoryName, ...(article.keywords || []), "Covertech Industries", "pool products Canada", article.title]}
         schema={[breadcrumb, articleSchema, ...(howToSchema ? [howToSchema] : [])]}
       />
 

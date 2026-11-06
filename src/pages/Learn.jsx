@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Droplets, Shield, Sun, Snowflake, ArrowRight, Image } from 'lucide-react';
+import { Droplets, Shield, Sun, Snowflake, ArrowRight, Image, BookOpen } from 'lucide-react';
 import { CATEGORY_SLUGS, ARTICLES } from './LearnArticle';
+import { NEW_ARTICLES, NEW_CATEGORY_META, NEW_CATEGORY_SLUGS } from '@/lib/guidesData';
 import { Button } from '@/components/ui/button';
 import SEOHead, { createBreadcrumbSchema, createWebPageSchema, createHowToSchema, createArticleSchema } from '@/components/seo/SEOHead';
 import PageHero from '@/components/ui/PageHero';
@@ -486,6 +487,47 @@ export default function Learn() {
           />
         )}
       </AnimatePresence>
+
+      {/* In-Depth Buyer & Comparison Guides */}
+      <section className="py-20 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 rounded-full mb-4">
+              <BookOpen className="w-4 h-4 text-cyan-600" />
+              <span className="text-cyan-700 font-semibold text-sm">In-Depth Guides</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Cost Breakdowns & Cover Comparisons</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Expert, plain-English guidance on what pool covers really cost, how materials compare, and how to choose the right system for your climate.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {Object.entries(NEW_CATEGORY_META).map(([catId, meta]) => (
+              <div key={catId} className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">{meta.name}</h3>
+                <p className="text-slate-500 text-sm mb-5">{meta.description}</p>
+                <ul className="space-y-3">
+                  {(NEW_CATEGORY_SLUGS[catId] || []).map((slug) => {
+                    const guideArticle = NEW_ARTICLES[slug];
+                    if (!guideArticle) return null;
+                    return (
+                      <li key={slug}>
+                        <Link
+                          to={createPageUrl(`LearnArticle?slug=${slug}`)}
+                          className="group flex items-start gap-2 text-slate-700 hover:text-cyan-600 transition-colors"
+                        >
+                          <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 text-cyan-500 group-hover:translate-x-0.5 transition-transform" />
+                          <span className="font-medium leading-snug">{guideArticle.title}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-20 bg-slate-50">
